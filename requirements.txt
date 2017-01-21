@@ -1,0 +1,4 @@
+Django==1.10.3
+django-ckeditor==5.2.1
+olefile==0.44
+Pillow==4.0.0
