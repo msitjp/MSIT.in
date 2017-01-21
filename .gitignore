@@ -5,6 +5,8 @@ __pycache__/
 
 *.sqlite3
 db.*
+static-root/
+uploads/
 
 # C extensions
 *.so
