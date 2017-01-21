@@ -8,9 +8,9 @@ from ckeditor.fields import RichTextField
 
 def image_name(instance, filename):
     fname, extension = filename.split('.')
-    if instance.full_name:
+    if instance.hasattr('full_name'):
         slug = 'faculty/' + slugify(instance.full_name)
-    elif instance.filename:
+    elif instance.hasattr('filename'):
         slug = 'general/' + slugify(instance.filename)
     else:
         slug = 'time-tables-and-Attendance/' + slugify(instance.title)
