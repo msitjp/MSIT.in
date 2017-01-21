@@ -172,4 +172,4 @@ class GeneralUpload(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
-        return "%s"  % (self.title)
+        return "%s"  % (self.filename)
