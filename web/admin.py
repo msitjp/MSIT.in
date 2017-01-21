@@ -9,7 +9,7 @@ class FacultyAdmin(admin.ModelAdmin):
     verbose_name_plural = 'Faculties'
 
     def image_tag(self, obj):
-        return format_html('<img src="{}" width="50" height="50" />'.format(obj.profile_pic.url))
+        return format_html('<img src="{}" height="50" width="auto" />'.format(obj.profile_pic.url))
 
     image_tag.short_description = 'Image'
 
