@@ -8,8 +8,13 @@ from ckeditor.fields import RichTextField
 
 def image_name(instance, filename):
     fname, extension = filename.split('.')
-    slug = slugify(instance.full_name)
-    return 'faculty/'+'%s.%s' % (slug, extension)
+    if self.full_name:
+        slug = 'faculty/' + slugify(instance.full_name)
+    elif self.filename:
+        slug = 'general/' + slugify(instance.filename)
+    else:
+        slug = 'time-tables-and-Attendance/' + slugify(instance.title)
+    return '%s.%s' % (slug, extension)
 
 class Faculty(models.Model):
 
@@ -89,3 +94,76 @@ class SecondaryMenu(models.Model):
 
     def __unicode__(self):
         return "%s > %s"  % (self.parent, self.name)
+
+class TimeTable(models.Model):
+    SHIFTS = (
+         ('M', 'Morning'),
+         ('E', 'Evening'),
+    )
+    title = models.CharField(max_length=50, help_text='Batch Name')
+    shift = models.CharField(max_length=1, choices=SHIFTS)
+    pdf = models.FileField(upload_to=image_name)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.title)
+
+class Attendance(models.Model):
+    SHIFTS = (
+         ('M', 'Morning'),
+         ('E', 'Evening'),
+    )
+    title = models.CharField(max_length=50, help_text='Batch Name')
+    shift = models.CharField(max_length=1, choices=SHIFTS)
+    pdf = models.FileField(upload_to=image_name)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.title)
+
+class Syllabus(models.Model):
+    title = models.CharField(max_length=50, help_text='Branch Name')
+    pdf = models.FileField(upload_to=image_name)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.title)
+
+class StudentSociety(models.Model):
+    name = models.CharField(max_length=50, help_text='Society Name')
+    description = RichTextField()
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.title)
+
+class Achievement(models.Model):
+    title = models.CharField(max_length=50, help_text='Tab Name')
+    description = RichTextField()
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.title)
+
+class Event(models.Model):
+    title = models.CharField(max_length=50, help_text='Tab Name')
+    description = RichTextField()
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.title)
+
+class GeneralUpload(models.Model):
+    filename = models.CharField(max_length=100, help_text='Eg: Campus Ground')
+    files = models.FileField(upload_to=image_name)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.title)
