@@ -1,5 +1,13 @@
 
 function attachEvents(){
+    $("#demo3").als({
+        visible_items: 3,
+        scrolling_items: 1,
+        orientation: "vertical",
+        circular: "yes",
+        autoscroll: "yes",
+        interval: 2000
+    });
     if(window.innerWidth > 720){
         $(window).scroll(function() {
             if ($(window).scrollTop() > 120) {
