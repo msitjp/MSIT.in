@@ -4,6 +4,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 def image_name(instance, filename):
@@ -46,7 +47,7 @@ class Faculty(models.Model):
     shift = models.CharField(max_length=1, choices=SHIFTS, default='M', verbose_name='Shift', help_text='Morning or Evening')
     department = models.CharField(max_length=100, verbose_name='Department', help_text='Eg. CSE / IT / EEE', blank=True, null=True)
     date_of_joining = models.DateField(null=True, blank=True, verbose_name='Date Of Joining')
-    description = RichTextField(blank=True, null=True)
+    description = RichTextUploadingField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -62,6 +63,8 @@ class LatestNews(models.Model):
     link = models.CharField(max_length=1000, help_text='Link for the News')
     new = models.BooleanField(default=True, help_text='This places a New Flag on th link')
     visible = models.BooleanField(default=True, help_text='Whether the News is Visible on Main Page')
+    additional_title = models.CharField(max_length=50, help_text='Additional Link Title (if any)', blank=True, null=True)
+    additional_link = models.CharField(max_length=1000, help_text='Additional Link (if any)', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -140,7 +143,7 @@ class Syllabus(models.Model):
 
 class StudentSociety(models.Model):
     name = models.CharField(max_length=50, help_text='Society Name')
-    description = RichTextField()
+    description = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -149,7 +152,7 @@ class StudentSociety(models.Model):
 
 class Achievement(models.Model):
     title = models.CharField(max_length=50, help_text='Tab Name')
-    description = RichTextField()
+    description = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -158,7 +161,7 @@ class Achievement(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=50, help_text='Tab Name')
-    description = RichTextField()
+    description = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -173,3 +176,17 @@ class GeneralUpload(models.Model):
 
     def __unicode__(self):
         return "%s"  % (self.filename)
+
+class PrimaryNavigationMenu(models.Model):
+    title = models.CharField(max_length=50, help_text='Text to show in the Navigation')
+    link = models.CharField(max_length=1000, help_text = 'Link to redirect to')
+
+    def __unicode__(self):
+        return "%s" % self.title
+
+class SecondaryNavigationMenu(models.Model):
+    title = models.CharField(max_length=50, help_text='Text to show in the Navigation')
+    link = models.CharField(max_length=1000, help_text = 'Link to redirect to')
+
+    def __unicode__(self):
+        return "%s" % self.title

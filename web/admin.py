@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu, TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event, GeneralUpload
+from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu, TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event, GeneralUpload, PrimaryNavigationMenu, SecondaryNavigationMenu
 
 
 class FacultyAdmin(admin.ModelAdmin):
@@ -39,3 +39,5 @@ admin.site.register(StudentSociety)
 admin.site.register(Achievement)
 admin.site.register(Event)
 admin.site.register(GeneralUpload)
+admin.site.register(PrimaryNavigationMenu)
+admin.site.register(SecondaryNavigationMenu)

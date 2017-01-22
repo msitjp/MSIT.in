@@ -1,0 +1,40 @@
+{% load staticfiles %}
+{% load custom %}
+
+<div class="col-md-2 col-sm-2 col-lg-2">
+	<div class="panel panel-default" id="deskview">
+		<div class="panel-heading">Links</div>
+		<div class="panel-body">
+			{% for main_menu in primary_menu %}
+				<p>{{ main_menu }}</p>
+				<ul class="leftpanel">
+					{% for sub_menu in secondary_menu|in_category:main_menu %}
+						<li><a href="{{ sub_menu.link }}">{{ sub_menu.name }}</a></li>
+					{% endfor %}
+				</ul>
+			{% endfor %}
+		</div>
+	</div>
+	<div id="mobileview">
+		<div class="panel-group">
+            {% for main_menu in primary_menu %}
+	            <div class="panel panel-default">
+	                <div class="panel-heading">
+	                    <h4 class="panel-title">
+	                        <a data-toggle="collapse" href="#{{main_menu}}collapse" class="collapsed" aria-expanded="false">
+	                            <strong>{{ main_menu }}</strong>
+	                        </a>
+	                    </h4>
+	                </div>
+	                <div class="panel-collapse collapse" id="{{main_menu}}collapse" aria-expanded="false">
+	                    <ul class="list-group">
+	                        {% for sub_menu in secondary_menu|in_category:main_menu %}
+	    						<li class="list-group-item"><a href="{{ sub_menu.link }}">{{ sub_menu.name }}</a></li>
+	    					{% endfor %}
+	                    </ul>
+	                </div>
+	            </div>
+            {% endfor %}
+		</div>
+	</div>
+</div>
