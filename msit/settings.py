@@ -116,7 +116,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 CKEDITOR_JQUERY_URL = '/static/js/jquery.min.js'
-CKEDITOR_UPLOAD_PATH = "general/"
+CKEDITOR_UPLOAD_PATH = "/"
 CKEDITOR_BROWSE_SHOW_DIRS = True
 
 CKEDITOR_CONFIGS = {
