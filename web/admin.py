@@ -73,7 +73,7 @@ admin.site.register(Syllabus, SyllabusAdmin)
 admin.site.register(StudentSociety)
 admin.site.register(Achievement)
 admin.site.register(Event)
-# from .models import Generalupload
-# admin.site.register(GeneralUpload)
+from .models import GeneralUpload
+admin.site.register(GeneralUpload)
 admin.site.register(PrimaryNavigationMenu, PrimaryNavigationMenuAdmin)
 admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)

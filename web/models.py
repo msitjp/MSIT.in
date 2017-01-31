@@ -232,14 +232,14 @@ class Event(models.Model):
     def __unicode__(self):
         return "%s"  % (self.title)
 
-# class GeneralUpload(models.Model):
-#     filename = models.CharField(max_length=100, help_text='Eg: Campus Ground')
-#     files = models.FileField(upload_to=image_name)
-#     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
-#     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
-#
-#     def __unicode__(self):
-#         return "%s"  % (self.filename)
+class GeneralUpload(models.Model):
+    filename = models.CharField(max_length=100, help_text='Eg: Campus Ground')
+    files = models.FileField(upload_to=image_name)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s"  % (self.filename)
 
 class PrimaryNavigationMenu(models.Model):
     title = models.CharField(max_length=50, help_text='Text to show in the Navigation')
