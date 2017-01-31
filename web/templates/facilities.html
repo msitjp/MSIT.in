@@ -1,0 +1,1446 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block navigation %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <style>
+            .centralcontent .panel-default > .panel-heading{background-image: -webkit-linear-gradient(top,#f5f5f5 0,#e8e8e8 100%) !important;}
+        </style>
+        <div class="row">
+            {% block left_nav %}
+                {% include 'left_menu.html' %}
+            {% endblock %}
+            {% block main_body %}
+                <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+                    <script type="text/javascript">
+                        $('#factab a').click(function (e) {
+                            e.preventDefault()
+                            $(this).tab('show')
+                        })
+                    </script>
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                            <h4>Facilites</h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <ul class="nav nav-tabs" id="factab">
+                        <li class="active">
+                            <a href="#laboratories" aria-controls="laboratories" role="tab" aria-expanded="true" data-toggle="tab">Laboratories</a>
+                        </li>
+                        <li>
+                            <a href="#library" aria-controls="library" aria-expanded="false" role="tab" data-toggle="tab">Library</a>
+                        </li>
+                        <li>
+                            <a href="#hostel" aria-controls="hostel" aria-expanded="false" role="tab" data-toggle="tab">Hostel</a>
+                        </li>
+                        <li>
+                            <a href="#sports" aria-controls="sports" aria-expanded="false" role="tab" data-toggle="tab">Sports</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" style="padding:10px;">
+                        <div role="tabpanel" class="tab-pane active" id="laboratories">
+                            <div class="panel-group" id="accordion" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#cselab">Computer Science & Engineering Laboratories
+                                            </a>
+                                        </div>
+                                        <div id="cselab" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <h4 class="labHead">Department of Computer Science & Engineering</h4>
+                                            <p class="labContent">
+                                                CSE department labs are well equipped with good configuration computers and softwares. Department comprises of various labs and details of each labs are as follows:
+                                            </p>
+                                            <p class="labsubHead">1. ADA/DBMS Lab</p>
+                                            <p class="labContent">
+                                                ADA /DBMS Lab has  computers of configuration of which are , Acer i5 Processor 2nd generation 3.0 GHz 4 GB RAM, 500 GB HDD Space, Wipro P-IV Intel Core 2 Duo 2.8 GHz, 2GB RAM, 320 HDD Space, and one Wipro Xeon Server (P-IV Core 2 Duo 2.8 GHz, 4 GB RAM, 250 GB HDD Space). Lab is being used for running multiple subjects.
+                                            </p>
+                                            <p class="labContent">
+                                                During odd semesters ADA is imparted, It requires Turbo C7 for the implementation of its algorithms. During even semester , DBMS lab uses Oracle9i Server and Client for the implementation of various SQL based Queries..
+                                            </p>
+                                            <img src="{% static 'img/content_ada_ailab.png' %}" alt="dbms lab" class="img-responsive">
+                                            <p class="labsubHead">ADA/DBMS Lab View</p>
+                                            <br>
+                                            <p class="labsubHead">Software Engineering / Object Oriented Programming Lab</p>
+                                            <p class="labContent">
+                                                SE / OOPS Lab has  computers of good configuration in the form of P-IV processors with 4GB RAM and 500 GB Hard Disk Space and  one IBM Server (X-series 226 (8648) Intel XEON @ 3 GHz, 1GB RAM, 73 GB  HOT SWAP HDD, CD ROM , Gigabit Ethernet).This lab is being used for running various subjects in combination to make the optimal resource utilization.
+                                            </p>
+                                            <p class="labContent">
+                                                In odd semester, SE lab is executed in combination with the Compiler Construction Lab. The SE lab requires Rational Rose tool of RSA for the depiction of Data Models. On the other hand Compiler Construction lab uses Turbo C++ Compiler for its programs. Software Testing lab  uses Turbo C++ Compiler and Rational Robot tool for the implementation of various Software Testing based programs.
+                                            </p>
+                                            <p class="labContent">
+                                                In even semester, Turbo C++ Compiler are used for the implementation of Object Oriented Programming lab programs.
+                                            </p>
+                                            <img src="{% static 'img/content_se_oopslab.png' %}" class="img-responsive" alt="OOPS Lab">
+                                            <p class="labsubHead">
+                                                SE & OOPS Lab View
+                                            </p>
+                                            <br>
+                                            <p class="labsubHead">3. Data Structures / Wave Engg. Lab</p>
+                                            <p class="labContent">
+                                                DS / Web Engg. Lab have computers of configuration in the form of P-IV processors with 4GB RAM and 500 GB Hard Disk Space. The lab is being used for running various subjects in combination to make the optimal resource utilization. In the odd semester duration Data Structure (DS) lab is executed in. The DS lab requires Turbo C7 for the implementation of various algorithms of Data Structures while During even semester the Web Engg. Lab is executed in combination of Operating System (OS) lab. The Web Engg lab uses TOMCAT Server in addition with java interface for the implementation of various Web engg based programs. In addition to Web engg. the free slots of the lab is being used to run Applied Mathematics Lab which uses Turbo C7 for the implementation of numerical method programs.
+                                            </p>
+                                            <img src="{% static 'img/content_ds_weblab.png' %}" alt="DS Lab" class="img-responsive">
+                                            <p class="labsubHead">DS & Web Lab View</p>
+                                            <br>
+                                            <p class="labsubHead">4. Fundamentals of Computers / Computer Organization & Architecture Lab</p>
+                                            <p class="labContent">
+                                                This Lab has computers of good configuration in the form of P-IV processors with 4GB RAM and 500 GB Hard Disk Space. In the odd semester duration ,FOC lab for first semester students are excecuted using open office,Dia ,Msoffice ,Windows and Centos software. In even semester  COA subject lab  practicals are made using Jubin’s Simulator and Java software
+                                            </p>
+                                            <img src="{% static 'img/content_foc_coalab.png' %}" alt="FOC Lab" class="img-responsive">
+                                            <p class="labsubHead">FOC & COA Lab View</p>
+                                            <br>
+                                            <p class="labsubHead">5. FOC/ITP LAB</p>
+                                            <p class="labContent">
+                                                FOC lab for first semester students are excecuted using open office,DIa ,Msoffice ,Windows and Centos software. In even semester  ITP subject  practicals  are conducted in C language.
+                                            </p>
+                                            <br>
+                                            <p class="labsubHead">6. CN/JAVA PROGRAMMING LAB</p>
+                                            <p class="labContent">
+                                                Computer Networking lab uses Network Simulator NS 3.24.1 with addition to CentOS 6.4 OS for the implementation of various Computer Networking based programs.In odd semester Java Programming practicals are conducted.
+                                            </p>
+                                            <br>
+                                            <p class="labsubHead">7. LINUX PROGRAMMING/INFORMATION SECURITY/PROJECT LAB</p>
+                                            <p class="labContent">The lab consists of  WiFi enabled systems. The systems are dual boot running both Windows-7 as well as CentOS. The lab is used for conducting practicals of Information Security in C language during odd semester, and for conducting practicals of operating systems on CentOS during even semester.
+                                            </p>
+                                            <div class="table-responsive">
+                                            <table class="table table-bordered" id="csetable">
+                                                <colgroup>
+                                                    <col width="52">
+                                                    <col width="182">
+                                                    <col width="134">
+                                                    <col width="92">
+                                                    <col width="184">
+                                                    <col width="180">
+                                                    <col width="180">
+                                                    <col width="180">
+                                                    <col width="180">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><p><b>S.NO.</b></p></td>
+                                                        <td><p><b>Lab</b></p></td>
+                                                        <td><p><b>SUBJECT</b></p></td>
+                                                        <td><p><b>SEM</b></p></td>
+                                                        <td><p><b>SOFTWARE</b></p></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="5"><p style="text-align: center;"><b>ODD SEMESTER</b></p></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="3">
+                                                        <p style="text-align: center;"><b>1</b></p>
+                                                        </td>
+                                                        <td rowspan="3">
+                                                        <p><b>ADA/DBMS LAB</b></p>
+                                                        </td>
+                                                        <td rowspan="3">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">ADA </b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS 351)</b></p>
+                                                        </td>
+                                                        <td rowspan="3">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">5th</b></p>
+                                                        </td>
+                                                        <td rowspan="3">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Turbo C7 </b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">2</b></p>
+                                                        </td>
+                                                        <td rowspan="2">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">SE / OOPS lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">STQA</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS 453)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">&nbsp;7th </b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Rational Robot</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">3</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">SE</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS 353)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">5th</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">RSA</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">4</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">DS / Web<br>
+                                                        Engineering lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Data Structures</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS255)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">3rd</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Turbo C7 </b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">5</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">FOC / COA lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">FOC(ETCS157)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">1st</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Open office / DIA /<br>
+                                                        MsOffice / Centos</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">6.</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">CN/JAVA<br>
+                                                        Programming&nbsp;Lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">JAVA</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS 357)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">5th</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">JDK 7.0</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">7.</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">FOC/ITP LAB</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">FOC(ETCS157)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">1st</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Open office / DIA /<br>
+                                                        MsOffice / Centos</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">8.</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Linux programming / Information security Lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">IS(ETCS 451)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">7th </b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">TURBOC7</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">9</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Project Lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Minor Projects(ETCS461)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">7th</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">As per requirement<br>
+                                                        of students</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                        <p dir="ltr" style="text-align: center;"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">EVEN SEMESTER</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr" style="text-align: center;"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">10</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">ADA / DBMS lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">DBMS</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS256)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">4th</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Oracle 9i</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">11</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">&nbsp;</b></p>
+                                                        &nbsp;
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">SE/OOPS LAB</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">OOPS (ETCS258)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">4TH </b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TURBOC7</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        &nbsp;
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">12</b></p>
+                                                        </td>
+                                                        <td rowspan="4">&nbsp;
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">DS / Web </b></p>
+
+                                                        <p dir="ltr"><b>Engineering lab </b></p>
+                                                        </td>
+                                                        <td><br>
+                                                        <br>
+                                                        &nbsp;
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Applied Maths</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETMA &nbsp;252)</b></p>
+                                                        </td>
+                                                        <td><br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        &nbsp;
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">4th</b></p>
+                                                        </td>
+                                                        <td><br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        &nbsp;
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Turbo C7 </b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="3">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">13</b></p>
+                                                        </td>
+                                                        <td rowspan="3">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Web Engg</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS 356)</b></p>
+                                                        </td>
+                                                        <td rowspan="3">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">6th</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Notepad++</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Tomcat server</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Java</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="2">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">14</b></p>
+                                                        </td>
+                                                        <td rowspan="2">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">FOC / COA lab</b></p>
+                                                        </td>
+                                                        <td rowspan="2">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">COA(ETCS 204)</b></p>
+                                                        </td>
+                                                        <td rowspan="2">
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">4th </b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Jubin's Simulator</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Java</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">15</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">CN/JAVA<br>
+                                                        programming Lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">CN(ETCS354)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6th </b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Cent OS 6.4 /<br>
+                                                        &nbsp;NS3.24.1</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">16.</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">FOC / ITP &nbsp;lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">ITP( &nbsp;ETCS -154 &nbsp;)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2nd </b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">TurboC7</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">17</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Linux programming/ Information security / Project Lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">OS</b></p>
+
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">(ETCS352)</b></p>
+
+                                                        <p dir="ltr"><b>(ETCS 462)</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6th</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p dir="ltr"><b id="docs-internal-guid-a17b6dda-ef4d-b90b-0b98-8c4037a91360">Cent OS 6.4 /<br>
+                                                        &nbsp;TURBO C7</b></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#ecelab">Department of Electronics and Communication Engineering
+                                            </a>
+                                        </div>
+                                        <div id="ecelab" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <p class="labContent">
+                                                Engineering is concerned with applying knowledge in electronics to facilitate communication and solve engineering problems. The  lab curriculum is organized such that it enables students to get a strong foundation on various aspects of Electronics and Communication Engineering such as Electronic Devices lab, Digital systems Design lab, Digital signal processing, Microprocessors and Microcontrollers, Signals & System Lab, VLSI design, Digital communication Lab, Control Systems lab, Microwave engineering Lab and Project lab etc. The students are also provided opportunities to choose specialized elective labs to focus on their identified areas of interest such as Embedded Systems lab, Mobile Computing lab, Advanced VLSI and Power Electronics lab etc.
+                                            </p>
+                                            <br>
+                                            <br>
+                                            <p class="labsubHead">LAB VIEW</p>
+                                            <br>
+                                            <br>
+                                            <table border="1" cellpadding="1" cellspacing="1" class="table table-responsive" style="width:500px;" id="ecetable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                        <p style="text-align: center;"><span class="c9"><img alt="msit mpmc" class="img-responsive" src="{% static 'img/content_mpmc.png' %}" style="width: 281px; height: 156px;"></span></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-523d-683f-c653-ea4bb364c9e6">Microprocessor &amp; Microcontroller Lab </b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="text-align: center;"><span class="c9"><img alt="msit edc" class="img-responsive" src="{% static 'img/content_edc.png' %}" style="width: 265px; height: 156px;"></span></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-523d-969f-84d4-e06406e782e4">Electronic Devices Lab</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p style="text-align: center;"><b><img alt="msit consumer electronics" class="img-responsive" src="{% static 'img/content_consumer_elec.png' %}" style="width: 280px; height: 169px;"></b></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-523e-a880-4397-9493301bc2c9">Consumer Electronics Lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="text-align: center;"><b><img alt="msit project lab" class="img-responsive" src="{% static 'img/content_projlab.png' %}" style="width: 268px; height: 169px;"></b></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-523e-cbbb-223c-256b645f653b">Project Lab</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p style="text-align: center;"><b><img alt="msit analog lab" class="img-responsive" src="{% static 'img/content_analog.png' %}" style="width: 261px; height: 170px;"></b></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-523f-c58c-a5b2-b24c70923dfa">Analog Electronics Lab</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="text-align: center;"><b><img alt="msit microwave lab" class="img-responsive" src="{% static 'img/content_microwave.png' %}" style="width: 280px; height: 170px;"></b></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-523f-e691-b544-5d056188048b">Microwave Engineering Lab</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p style="text-align: center;"><b><img alt="msit vlsi lab" class="img-responsive" src="{% static 'img/content_vlsi.png' %}" style="width: 276px; height: 154px;"></b></p>
+
+                                                        <p style="text-align: center;"><b>VLSI Lab &nbsp;</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="text-align: center;"><b><img alt="msit communication lab" class="img-responsive" src="{% static 'img/content_communication.png' %}" style="width: 272px; height: 156px;"></b></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-5241-287d-a350-eb5dd5bce3f5">Communication Systems &nbsp;Lab</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p style="text-align: center;"><img alt="msit dsp lab" class="img-responsive" src="{% static 'img/content_dsp.png' %}" style="width: 264px; height: 180px;"></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-5242-6e64-7c4a-d7c3f329fb12">DSP Lab &nbsp;</b></p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="text-align: center;"><img alt="msit control engg lab" class="img-responsive" src="{% static 'img/content_controlengg.png' %}" style="width: 277px; height: 181px;"></p>
+
+                                                        <p style="text-align: center;"><b id="docs-internal-guid-4494d91f-5242-9292-e737-28c059421c59">Control Engineering Lab</b></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <br>
+                                            <p class="labContent">List of labs in ECE Department</p>
+                                            <table class="table table-responsive table-condensed table-bordered" id="ecetable2">
+                                                <tbody>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c11 c5">S.no.</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c11 c5">Name of Lab </span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c11 c5">Code</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c5 c11">Semester</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">1</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Electronics Devices Lab </span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-156</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">2nd </span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">2</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Analog Electronics– I &nbsp;</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-251</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">3rd </span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">3</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Switching Theory &amp; logic Design Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-253</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">3rd </span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">4</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Electronic Instruments &amp; Measurements &nbsp;Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-257</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">3rd </span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">5</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Signals &amp; systems Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-259</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">3rd </span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">6</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Communication system Lab </span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-256</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">4th </span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">7</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Analog Electronics –II Lab &nbsp;</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-254</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">4th </span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">8</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Digital System Design Lab </span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-351</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">5th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">9</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Control system Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEL-355</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">5th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">10</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Microprocessors &amp; Microcontrollers lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-355</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">5th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">11</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Digital Communication Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-357</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">5th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">12</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Microwave Engineering Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-352</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">6th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">13</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">VLSI Design Lab </span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-354</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">6th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">14</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Digital signal processing Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-356</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">6th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">15</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c5">Optical and Wireless Communication Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-451</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">7th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">16</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Embedded System Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-453</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">7th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">17</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c5">Satellite and Antenna Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-452</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">8th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">18</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">Digital Image Processing Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c3">ETEC-454</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">8th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="c2">
+                                                        <td class="c1" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">19</span></p>
+                                                        </td>
+                                                        <td class="c10" colspan="1" rowspan="1">
+                                                        <p class="c0"><span class="c5 c12">Project Lab</span></p>
+                                                        </td>
+                                                        <td class="c17" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">-</span></p>
+                                                        </td>
+                                                        <td class="c6" colspan="1" rowspan="1">
+                                                        <p class="c7"><span class="c3">7th/8th</span></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#itlab">Information Technology Laboratories
+                                            </a>
+                                        </div>
+                                        <div id="itlab" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <h4 class="labHead">Department of Information Technology</h4>
+                                                <p class="labContent">
+                                                    Information Technology department labs are well equipped with computers of latest configuration with LAN connectivity and Internet connection. Department comprises of various labs and details of labs are as follows:
+                                                </p>
+                                                <p class="labsubHead">1. OS/CG-Multimedia Lab</p>
+                                                <p class="labContent">
+                                                    The OS and CG-MM Lab have a capacity of 30 computers of Acer i5 Processor, 2nd generation 3.0 GHz 4 GB RAM, 500 GB HDD configurations. This Lab is prepared to allow students to practice and perform practical of Computer Graphics and Multimedia subject on Autodesk Maya Software. It is a 3D computer graphics software that runs on Windows, OS and Linux. By using Autodesk Maya Software students are able to create interactive 3D applications with visual effects. The Computer Graphics Lab focuses on research in curve and surface design, rendering, perception, and user interfaces. In this lab, students understand and learn the need of developing graphic applications, concept of colour generation, representation &amp; transformation of graphical images, pictures &amp; algorithmic development of graphic primitives. Students are also encouraged to learn basic of graphics programming on Turbo C++ software.
+                                                </p>
+                                                <p class="labContent">
+                                                    The Lab is well equipped with all advanced software's (Turbo C Version 4 Software) for practical applications. This lab serves as a platform for learning and implementing the Applied Mathematics lab in 'C' programming language. Lab Work is designed to help students to implement methods like Runga-kutta Method, Newton Raphson’s Method and various others. This Lab is also used for Linux &amp; OS system programming practical. &nbsp;For practical implementation CentOS 6.0 is installed on the machines in the Lab. The goal of this lab is to provide a practical introduction of the internal operation of modern operating systems. The course will cover algorithms for processes and threads, mutual exclusion, CPU scheduling, deadlock, memory management and file systems.
+                                                </p>
+                                                <img src="{% static 'img/content_welab.png' %}" alt="CG Lab" class="img-responsive">
+                                                <p class="labsubHead">OS/CG Multimedia Lab View</p>
+                                                <br>
+                                                <p class="labsubHead">2. Network Programming Lab</p>
+                                                <p class="labContent">
+                                                    The Network Programming Lab under IT Department fulfils the Networking, Java and the Web Engineering lab requirements of the course curriculum prescribed by GGSIP University. It is well equipped with 30 systems of Acer i5 Processor 2nd generation 3.0 GHz 4 GB RAM, 500 GB HDD configuration with lab area of 72.8 Sq. mts. The students in this lab develop Networking programs, Java programs as well as programs for various Web based Applications.  In networking, students get hands on training regarding the design and simulation of computer networks using Network Simulator 3 (NS3). They also learn about various network topologies and network protocols like sliding window, UDP, TCP and many others and perform socket programming. To learn JAVA programs the systems are installed with JDK1.7 and Net beans IDE which is an Open Source project environment and provides support for several languages (PHP), C/C++, JavaScript, etc.). The programs for Web Based Applications are developed using Net beans IDE and Apache Tomcat server. This lab provides the student with an opportunity to know about the various latest web technologies and a platform for research in computer networks.
+                                                </p>
+                                                <img src="{% static 'img/content_adalab.png' %}" class="img-responsive" alt="Programming Lab">
+                                                <p class="labsubHead">The Programming Lab View</p>
+                                                <br>
+                                                <p class="labsubHead">4. FOC/ITP Lab</p>
+                                                <p class="labContent">
+                                                    This Lab has computers of good configuration in the form of Core-i5 processor 2nd generation with 4GB RAM and 500 GB Hard Disk Space. In the odd semester duration , FOC lab for first semester students is excecuted using open office, Dia , Msoffice ,Windows and Centos software. In even semester, ITP subject   practicals  are conducted in C language.
+                                                </p>
+                                                <img src="{% static 'img/content_foclab.jpg' %}" class="img-responsive" alt="Foc lab">
+                                                <p class="labsubHead">FOC/ITP Lab</p>
+                                                <br>
+                                                <p class="labsubHead">5. ADA/Maths Lab</p>
+                                                <p class="labContent">
+                                                    ADA/MATHS :-  has  computers of configuration of which are , Acer i5 Processor 2nd generation 3.0 GHz 4 GB RAM, 500 GB HDD Space, The students practices programming problems in various courses as prescribed by GGSIPU  like Data Structures, Object Oriented language, Algorithm and Design, by practicing various programs in Turbo C/C++ Software. The Lab is well equipped with advanced software (Turbo C++ Software) for practicing programming in multiple areas. In the odd semester duration Data Structure (DS) lab is executed in. The DS lab requires Turbo C7 for the implementation of various algorithms of Data Structure, Applied Mathematics Lab which uses Turbo C7 for the implementation of numerical method programs.
+                                                </p>
+                                                <p class="labsubHead">6. Language Lab</p>
+                                                <p class="labContent">
+                                                    Language Lab of MSIT is well equipped with adequates hardware and Software to cater to the courses based on developing linguistic and communications proficierroy of the engineering graduates.
+                                                </p>
+                                                <p class="labContent">
+                                                    The lab has 2D computers with inyernet connection.All the computers are equipped with Orell Digital Language Lab software to help students perform various activities to practice varied language skills such as reading, writing, listening and speaking.The lab is particularly important component of the 5th Semester course Communication Skills for Professional Lab.
+                                                </p>
+                                                <p class="labsubHead">7. Project Lab</p>
+                                                <p class="labContent">This Lab is used for Minor and Major Project for Final Year Students.</p>
+                                                <img src="{% static 'img/content_projectlab.png' %}" class="img-responsive" alt="IT Project Lab">
+                                                <p class="Project Lab View">Project Lab View</p>
+
+                                                <table class="table-bordered" id="ittable">
+                                                    <colgroup>
+                                                        <col width="59">
+                                                        <col width="64">
+                                                        <col width="63">
+                                                        <col width="198">
+                                                        <col width="101">
+                                                        <col width="115">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>S.No</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>Lab</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Subject</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Semester</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Software</b></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>1</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>OS /CG-Multimedia LAB</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>CG-Multimedia(ETCS-257)</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>3rd Sem</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Turbo C</b></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>2</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>Network Programming Lab</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>ACN</b></p>
+
+                                                            <p dir="ltr" style="text-align: center;"><b>Java Programming</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>7th Sem</b></p>
+
+                                                            <p dir="ltr" style="text-align: center;"><b>5th Sem</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>JDK1.7 and Net beans IDE</b></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>3</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>Programming Lab</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Wireless Communication</b></p>
+
+                                                            <p dir="ltr" style="text-align: center;"><b>Cryptography and Network Security(ETIIT-455)</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>7th Sem</b></p>
+
+                                                            <p dir="ltr" style="text-align: center;"><b>7th Sem</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Turbo C, NS3</b></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>4</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>FOC/ITP Lab</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>FOC(ETCS-157)</b></p>
+                                                            </td>
+                                                            <td style="text-align: center;">&nbsp;</td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Libre, DIA, MS Office</b></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>5</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>ADA/MATHS LAB</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Data Structure(ETCS-255)</b></p>
+
+                                                            <p dir="ltr" style="text-align: center;"><b>ADA(ETCS 351)</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>3rd Sem</b></p>
+
+                                                            <p dir="ltr" style="text-align: center;"><b>5th Sem</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Turbo C</b></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>6</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>Language Lab</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Communication Skills for Professionals(ETHS-351)</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>5th Sem</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Orell</b></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>7</b></p>
+                                                            </td>
+                                                            <td colspan="2">
+                                                            <p dir="ltr" style="text-align: center;"><b>Project Lab</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>Minor Project(ETIT-463)</b></p>
+                                                            </td>
+                                                            <td>
+                                                            <p dir="ltr" style="text-align: center;"><b>7th Sem</b></p>
+                                                            </td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#eeelab">Electrical and Electronics Engineering
+                                            </a>
+                                        </div>
+                                        <div id="eeelab" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <h4 class="labHead">Department of Electrical and Electronics Engineering</h4>
+                                            <p class="labContent">
+                                                The Electrical & Electronics Engineering Department at MSIT is fully equipped with state-of-the-art equipment in its various laboratories to provide research experiences and training which supports the concepts learnt in theory subjects of course curriculum. The department currently offers two laboratory courses to undergraduate students of all the branches at the college and 10 additional laboratories to undergraduate students of EEE branch exclusively.
+                                            </p>
+                                            <p class="labContent">
+                                                The department is quite boastful about a few hardware laboratories like: Machine Lab, Power System Lab, Measurement & Instrumentation Lab, Electric Drives Lab and Power Electronics Lab.
+                                            </p>
+                                            <p class="labContent">
+                                                Besides the above mentioned hardware laboratories of the department, there is a computer lab with latest Intel i5 processors. This lab acts host to all software based requirements of the department. It is equipped with Matlab software package with tool packages including Neural and Fuzzy System, Image Processing, Digital Signal Processing, Control Systems and Optimization Tool Box. It has additional software namely, DigSilent Power Factory with 25 nodes for study and analysis of power system.
+                                            </p>
+                                            <table border="1" cellpadding="1" cellspacing="1" style="width: 500px;" id="eeetable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8517-c71a-5a73-d34a33b5e072">Power Systems Lab.</b><br>
+                                                        <br>
+                                                        &nbsp;</p>
+
+                                                        <p><img alt="" src="{% static 'img/content_1.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8518-0267-cd15-5b98e5cc8992">Soft Computing Lab/Scientific Computing Lab./ Advanced Control Lab. </b></p>
+
+                                                        <p><img alt="" src="{% static 'img/content_2.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8518-71ae-ee36-f67248068075">Power Electronics Lab</b></p>
+
+                                                        <p><img alt="" src="{% static 'img/content_3.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8518-9bcc-db7c-f8fdf64fe614">Circuits &amp; Systems Lab</b></p>
+
+                                                        <p><img alt="" src="{% static 'img/content_4.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8518-d0be-7216-d8ebf45993f1">Electrical And Electronics Measuring Instruments Lab. </b></p>
+
+                                                        <p><img alt="" src="{% static 'img/content_5.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8519-131c-e172-e85424954ba7">Electrical Machines Lab.</b><br>
+                                                        &nbsp;</p>
+
+                                                        <p><img alt="" src="{% static 'img/content_6.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8519-7361-e1e5-6c1c05dc8d67">Electrical Drives Lab. </b></p>
+
+                                                        <p><img alt="" src="{% static 'img/content_7.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                        <td>
+                                                        <p><b id="docs-internal-guid-dc420140-8519-d596-fa73-dd27917b3fb8">Utilization Of Electrical Energy Lab</b></p>
+
+                                                        <p><img alt="" src="{% static 'img/content_8.png' %}" style="width: 281px; height: 157px;"></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <table border="1" cellpadding="0" cellspacing="0" width="435" id="eeetable2">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width:87px;height:41px;">
+                                                        <p>Name of Laboratory</p>
+                                                        </td>
+                                                        <td style="width:348px;height:41px;">
+                                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Major Equipment/Facilities/Usage</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:108px;">
+                                                        <p>Power Systems Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:108px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental set ups to study the symmetrical and unsymmetrical faults on Power Systems like Single L- G Fault , L-L Fault, and 3-Phase Fault</li>
+                                                            <li style="text-align: justify;">Experimental set ups to Study the different types of Protective Relays like Percentage Differential Relay, Buchholz Relay, Thermal, IDMT, instantaneous and Earth Fault relay</li>
+                                                            <li style="text-align: justify;">Experimental set up to measure/study the performance of transmission lines, power using CT/PT, Dielectric Strength of Transformer oil, ABCD Parameters, Earth Resistance, power factor improvement, and Ferranti Effect.</li>
+                                                            <li style="text-align: justify;">Power system simulation software (Dig-silent Power Factory-25 users) for Load Flow Analysis, Symmetrical/Unsymmetrical Fault Analysis, Harmonic /Power Quality Analysis, EMT analysis, Stability analysis, Reliability analysis and State Estimation in power system.</li>
+                                                        </ul>
+
+                                                        <p style="margin-left: 0.5in; text-align: justify;">&nbsp;</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:83px;">
+                                                        <p style="text-align: justify;">Soft Computing Lab/Scientific Computing Lab./ Advanced Control Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:83px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">14 Numbers of Wipro Make Computers with Intel Dual Core processor&nbsp; 2.8&nbsp;Ghz, 1 GB&nbsp;DDR2&nbsp;RAM, 150 GB HDD, DVD&nbsp;RW, 17” TFT LCD Monitor with Windows XP OS.</li>
+                                                            <li style="text-align: justify;">MATLAB 2016a 10 user Licensed Software</li>
+                                                            <li style="text-align: justify;">All the PCs are networked in the LAN.</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:104px;">
+                                                        <p style="text-align: justify;">Power Electronics Lab</p>
+                                                        </td>
+                                                        <td style="width:348px;height:104px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental set up to study the THD in operation of 1phase&nbsp;square wave and Quasi square wave inverter.&nbsp;</li>
+                                                            <li style="text-align: justify;">Experimental set up to Study MOSFET based Inverter.</li>
+                                                            <li style="text-align: justify;">Experimental set up to Study SCR Based three Phase full wave rectifier.</li>
+                                                            <li style="text-align: justify;">Experimental set up to study and analyze V-I characteristics of SCR, UJT &amp; TRIAC.</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:104px;">
+                                                        <p style="text-align: justify;">Circuits &amp; Systems Lab</p>
+                                                        </td>
+                                                        <td style="width:348px;height:104px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Electronics Trainer kit</li>
+                                                            <li style="text-align: justify;">R-L-C &nbsp;series-parallel kit</li>
+                                                            <li style="text-align: justify;">Function generator up to 1 MHz frequency</li>
+                                                            <li style="text-align: justify;">Key sight Technologies make Digital Storage Oscilloscope</li>
+                                                            <li style="text-align: justify;">Acer Computers Intel Core i5-2320 CPU, 3 GHz, 2.85 GB of RAM</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:41px;">
+                                                        <p style="text-align: justify;">Electrical Machine-I Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:41px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">To perform the load test on dc shunt motor.</li>
+                                                            <li style="text-align: justify;">To conduct a load on a given DC Compound Generator and to plot the internal and external characteristics of the generator.</li>
+                                                            <li style="text-align: justify;">To plot the magnetization characteristics of a DC shunt generator running at rated speed.</li>
+                                                            <li style="text-align: justify;">To study the speed control of the dc motor below the normal range by armature resistance control and to plot speed Vs armature voltage, characteristic.</li>
+                                                            <li style="text-align: justify;">To connect the two Transformers in parallel.</li>
+                                                            <li style="text-align: justify;">To study the load sharing by each Transformer.</li>
+                                                            <li style="text-align: justify;">To determine the iron losses, copper losses and efficiency of a transformer at any load.</li>
+                                                            <li style="text-align: justify;">To obtain a balanced two phase supply from a 3 phase balanced system.</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:23px;">
+                                                        <p style="text-align: justify;">Utilization Of Electrical Energy Lab</p>
+                                                        </td>
+                                                        <td style="width:348px;height:23px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental set up to measure light intensity of different lamps &amp; to draw polar curve.</li>
+                                                            <li style="text-align: justify;">Experimental set up to calibrate L.P.F Wattmeter by phantom loading, dynamometer type power factor meter &amp; energy meter.</li>
+                                                            <li style="text-align: justify;">Experimental set up to test current transformer by Silsbee’s method.</li>
+                                                            <li style="text-align: justify;">Experimental set up to study the working of mercury vapor discharge lamp</li>
+                                                            <li style="text-align: justify;">Experimental set up to study the B-H Curve.</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:173px;">
+                                                        <p style="text-align: justify;">Electrical Machine-II Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:173px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental set up to&nbsp;&nbsp; Perform Load Test on 3-Phase Induction Motors (slip ring and squirrel cage type) and compute following terms for every load setting.</li>
+                                                        </ul>
+
+                                                        <p style="text-align: justify;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a)&nbsp; Torque&nbsp; b)&nbsp; Output power&nbsp; c)&nbsp; Input power&nbsp;&nbsp; d)&nbsp; Efficiency&nbsp; e)&nbsp; Input power factor</p>
+
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental set up to study the effect of variation of field current upon the stator current and power factor with synchronous motor running at no load, hence to draw V curve of the motor.</li>
+                                                            <li style="text-align: justify;">Experimental set up to&nbsp;&nbsp; perform synchronization of a 3-phase alternator with the bus-bar.</li>
+                                                            <li style="text-align: justify;">Experimental set up to perform no load and block rotor test on 3 phase induction motor.</li>
+                                                            <li style="text-align: justify;">Experimental set up to find Regulation of an Alternator by Synchronous Impedance Method, by ZPFC Method.</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:41px;">
+                                                        <p style="text-align: justify;">Electrical And Electronics Measuring Instruments Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:41px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Trainer kits for Wheatstone Bridge/ Kelvin Bridge/ Hay’s Bridge/ Maxwell’s Inductance Bridge/ De Sauty’s Capacitance Bridge/ Schering Bridge</li>
+                                                            <li style="text-align: justify;">&nbsp;Calibration Kit using Potentiometer</li>
+                                                            <li style="text-align: justify;">&nbsp;Frequency Counter</li>
+                                                            <li style="text-align: justify;">&nbsp;Digital Multimeter</li>
+                                                            <li style="text-align: justify;">&nbsp;CRO</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:41px;">
+                                                        <p style="text-align: justify;">Sensors &amp; Transducers Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:41px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental set up for&nbsp; Temperature Transducer/ LVDT Trainer / Strain Gauge Trainer&nbsp;</li>
+                                                            <li style="text-align: justify;">&nbsp;Experimental set up to Photo Electric Pick up&nbsp;</li>
+                                                            <li style="text-align: justify;">&nbsp;Experimental set up to measure Speed Using Tachogenerator/ Stroboscope</li>
+                                                            <li style="text-align: justify;">&nbsp;Experimental set up to Temperature using RTD kit</li>
+                                                            <li style="text-align: justify;">&nbsp;Experimental set up to measure Water Level</li>
+                                                            <li style="text-align: justify;">&nbsp;Experimental set up to measure pressure using load cell / Pressure Transducer Kit</li>
+                                                        </ul>
+
+                                                        <p style="margin-left: 0.25in; text-align: justify;">&nbsp;</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:41px;">
+                                                        <p style="text-align: justify;">Electrical Technology Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:41px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental kits to verify various dc theorems.</li>
+                                                            <li style="text-align: justify;">Experimental set up to control the speed of dc shunt motor.</li>
+                                                            <li style="text-align: justify;">Experimental set up to evaluate power and power factor of a single and three phase electric circuit.</li>
+                                                            <li style="text-align: justify;">Experimental kit to verify the resonance phenomenon in R-L-C series circuit.</li>
+                                                            <li style="text-align: justify;">Experimental set up to evaluate efficiency of single phase transformer using OCT/SCT.</li>
+                                                            <li style="text-align: justify;">&nbsp;</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:87px;height:41px;">
+                                                        <p style="text-align: justify;">Electric Drives Lab.</p>
+                                                        </td>
+                                                        <td style="width:348px;height:41px;">
+                                                        <ul>
+                                                            <li style="text-align: justify;">Experimental setup to study the speed control of DC motor using Phase controlled converter.&nbsp;</li>
+                                                            <li style="text-align: justify;">Experimental setup to study the speed control of Universal motor using Chopper.</li>
+                                                            <li style="text-align: justify;">Experimental setup to study speed control of DC motor using closed loop control.</li>
+                                                            <li style="text-align: justify;">Experimental setup to study speed control of single phase Induction motor.</li>
+                                                            <li style="text-align: justify;">Experimental setup to study speed control of Three phase Induction motor.</li>
+                                                        </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#aslab">Applied Sciences
+                                            </a>
+                                        </div>
+                                        <div id="aslab" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <h4 class="labHead">Department of Applied Sciences</h4>
+                                                <p class="labContent">
+                                                    Applied Sciences is the backbone of Engineering. The Department of Applied Sciences in Maharaja Surajmal Institute of Technology comprises of Physics, Chemistry, Mathematics, Communication Skills, Organizational Behavior and Mechanical Engineering. All the laboratories have up to date experimental set ups to expose the students to new trends in the field of Applied Sciences. The workshop is also equipped with the state of the art machines. A Language Laboratory has been set up exclusively for the 3rd year students to cater to the additional load. The laboratory is equipped with systems of latest configuration.
+                                                </p>
+                                                <br>
+                                                <br>
+                                                <p class="labsubHead"></p>
+                                                <ol>
+                                                    <li>Applied Pyshics Lab</li>
+                                                    <li>Applied Chemistry Lab</li>
+                                                    <li>Applied Mechanics Lab</li>
+                                                    <li>Workshop</li>
+                                                    <li>Engineering Graphics Lab</li>
+                                                    <li>Language Lab</li>
+                                                </ol>
+                                                <p class="labsubHead">Applied Physics Lab</p>
+                                                <p class="labContent">
+                                                    Physics is an experimental science. The concepts and relationships introduced in the lecture part of the course describe the general nature and behavior of real phenomena. Physics laboratories provide an experimental foundation for the concepts introduced in the lectures. It is important that student have an opportunity to verify some of the ideas for themselves.
+                                                </p>
+                                                <p class="labContent">
+                                                    The experiments in Applied Physics Lab are designed to illustrate phenomena in different areas of Physics and to expose students to measuring instruments, conduct the experiments with interest and an attitude of learning. This course on Physics lab is designed with 12 experiments in each semester. It is common to all branches of Engineering in B. Tech.  Ist year. The objective of the course is to offer the students essential exposure to various experimental skills. The experiments conducted in the Physics Lab relate to the areas of Physical Optics, Lasers, Fiber Optics, Sound, Mechanics, Electricity & Magnetism and Basic Electronics. The students also learn to use tools such as Screw gauge, Vernier Calipers, Physical Balance, Spectrometer and Microscope.
+                                                </p>
+                                                <br>
+                                                <p class="labsubHead">Applied Chemistry Lab</p>
+                                                <p class="labContent">
+                                                    This Lab is prepared for B. Tech. students to perform experiments of Applied Chemistry and Environmental Studies subjects. The lab is well equipped with all necessary apparatus and glassware. The chemistry lab is equipped with Water Distillation Unit, BOD Measurement Unit, pH Meter, Conduct meter, Heating Oven, Hot Plate Magnetic Stirrer and Physical Balance. The experiments in the Chemistry Lab include Volumetric analysis, surface tension , viscosity, Proximate analysis of coal, pH conductivity, moisture content, TDS of water/ soil/sludge samples, strength of residual chlorine, among others.
+                                                </p>
+                                                <br>
+                                                <p class="labsubHead">Applied Mechanics Lab</p>
+                                                <p class="labContent">
+                                                    The objective of the lab is to perform experiments which are related to engineering mechanics subject (Statics and Dynamics) in order to understand the behavior of different mechanical equipments and verify the theory of Engineering Mechanics. The Engineering Mechanics Lab consists all essential instruments such as Screw Jack, Truss, Simply Supported Beam, Jib Crane, Wheel And Axle Weight Lifting Machine, Weight Lifting Machine by Worm and Worm Wheel, Bell Crank Lever, Inclined Plane For Statics Friction etc.
+                                                </p>
+                                                <img src="{% static 'img/content_msit.png' %}" alt="AM Lab" class="img-responsive">
+                                                <br>
+                                                <p class="labsubHead">Work Shop</p>
+                                                <p class="labContent">
+                                                    The Applied Sciences Workshop is prepared for the Ist year   students of all streams to  practice and develops skills to use machine, equipments, tools and measuring instruments. The workshop practice lab includes practical work in Carpentry, Welding, Fitting, Foundry And Sheet Metal Shop. The dedicated and experienced teachers in workshop assist the students with their practices. The workshop contains all necessary equipments such as Spot Welding Machine, Arc Welding Machine, Power Hacksaw Machine, Grinding Machine, Oxy Acetylene Welding, and Drilling Machine.
+                                                </p>
+                                                <br>
+                                                <p class="labsubHead">Engineering Graphics Lab</p>
+                                                <p class="labContent">
+                                                    The fully air conditioned Engineering Graphics Lab is used for the students of B Tech. Ist Year in all streams of Engineering.  The students learn basic concept of lettering, scales, and orthographic projections of points, lines, planes solids and isometric projection of various objects. Engineering Graphics Laboratory is complete with all the equipments such as Drawing Boards and module of different types of solids with working capacity of 75 students. We have dedicated and experienced teachers in the Lab to assist the students with their experiments.
+                                                </p>
+                                                <br>
+                                                <p class="labsubHead">Language Lab</p>
+                                                <p class="labContent">
+                                                    This Lab is prepared for the Vth semester B. Tech students to perform Listening, Speaking and reading activities as a part of the Communication Skills for Professional subject.  The Language lab is equipped with 30 computers with the following configuration:
+                                                </p>
+                                                <p class="labContent">
+                                                    ACER, CPU P-V Core i5 processor, 2nd generation,3.0 GHz, 4GB DDR3 RAM,500 GB HDD, DVD R/W, Keyboard, Optical Mouse, TFT 18.5 Color Monitor, 600 V APC UPS   23, HP MSIT 308 CPU 351, Intel Core 2 Due, 2.93 GHz, 4 GB RAM,500 GB HDD, DVD R/W, Keyboard, Optical Mouse, TFT 19.5 Color Monitor, 650 V APC CPU 7. UPS APC 600V 30.
+                                                </p>
+                                                <p class="labsubHead">
+                                                    All the systems in the Language Lab have Orell Digital Language Lab Software installed. The software is used for various communicative activities such as, Listening and Comprehension Reading, Writing, Conversation, Oral Presentation etcetera.
+                                                </p>
+                                                <img src="{% static 'img/content_msit1.png' %}" alt="languagelab" class="img-responsive">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="library">
+                            <br>
+                            <p class="notlabhead">Central Library</p>
+                            <br>
+                            <p>
+                                Maharaja Surajmal Central Library supports the teaching & research programmes of three Institutes namely, Maharaja Surajmal Institute, Maharaja Surajmal Institute of Technology & Maharaja Surajmal Institute of Pharmacy. All students, faculty members and employees of the Institute are entitled to make use of the Library facilities. The Library has a well-stocked fully computerized library with latest editions of books by eminent authors & is having a huge collection of books on education, management, computer science, engineering, pharmacy, science and humanities to cater to the needs and requirements of the faculty as well as students.
+                            </p>
+                            <br>
+                            <p>
+                                Library has also a Research Wing for scholars where scholars are getting special reference material and rare collections of manuscripts for their research work on community.
+                            </p>
+                            <p class="notlabhead">BOOK BANK</p>
+                            <p>
+                                Students can avail Book Bank facility which was initiated during 2006-2007. All the students joining the institute are being given a set of text books every year. This has come as a boon to the students who do not have to buy costly books for their academic preparations.
+                            </p>
+                            <br>
+                            <p>For more details, please visit: </p>
+                            <p><a href="https://sites.google.com/site/centrallibrarymaharajasurajmal/">https://sites.google.com/site/centrallibrarymaharajasurajmal/</a></p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="hostel">
+                            <br>
+                            <p class="notlabhead">HOSTEL AND CANTEEN</p>
+                            <br>
+                            <p>
+                                <span class="notlabhead">Hostel</span>: The Maharaja Mahendra Pratap Hostel provides accommodation to around 200 boys and 100 girls in a spacious and elegant four-storeyed building with all connected facilities. Hygienic and nutritious food is provided at a reasonable cost.
+                            </p>
+                            <br>
+                            <p>
+                                <span class="notlabhead">Staff Accomodation</span>: Quarters are provided to the teaching and non teaching staff with all latest facilities on reasonable charges. All the quarters are well furnished.
+                            </p>
+                            <br>
+                            <p>
+                                <span class="notlabhead">Canteen</span>: The canteen of MSIT is well organized having a seating capacity of 60-70 persons simultaneously with clean surroundings. The eatables of good quality are available at reasonable cost.
+                            </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="sports">
+                            <br>
+                            <p class="notlabhead">SPORTS</p>
+                            <p>
+                                Institute has well maintained play ground for various games such as football,volleyball, cricket, badminton etc. Facilities for indoor games such as carrom, table tennis, chess and chinese checkers are also available. These extra curricular activities help in building up personality and confidence in the students. Bank: The institute has on campus banking facility .
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            {% block right_nav %}
+                {% include 'right_menu.html' %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

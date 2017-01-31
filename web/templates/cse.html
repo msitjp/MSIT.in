@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block navigation %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% block left_nav %}
+                {% include 'left_menu.html' %}
+            {% endblock %}
+            {% block main_body %}
+                <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+                    <script type="text/javascript">
+                        $('#societytab a').click(function (e) {
+                            e.preventDefault()
+                            $(this).tab('show')
+                        })
+                    </script>
+                    <ul class="nav nav-tabs" id="tttab" role="tablist">
+                        <li class="active">
+                            <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Program Description</a>
+                        </li>
+                        <li>
+                            <a href="#firstshift" aria-controls="firstshift" role="tab" data-toggle="tab">Faculty (1st shift)</a>
+                        </li>
+                        <li>
+                            <a href="#secondshift" aria-controls="secondshift" role="tab" data-toggle="tab">Faculty (2nd shift)</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="description" style="padding:1em;">
+                            <p class="descriptioncontent">
+                                The Computer Science and Engineering Department was established in the year 2000 with the vision to offer Bachelor of Engineering degree in Computer Science & Engineering and impart world class education to the students. A group of well qualified, experienced and highly motivated faculty is engaged in providing quality education to the future computer engineer and keeping them abreast of the fast technological development.
+                            </p>
+                            <p class="descriptioncontent">
+                                The well equipped laboratories help students to meet ever increasing technological and social challenges with its traditions of self discipline, hard work and a creative approach to solve exigent issues. In addition the Department regularly organizes a series of lectures by academicians and professionals of the highest repute, which lay stress on the latest innovative technologies in the field of Computer Science and Engineering and Information Technology.
+                            </p>
+                            <h5 class="descriptionheading">
+                                VISION
+                            </h5>
+                            <p class="descriptioncontent">
+                                To maintain academic excellence aiming to produce competent technocrats imbibed with ethical values to serve the national emerging technological needs.
+                            </p>
+                            <h5 class="descriptionheading">
+                                MISSION
+                            </h5>
+                            <p class="descriptioncontent">
+                                <span class="descriptionheading">M1:</span> To impart quality engineering education to the students by providing effective teaching learning, research and application based innovative environment.
+                            </p>
+                            <p class="descriptioncontent">
+                                <span class="descriptionheading">M2:</span> To inculcate creativity team-spirit, leadership and ethical competence through continuous collective curricular, co-curricular and extracurricular activities.
+                            </p>
+                            <h5 class=descriptionheading>
+                                PROGRAM EDUCATIONAL OBJECTIVES (PEOs)
+                            </h5>
+                            <p class="descriptioncontent">
+                                <span class="descriptionheading">PEO1:</span> To acquire a deep insight in mathematical, scientific & analytical skills and adopt self-motivating lifelong learning to explore cutting edge technologies.
+                            </p>
+                            <p class="descriptioncontent">
+                                <span class="descriptionheading">PEO2:</span> To evolve as responsible citizen having sense of ethics and environment aware attitude.
+                            </p>
+                            <p class="descriptioncontent">
+                                <span class="descriptionheading">PEO3:</span> To acquire necessary technical knowledge to pursue successful professional career posing leadership and team spirit.
+                            </p>
+                            <h5 class="descriptionheading">
+                                PROGRAM OUTCOMES
+                            </h5>
+                            <p class="descriptionheading">
+                                Engineering Graduates will be able to:
+                            </p>
+                            <ol>
+                                <li>
+                                    <span class="descriptionheading">Engineering knowledge:</span> Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Problem analysis:</span> Identify, formulate, review research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Design/development of solutions:</span> Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for the public health and safety, and the cultural, societal, and environmental considerations.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Conduct investigations of complex problems:</span> Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Modern tool usage:</span> Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modeling to complex engineering activities with an understanding of the limitations.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">The engineer and society:</span> Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Environment and sustainability:</span> Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Ethics:</span> Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Individual and team work:</span> Function effectively as an individual, and as a member or leader indiverse teams, and in multidisciplinary settings.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Communication:</span> Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Project management and finance:</span> Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
+                                </li>
+                                <li>
+                                    <span class="descriptionheading">Life-long learning:</span> Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tab-pane" id="firstshift">
+                            <div style="padding:1em;">
+                            <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
+                                <tbody>
+                                    {% for i in morning %}
+                                        <tr>
+                                            <td style="padding:1em;">
+                                                <p><strong>{{i.full_name}}</strong></p>
+
+                                                <p>{{i.designation}}</p>
+
+                                                <p>{{i.email}}</p>
+                                            </td>
+                                            <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <p>&nbsp;</p>
+
+                            <p>&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="secondshift">
+                            <div style="padding:1em;">
+                                <table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="width:500px;" id="cse2">
+                                    <tbody>
+                                        {% for i in evening %}
+                                            <tr>
+                                                <td style="padding:1em;">
+                                                    <p><strong>{{i.full_name}}</strong></p>
+
+                                                    <p>{{i.designation}}</p>
+
+                                                    <p>{{i.email}}</p>
+                                                </td>
+                                                <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <p>&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            {% block right_nav %}
+                {% include 'right_menu.html' %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

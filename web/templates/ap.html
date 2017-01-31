@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block navigation %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% block left_nav %}
+                {% include 'left_menu.html' %}
+            {% endblock %}
+            {% block main_body %}
+            <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+<script type="text/javascript">
+    $('#societytab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>
+<ul class="nav nav-tabs" id="tttab" role="tablist">
+    <li class="active">
+        <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Program Description</a>
+    </li>
+    <li>
+        <a href="#firstshift" aria-controls="firstshift" role="tab" data-toggle="tab">Faculty (1st shift)</a>
+    </li>
+    <li>
+        <a href="#secondshift" aria-controls="secondshift" role="tab" data-toggle="tab">Faculty (2nd shift)</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="description">
+        <p class="descriptioncontent">
+            The Department of Applied Sciences in Maharaja Surajmal Institute of Technology comprises of Physics, Chemistry, Workshop and Mathematics departments. All the departments are having well equipped spacious laboratories with pleasant working environment. All the labs have ultra new apparatus and equipments to expose the students to new trends in the field of technology and science. The department has an established and well qualified faculty and supporting staff with long working experience. The students to teacher ratio is also maintained as per AICTE norms. The students are taught through systematic, continuous and synchronized process of teaching and learning followed by regular tutorials and seminars.
+        </p>
+    </div>
+    <div class="tab-pane" id="firstshift">
+        <div style="padding:1em;">
+        <table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;" id="ap">
+            <tbody>
+                {% for i in morning %}
+                    <tr>
+                        <td style="padding:1em;">
+                            <p><strong>{{i.full_name}}</strong></p>
+
+                            <p>{{i.designation}}</p>
+
+                            <p>{{i.email}}</p>
+                        </td>
+                        <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p>&nbsp;</p>
+        </div>
+    </div>
+    <div class="tab-pane" id="secondshift">
+    <div style="padding:1em;">
+    <table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;" id="ap2">
+        <tbody>
+            {% for i in evening %}
+                <tr>
+                    <td style="padding:1em;">
+                        <p><strong>{{i.full_name}}</strong></p>
+
+                        <p>{{i.designation}}</p>
+
+                        <p>{{i.email}}</p>
+                    </td>
+                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+</div>
+
+            {% endblock %}
+            {% block right_nav %}
+            {% include 'right_menu.html' %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

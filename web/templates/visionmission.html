@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block navigation %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% block left_nav %}
+                {% include 'left_menu.html' %}
+            {% endblock %}
+            {% block main_body %}
+                <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12 centralcontent">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <h4>Vision and Mission</h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <h4 class="paraHead">VISION</h4>
+                            <p class="vismisPara">
+                            To become one of the most admired centers of academic excellence in the field of Engineering & Technology for all-round professional development of students to enable them to meet the growing technological needs of the country.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <h4 class="paraHead">MISSION</h4>
+                            <p class="vismisPara">
+                            Developing new paradigm in imparting education in the fields of Engineering and Technology and to imbibe national values leading to student's empowerment, with a view to prepare them to meet the national and global challenges.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            {% block right_nav %}
+                {% include 'right_menu.html' %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

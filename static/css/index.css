@@ -1,109 +1,303 @@
 body {
-	overflow-y: scroll;
-	overflow-x: hidden !important;
-	background: #ececec;
-    font-family: 'Quicksand', sans-serif;
-}
+  overflow-y: scroll;
+  overflow-x: hidden !important;
+  background: #ececec; }
+
+nav {
+  background-color: #00796B; }
+
+p {
+  color: black; }
+
+a {
+  color: #00796B; }
 
 .navbar.navbar-default {
-	min-height: 0;
-	border-radius: 0;
-	color: black;
-	font-size: 1em;
-}
+  min-height: 0;
+  border-radius: 0;
+  color: black;
+  font-size: 1em; }
+  .navbar.navbar-default #uppernav {
+    background: #00796B; }
+    .navbar.navbar-default #uppernav #primarynav {
+      text-align: left;
+      background: #d2d4da; }
 
-
-#primarynav {
-	text-align: left;
-	background: rgb(210, 212, 218);
-}
-
-#primaryNavElts > li > a{
-	border-right: 1px solid #000;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	color: black;
-}
-
-/*#uppernav {
-	background: #00796B;
-}*/
+#primaryNavElts > li > a {
+  border-right: 1px solid #000;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: black; }
 
 #primarynavbutton {
-	float: left;
-	left: 1em;
-}
+  float: left;
+  left: 1em; }
 
 #header {
-	background: #00796B;
-}
+  background: #00796B; }
+  #header h3 {
+    text-align: center; }
+  #header p {
+    color: white; }
 
 #logoimage {
-	margin-top: 0.6em;
-	margin-bottom: 0.5em;
-}
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
 
 #secondarynav {
-	background: #1d1d1d;
-}
+  background: #1d1d1d; }
 
 #secondarynav div ul li a {
-	color: white;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0)
-}
+  color: white;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0); }
 
 .leftpanel {
-	list-style: circle;
-	padding-left: 2em;
-}
+  list-style: circle;
+  padding-left: 2em; }
 
-.leftpanel li a{
-	color: #00796B;
-	text-decoration: none;
-}
+.leftpanel li a {
+  color: #00796B; }
 
 .leftpanel li:hover {
-	background: #ececec;
-	color: #3E211B;
-}
+  background: #ececec;
+  color: #3E211B; }
 
 .panel-body p {
-	color: #FF5722;
-	font-weight: 700;
-}
+  color: #FF5722;
+  font-weight: 700; }
 
 .panel-title a {
-	color: #FF5722;
-}
+  color: #FF5722; }
 
 .list-group a {
-	color: #00796B;
-}
+  color: #00796B; }
 
-.centralcontent {
-	background: white;
-	padding: 1em;
-	border-radius: 1em;
-	min-height: 50vh;
-}
-
-.carousel-caption {
-	background: rgba(0,0,0,0.7)
-}
-
-#rightpanel > div{
-	font-weight: bolder;
-	color: #FF5722;
-	font-size: 1.5em;
-}
+#rightpanel > div {
+  font-weight: bolder;
+  color: #FF5722;
+  font-size: 1.5em; }
 
 #rightpanelbody {
-	background: white;
-}
+  background: white; }
 
-#rightpanelbody div ul li p{
-	font-size: 1em !important;
+#rightpanelbody div ul li p {
+  font-size: 1em !important; }
+
+#morning, #evening {
+  padding-top: 2em; }
+
+/*----For main page default.html----*/
+.centralcontent {
+  background: white;
+  padding: 1em;
+  border-radius: 1em;
+  min-height: 50vh; }
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.7); }
+.carousel-caption > p{
+  color: white;
 }
+/*------------------------------------*/
+/*----For admistration page /administration----*/
+.admincontent h4 strong {
+  color: #FF5722; }
+
+#mytab li a {
+  color: black; }
+
+table tbody tr td strong {
+  color: #FF5722; }
+
+/*-----------------------------------------*/
+/*---------For about msit page /aboutmsit----------*/
+.paraHead {
+  color: #FF5722;
+  font-weight: bold; }
+
+.aboutcontent {
+  text-align: justify; }
+
+/*-----------------------------------*/
+/*---For vision and mission page /visionmission---*/
+.vismisHead {
+  color: #FF5722; }
+
+.vismitPara {
+  text-align: justify; }
+
+/*---------------------------------------*/
+/*------For history page /history-----*/
+.historyPara {
+  text-align: justify; }
+  .historyPara .historyHighlight {
+    color: #FF5722;
+    font-weight: bold; }
+
+.historyContent p {
+  color: #FF5722;
+  font-weight: bold; }
+.historyContent img {
+  text-align: right; }
+
+/*--------------------------------------*/
+/*----For facilities page /facilities-------*/
+#factab li a {
+  color: #00796B; }
+
+#laboratories #accordion a {
+  color: black; }
+#laboratories p {
+  text-align: justify; }
+#laboratories .labHead {
+  color: #FF5722;
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center; }
+#laboratories .labsubHead {
+  color: black;
+  font-weight: bold; }
+#laboratories .labContent {
+  color: black;
+  font-weight: normal; }
+
+#csetable tbody td p, #ecetable tbody td p, #ecetable2 tbody td p, #ittable tbody td p, #eeetable tbody td p {
+  color: black;
+  font-weight: normal; }
+
+#eeetable2 tbody {
+  color: black; }
+  #eeetable2 tbody td {
+    color: black; }
+    #eeetable2 tbody td p {
+      color: black; }
+
+.notlabhead {
+  color: #FF5722;
+  font-weight: bold; }
+
+/*--------------------------------------*/
+/*-------For governing body page /govern--------*/
+.governhead {
+  color: #FF5722;
+  font-weight: bold;
+  font-style: italic;
+  padding-top: 4em;
+  padding-bottom: 2em; }
+
+#governtable td h4 {
+  color: white; }
+
+/*--------------------------------------*/
+/*---------For from the desk page /fromdesk--------*/
+.fromcontent {
+  color: black;
+  text-align: justify; }
+
+.fromhead {
+  margin-bottom: 3em;
+  color: #FF5722;
+  font-weight: bold; }
+
+.frompara1 {
+  padding-top: 2em; }
+
+.fromimage {
+  float: right;
+  border-radius: 100%;
+  margin: 1em;
+  max-width: 100%; }
+
+.fromlist {
+  text-align: justify; }
+
+.fromdesignation {
+  color: #FF5722;
+  font-weight: bold; }
+
+/*--------------------------------------*/
+/*------For timetable, attendance, syllabus page------*/
+.ttcontent {
+  color: black;
+  font-weight: normal; }
+
+.syllabuslink {
+  padding: 1.5em 0; }
+  .syllabuslink a {
+    color: #00796B;
+    text-decoration: none; }
+
+/*------------------------------------*/
+/*-------For society page-------*/
+.societyhead {
+  color: #FF5722;
+  font-weight: bolder;
+  font-size: 1.5em;
+  padding-top: 2em; }
+
+.societycontent {
+  text-align: justify;
+  font-weight: normal;
+  color: black; }
+  .societycontent a {
+    color: #FF5722;
+    font-weight: bold; }
+
+/*------------------------------------*/
+/*--For achievements page /achievements---*/
+#goldmedal img {
+  margin: 0 auto;
+  padding-top: 1em; }
+
+.achievehead {
+  color: black;
+  padding-top: 1em; }
+
+.achievehighlight {
+  color: #FF5722;
+  font-weight: bold; }
+
+.achievename {
+  color: red; }
+
+/*-------------------------------*/
+/*---For events and activities /events---*/
+.eventslist a {
+  color: #00796B;
+  text-decoration: none; }
+
+.eventshighlight {
+  color: #FF5722;
+  font-weight: bold; }
+
+/*--------------------------------*/
+/*---For departments page /department name---*/
+.descriptioncontent {
+  color: black; }
+
+.descriptionheading {
+  color: #FF5722;
+  font-weight: bold; }
+
+#cse img, #cse2 img, #it img, #it2 img, #ece img, #ece2 img, #eee img, #ap img, #ap2 img {
+  border-radius: 100%; }
+
+/*---------------------------------*/
+/*---For placements page /placements---*/
+.placementcontent {
+  color: black;
+  text-align: justify; }
+  .placementcontent strong {
+    color: #FF5722; }
+
+.placementhead {
+  color: #FF5722;
+  font-weight: bold; }
+
+#oberoiimg {
+  float: right;
+  border-radius: 100%; }
+
 
 #bs-example-navbar-collapse-1 > ul > li > a{
    font-size:1em;
