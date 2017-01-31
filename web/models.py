@@ -9,6 +9,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 def image_name(instance, filename):
     fname, extension = filename.split('.')
+    slug = ''
     try:
         slug = 'faculty/' + slugify(instance.full_name)
     except:
@@ -21,7 +22,7 @@ def image_name(instance, filename):
         slug = 'time-tables-and-Attendance/' + slugify(instance.title)
     except:
         pass
-    if not slug:
+    if slug == '':
         slug = slugify(filename)
     return '%s.%s' % (slug, extension)
 
