@@ -154,7 +154,7 @@ def disaster(request):
 
 def achievements(request):
     try:
-        achievements = Achievements.objects.all()
+        achievements = Achievement.objects.all()
     except:
         achievements = []
     context = getContext()
