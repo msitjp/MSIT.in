@@ -22,7 +22,7 @@
                 <ul class="nav nav-tabs" id="tttab" role="tablist">
                     {% for i in achievements %}
                         <li {% if forloop.counter == 1 %}class="active"{% endif %}>
-                            <a href="#{{i.name}}" aria-controls="{{i.name}}" role="tab" data-toggle="tab">{{i.name}}</a>
+                            <a href="#{{i.title}}" aria-controls="{{i.title}}" role="tab" data-toggle="tab">{{i.title}}</a>
                         </li>
                     {% endfor %}
                 </ul>
