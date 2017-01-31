@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import *
 
 def getContext():
-    primary_navbar = PrimaryNavigationMenu.objects.all()
-    secondary_navbar = SecondaryNavigationMenu.objects.all()
+    primary_navbar = PrimaryNavigationMenu.objects.all().order_by('order')
+    secondary_navbar = SecondaryNavigationMenu.objects.all().order_by('order')
     primary_menu = PrimaryMenu.objects.all().order_by('order')
     latest_news = LatestNews.objects.filter(visible=True)
     secondary_menu = []
@@ -234,3 +234,7 @@ def ap(request):
 def placements(request):
     context = getContext()
     return render(request, 'placements.html', context=context)
+
+def contact(request):
+    context = getContext()
+    return render(request, 'contact.html', context=context)

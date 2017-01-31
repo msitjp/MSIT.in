@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^ece$', ece, name="ece"),
     url(r'^eee$', eee, name="eee"),
     url(r'^ap$', ap, name="ap"),
-    url(r'^placements$', placements, name="placements")
+    url(r'^placements$', placements, name="placements"),
+    url(r'^contact$', contact, name="contact")
 ]
