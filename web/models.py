@@ -49,7 +49,7 @@ class Faculty(models.Model):
         ('5', 'Applied Science'),
     )
     full_name = models.CharField(max_length=200, verbose_name='Full Name', blank=False)
-    profile_pic = models.ImageField(upload_to=image_name)
+    profile_pic = models.ImageField(upload_to=image_name, blank=True, null=True)
     category = models.CharField(max_length=30, choices=CATEGORY, default='teaching')
     designation = models.CharField(max_length=150, verbose_name='Designation', blank=False)
     phone_number = models.CharField(max_length=10, help_text='Phone Number (without Regional Code)', verbose_name='Phone Number', blank=True, null=True)
