@@ -1,39 +1,3 @@
-#bs-example-navbar-collapse-1 > ul > li > a{
-   font-size:1em;
-   padding-top: 2px;
-   padding-bottom: 2px;
-   color: #2D2D2D;
-   border-right: 1px solid #353535;
-}
-#bs-example-navbar-collapse-1{
-    background:#D2D4DA;
-    color: #000;
-}
-body > nav > div > div.container > div > div.col-md-10 > div:nth-child(1) > center > h3{
-    font-size: 2.5em;
-    font-family: 'Ubuntu', sans-serif;
-}
-body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > center > p{
-    font-family: 'Rajdhani', sans-serif;
-}
-#bs-example-navbar-collapse-2 > ul > li > a{
-    color: #fff;
-    text-shadow: 0 1px 0 rgba(255,255,255,0);
-}
-#bs-example-navbar-collapse-2 > ul > li > a:hover{
-    background: hsla(0, 0%, 0%, 0.48);
-}
-#deskview > div.panel-body > ul > li{
-    display: block;
-}
-.panel{
-    box-shadow: 0 1px 2px rgb(160, 160, 160);
-    border: 0px;
-}
-.panel > .panel-heading{
-    background: #1d1d1d;
-    color: white;
-}
 
 /*Random Styles*/
 
@@ -170,10 +134,7 @@ body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > cent
      .list-group a {
        color: #00796B; }
 
-     #rightpanel > div {
-       font-weight: bolder;
-       color: #FF5722;
-       font-size: 1.5em; }
+     
 
      #rightpanelbody {
        background: white; }
@@ -401,3 +362,40 @@ body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > cent
      @media only screen and (max-width: 720px) {
        #deskview {
          display: none; } }
+
+		 #bs-example-navbar-collapse-1 > ul > li > a{
+		    font-size:1em;
+		    padding-top: 2px;
+		    padding-bottom: 2px;
+		    color: #2D2D2D;
+		    border-right: 1px solid #353535;
+		 }
+		 #bs-example-navbar-collapse-1{
+		     background:#D2D4DA;
+		     color: #000;
+		 }
+		 body > nav > div > div.container > div > div.col-md-10 > div:nth-child(1) > center > h3{
+		     font-size: 2.5em;
+		     font-family: 'Ubuntu', sans-serif;
+		 }
+		 body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > center > p{
+		     font-family: 'Rajdhani', sans-serif;
+		 }
+		 #bs-example-navbar-collapse-2 > ul > li > a{
+		     color: #fff;
+		     text-shadow: 0 1px 0 rgba(255,255,255,0);
+		 }
+		 #bs-example-navbar-collapse-2 > ul > li > a:hover{
+		     background: hsla(0, 0%, 0%, 0.48);
+		 }
+		 #deskview > div.panel-body > ul > li{
+		     display: block;
+		 }
+		 .panel{
+		     box-shadow: 0 1px 2px rgb(160, 160, 160);
+		     border: 0px;
+		 }
+		 .panel > .panel-heading{
+		     background: #1d1d1d;
+		     color: white;
+		 }
