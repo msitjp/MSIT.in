@@ -49,12 +49,11 @@ body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > cent
 	 }
 	 .als-viewport {
 	 	position: relative;
-	 	overflow: hidden;
-	 	margin: 0px auto;
 	 }
 	 .als-wrapper {
 	 	position: relative;
 	 	list-style: none;
+		min-width: 100%;
 	 }
 	 .als-item {
 	 	position: relative;
@@ -72,7 +71,7 @@ body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > cent
 	 * specific styling for #demo3
 	 ************************************/
 	 #demo3 {
-	 	margin: 40px auto;
+	 	margin: 10px auto;
 	 }
 	 #demo3 .als-item {
 	 	margin: 0px 5px;
@@ -90,10 +89,10 @@ body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > cent
 	 	top: 40px;
 	 }
 	 #demo3 .als-prev {
-	 	left: 200px;
+	 	left: 20px;
 	 }
 	 #demo3 .als-next {
-	 	right: 200px;
+	 	right: 20px;
 	 }
 
 
