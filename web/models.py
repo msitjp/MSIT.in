@@ -198,6 +198,7 @@ class Syllabus(models.Model):
         ('7', 'VII'),
         ('8', 'VIII'),
     )
+    title = models.CharField(max_length=100, help_text='text to display')
     branch = models.CharField(max_length=1, help_text='Branch Name', choices=BRANCH)
     semester = models.CharField(max_length=1, choices=SEMESTERS, blank=True, null=True)
     syllabus = models.FileField(upload_to=image_name)
@@ -206,7 +207,7 @@ class Syllabus(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
-        return "%s - %s"  % (self.SEMESTERS[int(self.branch)-1], self.semester)
+        return "%s"  % (self.title)
 
 class StudentSociety(models.Model):
     name = models.CharField(max_length=50, help_text='Society Name')

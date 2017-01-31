@@ -94,7 +94,7 @@ def timetable(request):
     except:
         morning=[]
     try:
-        evening = TimeTable.objects.filter(shift='M')
+        evening = TimeTable.objects.filter(shift='E')
     except:
         evening=[]
     context = getContext()
