@@ -68,8 +68,8 @@
      nav {
        background-color: #00796B; }
 
-     p {
-       color: black; }
+     /*p {
+       color: black; }*/
 
      a {
        color: #00796B; }
@@ -134,7 +134,7 @@
      .list-group a {
        color: #00796B; }
 
-     
+
 
      #rightpanelbody {
        background: white; }
