@@ -255,7 +255,7 @@ def suggestion(request):
     return render(request, 'suggestion.html', context=context)
 
 def latestNews(request):
-    news = LatestNews.objects.all()
+    news = LatestNews.objects.all().order_by('-created_at')
     context = getContext()
     context['news'] = news
     return render(request, 'latest.html', context=context)
