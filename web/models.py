@@ -21,6 +21,8 @@ def image_name(instance, filename):
         slug = 'time-tables-and-Attendance/' + slugify(instance.title)
     except:
         pass
+    if not slug:
+        slug = slugify(filename)
     return '%s.%s' % (slug, extension)
 
 class Faculty(models.Model):
