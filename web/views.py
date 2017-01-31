@@ -108,13 +108,12 @@ def attendance(request):
     except:
         morning=[]
     try:
-        evening = Attendance.objects.filter(shift='M')
+        evening = Attendance.objects.filter(shift='E')
     except:
         evening=[]
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
-    context = getContext()
     return render(request, 'attendance.html', context=context)
 
 def syllabus(request):
