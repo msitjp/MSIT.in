@@ -53,7 +53,7 @@ class AttendanceAdmin(admin.ModelAdmin):
     list_editable = ('pdf',)
 
 class SyllabusAdmin(admin.ModelAdmin):
-    list_display = ['branch', 'semester', 'syllabus', 'lecture_plan', 'created_at', 'updated_at']
+    list_display = ['title', 'branch', 'semester', 'syllabus', 'lecture_plan', 'created_at', 'updated_at']
     list_filter = ('branch', 'semester',)
     ordering = ('semester', 'branch',)
     list_editable = ('syllabus', 'lecture_plan',)
