@@ -1,6 +1,6 @@
 
 function attachEvents(){
-    $("#demo3").als({
+    $("#rightpanelbody").als({
         visible_items: 3,
         scrolling_items: 1,
         orientation: "vertical",
