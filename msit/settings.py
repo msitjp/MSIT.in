@@ -183,3 +183,7 @@ CKEDITOR_CONFIGS = {
             ]),
     }
 }
+
+# MSIT Website Settings
+
+SORT_FACULTY_BY_NAME = True

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from .models import *
 
@@ -178,6 +179,8 @@ def cse(request):
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
+    if settings.SORT_FACULTY_BY_NAME:
+        context['facultySorter'] = True
     return render(request, 'cse.html', context=context)
 
 def it(request):
@@ -192,6 +195,8 @@ def it(request):
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
+    if settings.SORT_FACULTY_BY_NAME:
+        context['facultySorter'] = True
     return render(request, 'it.html', context=context)
 
 def ece(request):
@@ -206,6 +211,8 @@ def ece(request):
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
+    if settings.SORT_FACULTY_BY_NAME:
+        context['facultySorter'] = True
     return render(request, 'ece.html', context=context)
 
 def eee(request):
@@ -215,6 +222,8 @@ def eee(request):
         morning = []
     context = getContext()
     context['morning'] = morning
+    if settings.SORT_FACULTY_BY_NAME:
+        context['facultySorter'] = True
     return render(request, 'eee.html', context=context)
 
 def ap(request):
@@ -229,6 +238,8 @@ def ap(request):
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
+    if settings.SORT_FACULTY_BY_NAME:
+        context['facultySorter'] = True
     return render(request, 'ap.html', context=context)
 
 def placements(request):
@@ -242,3 +253,9 @@ def contact(request):
 def suggestion(request):
     context = getContext()
     return render(request, 'suggestion.html', context=context)
+
+def latestNews(request):
+    news = LatestNews.objects.all()
+    context = getContext()
+    context['news'] = news
+    return render(request, 'latest.html', context=context)

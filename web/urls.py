@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^ap$', ap, name="ap"),
     url(r'^placements$', placements, name="placements"),
     url(r'^contact$', contact, name="contact"),
-    url(r'^suggestion$', suggestion, name="suggestions")
+    url(r'^suggestion$', suggestion, name="suggestions"),
+    url(r'^latest_news$', latestNews, name='latest_news')
 ]
