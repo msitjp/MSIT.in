@@ -238,3 +238,7 @@ def placements(request):
 def contact(request):
     context = getContext()
     return render(request, 'contact.html', context=context)
+
+def suggestion(request):
+    context = getContext()
+    return render(request, 'suggestion.html', context=context)
