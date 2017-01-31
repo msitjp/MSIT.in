@@ -206,7 +206,7 @@ class Syllabus(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
-        return "%s"  % (self.title)
+        return "%s - %s"  % (self.SEMESTERS[int(self.branch)-1], self.semester)
 
 class StudentSociety(models.Model):
     name = models.CharField(max_length=50, help_text='Society Name')
