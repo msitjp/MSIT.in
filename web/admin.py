@@ -7,7 +7,10 @@ from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu, TimeTable, 
 class FacultyAdmin(admin.ModelAdmin):
 
     def image_tag(self, obj):
-        return format_html('<img src="{}" height="50" width="auto" />'.format(obj.profile_pic.url))
+        try:
+            return format_html('<img src="{}" height="50" width="auto" />'.format(obj.profile_pic.url))
+        except:
+            return None
 
     image_tag.short_description = 'Image'
 
