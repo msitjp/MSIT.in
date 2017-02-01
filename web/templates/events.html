@@ -9,7 +9,8 @@
                 <ul>
                     {% for i in events %}
                     <li id="unique">
-                        {{i.description|safe}} - on {{i.date}}
+                        {{i.description|safe}}
+                        - on {{i.date}}
                     </li>
                     {% endfor %}
                 </ul>
