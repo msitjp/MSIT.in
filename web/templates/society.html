@@ -22,13 +22,13 @@
                     <ul class="nav nav-tabs" id="tttab" role="tablist">
                         {% for i in societies %}
                             <li {% if forloop.counter == 1 %}class="active"{% endif %}>
-                                <a href="#{{i.name}}" aria-controls="{{i.name}}" role="tab" data-toggle="tab">{{i.name}}</a>
+                                <a href="#{{i.name|slugify}}" aria-controls="{{i.name|slugify}}" role="tab" data-toggle="tab">{{i.name}}</a>
                             </li>
                         {% endfor %}
                     </ul>
                     <div class="tab-content">
                         {% for i in societies %}
-                            <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.name}}">
+                            <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.name|slugify}}">
                                 <p class="societyhead">
                                     {{i.name|upper}}
                                 </p>
