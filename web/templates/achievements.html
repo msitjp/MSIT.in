@@ -28,7 +28,7 @@
                 </ul>
                 <div class="tab-content">
                     {% for i in achievements %}
-                        <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.name}}">
+                        <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.title}}">
                             <p>
                                 {{i.description|safe}}
                             </p>
