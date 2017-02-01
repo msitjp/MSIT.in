@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from datetime import datetime
 from django.db import models
 from django.template.defaultfilters import slugify
 
@@ -229,6 +230,7 @@ class Achievement(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=50, help_text='Tab Name')
+    date = models.DateTimeField(default=datetime.now())
     description = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
