@@ -162,7 +162,7 @@ def achievements(request):
 
 def events(request):
     try:
-        event = Event.objects.all().filter('-date')
+        event = Event.objects.all().oreder_by('-date')
     except:
         event = Event.objects.all()
     context = getContext()
