@@ -14,7 +14,7 @@
                                 <a href="{{ item.link }}">{{ item.title }}</a>
                                 {% if item.additional_link %}
                                     <br />
-                                    <strong><a href="{{ item.additional_link }}">{{item.additional_title}}</a></strong>
+                                    <a href="{{ item.additional_link }}">{{item.additional_title}}</a>
                                 {% endif %}
                             </p>
                         </li>
@@ -22,6 +22,6 @@
 				</ul>
 			</div>
 		</div>
-		<p style="width:100%; text-align:center;"><a href='{% url "latest_news" %}'>View All</a></p>
+		<p style="width:100%; text-align:center; font-size: 0.9em; text-decoration: underline;"><a href='{% url "latest_news" %}'>View All</a></p>
 	</div>
 </div>

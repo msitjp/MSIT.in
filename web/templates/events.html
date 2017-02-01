@@ -9,7 +9,7 @@
                 <ul>
                     {% for i in events %}
                     <li>
-                        {{i.description|safe}}
+                        {{i.description|safe}} - on {{i.date}}
                     </li>
                     {% endfor %}
                 </ul>
