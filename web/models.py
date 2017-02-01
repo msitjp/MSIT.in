@@ -230,7 +230,7 @@ class Achievement(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=50, help_text='Tab Name')
-    date = models.DateTimeField(default=datetime.now())
+    date = models.DateField(default=datetime.now().date())
     description = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
