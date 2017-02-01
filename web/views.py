@@ -161,7 +161,10 @@ def achievements(request):
     return render(request, 'achievements.html', context=context)
 
 def events(request):
-    event = Event.objects.all().filter('-date')
+    try:
+        event = Event.objects.all().filter('-date')
+    except:
+        event = Event.objects.all()
     context = getContext()
     context['events'] = event
     return render(request, 'events.html', context=context)
