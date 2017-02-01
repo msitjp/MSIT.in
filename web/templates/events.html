@@ -8,7 +8,7 @@
             <div class="tab-content">
                 <ul>
                     {% for i in events %}
-                    <li>
+                    <li id="unique">
                         {{i.description|safe}} - on {{i.date}}
                     </li>
                     {% endfor %}

@@ -407,3 +407,7 @@
 		     background: #1d1d1d;
 		     color: white;
 		 }
+
+		 #unique > p{
+			 display: inline-block;
+		 }
