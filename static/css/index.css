@@ -21,11 +21,13 @@
 	 }
 	 .als-viewport {
 	 	position: relative;
+    overflow: hidden !important;
 	 }
 	 .als-wrapper {
 	 	position: relative;
 	 	list-style: none;
 		min-width: 100%;
+    overflow: hidden !important;
 	 }
 	 .als-item {
 	 	position: relative;
@@ -33,11 +35,6 @@
 	 	text-align: center;
 	 	cursor: pointer;
 	 	float: left;
-	 }
-	 .als-prev, .als-next {
-	 	position: absolute;
-	 	cursor: pointer;
-	 	clear: both;
 	 }
 	/*************************************
 	 * specific styling for #demo3
@@ -49,7 +46,7 @@
 	 	margin: 0px 5px;
 	 	padding: 4px 0px;
 	 	min-height: 120px;
-	 	max-width: 100%;
+    min-width: 100px;
 	 	text-align: left;
 	 }
 	 #demo3 .als-item img {
