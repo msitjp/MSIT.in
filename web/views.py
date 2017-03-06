@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, Http404, get_object_or_404
 from .models import *
 
 def getContext():
@@ -7,16 +7,17 @@ def getContext():
     secondary_navbar = SecondaryNavigationMenu.objects.all().order_by('order')
     primary_menu = PrimaryMenu.objects.all().order_by('order')
     latest_news = LatestNews.objects.filter(visible=True)
+    notices = Notice.objects.filter(visible=True)
     secondary_menu = []
     for menu in primary_menu:
         secondary_menu = SecondaryMenu.objects.all()
-    print primary_menu
     context = {
         'primary_navbar': primary_navbar,
         'secondary_navbar': secondary_navbar,
         'primary_menu': primary_menu,
         'secondary_menu': secondary_menu,
-        'latest_news': latest_news
+        'latest_news': latest_news,
+        'notices': notices
     }
     return context
 
@@ -24,69 +25,6 @@ def getContext():
 def home(request):
     context = getContext()
     return render(request, 'home.html', context=context)
-
-def administration(request):
-    try:
-        director_general = Faculty.objects.get(category='administration', designation__iexact='Director General')
-    except:
-        director_general = []
-    try:
-        director = Faculty.objects.get(category='administration', designation__iexact='Director')
-    except:
-        director = []
-    try:
-        deputy_director = Faculty.objects.get(category='administration', designation__iexact='Deputy Director')
-    except:
-        deputy_director = []
-    try:
-        office = Faculty.objects.filter(category='office').order_by('designation')
-    except:
-        office = []
-    try:
-        accounts = Faculty.objects.filter(category='accounts').order_by('designation')
-    except:
-        accounts = []
-    try:
-        library = Faculty.objects.filter(category='library').order_by('designation')
-    except:
-        library = []
-    try:
-        placement = Faculty.objects.filter(category='placement').order_by('designation')
-    except:
-        placement = []
-    context = getContext()
-    context['director_general'] = director_general
-    context['director'] = director
-    context['deputy_director'] = deputy_director
-    context['office'] = office
-    context['accounts'] = accounts
-    context['library'] = library
-    context['placement'] = placement
-    return render(request, 'administration.html', context=context)
-
-def aboutmsit(request):
-    context = getContext()
-    return render(request, 'aboutmsit.html', context=context)
-
-def visionmission(request):
-    context = getContext()
-    return render(request, 'visionmission.html', context=context)
-
-def history(request):
-    context = getContext()
-    return render(request, 'history.html', context=context)
-
-def facilities(request):
-    context = getContext()
-    return render(request, 'facilities.html', context=context)
-
-def govern(request):
-    context = getContext()
-    return render(request, 'govern.html', context=context)
-
-def fromdesk(request):
-    context = getContext()
-    return render(request, 'fromdesk.html', context=context)
 
 def timetable(request):
     try:
@@ -134,23 +72,6 @@ def society(request):
     context['societies'] = societies
     return render(request, 'society.html', context=context)
 
-def antiragging(request):
-    try:
-        director = Faculty.objects.get(category='administration', designation__iexact='Director')
-    except:
-        director = []
-    context = getContext()
-    context['director'] = director
-    return render(request, 'antiragging.html', context=context)
-
-def sexual(request):
-    context = getContext()
-    return render(request, 'sexual.html', context=context)
-
-def disaster(request):
-    context = getContext()
-    return render(request, 'disaster.html', context=context)
-
 def achievements(request):
     try:
         achievements = Achievement.objects.all()
@@ -169,95 +90,140 @@ def events(request):
     context['events'] = event
     return render(request, 'events.html', context=context)
 
+#
+# Available Department Choices are ::
+# CSE, IT, ECE, EEE, APPLIED SCIENCES
+
+def get_modifier(department):
+    '''
+        Sorting Modes are ::
+        ('1', 'Name wise')
+        ('2', 'Designation wise')
+        ('3', 'Date-of-joining wise')
+    '''
+    modifier = ''
+    a = int(department.sorting_order)
+    b = int(department.sorting_order)
+    if a == 1:
+        modifier = 'full_name'
+    elif a == 2:
+        modifier = 'designation'
+    elif a == 3:
+        modifier = 'date_of_joining'
+    if b == 2:
+        modifier = '-'+modifier
+    return modifier
+
+def get_faculties(department, modifier):
+    print modifier
+    context = {}
+    if department.display_1st_faculty:
+        try:
+            morning = Faculty.objects.filter(category__icontains='teaching', department=department , shift='M').order_by(modifier)
+        except:
+            morning = []
+        context['morning'] = morning
+    if department.display_2nd_faculty:
+        try:
+            evening = Faculty.objects.filter(category__icontains='teaching', department=department , shift='E').order_by(modifier)
+        except:
+            evening = []
+        context['evening'] = evening
+    if department.display_1st_assistant:
+        try:
+            mlab = Faculty.objects.filter(category__icontains='assistant', department=department , shift='M').order_by(modifier)
+        except:
+            mlab = []
+        context['mlab'] = mlab
+    if department.display_2nd_assistant:
+        try:
+            elab = Faculty.objects.filter(category__icontains='assistant', department=department , shift='E').order_by(modifier)
+        except:
+            elab = []
+        context['elab'] = elab
+    return context
+
 def cse(request):
-    try:
-        morning = Faculty.objects.filter(category__icontains='teaching', department='1' , shift='M')
-    except:
-        morning = []
-    try:
-        evening = Faculty.objects.filter(category__icontains='teaching', department='1', shift='E')
-    except:
-        evening = []
+    department = Department.objects.get(department='CSE')
+    tabs = department.departmentpage_set.all()
+    modifier = get_modifier(department)
     context = getContext()
-    context['morning'] = morning
-    context['evening'] = evening
-    if settings.SORT_FACULTY_BY_NAME:
-        context['facultySorter'] = True
-    return render(request, 'cse.html', context=context)
+    context = context.copy()
+    context.update(get_faculties(department, modifier))
+    context['settings'] = department
+    context['tabs'] = tabs
+    print context
+    return render(request, 'faculty.html', context=context)
 
 def it(request):
-    try:
-        morning = Faculty.objects.filter(category__icontains='teaching', department='2' , shift='M')
-    except:
-        morning = []
-    try:
-        evening = Faculty.objects.filter(category__icontains='teaching', department='2', shift='E')
-    except:
-        evening = []
+    department = Department.objects.get(department='IT')
+    tabs = department.departmentpage_set.all()
+    modifier = get_modifier(department)
     context = getContext()
-    context['morning'] = morning
-    context['evening'] = evening
-    if settings.SORT_FACULTY_BY_NAME:
-        context['facultySorter'] = True
-    return render(request, 'it.html', context=context)
+    context = context.copy()
+    context.update(get_faculties(department, modifier))
+    context['settings'] = department
+    context['tabs'] = tabs
+    return render(request, 'faculty.html', context=context)
 
 def ece(request):
-    try:
-        morning = Faculty.objects.filter(category__icontains='teaching', department='3' , shift='M')
-    except:
-        morning = []
-    try:
-        evening = Faculty.objects.filter(category__icontains='teaching', department='3', shift='E')
-    except:
-        evening = []
+    department = Department.objects.get(department='ECE')
+    tabs = department.departmentpage_set.all()
+    modifier = get_modifier(department)
     context = getContext()
-    context['morning'] = morning
-    context['evening'] = evening
-    if settings.SORT_FACULTY_BY_NAME:
-        context['facultySorter'] = True
-    return render(request, 'ece.html', context=context)
+    context = context.copy()
+    context.update(get_faculties(department, modifier))
+    context['settings'] = department
+    context['tabs'] = tabs
+    return render(request, 'faculty.html', context=context)
 
 def eee(request):
-    try:
-        morning = Faculty.objects.filter(category__icontains='teaching', department='4' , shift='M')
-    except:
-        morning = []
+    department = Department.objects.get(department='EEE')
+    tabs = department.departmentpage_set.all()
+    modifier = get_modifier(department)
     context = getContext()
-    context['morning'] = morning
-    if settings.SORT_FACULTY_BY_NAME:
-        context['facultySorter'] = True
-    return render(request, 'eee.html', context=context)
+    context = context.copy()
+    context.update(get_faculties(department, modifier))
+    context['settings'] = department
+    context['tabs'] = tabs
+    return render(request, 'faculty.html', context=context)
 
 def ap(request):
-    try:
-        morning = Faculty.objects.filter(category__icontains='teaching', department='5' , shift='M')
-    except:
-        morning = []
-    try:
-        evening = Faculty.objects.filter(category__icontains='teaching', department='5', shift='E')
-    except:
-        evening = []
+    department = Department.objects.get(department='APPLIED SCIENCES')
+    tabs = department.departmentpage_set.all()
+    modifier = get_modifier(department)
     context = getContext()
-    context['morning'] = morning
-    context['evening'] = evening
-    if settings.SORT_FACULTY_BY_NAME:
-        context['facultySorter'] = True
-    return render(request, 'ap.html', context=context)
-
-def placements(request):
-    context = getContext()
-    return render(request, 'placements.html', context=context)
-
-def contact(request):
-    context = getContext()
-    return render(request, 'contact.html', context=context)
-
-def suggestion(request):
-    context = getContext()
-    return render(request, 'suggestion.html', context=context)
+    context = context.copy()
+    context.update(get_faculties(department, modifier))
+    context['settings'] = department
+    context['tabs'] = tabs
+    return render(request, 'faculty.html', context=context)
 
 def latestNews(request):
     news = LatestNews.objects.all().order_by('-created_at')
     context = getContext()
     context['news'] = news
     return render(request, 'latest.html', context=context)
+
+def notices(request):
+    notices = Notice.objects.all().order_by('-created_at')
+    context = getContext()
+    context['notices'] = notices
+    return render(request, 'notices.html', context=context)
+
+def custom(request, key):
+    filters = [' ', '@', '#', '^', '!', '&', '~', '/', '`']
+    Flag = True
+    for c in filters:
+        if c in key:
+            Flag = False
+            break
+    if not Flag:
+        raise Http404
+    key = '/'+key
+    page = get_object_or_404(Page, link=key)
+    tabs = page.tab_set.all()
+    context = getContext()
+    context['tabs'] = tabs
+    print context
+    return render(request, 'general.html', context=context)

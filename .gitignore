@@ -8,6 +8,8 @@ db.*
 static-root/
 uploads/
 
+.vscode/
+
 # C extensions
 *.so
 

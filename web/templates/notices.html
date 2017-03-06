@@ -3,11 +3,11 @@
     <div class="row">
         {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
         <div class="col-md-7" style="background: #fff; //height: 50em; border-radius: 1em; padding: 1em;">
-            <h3>Latest News</h3>
+            <h3>Notices & Circulars</h3>
             <hr>
             <div class="tab-content">
                 <ul>
-                    {% for item in news %}
+                    {% for item in notices %}
                     <li>
                         {% if item.new %}<img alt="" src="{% static 'img/new.gif' %}" style="width: 28px; height: 11px;" />{% endif %}
                         <a {% if item.link %} href="{{ item.link }}" {% else %} href="{{ item.files.url }}" {% endif %}>{{ item.title }}</a> {% if item.additional_title %}

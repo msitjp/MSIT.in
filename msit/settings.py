@@ -15,7 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['35.154.11.189', 'localhost', '127.0.0.1', '[::1]']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -115,7 +114,6 @@ USE_L10N = True
 
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
@@ -194,7 +192,3 @@ CKEDITOR_CONFIGS = {
             ]),
     }
 }
-
-# MSIT Website Settings
-
-SORT_FACULTY_BY_NAME = True

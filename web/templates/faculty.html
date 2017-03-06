@@ -1,0 +1,148 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+            <script type="text/javascript">
+                $('#societytab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            </script>
+            <ul class="nav nav-tabs" id="tttab" role="tablist">
+                {% for i in tabs %}
+                <li {% if forloop.counter == 1 %}class="active" {% endif %}>
+                    <a href="#{{i.title|slugify}}" aria-controls="{{i.title|slugify}}" role="tab" data-toggle="tab">{{i.title}}</a>
+                </li>
+                {% endfor %} {% if settings.display_1st_faculty %}
+                <li>
+                    <a href="#firstshift" aria-controls="firstshift" role="tab" data-toggle="tab">Faculty (1st shift)</a>
+                </li>
+                {% endif %} {% if settings.display_1st_assistant %}
+                <li>
+                    <a href="#firstshiftlab" aria-controls="firstshiftlab" role="tab" data-toggle="tab">Lab Faculty (1st shift)</a>
+                </li>
+                {% endif %} {% if settings.display_2nd_faculty %}
+                <li>
+                    <a href="#secondshift" aria-controls="secondshift" role="tab" data-toggle="tab">Faculty (2nd shift)</a>
+                </li>
+                {% endif %} {% if settings.display_2nd_assistant %}
+                <li>
+                    <a href="#secondshiftlab" aria-controls="secondshiftlab" role="tab" data-toggle="tab">Lab Faculty (2nd shift)</a>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="tab-content">
+                {% for i in tabs %}
+                <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.title|slugify}}" style="padding:1em;">
+                    {{i.content|safe}}
+                </div>
+                {% endfor %} {% if settings.display_1st_faculty %}
+                <div class="tab-pane" id="firstshift">
+                    <div style="padding:1em;">
+                        <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
+                            <tbody>
+                                {% for i in morning %}
+                                <tr>
+                                    <td style="padding:1em;">
+                                        <p><strong>{{i.full_name}}</strong></p>
+
+                                        <p>{{i.designation|slice:"1:"}}</p>
+
+                                        <p>{{i.email}}</p>
+                                    </td>
+                                    {% if i.profile_pic %}
+                                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <p>&nbsp;</p>
+
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                {% endif %} {% if settings.display_1st_assistant %}
+                <div class="tab-pane" id="firstshiftlab">
+                    <div style="padding:1em;">
+                        <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
+                            <tbody>
+                                {% for i in mlab %}
+                                <tr>
+                                    <td style="padding:1em;">
+                                        <p><strong>{{i.full_name}}</strong></p>
+
+                                        <p>{{i.designation}}</p>
+
+                                        <p>{{i.email}}</p>
+                                    </td>
+                                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <p>&nbsp;</p>
+
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                {% endif %} {% if settings.display_2nd_faculty %}
+                <div class="tab-pane" id="secondshift">
+                    <div style="padding:1em;">
+                        <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
+                            <tbody>
+                                {% for i in evening %}
+                                <tr>
+                                    <td style="padding:1em;">
+                                        <p><strong>{{i.full_name}}</strong></p>
+
+                                        <p>{{i.designation}}</p>
+
+                                        <p>{{i.email}}</p>
+                                    </td>
+                                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <p>&nbsp;</p>
+
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                {% endif %} {% if settings.display_2nd_assistant %}
+                <div class="tab-pane" id="secondshiftlab">
+                    <div style="padding:1em;">
+                        <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
+                            <tbody>
+                                {% for i in elab %}
+                                <tr>
+                                    <td style="padding:1em;">
+                                        <p><strong>{{i.full_name}}</strong></p>
+
+                                        <p>{{i.designation}}</p>
+
+                                        <p>{{i.email}}</p>
+                                    </td>
+                                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <p>&nbsp;</p>
+
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
+    </div>
+</div>
+{% endblock %}
