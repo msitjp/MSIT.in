@@ -11,9 +11,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tvp$q5j-#@@*e4ln788fvuv)x53e999cl5(vxs8lqkgjkt3xy5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['35.154.11.189', 'localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['139.59.61.186', 'localhost', '127.0.0.1', '[::1]']
 
 # Application definition
 
@@ -63,23 +63,23 @@ WSGI_APPLICATION = 'msit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'msit',
-#         'USER': 'admin',
-#         'PASSWORD': 'password',
-#         'HOST': '52.10.51.123',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'myproject',
+         'USER': 'myprojectuser',
+         'PASSWORD': 'password',
+         'HOST': 'localhost',
+         'PORT': '5432',
+     }
+}
 
 
 # Password validation

@@ -1,6 +1,9 @@
 from django import template
 from django.template.defaultfilters import slugify
 
+'''
+Made by @htadg motherfuckers
+'''
 
 register = template.Library()
 
