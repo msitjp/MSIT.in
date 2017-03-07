@@ -120,6 +120,7 @@ class SecondaryNavigationMenu(models.Model):
 class Faculty(models.Model):
     title = models.CharField(max_length=1, choices=TITLES, default=1, blank=False)
     full_name = models.CharField(max_length=200, verbose_name='Full Name', blank=False)
+    qualifications = models.CharField(max_length=100, blank=True, null=True)
     profile_pic = models.ImageField(upload_to=image_name('full_name', 'faculty'), blank=True, null=True)
     category = models.CharField(max_length=30, choices=CATEGORY, default='teaching')
     designation = models.CharField(max_length=30, choices=DESIGNATIONS, blank=False)

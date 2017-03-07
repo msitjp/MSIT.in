@@ -21,7 +21,7 @@ class FacultyAdmin(admin.ModelAdmin):
      'shift', 'department', 'date_of_joining']
     list_filter = ('category', 'shift', 'department', 'designation', )
 
-    fields = ('full_name', 'image_tag', 'profile_pic', 'category',\
+    fields = ('title','full_name', 'qualifications', 'image_tag', 'profile_pic', 'category',\
      'designation', 'phone_number', 'email', 'shift', 'department',\
       'date_of_joining', 'description',)
     readonly_fields = ('image_tag',)
