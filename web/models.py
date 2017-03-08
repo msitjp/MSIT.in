@@ -111,8 +111,8 @@ class PrimaryNavigationMenu(models.Model):
         super(PrimaryNavigationMenu, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'Top Menu'
-        verbose_name_plural = 'Top Menus'
+        verbose_name = 'Menu - Top'
+        verbose_name_plural = 'Menu - Top'
 
 
 class SecondaryNavigationMenu(models.Model):
@@ -145,8 +145,8 @@ class SecondaryNavigationMenu(models.Model):
         super(SecondaryNavigationMenu, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'Secondary Menu'
-        verbose_name_plural = 'Secondary Menus'
+        verbose_name = 'Menu - Secondary'
+        verbose_name_plural = 'Menu - Secondary'
 
 
 class Faculty(models.Model):
@@ -202,8 +202,8 @@ class LatestNews(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     class Meta:
-        verbose_name = 'Latest News'
-        verbose_name_plural = 'Latest News'
+        verbose_name = 'Right - Latest News'
+        verbose_name_plural = 'Right - Latest News'
 
     def __unicode__(self):
         return "%s" % self.title
@@ -253,8 +253,8 @@ class Notice(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     class Meta:
-        verbose_name = 'Notice'
-        verbose_name_plural = 'Notices'
+        verbose_name = 'Right - Notice'
+        verbose_name_plural = 'Right - Notices'
 
     def __unicode__(self):
         return "%s" % self.title
@@ -290,16 +290,12 @@ class PrimaryMenu(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    class Meta:
-        verbose_name = 'Primary Menu'
-        verbose_name_plural = 'Primary Menus'
-
     def __unicode__(self):
         return "%s" % self.name
 
     class Meta:
-        verbose_name = 'Left Menu'
-        verbose_name_plural = 'Left Menus'
+        verbose_name = 'Menu - Left'
+        verbose_name_plural = 'Menu - Left'
 
 
 class SecondaryMenu(models.Model):
@@ -312,8 +308,8 @@ class SecondaryMenu(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     class Meta:
-        verbose_name = 'Secondary Menu'
-        verbose_name_plural = 'Secondary Menus'
+        verbose_name = 'Menu - Secondary'
+        verbose_name_plural = 'Menu - Secondary'
 
     def __unicode__(self):
         return "%s > %s" % (self.parent, self.name)
@@ -333,6 +329,10 @@ class TimeTable(models.Model):
     def __unicode__(self):
         return "%s" % (self.title)
 
+    class Meta:
+        verbose_name = 'Content - Time Table'
+        verbose_name_plural = 'Content - Time Tables'
+
 
 class Attendance(models.Model):
     title = models.CharField(max_length=50, help_text='Batch Name')
@@ -347,6 +347,10 @@ class Attendance(models.Model):
 
     def __unicode__(self):
         return "%s" % (self.title)
+
+    class Meta:
+        verbose_name = 'Content - Attendance'
+        verbose_name_plural = 'Content - Attendance'
 
 
 class Syllabus(models.Model):
@@ -363,6 +367,10 @@ class Syllabus(models.Model):
     def __unicode__(self):
         return "%s" % (self.title)
 
+    class Meta:
+        verbose_name = 'Content - Syllabus'
+        verbose_name_plural = 'Content - Syllabus'
+
 
 class StudentSociety(models.Model):
     name = models.CharField(max_length=50, help_text='Society Name')
@@ -372,6 +380,10 @@ class StudentSociety(models.Model):
 
     def __unicode__(self):
         return "%s" % (self.name)
+
+    class Meta:
+        verbose_name = 'Page - Society'
+        verbose_name_plural = 'Page - Societies'
 
 
 class Achievement(models.Model):
@@ -383,6 +395,10 @@ class Achievement(models.Model):
     def __unicode__(self):
         return "%s" % (self.title)
 
+    class Meta:
+        verbose_name = 'Page - Achievement'
+        verbose_name_plural = 'Page - Achievements'
+
 
 class Event(models.Model):
     title = models.CharField(max_length=50, help_text='Tab Name')
@@ -393,6 +409,10 @@ class Event(models.Model):
 
     def __unicode__(self):
         return "%s" % (self.title)
+
+    class Meta:
+        verbose_name = 'Page - Event'
+        verbose_name_plural = 'Page - Events'
 
 
 class Department(models.Model):
@@ -437,6 +457,10 @@ class Page(models.Model):
     def __unicode__(self):
         return "%s" % self.title
 
+    class Meta:
+        verbose_name = 'Page - All Other'
+        verbose_name_plural = 'Page - All Others'
+
 
 class Tab(models.Model):
     title = models.CharField(max_length=70)
@@ -456,8 +480,8 @@ class Marquee(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     class Meta:
-        verbose_name = 'Marquee Text'
-        verbose_name_plural = 'Marquee Texts'
+        verbose_name = 'Sliding Text'
+        verbose_name_plural = 'Sliding Text'
 
     def __unicode__(self):
         return "%s" % (self.title)

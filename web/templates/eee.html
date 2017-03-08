@@ -1,154 +1,154 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-            <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
-	<script type="text/javascript">
-		$('#societytab a').click(function (e) {
-			e.preventDefault()
-			$(this).tab('show')
-		})
-	</script>
-	<ul class="nav nav-tabs" id="tttab" role="tablist">
-		<li class="active">
-			<a href="#description" aria-controls="description" role="tab" data-toggle="tab">Program Description</a>
-		</li>
-		<li>
-			<a href="#firstshift" aria-controls="firstshift" role="tab" data-toggle="tab">Faculty (1st shift)</a>
-		</li>
-	</ul>
-	<div class="tab-content">
-		<div class="tab-pane active" id="description">
-			<p class="descriptioncontent">
-				The Department of Electrical & Electronics Engineering has a fine blend of experienced as well as young and dynamic personalities as faculty, is involved in providing quality education at Undergraduate (UG) level. They have an unceasing commitment towards students, helping them learn, grow, and develop and achieve their goals, whether it is becoming a professor, an entrepreneur, or joining industry. The research interests of the faculty members encompass a wide gamut of sub-disciplines of Electrical Engineering. Collaboration with faculty members from other disciplines, both within and outside the institute, is encouraged. The lab facilities and the infrastructure are regularly upgraded and are well supported by the institute and the industry.
-			</p>
-			<p class="descriptioncontent">
-				The department is actively engaged in teaching activities in the field of Power Systems, High Voltage Engineering, Advance Control Systems, Power Electronics and Drives, Signal Processing and Energy Studies. It has a broad based UG curriculum. The syllabi of the courses are continuously updated and the laboratories modernized to reflect the rapid changes in technology. Our undergraduate students are drawn from across the India.
-			</p>
-			<h5 class="descriptionheading">
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+            <script type="text/javascript">
+                $('#societytab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            </script>
+            <ul class="nav nav-tabs" id="tttab" role="tablist">
+                <li class="active">
+                    <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Program Description</a>
+                </li>
+                <li>
+                    <a href="#firstshift" aria-controls="firstshift" role="tab" data-toggle="tab">Faculty (1st shift)</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="description">
+                    <p class="descriptioncontent">
+                        The Department of Electrical & Electronics Engineering has a fine blend of experienced as well as young and dynamic personalities as faculty, is involved in providing quality education at Undergraduate (UG) level. They have an unceasing commitment towards
+                        students, helping them learn, grow, and develop and achieve their goals, whether it is becoming a professor, an entrepreneur, or joining industry. The research interests of the faculty members encompass a wide gamut of sub-disciplines
+                        of Electrical Engineering. Collaboration with faculty members from other disciplines, both within and outside the institute, is encouraged. The lab facilities and the infrastructure are regularly upgraded and are well supported
+                        by the institute and the industry.
+                    </p>
+                    <p class="descriptioncontent">
+                        The department is actively engaged in teaching activities in the field of Power Systems, High Voltage Engineering, Advance Control Systems, Power Electronics and Drives, Signal Processing and Energy Studies. It has a broad based UG curriculum. The syllabi
+                        of the courses are continuously updated and the laboratories modernized to reflect the rapid changes in technology. Our undergraduate students are drawn from across the India.
+                    </p>
+                    <h5 class="descriptionheading">
 				VISION
 			</h5>
-			<p class="descriptioncontent">
-				To build a culture of innovation and  research in students and make them ready to solve upcoming challenges of human life using computing.
-			</p>
-			<h5 class="descriptionheading">
+                    <p class="descriptioncontent">
+                        To build a culture of innovation and research in students and make them ready to solve upcoming challenges of human life using computing.
+                    </p>
+                    <h5 class="descriptionheading">
 				MISSION
 			</h5>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">M1:</span> Imparting quality technical education to young engineers with the supportive environment, preparing them for competitive exams for higher education, employment, and entrepreneural practices.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">M2:</span> To confer the young graduates with professional attitude, research aptitude, technical and communication skills with sensitivity towards the environment and society.
-			</p>
-			<h5 class=descriptionheading>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">M1:</span> Imparting quality technical education to young engineers with the supportive environment, preparing them for competitive exams for higher education, employment, and entrepreneural practices.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">M2:</span> To confer the young graduates with professional attitude, research aptitude, technical and communication skills with sensitivity towards the environment and society.
+                    </p>
+                    <h5 class=descriptionheading>
 				PROGRAM EDUCATIONAL OBJECTIVES (PEOs)
 			</h5>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO1:</span> To equip the students with fundamental knowledge of science and technology to excel in career or pursue higher studies.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO2:</span> To inculcate creative, analytical and critical reasoning skills for real world challenges.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO3:</span>  To contribute to society with professional and social ethics.
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO4:</span>  To instill soft skills, team work skills, leadership qualities and lifelong learning for successful career.
-			</p>
-			<h5 class="descriptionheading">
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">PEO1:</span> To equip the students with fundamental knowledge of science and technology to excel in career or pursue higher studies.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">PEO2:</span> To inculcate creative, analytical and critical reasoning skills for real world challenges.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">PEO3:</span> To contribute to society with professional and social ethics.
+                        <p class="descriptioncontent">
+                            <span class="descriptionheading">PEO4:</span> To instill soft skills, team work skills, leadership qualities and lifelong learning for successful career.
+                        </p>
+                        <h5 class="descriptionheading">
 				PROGRAM OUTCOMES
 			</h5>
-			<p class="descriptionheading">
-				Engineering Graduates will be able to:
-			</p>
-			<ol>
-				<li>
-					<span class="descriptionheading">Engineering knowledge:</span> Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.
-				</li>
-				<li>
-					<span class="descriptionheading">Problem analysis:</span> Identify, formulate, review research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.
-				</li>
-				<li>
-					<span class="descriptionheading">Design/development of solutions:</span> Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for the public health and safety, and the cultural, societal, and environmental considerations.
-				</li>
-				<li>
-					<span class="descriptionheading">Conduct investigations of complex problems:</span> Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.
-				</li>
-				<li>
-					<span class="descriptionheading">Modern tool usage:</span> Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modeling to complex engineering activities with an understanding of the limitations.
-				</li>
-				<li>
-					<span class="descriptionheading">The engineer and society:</span> Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
-				</li>
-				<li>
-					<span class="descriptionheading">Environment and sustainability:</span> Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.
-				</li>
-				<li>
-					<span class="descriptionheading">Ethics:</span> Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
-				</li>
-				<li>
-					<span class="descriptionheading">Individual and team work:</span> Function effectively as an individual, and as a member or leader indiverse teams, and in multidisciplinary settings.
-				</li>
-				<li>
-					<span class="descriptionheading">Communication:</span> Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.
-				</li>
-				<li>
-					<span class="descriptionheading">Project management and finance:</span> Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
-				</li>
-				<li>
-					<span class="descriptionheading">Life-long learning:</span> Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
-				</li>
-			</ol>
-		</div>
-		<div class="tab-pane" id="firstshift">
-		<div style="padding:1em;">
-			<table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;" id="eee">
-                <tbody>
-                    {% for i in morning %}
-                        <tr>
-                            <td style="padding:1em;">
-                                <p><strong>{{i.full_name}}</strong></p>
+                        <p class="descriptionheading">
+                            Engineering Graduates will be able to:
+                        </p>
+                        <ol>
+                            <li>
+                                <span class="descriptionheading">Engineering knowledge:</span> Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Problem analysis:</span> Identify, formulate, review research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics,
+                                natural sciences, and engineering sciences.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Design/development of solutions:</span> Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration
+                                for the public health and safety, and the cultural, societal, and environmental considerations.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Conduct investigations of complex problems:</span> Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of
+                                the information to provide valid conclusions.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Modern tool usage:</span> Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modeling to complex engineering activities
+                                with an understanding of the limitations.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">The engineer and society:</span> Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant
+                                to the professional engineering practice.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Environment and sustainability:</span> Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need
+                                for sustainable development.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Ethics:</span> Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Individual and team work:</span> Function effectively as an individual, and as a member or leader indiverse teams, and in multidisciplinary settings.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Communication:</span> Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective
+                                reports and design documentation, make effective presentations, and give and receive clear instructions.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Project management and finance:</span> Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a
+                                team, to manage projects and in multidisciplinary environments.
+                            </li>
+                            <li>
+                                <span class="descriptionheading">Life-long learning:</span> Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
+                            </li>
+                        </ol>
+                </div>
+                <div class="tab-pane" id="firstshift">
+                    <div style="padding:1em;">
+                        <table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;" id="eee">
+                            <tbody>
+                                {% for i in morning %}
+                                <tr>
+                                    <td style="padding:1em;">
+                                        <p><strong>{{i.full_name}}</strong></p>
 
-                                <p>{{i.designation}}</p>
+                                        <p>{{i.designation}}</p>
 
-                                <p>{{i.email}}</p>
-                            </td>
-                            <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-			</table>
+                                        <p>{{i.email}}</p>
+                                    </td>
+                                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
 
-			<p>&nbsp;</p>
-			</div>
-		</div>
-	</div>
-</div>
-            {% endblock %}
-            {% block right_nav %}
-            {% include 'right_menu.html' %}
-            {% endblock %}
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 
-    {% if facultySorter %}
-        <script>
-            q="querySelector('strong').innerHTML.split(' ')[1]";
-            s=">div>table>tbody";
-            ["#robotics", "#quizzes"]
-            .forEach(I=>{ document.querySelector(`${I}${s}`)
-            .innerHTML=[...document.querySelectorAll(`${I}${s}>tr`)]
-            .sort((a,b)=>eval(`a.${q}`)>eval(`b.${q}`)?1:-1)
-            .map(s=>s.outerHTML).join('')});
-        </script>
-    {% endif %}
-{% endblock %}
+{% if facultySorter %}
+<script>
+    q = "querySelector('strong').innerHTML.split(' ')[1]";
+    s = ">div>table>tbody";
+    ["#robotics", "#quizzes"]
+    .forEach(I => {
+        document.querySelector(`${I}${s}`)
+            .innerHTML = [...document.querySelectorAll(`${I}${s}>tr`)]
+            .sort((a, b) => eval(`a.${q}`) > eval(`b.${q}`) ? 1 : -1)
+            .map(s => s.outerHTML).join('')
+    });
+</script>
+{% endif %} {% endblock %}

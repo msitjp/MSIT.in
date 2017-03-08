@@ -1,177 +1,158 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-                <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 centralcontent">
-                    <script type="text/javascript">
-                        $('#mytab a').click(function (e) {
-                            e.preventDefault()
-                            $(this).tab('show')
-                        })
-                    </script>
-                    <ul class="nav nav-tabs" id="mytab" role="tablist">
-                        <li class="active">
-                            <a href="#dg" aria-controls="dg" role="tab" data-toggle="tab">Director General</a>
-                        </li>
-                        <li>
-                            <a href="#dir" aria-controls="dir" role="tab" data-toggle="tab">Director</a>
-                        </li>
-                        <li>
-                            <a href="#ddir" aria-controls="ddir" role="tab" data-toggle="tab">Deputy Director</a>
-                        </li>
-                        <li>
-                            <a href="#as" aria-controls="as" role="tab" data-toggle="tab">Administrative Staff</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active admincontent" id="dg">
-                            <div style="padding:1em;">
-                                <header>
-                                <h4>
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 centralcontent">
+            <script type="text/javascript">
+                $('#mytab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            </script>
+            <ul class="nav nav-tabs" id="mytab" role="tablist">
+                <li class="active">
+                    <a href="#dg" aria-controls="dg" role="tab" data-toggle="tab">Director General</a>
+                </li>
+                <li>
+                    <a href="#dir" aria-controls="dir" role="tab" data-toggle="tab">Director</a>
+                </li>
+                <li>
+                    <a href="#ddir" aria-controls="ddir" role="tab" data-toggle="tab">Deputy Director</a>
+                </li>
+                <li>
+                    <a href="#as" aria-controls="as" role="tab" data-toggle="tab">Administrative Staff</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active admincontent" id="dg">
+                    <div style="padding:1em;">
+                        <header>
+                            <h4>
                                     <strong>{{ director_general.full_name }}</strong>
                                     <img alt="" src="{{director_general.profile_pic.url}}" style="width: 174px; height: 178px; border-radius:100%; float: right;" />
                                 </h4>
-                                <h4>
+                            <h4>
                                     Director General
                                     <br>
                                     Surajmal Memorial Education Society
                                     <br>
                                     C-4 Janakpuri, New-Delhi-110058
                                 </h4>
-                                </header>
+                        </header>
 
-                                <p>&nbsp;</p>
+                        <p>&nbsp;</p>
 
-                                <p>Tel ( o ): +91-11-25552667<br>
-                                Fax: +91-11-25528116<br>
-                                E-mail: {{ director_general.email }}</p>
+                        <p>Tel ( o ): +91-11-25552667<br> Fax: +91-11-25528116<br> E-mail: {{ director_general.email }}</p>
 
-                                <p align="justify">&nbsp;</p>
-                                    {{ director_general.description|safe }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-pane admincontent" id="dir">
-                            <div style="padding:1em;">
-                                <p>&nbsp;</p>
+                        <p align="justify">&nbsp;</p>
+                        {{ director_general.description|safe }}
+                        </p>
+                    </div>
+                </div>
+                <div class="tab-pane admincontent" id="dir">
+                    <div style="padding:1em;">
+                        <p>&nbsp;</p>
 
-                                <h4>
+                        <h4>
                                     <strong>{{director.full_name}}</strong>
                                     <img alt="" src="{{director.profile_pic.url}}" style="width: 174px; height: 178px; border-radius:100%; float: right;" />
                                 </h4>
-                                <h4>Director<br>
+                        <h4>Director<br>
                                 Maharaja Surajmal Institute of Technology<br>
-                                C-4, JanakPuri, New Delhi 110058</h4>
-                                Tel (O): 011-25528117, 011-25552667<br>
-                                Fax : 011-25528226<br>
-                                e-mail : {{director.email}}
-                                <p>&nbsp;</p>
-                                &nbsp;
+                                C-4, JanakPuri, New Delhi 110058</h4> Tel (O): 011-25528117, 011-25552667<br> Fax : 011-25528226<br> e-mail : {{director.email}}
+                        <p>&nbsp;</p>
+                        &nbsp;
 
-                                <p style="text-align: justify;">{{director.description|safe}}</p>
-                            </div>
-                        </div>
-                        <div class="tab-pane admincontent" id="ddir">
-                            <div style="padding:1em;">
-                                <h4 style="text-align: justify;">&nbsp;</h4>
+                        <p style="text-align: justify;">{{director.description|safe}}</p>
+                    </div>
+                </div>
+                <div class="tab-pane admincontent" id="ddir">
+                    <div style="padding:1em;">
+                        <h4 style="text-align: justify;">&nbsp;</h4>
 
-                                <h4><strong>{{deputy_director.full_name}}</strong>
+                        <h4><strong>{{deputy_director.full_name}}</strong>
                                     <img alt="" src="{{deputy_director.profile_pic.url}}" style="width: 174px; height: 178px; border-radius:100%; float: right;" />
                                 </h4>
 
-                                <h4>Deputy Director, Second Shift<br>
+                        <h4>Deputy Director, Second Shift<br>
                                 Maharaja Surajmal Institute of Technology<br>
                                 C-4, JanakPuri, New Delhi 110058</h4>
 
-                                <p>&nbsp;</p>
+                        <p>&nbsp;</p>
 
-                                <p>Tel (O): 011-25528117, 011-25552667<br>
-                                e-mail : {{deputy_director.email}}</p>
+                        <p>Tel (O): 011-25528117, 011-25552667<br> e-mail : {{deputy_director.email}}</p>
 
-                                <p>&nbsp;</p>
+                        <p>&nbsp;</p>
 
-                                <p>&nbsp;</p>
+                        <p>&nbsp;</p>
 
-                                <p style="text-align: justify;">{{deputy_director.description|safe}}</p>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="as">
-                            <div style="padding: 1em;">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td style="text-align: center;">
-                                            <h6><strong>&nbsp; </strong>NAME</h6>
-                                            </td>
-                                            <td style="text-align: center;">
-                                            <h6><strong>&nbsp;</strong>DESIGNATION</h6>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                            <p style="text-align: center;"><span style="color:#FF0000;">Office Staff</span></p>
-                                            </td>
-                                        </tr>
-                                        {% for i in office %}
-                                            <tr>
-                                                <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
-                                                <td style="text-align: center;">{{i.designation}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        <tr>
-                                            <td colspan="2">
-                                                <p style="text-align: center;"><span style="color:#FF0000;">Accounts</span></p>
-                                            </td>
-                                        </tr>
-                                        {% for i in accounts %}
-                                            <tr>
-                                                <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
-                                                <td style="text-align: center;">{{i.designation}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        <tr>
-                                            <td colspan="2">
-                                            <p style="text-align: center;"><strong>&nbsp;</strong><span style="color:#FF0000;">Library Staff</span></p>
-                                            </td>
-                                        </tr>
-                                        {% for i in library %}
-                                            <tr>
-                                                <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
-                                                <td style="text-align: center;">{{i.designation}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        <tr>
-                                            <td colspan="2">
-                                            <p style="text-align: center;"><strong>&nbsp;</strong><span style="color:#FF0000;">Placement Staff</span></p>
-                                            </td>
-                                        </tr>
-                                        {% for i in placement %}
-                                            <tr>
-                                                <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
-                                                <td style="text-align: center;">{{i.designation}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                <p style="text-align: center;">&nbsp;</p>
-                                </div>
-                            </div>
+                        <p style="text-align: justify;">{{deputy_director.description|safe}}</p>
                     </div>
                 </div>
-            {% endblock %}
-            {% block right_nav %}
-                {% include 'right_menu.html' %}
-            {% endblock %}
+                <div class="tab-pane" id="as">
+                    <div style="padding: 1em;">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <h6><strong>&nbsp; </strong>NAME</h6>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <h6><strong>&nbsp;</strong>DESIGNATION</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <p style="text-align: center;"><span style="color:#FF0000;">Office Staff</span></p>
+                                    </td>
+                                </tr>
+                                {% for i in office %}
+                                <tr>
+                                    <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
+                                    <td style="text-align: center;">{{i.designation}}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="2">
+                                        <p style="text-align: center;"><span style="color:#FF0000;">Accounts</span></p>
+                                    </td>
+                                </tr>
+                                {% for i in accounts %}
+                                <tr>
+                                    <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
+                                    <td style="text-align: center;">{{i.designation}}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="2">
+                                        <p style="text-align: center;"><strong>&nbsp;</strong><span style="color:#FF0000;">Library Staff</span></p>
+                                    </td>
+                                </tr>
+                                {% for i in library %}
+                                <tr>
+                                    <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
+                                    <td style="text-align: center;">{{i.designation}}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="2">
+                                        <p style="text-align: center;"><strong>&nbsp;</strong><span style="color:#FF0000;">Placement Staff</span></p>
+                                    </td>
+                                </tr>
+                                {% for i in placement %}
+                                <tr>
+                                    <td style="text-align: center;"><strong>{{i.full_name}}</strong></td>
+                                    <td style="text-align: center;">{{i.designation}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <p style="text-align: center;">&nbsp;</p>
+                    </div>
+                </div>
+            </div>
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 {% endblock %}

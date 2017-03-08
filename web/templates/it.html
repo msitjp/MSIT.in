@@ -1,176 +1,177 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-            <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
-	<script type="text/javascript">
-		$('#societytab a').click(function (e) {
-			e.preventDefault()
-			$(this).tab('show')
-		})
-	</script>
-	<ul class="nav nav-tabs" id="tttab" role="tablist">
-		<li class="active">
-			<a href="#description" aria-controls="description" role="tab" data-toggle="tab">Program Description</a>
-		</li>
-		<li>
-			<a href="#firstshift" aria-controls="firstshift" role="tab" data-toggle="tab">Faculty (1st shift)</a>
-		</li>
-		<li>
-			<a href="#secondshift" aria-controls="secondshift" role="tab" data-toggle="tab">Faculty (2nd shift)</a>
-		</li>
-	</ul>
-	<div class="tab-content">
-		<div class="tab-pane active" id="description">
-			<p class="descriptioncontent">
-				Information Technology is most prominent and rapidly developing field in todays world. To maintain speed with latest trends in Information Technology industry, our Information Technology department is fully empowered. Our fully air-conditioned laboratories contain sufficient number of computer systems with latest hardware and software configuration. Since IT is composed of data processing and transmission, we are having latest communication hardware and software with proper multimedia support to each system. A very high speed internet connection is there in the labs. Net surfing is provided to the students as per their requirements. Guest faculty specialized in respective fields of Information Technology are invited from time to time to keep students in touch with latest trends in technology and to broaden their spectrum of knowledge. All facilities in the labs are continuously examined and upgraded whenever required. The department has well qualified and experienced faculty for guiding students in right direction. Our aim here is to expose students to latest and growing technologies which help them to become highly skilled IT professional.
-			</p>
-			<h5 class="descriptionheading">
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+            <script type="text/javascript">
+                $('#societytab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            </script>
+            <ul class="nav nav-tabs" id="tttab" role="tablist">
+                <li class="active">
+                    <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Program Description</a>
+                </li>
+                <li>
+                    <a href="#firstshift" aria-controls="firstshift" role="tab" data-toggle="tab">Faculty (1st shift)</a>
+                </li>
+                <li>
+                    <a href="#secondshift" aria-controls="secondshift" role="tab" data-toggle="tab">Faculty (2nd shift)</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="description">
+                    <p class="descriptioncontent">
+                        Information Technology is most prominent and rapidly developing field in todays world. To maintain speed with latest trends in Information Technology industry, our Information Technology department is fully empowered. Our fully air-conditioned laboratories
+                        contain sufficient number of computer systems with latest hardware and software configuration. Since IT is composed of data processing and transmission, we are having latest communication hardware and software with proper multimedia
+                        support to each system. A very high speed internet connection is there in the labs. Net surfing is provided to the students as per their requirements. Guest faculty specialized in respective fields of Information Technology are
+                        invited from time to time to keep students in touch with latest trends in technology and to broaden their spectrum of knowledge. All facilities in the labs are continuously examined and upgraded whenever required. The department
+                        has well qualified and experienced faculty for guiding students in right direction. Our aim here is to expose students to latest and growing technologies which help them to become highly skilled IT professional.
+                    </p>
+                    <h5 class="descriptionheading">
 				VISION
 			</h5>
-			<p class="descriptioncontent">
-				To build a culture of innovation and  research in students and make them ready to solve upcoming challenges of human life using computing.
-			</p>
-			<h5 class="descriptionheading">
+                    <p class="descriptioncontent">
+                        To build a culture of innovation and research in students and make them ready to solve upcoming challenges of human life using computing.
+                    </p>
+                    <h5 class="descriptionheading">
 				MISSION
 			</h5>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">M1:</span> To develop 'educational pathways' so that students can take their career towards success.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">M2:</span> To imbibe curiosity and support innovativeness by providing guidance to use the technology effectively.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">M3:</span> To inculcate management skills, integrity and honesty through curricular, co-curricular and extra-curricular activities.
-			</p>
-			<h5 class=descriptionheading>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">M1:</span> To develop 'educational pathways' so that students can take their career towards success.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">M2:</span> To imbibe curiosity and support innovativeness by providing guidance to use the technology effectively.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">M3:</span> To inculcate management skills, integrity and honesty through curricular, co-curricular and extra-curricular activities.
+                    </p>
+                    <h5 class=descriptionheading>
 				PROGRAM EDUCATIONAL OBJECTIVES (PEOs)
 			</h5>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO1:</span> Graduates of IT program are prepared to be employed in IT industries and be engaged in learning, understanding, and applying new ideas.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO2:</span> The graduates are prepared to perform effectively as individuals and team members in the workplace,growing into highly technical or project management and leadership roles.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO3:</span>  Graduates are prepared to apply basic principles of practices of computing grounded in mathematics and science for successfully completing software related projects to satisfy customer business objectives and productively engage in research.
-			</p>
-			<p class="descriptioncontent">
-				<span class="descriptionheading">PEO4:</span>  Graduates are prepared to pursue higher studies so that they can contribute to the teaching profession/research and development of information technology and other allied fields.
-			</p>
-			<h5 class="descriptionheading">
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">PEO1:</span> Graduates of IT program are prepared to be employed in IT industries and be engaged in learning, understanding, and applying new ideas.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">PEO2:</span> The graduates are prepared to perform effectively as individuals and team members in the workplace,growing into highly technical or project management and leadership roles.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">PEO3:</span> Graduates are prepared to apply basic principles of practices of computing grounded in mathematics and science for successfully completing software related projects to satisfy customer
+                        business objectives and productively engage in research.
+                    </p>
+                    <p class="descriptioncontent">
+                        <span class="descriptionheading">PEO4:</span> Graduates are prepared to pursue higher studies so that they can contribute to the teaching profession/research and development of information technology and other allied fields.
+                    </p>
+                    <h5 class="descriptionheading">
 				PROGRAM OUTCOMES
 			</h5>
-			<p class="descriptionheading">
-				Engineering Graduates will be able to:
-			</p>
-			<ol>
-				<li>
-					<span class="descriptionheading">Engineering knowledge:</span> Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.
-				</li>
-				<li>
-					<span class="descriptionheading">Problem analysis:</span> Identify, formulate, review research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.
-				</li>
-				<li>
-					<span class="descriptionheading">Design/development of solutions:</span> Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for the public health and safety, and the cultural, societal, and environmental considerations.
-				</li>
-				<li>
-					<span class="descriptionheading">Conduct investigations of complex problems:</span> Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.
-				</li>
-				<li>
-					<span class="descriptionheading">Modern tool usage:</span> Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modeling to complex engineering activities with an understanding of the limitations.
-				</li>
-				<li>
-					<span class="descriptionheading">The engineer and society:</span> Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
-				</li>
-				<li>
-					<span class="descriptionheading">Environment and sustainability:</span> Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.
-				</li>
-				<li>
-					<span class="descriptionheading">Ethics:</span> Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
-				</li>
-				<li>
-					<span class="descriptionheading">Individual and team work:</span> Function effectively as an individual, and as a member or leader indiverse teams, and in multidisciplinary settings.
-				</li>
-				<li>
-					<span class="descriptionheading">Communication:</span> Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.
-				</li>
-				<li>
-					<span class="descriptionheading">Project management and finance:</span> Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
-				</li>
-				<li>
-					<span class="descriptionheading">Life-long learning:</span> Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
-				</li>
-			</ol>
-		</div>
-		<div class="tab-pane" id="firstshift">
-			<div style="padding:1em;">
-			<table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;" id="it">
-                <tbody>
-                    {% for i in morning %}
-                        <tr>
-                            <td style="padding:1em;">
-                                <p><strong>{{i.full_name}}</strong></p>
+                    <p class="descriptionheading">
+                        Engineering Graduates will be able to:
+                    </p>
+                    <ol>
+                        <li>
+                            <span class="descriptionheading">Engineering knowledge:</span> Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Problem analysis:</span> Identify, formulate, review research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural
+                            sciences, and engineering sciences.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Design/development of solutions:</span> Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration
+                            for the public health and safety, and the cultural, societal, and environmental considerations.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Conduct investigations of complex problems:</span> Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the
+                            information to provide valid conclusions.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Modern tool usage:</span> Create, select, and apply appropriate techniques, resources, and modern engineering and IT tools including prediction and modeling to complex engineering activities
+                            with an understanding of the limitations.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">The engineer and society:</span> Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant
+                            to the professional engineering practice.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Environment and sustainability:</span> Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for
+                            sustainable development.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Ethics:</span> Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Individual and team work:</span> Function effectively as an individual, and as a member or leader indiverse teams, and in multidisciplinary settings.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Communication:</span> Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective
+                            reports and design documentation, make effective presentations, and give and receive clear instructions.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Project management and finance:</span> Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team,
+                            to manage projects and in multidisciplinary environments.
+                        </li>
+                        <li>
+                            <span class="descriptionheading">Life-long learning:</span> Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
+                        </li>
+                    </ol>
+                </div>
+                <div class="tab-pane" id="firstshift">
+                    <div style="padding:1em;">
+                        <table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;" id="it">
+                            <tbody>
+                                {% for i in morning %}
+                                <tr>
+                                    <td style="padding:1em;">
+                                        <p><strong>{{i.full_name}}</strong></p>
 
-                                <p>{{i.designation}}</p>
+                                        <p>{{i.designation}}</p>
 
-                                <p>{{i.email}}</p>
-                            </td>
-                            <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-			</table>
-			</div>
-		</div>
-		<div class="tab-pane" id="secondshift">
-			<div style="padding:1em;">
-				<table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;">
-                    <tbody>
-                        {% for i in evening %}
-                            <tr>
-                                <td style="padding:1em;">
-                                    <p><strong>{{i.full_name}}</strong></p>
+                                        <p>{{i.email}}</p>
+                                    </td>
+                                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="secondshift">
+                    <div style="padding:1em;">
+                        <table border="0" cellpadding="1" cellspacing="1" class="table-striped" style="//width:500px;">
+                            <tbody>
+                                {% for i in evening %}
+                                <tr>
+                                    <td style="padding:1em;">
+                                        <p><strong>{{i.full_name}}</strong></p>
 
-                                    <p>{{i.designation}}</p>
+                                        <p>{{i.designation}}</p>
 
-                                    <p>{{i.email}}</p>
-                                </td>
-                                <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-				</table>
-				</div>
-		</div>
-	</div>
-</div>
-            {% endblock %}
-            {% block right_nav %}
-            {% include 'right_menu.html' %}
-            {% endblock %}
+                                        <p>{{i.email}}</p>
+                                    </td>
+                                    <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 
-    {% if facultySorter %}
-        <script>
-            q="querySelector('strong').innerHTML.split(' ')[1]";
-            s=">div>table>tbody";
-            ["#robotics", "#quizzes"]
-            .forEach(I=>{ document.querySelector(`${I}${s}`)
-            .innerHTML=[...document.querySelectorAll(`${I}${s}>tr`)]
-            .sort((a,b)=>eval(`a.${q}`)>eval(`b.${q}`)?1:-1)
-            .map(s=>s.outerHTML).join('')});
-        </script>
-    {% endif %}
-{% endblock %}
+{% if facultySorter %}
+<script>
+    q = "querySelector('strong').innerHTML.split(' ')[1]";
+    s = ">div>table>tbody";
+    ["#robotics", "#quizzes"]
+    .forEach(I => {
+        document.querySelector(`${I}${s}`)
+            .innerHTML = [...document.querySelectorAll(`${I}${s}>tr`)]
+            .sort((a, b) => eval(`a.${q}`) > eval(`b.${q}`) ? 1 : -1)
+            .map(s => s.outerHTML).join('')
+    });
+</script>
+{% endif %} {% endblock %}

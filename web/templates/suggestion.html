@@ -1,29 +1,16 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-7" style="background: #fff; //height: 50em; border-radius: 1em; padding: 1em;">
 
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-            <div class="col-md-7" style="background: #fff; //height: 50em; border-radius: 1em; padding: 1em;">
-
-<h4>Suggestions/Complaints</h4>
-<hr>
-<p>Kindly submit your suggestions or complaints on&nbsp;<strong>director@msit.in</strong></p>
+            <h4>Suggestions/Complaints</h4>
+            <hr>
+            <p>Kindly submit your suggestions or complaints on&nbsp;<strong>director@msit.in</strong></p>
 
 
-</div>
-            {% endblock %}
-            {% block right_nav %}
-                {% include 'right_menu.html' %}
-            {% endblock %}
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 {% endblock %}

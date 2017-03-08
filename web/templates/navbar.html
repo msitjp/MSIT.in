@@ -20,60 +20,72 @@
             <div class="col-md-1"></div>
             <ul class="nav navbar-nav col-md-9">
                 {% for nav in primary_navbar %}
-                    <li><a href={{ nav.link }}>{{ nav.title }}</a></li>
+                <li><a href={{ nav.link }}>{{ nav.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
         <div class="container">
             <div class="col-md-10">
                 <div class="col-md-2">
-                    <center><a href="/"><img class="img-responsive" style="margin-top:0.5em; margin-bottom:0.5em;" src="{% static 'img/msit.png' %}" height="75" width="80" alt="Maharaja Surajmal Institute of Technology" title="Maharaja Surajmal Institute of Technology"></a></center>
+                    <center>
+                        <a href="/"><img class="img-responsive" style="margin-top:0.5em; margin-bottom:0.5em;" src="{% static 'img/msit.png' %}" height="75" width="80" alt="Maharaja Surajmal Institute of Technology" title="Maharaja Surajmal Institute of Technology"></a>
+                    </center>
                 </div>
                 <div class="col-md-10">
-                    <div class="row"><center><h3>Maharaja Surajmal Institute of Technology</h3></center></div>
                     <div class="row">
-                        <center><p>Affiliated to GGSIPU | ISO 9001:2008 Certified | Approved by AICTE</p></center>
+                        <center>
+                            <h3>Maharaja Surajmal Institute of Technology</h3></center>
+                    </div>
+                    <div class="row">
+                        <center>
+                            <p>Affiliated to GGSIPU | ISO 9001:2008 Certified | Approved by AICTE</p>
+                        </center>
                     </div>
                 </div>
             </div>
         </div>
         <!-- <div data-spy="affix" data-offset-top="121" style="height: 50px; width:100%; top:0; z-index: 999;"> -->
-            <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2" style="background:#1d1d1d;">
-                <ul class="nav navbar-nav navbar-right col-md-10">
-                    {% for nav in secondary_navbar %}
-                        <li><a href="{{ nav.link }}">{{ nav.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2" style="background:#1d1d1d;">
+            <ul class="nav navbar-nav navbar-right col-md-10">
+                {% for nav in secondary_navbar %}
+                <li><a href="{{ nav.link }}">{{ nav.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
         <!-- </div> -->
     </div>
     {% if marquee %}
-        <div class="marquee-text"style="">
-            <marquee class="col-md-12">
-                {% for text in marquee %}
-                    •&nbsp;{{ text.content }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {% endfor %}
-            </marquee>
-        </div>
+    <div class="marquee-text" style="">
+        <marquee class="col-md-12">
+            {% for text in marquee %} •&nbsp;{{ text.content }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endfor %}
+        </marquee>
+    </div>
     {% endif %}
 </nav>
 <style>
-.marquee-text{
-    background:white;
-    color:#00796b;
-}
-.marquee-text > marquee{
-    padding: 5px;
-    font-size: 1.2em;
-}
+    .marquee-text {
+        background: white;
+        color: #00796b;
+    }
+
+    .marquee-text>marquee {
+        padding: 5px;
+        font-size: 1.2em;
+    }
 </style>
 <script type="text/javascript">
-
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','{% static 'js/analytics.js' %}','ga');
-	ga('create', 'UA-74862169-1', 'auto');
-	ga('send', 'pageview');
-
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '{% static '
+        js / analytics.js ' %}', 'ga');
+    ga('create', 'UA-74862169-1', 'auto');
+    ga('send', 'pageview');
 </script>

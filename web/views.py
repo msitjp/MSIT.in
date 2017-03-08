@@ -2,6 +2,7 @@ from django.conf import settings
 from django.shortcuts import render, HttpResponse, Http404, get_object_or_404
 from .models import *
 
+
 def getContext():
     primary_navbar = PrimaryNavigationMenu.objects.all().order_by('order')
     secondary_navbar = SecondaryNavigationMenu.objects.all().order_by('order')
@@ -28,33 +29,36 @@ def home(request):
     context = getContext()
     return render(request, 'home.html', context=context)
 
+
 def timetable(request):
     try:
         morning = TimeTable.objects.filter(shift='M')
     except:
-        morning=[]
+        morning = []
     try:
         evening = TimeTable.objects.filter(shift='E')
     except:
-        evening=[]
+        evening = []
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
     return render(request, 'timetable.html', context=context)
 
+
 def attendance(request):
     try:
         morning = Attendance.objects.filter(shift='M')
     except:
-        morning=[]
+        morning = []
     try:
         evening = Attendance.objects.filter(shift='E')
     except:
-        evening=[]
+        evening = []
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
     return render(request, 'attendance.html', context=context)
+
 
 def syllabus(request):
     try:
@@ -65,6 +69,7 @@ def syllabus(request):
     context['syllabus'] = syllabus
     return render(request, 'syllabus.html', context=context)
 
+
 def society(request):
     try:
         societies = StudentSociety.objects.all()
@@ -74,6 +79,7 @@ def society(request):
     context['societies'] = societies
     return render(request, 'society.html', context=context)
 
+
 def achievements(request):
     try:
         achievements = Achievement.objects.all()
@@ -82,6 +88,7 @@ def achievements(request):
     context = getContext()
     context['achievements'] = achievements
     return render(request, 'achievements.html', context=context)
+
 
 def events(request):
     try:
@@ -95,6 +102,7 @@ def events(request):
 #
 # Available Department Choices are ::
 # CSE, IT, ECE, EEE, APPLIED SCIENCES
+
 
 def get_modifier(department):
     '''
@@ -113,37 +121,43 @@ def get_modifier(department):
     elif a == 3:
         modifier = 'date_of_joining'
     if b == 2:
-        modifier = '-'+modifier
+        modifier = '-' + modifier
     return modifier
+
 
 def get_faculties(department, modifier):
     print modifier
     context = {}
     if department.display_1st_faculty:
         try:
-            morning = Faculty.objects.filter(category__icontains='teaching', department=department , shift='M').order_by(modifier)
+            morning = Faculty.objects.filter(
+                category__icontains='teaching', department=department, shift='M').order_by(modifier)
         except:
             morning = []
         context['morning'] = morning
     if department.display_2nd_faculty:
         try:
-            evening = Faculty.objects.filter(category__icontains='teaching', department=department , shift='E').order_by(modifier)
+            evening = Faculty.objects.filter(
+                category__icontains='teaching', department=department, shift='E').order_by(modifier)
         except:
             evening = []
         context['evening'] = evening
     if department.display_1st_assistant:
         try:
-            mlab = Faculty.objects.filter(category__icontains='assistant', department=department , shift='M').order_by(modifier)
+            mlab = Faculty.objects.filter(
+                category__icontains='assistant', department=department, shift='M').order_by(modifier)
         except:
             mlab = []
         context['mlab'] = mlab
     if department.display_2nd_assistant:
         try:
-            elab = Faculty.objects.filter(category__icontains='assistant', department=department , shift='E').order_by(modifier)
+            elab = Faculty.objects.filter(
+                category__icontains='assistant', department=department, shift='E').order_by(modifier)
         except:
             elab = []
         context['elab'] = elab
     return context
+
 
 def cse(request):
     department = Department.objects.get(department='CSE')
@@ -157,6 +171,7 @@ def cse(request):
     print context
     return render(request, 'faculty.html', context=context)
 
+
 def it(request):
     department = Department.objects.get(department='IT')
     tabs = department.departmentpage_set.all()
@@ -167,6 +182,7 @@ def it(request):
     context['settings'] = department
     context['tabs'] = tabs
     return render(request, 'faculty.html', context=context)
+
 
 def ece(request):
     department = Department.objects.get(department='ECE')
@@ -179,6 +195,7 @@ def ece(request):
     context['tabs'] = tabs
     return render(request, 'faculty.html', context=context)
 
+
 def eee(request):
     department = Department.objects.get(department='EEE')
     tabs = department.departmentpage_set.all()
@@ -189,6 +206,7 @@ def eee(request):
     context['settings'] = department
     context['tabs'] = tabs
     return render(request, 'faculty.html', context=context)
+
 
 def ap(request):
     department = Department.objects.get(department='APPLIED SCIENCES')
@@ -201,17 +219,20 @@ def ap(request):
     context['tabs'] = tabs
     return render(request, 'faculty.html', context=context)
 
+
 def latestNews(request):
     news = LatestNews.objects.all().order_by('-created_at')
     context = getContext()
     context['news'] = news
     return render(request, 'latest.html', context=context)
 
+
 def notices(request):
     notices = Notice.objects.all().order_by('-created_at')
     context = getContext()
     context['notices'] = notices
     return render(request, 'notices.html', context=context)
+
 
 def custom(request, key):
     filters = [' ', '@', '#', '^', '!', '&', '~', '/', '`']
@@ -222,7 +243,7 @@ def custom(request, key):
             break
     if not Flag:
         raise Http404
-    key = '/'+key
+    key = '/' + key
     page = get_object_or_404(Page, link=key)
     tabs = page.tab_set.all()
     context = getContext()
