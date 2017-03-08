@@ -31,14 +31,9 @@ def home(request):
 
 
 def timetable(request):
-    try:
-        morning = TimeTable.objects.filter(shift='M')
-    except:
-        morning = []
-    try:
-        evening = TimeTable.objects.filter(shift='E')
-    except:
-        evening = []
+    morning = TimeTable.objects.filter(shift='M') or []
+    evening = TimeTable.objects.filter(shift='E') or []
+
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
@@ -46,14 +41,8 @@ def timetable(request):
 
 
 def attendance(request):
-    try:
-        morning = Attendance.objects.filter(shift='M')
-    except:
-        morning = []
-    try:
-        evening = Attendance.objects.filter(shift='E')
-    except:
-        evening = []
+    morning = Attendance.objects.filter(shift='M') or []
+    evening = Attendance.objects.filter(shift='E') or []
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
@@ -61,30 +50,21 @@ def attendance(request):
 
 
 def syllabus(request):
-    try:
-        syllabus = Syllabus.objects.all()
-    except:
-        syllabus = []
+    syllabus = Syllabus.objects.all() or []
     context = getContext()
     context['syllabus'] = syllabus
     return render(request, 'syllabus.html', context=context)
 
 
 def society(request):
-    try:
-        societies = StudentSociety.objects.all()
-    except:
-        societies = []
+    societies = StudentSociety.objects.all() or []
     context = getContext()
     context['societies'] = societies
     return render(request, 'society.html', context=context)
 
 
 def achievements(request):
-    try:
-        achievements = Achievement.objects.all()
-    except:
-        achievements = []
+    achievements = Achievement.objects.all() or []
     context = getContext()
     context['achievements'] = achievements
     return render(request, 'achievements.html', context=context)
@@ -129,32 +109,20 @@ def get_faculties(department, modifier):
     print modifier
     context = {}
     if department.display_1st_faculty:
-        try:
-            morning = Faculty.objects.filter(
-                category__icontains='teaching', department=department, shift='M').order_by(modifier)
-        except:
-            morning = []
+        morning = Faculty.objects.filter(
+            category__icontains='teaching', department=department, shift='M').order_by(modifier) or []
         context['morning'] = morning
     if department.display_2nd_faculty:
-        try:
-            evening = Faculty.objects.filter(
-                category__icontains='teaching', department=department, shift='E').order_by(modifier)
-        except:
-            evening = []
+        evening = Faculty.objects.filter(
+            category__icontains='teaching', department=department, shift='E').order_by(modifier) or []
         context['evening'] = evening
     if department.display_1st_assistant:
-        try:
-            mlab = Faculty.objects.filter(
-                category__icontains='assistant', department=department, shift='M').order_by(modifier)
-        except:
-            mlab = []
+        mlab = Faculty.objects.filter(
+            category__icontains='assistant', department=department, shift='M').order_by(modifier) or []
         context['mlab'] = mlab
     if department.display_2nd_assistant:
-        try:
-            elab = Faculty.objects.filter(
-                category__icontains='assistant', department=department, shift='E').order_by(modifier)
-        except:
-            elab = []
+        elab = Faculty.objects.filter(
+            category__icontains='assistant', department=department, shift='E').order_by(modifier) or []
         context['elab'] = elab
     return context
 
