@@ -47,7 +47,26 @@
             </div>
         <!-- </div> -->
     </div>
+    {% if marquee %}
+        <div class="marquee-text"style="">
+            <marquee class="col-md-12">
+                {% for text in marquee %}
+                    •&nbsp;{{ text.content }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% endfor %}
+            </marquee>
+        </div>
+    {% endif %}
 </nav>
+<style>
+.marquee-text{
+    background:white;
+    color:#00796b;
+}
+.marquee-text > marquee{
+    padding: 5px;
+    font-size: 1.2em;
+}
+</style>
 <script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

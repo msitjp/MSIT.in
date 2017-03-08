@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
  TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event,\
   PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
-  DepartmentPage, Page, Tab, Notice
+  DepartmentPage, Page, Tab, Notice, Marquee
 
 class FacultyAdmin(admin.ModelAdmin):
 
@@ -117,3 +117,4 @@ admin.site.register(PrimaryNavigationMenu, PrimaryNavigationMenuAdmin)
 admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Page, PageAdmin)
+admin.site.register(Marquee)

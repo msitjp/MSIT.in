@@ -11,13 +11,15 @@ def getContext():
     secondary_menu = []
     for menu in primary_menu:
         secondary_menu = SecondaryMenu.objects.all()
+    marquee = Marquee.objects.all()
     context = {
         'primary_navbar': primary_navbar,
         'secondary_navbar': secondary_navbar,
         'primary_menu': primary_menu,
         'secondary_menu': secondary_menu,
         'latest_news': latest_news,
-        'notices': notices
+        'notices': notices,
+        'marquee': marquee
     }
     return context
 
