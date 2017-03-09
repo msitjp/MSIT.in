@@ -170,6 +170,8 @@ class Faculty(models.Model):
         max_length=30, choices=DEPARTMENT, blank=True, null=True)
     date_of_joining = models.DateField(
         null=True, blank=True, verbose_name='Date Of Joining')
+    experience = models.CharField(
+    max_length=200, verbose_name='Experience', blank=True, null=True)
     description = RichTextUploadingField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)

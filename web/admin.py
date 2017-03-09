@@ -24,7 +24,7 @@ class FacultyAdmin(admin.ModelAdmin):
 
     fields = ('title', 'full_name', 'qualifications', 'image_tag', 'profile_pic', 'category',
               'designation', 'phone_number', 'email', 'shift', 'department',
-              'date_of_joining', 'description',)
+              'date_of_joining', 'experience', 'description',)
     readonly_fields = ('image_tag',)
 
 

@@ -44,8 +44,10 @@ $(document).ready(function() {
 });
 });
 
-
-
+//vignesh's way of opening external links in new tab
+document.querySelectorAll('a').forEach(e => {
+    if(!(e.href).match(RegExp('http://www.msit.in', 'g' )))
+        e.target = '_blank';
+})
 
 // Minified Extra JS files
-

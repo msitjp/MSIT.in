@@ -84,8 +84,7 @@
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '{% static '
-        js / analytics.js ' %}', 'ga');
+    })(window, document, 'script', '{% static 'js/analytics.js' %}', 'ga');
     ga('create', 'UA-74862169-1', 'auto');
     ga('send', 'pageview');
 </script>
