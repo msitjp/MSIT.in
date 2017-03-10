@@ -494,7 +494,7 @@ class Marquee(models.Model):
         return "%s" % self.title
 
     def clean(self):
-        super(PrimaryNavigationMenu, self).clean()
+        super(Marquees, self).clean()
         if str(self.link) == "" and str(self.files) == "":
             raise ValidationError(
                 "Navigation menu must have either a link to redirect or a file attached to it")

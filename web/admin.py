@@ -60,6 +60,12 @@ class PrimaryNavigationMenuAdmin(admin.ModelAdmin):
     ordering = ('order',)
     list_editable = ('order', 'link', 'files',)
 
+class MarqueeAdmin(admin.ModelAdmin):
+    list_display = ['title', 'order', 'link', 'files']
+    list_filter = ('order',)
+    ordering = ('order',)
+    list_editable = ('order', 'link', 'files',)
+
 
 class SecondaryNavigationMenuAdmin(admin.ModelAdmin):
     list_display = ['title', 'order', 'link', 'files']
@@ -133,4 +139,4 @@ admin.site.register(PrimaryNavigationMenu, PrimaryNavigationMenuAdmin)
 admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Page, PageAdmin)
-admin.site.register(Marquee)
+admin.site.register(Marquee, MarqueeAdmin)
