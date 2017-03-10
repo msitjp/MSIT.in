@@ -476,8 +476,13 @@ class Tab(models.Model):
 
 
 class Marquee(models.Model):
-    title = models.CharField(max_length=70)
-    content = models.CharField(max_length=500)
+    title = models.CharField(verbose_name="Link Title",
+                             max_length=50, help_text='Text to show in the Marquee')
+    link = models.CharField(
+        max_length=1000, help_text='Link to redirect to', blank=True, null=True)
+    files = models.FileField(upload_to=image_name(
+        'title', 'marquee'), blank=True, null=True)
+    order = models.PositiveIntegerField(default=1, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -486,4 +491,15 @@ class Marquee(models.Model):
         verbose_name_plural = 'Sliding Text'
 
     def __unicode__(self):
-        return "%s" % (self.title)
+        return "%s" % self.title
+
+    def clean(self):
+        super(PrimaryNavigationMenu, self).clean()
+        if str(self.link) == "" and str(self.files) == "":
+            raise ValidationError(
+                "Navigation menu must have either a link to redirect or a file attached to it")
+        elif str(self.link) != "" and str(self.files) != "":
+            raise ValidationError(
+                "Please enter either a link to redirect or a file to attach with the Menu item.")
+        else:
+            return self

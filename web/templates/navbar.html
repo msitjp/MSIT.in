@@ -57,7 +57,7 @@
     {% if marquee %}
     <div class="marquee-text" style="">
         <marquee class="col-md-12">
-            {% for text in marquee %} •&nbsp;{{ text.content }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endfor %}
+            {% for text in marquee %} •&nbsp;<a href="{% if text.link %}{{text.link}}{% else %}{{text.files.url}}{% endif %}">{{ text.title }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endfor %}
         </marquee>
     </div>
     {% endif %}
