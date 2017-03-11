@@ -442,7 +442,7 @@ class Department(models.Model):
 class DepartmentPage(models.Model):
     department_name = models.ForeignKey(Department)
     title = models.CharField(max_length=70)
-    order = models.PositiveIntegerField(default=1)
+    order = models.PositiveIntegerField(unique=True)
     content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -468,7 +468,7 @@ class Page(models.Model):
 class Tab(models.Model):
     title = models.CharField(max_length=70)
     parent = models.ForeignKey(Page, on_delete=models.CASCADE)
-    order = models.PositiveIntegerField(default=1)
+    order = models.PositiveIntegerField(unique=True)
     content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
