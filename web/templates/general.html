@@ -11,7 +11,7 @@
             </script>
             <ul class="nav nav-tabs" id="mytab" role="tablist">
                 {% for i in tabs %}
-                <li {% if forloop.counter==1 %}class="active" {% endif %}>
+                <li {% if forloop.counter == 1 %}class="active" {% endif %}>
                     <a href="#{{i.title|slugify}}" aria-controls="{{i.title|slugify}}" role="tab" data-toggle="tab">{{i.title}}</a>
                 </li>
                 {% endfor %}
