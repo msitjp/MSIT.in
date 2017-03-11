@@ -129,7 +129,7 @@ def get_faculties(department, modifier):
 
 def cse(request):
     department = Department.objects.get(department='CSE')
-    tabs = department.departmentpage_set.all()
+    tabs = department.departmentpage_set.all().order_by('order')
     modifier = get_modifier(department)
     context = getContext()
     context = context.copy()
@@ -142,7 +142,7 @@ def cse(request):
 
 def it(request):
     department = Department.objects.get(department='IT')
-    tabs = department.departmentpage_set.all()
+    tabs = department.departmentpage_set.all().order_by('order')
     modifier = get_modifier(department)
     context = getContext()
     context = context.copy()
@@ -154,7 +154,7 @@ def it(request):
 
 def ece(request):
     department = Department.objects.get(department='ECE')
-    tabs = department.departmentpage_set.all()
+    tabs = department.departmentpage_set.all().order_by('order')
     modifier = get_modifier(department)
     context = getContext()
     context = context.copy()
@@ -166,7 +166,7 @@ def ece(request):
 
 def eee(request):
     department = Department.objects.get(department='EEE')
-    tabs = department.departmentpage_set.all()
+    tabs = department.departmentpage_set.all().order_by('order')
     modifier = get_modifier(department)
     context = getContext()
     context = context.copy()
@@ -178,7 +178,7 @@ def eee(request):
 
 def ap(request):
     department = Department.objects.get(department='APPLIED SCIENCES')
-    tabs = department.departmentpage_set.all()
+    tabs = department.departmentpage_set.all().order_by('order')
     modifier = get_modifier(department)
     context = getContext()
     context = context.copy()
@@ -213,7 +213,7 @@ def custom(request, key):
         raise Http404
     key = '/' + key
     page = get_object_or_404(Page, link=key)
-    tabs = page.tab_set.all()
+    tabs = page.tab_set.all().order_by('order')
     context = getContext()
     context['tabs'] = tabs
     print context
