@@ -201,7 +201,7 @@
        background: rgba(0, 0, 0, 0.7); }
 
       #centralcarousel .carousel-inner .item img {
-        height: 33vh;
+        height: 24em;
       }
 
      /*------------------------------------*/
@@ -407,10 +407,20 @@
      /*--------------------------------*/
      @media only screen and (min-width: 720px) {
        #mobileview {
-         display: none; } }
+         display: none; }
+       
+      }
+       }
      @media only screen and (max-width: 720px) {
        #deskview {
-         display: none; } }
+         display: none; }
+       
+        }
+
+      @media only screen and (max-width: 450px) {
+        #centralcarousel .carousel-inner .item img {
+        height: 15em;
+      }
 
 		 #bs-example-navbar-collapse-1 > ul > li > a{
 		    font-size:1em;
