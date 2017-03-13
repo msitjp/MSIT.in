@@ -1,223 +1,212 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <style>
+            div.carousel-caption {
+                color: white !important;
+            }
+        </style>
+        <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 centralcontent">
+            <h4>Welcome</h4>
+            <hr>
+            <div class="carousel slide" data-ride="carousel" data-pause="false" id="centralcarousel" data-interval="5000">
+                <ol class="carousel-indicators">
+                    <li data-target="#centralcarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#centralcarousel" data-slide-to="1"></li>
+                    <li data-target="#centralcarousel" data-slide-to="2"></li>
+                    <li data-target="#centralcarousel" data-slide-to="3"></li>
+                    <li data-target="#centralcarousel" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
 
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-                <style>
-                    div.carousel-caption{color:white !important;}
-                </style>
-                <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 centralcontent">
-                    <h4>Welcome</h4>
-                    <hr>
-                    <div class="carousel slide" data-ride="carousel" data-pause="false" id="centralcarousel" data-interval="5000">
-                        <ol class="carousel-indicators">
-                            <li data-target="#centralcarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#centralcarousel" data-slide-to="1"></li>
-                            <li data-target="#centralcarousel" data-slide-to="2"></li>
-                            <li data-target="#centralcarousel" data-slide-to="3"></li>
-                            <li data-target="#centralcarousel" data-slide-to="4"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-
-                                <img alt="msitcollage" src='{% static "img/mainPage/main_slide_1.jpg" %}'>
-                                <div class="carousel-caption">
-                                    <p>Maharaja Surajmal Group of Institutions</p>
+                        <img alt="msitcollage" src="{% static "img/mainPage/main_slide_1.jpg" %}">
+                        <div class="carousel-caption">
+                            <p>Maharaja Surajmal Group of Institutions</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="avensis" src="{% static "img/mainPage/main_slide_2.jpg" %}">
+                        <div class="carousel-caption">
+                            <p>Avensis - The Annual Techfest for year 2016</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="msitcollage" src="{% static "img/mainPage/main_slide_3.jpg" %}">
+                        <div class="carousel-caption">
+                            <p>Genesis - The Annual Cultural fest for year 2016</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="msitcollage" src="{% static "img/mainPage/main_slide_4.jpg" %}">
+                        <div class="carousel-caption">
+                            <p>Faculty Development Program</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="msitcollage" src="{% static "img/mainPage/main_slide_5.jpg" %}">
+                        <div class="carousel-caption">
+                            <p>Visit of Accenture M.D. at campus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <h4>Virtual Tour</h4>
+            <div class="well hidden-xs">
+                <div class="carousel slide" data-pause="false" id="carouselbelow" data-ride="carousel" data-interval="2000">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_1.jpg" %}">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <img alt="avensis" src='{% static "img/mainPage/main_slide_2.jpg" %}'>
-                                <div class="carousel-caption">
-                                    <p>Avensis - The Annual Techfest for year 2016</p>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_2.jpg" %}">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <img alt="msitcollage" src='{% static "img/mainPage/main_slide_3.jpg" %}'>
-                                <div class="carousel-caption">
-                                    <p>Genesis - The Annual Cultural fest for year 2016</p>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_3.jpg" %}">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <img alt="msitcollage" src='{% static "img/mainPage/main_slide_4.jpg" %}'>
-                                <div class="carousel-caption">
-                                    <p>Faculty Development Program</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img alt="msitcollage" src='{% static "img/mainPage/main_slide_5.jpg" %}'>
-                                <div class="carousel-caption">
-                                    <p>Visit of Accenture M.D. at campus</p>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_4.jpg" %}">
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <h4>Virtual Tour</h4>
-                    <div class="well hidden-xs">
-                        <div class="carousel slide" data-pause="false" id="carouselbelow" data-ride="carousel" data-interval="2000">
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <div class="row">
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_1.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_2.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_3.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_4.jpg" %}">
-                                            </a>
-                                        </div>
-                                    </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_5.jpg" %}">
+                                    </a>
                                 </div>
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_5.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_6.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_7.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_8.jpg" %}">
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_6.jpg" %}">
+                                    </a>
                                 </div>
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_9.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_10.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_11.jpg" %}">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3">
-                                            <a class="thumbnail">
-                                                <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_12.jpg" %}">
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_7.jpg" %}">
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_8.jpg" %}">
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <center>
-                            <button type="button" class="btn" data-toggle="modal" data-target="#gallery">
-                                View all photos
-                            </button>
-                        </center>
-                        <div class="modal fade" id="gallery" tabindex="-1" role="dialog" aria-labelledby="galleryLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="galleryLabel">Virtual Tour</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="carousel slide" data-ride="carousel" id="galleryCarousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#galleryCarousel" data-slide-to="0" class="active"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="1"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="2"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="3"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="4"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="5"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="6"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="7"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="8"></li>
-                                                <li data-target="#galleryCarousel" data-slide-to="9"></li>
-                                            </ol>
-                                            <div class="carousel-inner" role="listbox" data-interval="3000">
-                                                <div class="item active">
-                                                    <img alt="First slide" src="{% static "img/mainPage/slide_1.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Second slide" src="{% static "img/mainPage/slide_2.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Third slide" src="{% static "img/mainPage/slide_3.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Fourth slide" src="{% static "img/mainPage/slide_4.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Fifth slide" src="{% static "img/mainPage/slide_5.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Sixth slide" src="{% static "img/mainPage/slide_6.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Seventh slide" src="{% static "img/mainPage/slide_7.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Eighth slide" src="{% static "img/mainPage/slide_8.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Nine slide" src="{% static "img/mainPage/slide_9.jpg" %}">
-                                                </div>
-                                                <div class="item">
-                                                    <img alt="Tenth slide" src="{% static "img/mainPage/slide_10.jpg" %}">
-                                                </div>
-                                            </div>
-                                            <a class="left carousel-control" href="#galleryCarousel" role="button" data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="right carousel-control" href="#galleryCarousel" role="button" data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_9.jpg" %}">
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_10.jpg" %}">
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_11.jpg" %}">
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <a class="thumbnail">
+                                        <img alt="" class="img-responsive" src="{% static "img/mainPage/slide_12.jpg" %}">
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            {% endblock %}
-            {% block right_nav %}
-                {% include 'right_menu.html' %}
-            {% endblock %}
+            </div>
+            <div class="row">
+                <center>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#gallery">
+                                View all photos
+                            </button>
+                </center>
+                <div class="modal fade" id="gallery" tabindex="-1" role="dialog" aria-labelledby="galleryLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="galleryLabel">Virtual Tour</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="carousel slide" data-ride="carousel" id="galleryCarousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#galleryCarousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="1"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="2"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="3"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="4"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="5"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="6"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="7"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="8"></li>
+                                        <li data-target="#galleryCarousel" data-slide-to="9"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox" data-interval="3000">
+                                        <div class="item active">
+                                            <img alt="First slide" src="{% static "img/mainPage/slide_1.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Second slide" src="{% static "img/mainPage/slide_2.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Third slide" src="{% static "img/mainPage/slide_3.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Fourth slide" src="{% static "img/mainPage/slide_4.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Fifth slide" src="{% static "img/mainPage/slide_5.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Sixth slide" src="{% static "img/mainPage/slide_6.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Seventh slide" src="{% static "img/mainPage/slide_7.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Eighth slide" src="{% static "img/mainPage/slide_8.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Nine slide" src="{% static "img/mainPage/slide_9.jpg" %}">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="Tenth slide" src="{% static "img/mainPage/slide_10.jpg" %}">
+                                        </div>
+                                    </div>
+                                    <a class="left carousel-control" href="#galleryCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#galleryCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 {% endblock %}

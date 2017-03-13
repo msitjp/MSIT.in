@@ -1,139 +1,144 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-8 col-sm-12 col-lg-8 col-xs-12 centralcontent">
+            <script type="text/javascript">
+                $('#desktab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            </script>
+            <h4 class="fromhead">From the Desk</h4>
+            <ul class="nav nav-tabs" id="desktab" role="tablist">
+                <li class="active">
+                    <a href="#president" aria-controls="president" role="tab" data-toggle="tab">President</a>
+                </li>
+                <li>
+                    <a href="#vpresident" aria-controls="vpresident" role="tab" data-toggle="tab">Vice President</a>
+                </li>
+                <li>
+                    <a href="#secretary" aria-controls="secretary" role="tab" data-toggle="tab">Secretary</a>
+                </li>
+                <li>
+                    <a href="#treasurer" aria-controls="treasurer" role="tab" data-toggle="tab">Treasurer</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="president">
+                    <img src="{% static 'img/content_spsingh.jpg' %}" class="img-responsive fromimage">
+                    <p class="fromcontent frompara1">
+                        I hope that this Web-site is planned with the aim of disseminating information to the academics as well as professionals in the country. The Website will help in achieving the following objectives:
+                    </p>
+                    <ul class="fromlist">
+                        <li>
+                            To enhance the image of the Maharaja Surajmal Institute of Technology .
+                        </li>
+                        <li>
+                            To create awareness particularly amongst the parent of the prospective and existing students and in general amongst the society at large about the activities of Maharaja Surajmal Institute of Technology .
+                        </li>
+                    </ul>
+                    <p class="fromcontent">
+                        One of the most significant gaps in our professional education in the country is its weak linkage with the industry and the professionals. Until and unless we take corrective steps to strengthen this linkage, professional education will not receive the
+                        respect it deserves.
+                    </p>
+                    <p>
+                        I wish the Principal, faculty and students all success in their efforts.
+                    </p>
+                    <p class="fromdesignation">
+                        SHRI S. P. SINGH JI
+                        <br>
+                        <em>CHAIRMAN, SMES</em>
+                    </p>
+                </div>
+                <div class="tab-pane" id="vpresident">
+                    <img src="{% static 'img/content_photo_of_kaptan_singh.jpg' %}" class="img-responsive fromimage" style="width: 30%;">
+                    <p class="fromcontent frompara1">
+                        The foundation of socio-economic development of a country is the education of its youth in general and technical education in particular. Technical education is an instrument which uses the tools of science and makes the natural resources available for
+                        the people at large. Therefore the institutes which are providing technical education to the Indian youth are playing important role in the development of this country The history of development of technical education in India
+                        dates back to 1847 when first engineering college ,Thomson College of Engineering which later became IIT Rookee .was established by Britishers at Roorkee in Uttar Pradesh The growth of technical institutes during British India
+                        was slow but after independence socio-economic development became the priority program of our planners and leaders. Consequently large number of technical institutes have been started by the Central and State Govts including Indian
+                        Institutes of Technology, Indian Institutes of Information Technology and National Institutes of Technology. Besides this large number of Private Technical Institutes have been set up across the country Unfortunately profit motives
+                        of number of private operators have adversely affected the quality of technical education rendering large number of graduating students from such institutions unemployable. Ours is also a non-government institute established and
+                        run by Surajmal Memorial Education Society which aims to create centers of excellence to educate and produce technically competent graduates to meet emerging requirements of dynamics of development market, government or private.
+                        The of strategy of the Society to achieve this goal is reflected in the following aspects of its work culture:
+                    </p>
+                    <p class="fromcontent">
+                        1. No profit making from its Institute.
+                    </p>
+                    <p class="fromcontent">
+                        2. Strictly follow the standards and norms prescribed by AICTE & Affiliating University regarding infrastructure and faculty including their numbers, salary and other facilities
+                    </p>
+                    <p>
+                        3. Appointment of qualified and competent faculty and provide environment for their development and academic growth as the Society considers that good teachers good students
+                    </p>
+                    <p>
+                        4. Extra course inputs to students commensurate with market requirement Inculcate discipline and moral values among students
+                    </p>
+                    <p>
+                        5. Strong and effective mechanism for placement
+                    </p>
+                    <p>
+                        6. Transparency in all aspects of working
+                    </p>
+                    <br>
+                    <p>
+                        This work culture has its own reward. Today our 100% graduating students are getting placement in reputed companies of the country and they are earning name and fame by their competence and hard work MSI is now recognized as an important centre of technical
+                        education and is marching ahead to become one of the premier technical institutes of the country.
+                    </p>
+                    <p class="fromdesignation">
+                        Kaptan Singh
+                        <br>
+                        <em>Vice President, SMES</em>
+                    </p>
+                </div>
+                <div class="tab-pane" id="secretary">
+                    <img src="{% static 'img/secretary.png' %}" class="img-responsive fromimage" style="width: 160px; height: 160px;">
+                    <p class="frompara1 fromcontent">
+                        It makes me very happy to get in touch with you through the website.
+                    </p>
+                    <p class="fromcontent">
+                        n the times of arduous competition we are moving forward with a vision of holistic development of our students as a technical professional who will not only contribute with their knowledge and skills to the field engineering but also add value to the
+                        social life at large with their educated and sensitive thoughts and action. We believe that proper education is related to the exposure to new techniques and methods and a conducive atmosphere, therefore we have made continuous
+                        effort towards upgrading our infrastructure and quality of education. We are proud to have well equipped Labs and seminar halls, a rich library, well built hostels, a sizable auditorium, to cater to the various pedagogical and
+                        accommodative requirements of our students. Our keenness on multifarious development of our faculty and students can be seen in our extensive organization of various academic and technical programs for them. Every year a number
+                        of faculty development programs are organized across departments for the professional growth of our teaching community. Besides, many expert lectures by distinguished academicians from IIT Delhi and other reputed technical organizations,
+                        are routinely arranged. A fundamental requirement of any good institute is a well developed Information System to ensure monitoring and evaluation of key indicators, and to provide information critical to all concerned.
+                    </p>
+                    <p class="fromcontent">
+                        Our institute website aims at an easy access to all relevant information about the institute and I hope that the masses find the information included in the website useful.
+                    </p>
+                    <p class="fromdesignation">
+                        Ajit Singh
+                        <br>
+                        <em>Secretary, SMES</em>
+                    </p>
+                </div>
+                <div class="tab-pane" id="treasurer">
+                    <img src="{% static 'img/content_jsdalal.jpg' %}" class="img-responsive fromimage" style="width: 160px; height: 160px;">
+                    <p class="fromcontent frompara1">
+                        The new website is only a feather in the cap of the robust technical and communicative infrastructure of Maharaja Surajmal Institute of Technology. This website will serve as a strong medium to show case our attributes and achievements by dint of which
+                        we enjoy a great reputation amongst the leading colleges and institutes affiliated to Guru Gobind Singh Indraprastha University.
+                    </p>
+                    <p class="fromcontent">
+                        Maharaja Surajmal Institute of Technology has acquired and earned a coveted name and fame over a period of time and has become one of the most admired and preferred centre of academic excellence in the field of engineering and technology for all round
+                        integrated professional growth to match and meet the technological needs of the country. We aim to provide our students a composite and comprehensive technical education for a satisfying and professional career in life. To achieve
+                        this, we take care from the very beginning quality class room, teaching by trend, competent and qualified faculty members with exposure to the application of concepts through lab experiments, industrial visits and expert lectures
+                        of eminent personalities and experts in their field of specialization. Besides, we provide congenial atmosphere to the students for their all round enhancement of inter-personal communication skills.
+                    </p>
+                    <p class="fromcontent">
+                        I am sure that the website will enable a better transmission of relevant information to the various stakeholders of the institute which will help in building up and strengthening the relationship among them and ensure success of our institute.
+                    </p>
+                    <p class="fromdesignation">
+                        J.S. Dalal
+                        <br>
+                        <em>Treasurer, SMES</em>
+                    </p>
+                </div>
+            </div>
 
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-            <div class="col-md-8 col-sm-12 col-lg-8 col-xs-12 centralcontent">
-<script type="text/javascript">
-    $('#desktab a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-    })
-</script>
-<h4 class="fromhead">From the Desk</h4>
-<ul class="nav nav-tabs" id="desktab" role="tablist">
-    <li class="active">
-        <a href="#president" aria-controls="president" role="tab" data-toggle="tab">President</a>
-    </li>
-    <li>
-        <a href="#vpresident" aria-controls="vpresident" role="tab" data-toggle="tab">Vice President</a>
-    </li>
-    <li>
-        <a href="#secretary" aria-controls="secretary" role="tab" data-toggle="tab">Secretary</a>
-    </li>
-    <li>
-        <a href="#treasurer" aria-controls="treasurer" role="tab" data-toggle="tab">Treasurer</a>
-    </li>
-</ul>
-<div class="tab-content">
-    <div class="tab-pane active" id="president">
-        <img src="{% static 'img/content_spsingh.jpg' %}" class="img-responsive fromimage">
-        <p class="fromcontent frompara1">
-            I hope that this Web-site is planned with the aim of disseminating information to the academics as well as professionals  in the country. The Website will help in achieving the following objectives:
-        </p>
-        <ul class="fromlist">
-            <li>
-                To enhance the image of the Maharaja Surajmal Institute of Technology .
-            </li>
-            <li>
-                To create awareness particularly amongst the parent  of the prospective and existing students and in general amongst the society at large about the activities of Maharaja Surajmal Institute of Technology .
-            </li>
-        </ul>
-        <p class="fromcontent">
-            One of the most significant gaps in our professional education in the country is its weak linkage with the industry and the professionals. Until and unless we take corrective steps to strengthen this linkage, professional education will not receive the respect it deserves.
-        </p>
-        <p>
-            I wish the Principal, faculty and students all success in their efforts.
-        </p>
-        <p class="fromdesignation">
-            SHRI S. P. SINGH JI
-            <br>
-            <em>CHAIRMAN, SMES</em>
-        </p>
-    </div>
-    <div class="tab-pane" id="vpresident">
-        <img src="{% static 'img/content_photo_of_kaptan_singh.jpg' %}" class="img-responsive fromimage" style="width: 30%;">
-        <p class="fromcontent frompara1">
-            The foundation of socio-economic development of a country is the education of its youth in general and technical education in particular. Technical education is an instrument which uses the tools of science and makes the natural resources available for the people at large. Therefore the institutes which are providing technical education to the Indian youth are playing important role in the development of this country The history of development of technical education in India dates back to 1847 when first engineering college ,Thomson College of Engineering which later became IIT Rookee .was established by Britishers at Roorkee in Uttar Pradesh The growth of technical institutes during British India was slow but after independence socio-economic development became the priority program of our planners and leaders. Consequently large number of technical institutes have been started by the Central and State Govts including Indian Institutes of Technology, Indian Institutes of Information Technology and National Institutes of Technology. Besides this large number of Private Technical Institutes have been set up across the country Unfortunately profit motives of number of private operators have adversely affected the quality of technical education rendering large number of graduating students from such institutions unemployable. Ours is also a non-government institute established and run by Surajmal Memorial Education Society which aims to create centers of excellence to educate and produce technically competent graduates to meet emerging requirements of dynamics of development market, government or private. The of strategy of the Society to achieve this goal is reflected in the following aspects of its work culture:
-        </p>
-        <p class="fromcontent">
-            1. No profit making from its Institute.
-        </p>
-        <p class="fromcontent">
-            2. Strictly follow the standards and norms prescribed by AICTE & Affiliating University regarding infrastructure and faculty including their numbers, salary and other facilities
-        </p>
-        <p>
-            3. Appointment of qualified and competent faculty and provide environment for their development and academic growth as the Society considers that good teachers good students
-        </p>
-        <p>
-            4. Extra course inputs to students commensurate with market requirement Inculcate discipline and moral values among students
-        </p>
-        <p>
-            5. Strong and effective mechanism for placement
-        </p>
-        <p>
-            6. Transparency in all aspects of working
-        </p>
-        <br>
-        <p>
-            This work culture has its own reward. Today our 100% graduating students are getting placement in reputed companies of the country and they are earning name and fame by their competence and hard work MSI is now recognized as an important centre of technical education and is marching ahead to become one of the premier technical institutes of the country.
-        </p>
-        <p class="fromdesignation">
-            Kaptan Singh
-            <br>
-            <em>Vice President, SMES</em>
-        </p>
-    </div>
-    <div class="tab-pane" id="secretary">
-        <img src="{% static 'img/secretary.png' %}" class="img-responsive fromimage" style="width: 160px; height: 160px;">
-        <p class="frompara1 fromcontent">
-            It makes me very happy to get in touch with you through the website.
-        </p>
-        <p class="fromcontent">
-            n the times of arduous competition we are moving forward with a vision of holistic development of our students as a technical professional who will not only contribute with their knowledge and skills to the field engineering but also add value to the social life at large with their educated and sensitive thoughts and action. We believe that proper education is related to the exposure to new techniques and methods and a conducive atmosphere, therefore we have made continuous effort towards upgrading our infrastructure and quality of education. We are proud to have well equipped Labs and seminar halls, a rich library, well built hostels, a sizable auditorium, to cater to the various pedagogical and accommodative requirements of our students. Our keenness on multifarious development of our faculty and students can be seen in our extensive organization of various academic and technical programs for them. Every year a number of faculty development programs are organized across departments for the professional growth of our teaching community. Besides, many expert lectures by distinguished academicians from IIT Delhi and other reputed technical organizations, are routinely arranged. A fundamental requirement of any good institute is a well developed Information System to ensure monitoring and evaluation of key indicators, and to provide information critical to all concerned.
-        </p>
-        <p class="fromcontent">
-            Our institute website aims at an easy access to all relevant information about the institute and I hope that the masses find the information included in the website useful.
-        </p>
-        <p class="fromdesignation">
-            Ajit Singh
-            <br>
-            <em>Secretary, SMES</em>
-        </p>
-    </div>
-    <div class="tab-pane" id="treasurer">
-        <img src="{% static 'img/content_jsdalal.jpg' %}" class="img-responsive fromimage" style="width: 160px; height: 160px;">
-        <p class="fromcontent frompara1">
-            The new website is only a feather in the cap of the robust technical and communicative infrastructure of Maharaja Surajmal Institute of Technology.  This website will serve as a strong medium to show case our attributes and achievements by dint of which we enjoy a great reputation amongst the leading colleges and institutes affiliated to Guru Gobind Singh Indraprastha University.
-        </p>
-        <p class="fromcontent">
-            Maharaja Surajmal Institute of Technology has acquired and earned a coveted name and fame over a period of time and has become one of the most admired and preferred centre of academic excellence in the field of engineering and technology for all round integrated professional growth to match and meet the technological needs of the country.  We aim to provide our students a composite and comprehensive technical education for a satisfying and professional career in life.  To achieve this, we take care from the very beginning quality class room, teaching by trend, competent and qualified faculty members with exposure to the application of concepts through lab experiments, industrial visits and expert lectures of eminent personalities and experts in their field of specialization.   Besides, we provide congenial atmosphere to the students for their all round enhancement of inter-personal communication skills.
-        </p>
-        <p class="fromcontent">
-            I am sure that the website will enable a better transmission of relevant information to the various stakeholders of the institute which will help in building up and strengthening the relationship among them and ensure success of our institute.
-        </p>
-        <p class="fromdesignation">
-            J.S. Dalal
-            <br>
-            <em>Treasurer, SMES</em>
-        </p>
-    </div>
-</div>
-
-</div>
-            {% endblock %}
-            {% block right_nav %}
-            {% include 'right_menu.html' %}
-            {% endblock %}
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 {% endblock %}

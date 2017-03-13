@@ -13,7 +13,7 @@ SECRET_KEY = 'tvp$q5j-#@@*e4ln788fvuv)x53e999cl5(vxs8lqkgjkt3xy5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.154.11.189', 'localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['35.154.11.189', '139.59.61.186', 'localhost', '127.0.0.1', '[::1]']
 
 # Application definition
 
@@ -71,14 +71,14 @@ DATABASES = {
 }
 
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'msit',
-#         'USER': 'admin',
-#         'PASSWORD': 'password',
-#         'HOST': '52.10.51.123',
-#         'PORT': '5432',
-#     }
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#          'NAME': 'myproject',
+#          'USER': 'myprojectuser',
+#          'PASSWORD': 'password',
+#          'HOST': 'localhost',
+#          'PORT': '5432',
+#      }
 # }
 
 
@@ -130,15 +130,18 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 
 CKEDITOR_CONFIGS = {
     'default': {
-       # 'skin': 'moono',
+        # 'skin': 'moono',
         'skin': 'moono-lisa',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
         'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'document', 'items': [
+                'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+            {'name': 'clipboard', 'items': [
+                'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': [
+                'Find', 'Replace', '-', 'SelectAll']},
             {'name': 'forms',
              'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
                        'HiddenField']},
@@ -153,7 +156,8 @@ CKEDITOR_CONFIGS = {
             {'name': 'insert',
              'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
             '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'styles', 'items': [
+                'Styles', 'Format', 'Font', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
             {'name': 'about', 'items': ['About']},

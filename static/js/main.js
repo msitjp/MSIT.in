@@ -1,5 +1,6 @@
-/*
+
 function attachEvents(){
+    /*
     $("#rightpanelbody").als({
         visible_items: 4,
         scrolling_items: 2,
@@ -8,6 +9,7 @@ function attachEvents(){
         autoscroll: "yes",
         interval: 2000
     });
+    */
     if(window.innerWidth > 720){
         $(window).scroll(function() {
             if ($(window).scrollTop() > 120) {
@@ -29,10 +31,10 @@ function attachEvents(){
 }
 
 $(window).resize(attachEvents);
-*/
+
 $(document).ready(function() {
     $(".als-wrapper").css("overflow: hidden");
-    //attachEvents();
+    attachEvents();
     console.log("inside als");
     $("#demo3").als({
     visible_items: 1,
@@ -52,8 +54,10 @@ $(document).ready(function() {
 });
 });
 
-
-
+//vignesh's way of opening external links in new tab
+document.querySelectorAll('a').forEach(e => {
+    if(!(e.href).match(RegExp(window.location.hostname, 'g' )))
+        e.target = '_blank';
+})
 
 // Minified Extra JS files
-

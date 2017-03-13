@@ -1,43 +1,30 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-                <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 centralcontent">
-                    <script type="text/javascript">
-                        $('#mytab a').click(function (e) {
-                            e.preventDefault()
-                            $(this).tab('show')
-                        })
-                    </script>
-                    <ul class="nav nav-tabs" id="mytab" role="tablist">
-                      {% for i in tabs %}
-                        <li {% if forloop.counter == 1 %}class="active"{% endif %}>
-                            <a href="#{{i.title|slugify}}" aria-controls="{{i.title|slugify}}" role="tab" data-toggle="tab">{{i.title}}</a>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                    <div class="tab-content">
-                      {% for i in tabs %}
-                        <div class="tab-pane {% if forloop.counter == 1 %} active {% endif %}admincontent" id="{{i.title|slugify}}" style="padding:1em;">
-                            {{i.content|safe}}
-                        </div>
-                      {% endfor %}
-                    </div>
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 centralcontent">
+            <script type="text/javascript">
+                $('#mytab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            </script>
+            <ul class="nav nav-tabs" id="mytab" role="tablist">
+                {% for i in tabs %}
+                <li {% if forloop.counter == 1 %}class="active" {% endif %}>
+                    <a href="#{{i.title|slugify}}" aria-controls="{{i.title|slugify}}" role="tab" data-toggle="tab">{{i.title}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="tab-content">
+                {% for i in tabs %}
+                <div class="tab-pane {% if forloop.counter == 1 %} active {% endif %}admincontent" id="{{i.title|slugify}}" style="padding:1em;">
+                    {{i.content|safe}}
                 </div>
-            {% endblock %}
-            {% block right_nav %}
-                {% include 'right_menu.html' %}
-            {% endblock %}
+                {% endfor %}
+            </div>
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 {% endblock %}

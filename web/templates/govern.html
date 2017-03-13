@@ -1,216 +1,205 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+            <h4 class="governhead">Governing Body</h4>
+            <table cellpadding="0" cellspacing="0" class="table" id="governtable">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Chairman</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Sh. S. P. Singh</b></p>
 
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Nominee of the Society</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Sh. Kaptan Singh</b></p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p><b>Capt. Chattar Singh Hooda</b></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Sh. Virendra Choudhary</b></p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p><b>Sh. Brahm Pal Singh</b></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Sh. J.S. Dalal</b></p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Representative of Industry</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Sh. Raj Singh Gahlot</b></p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Director General</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Prof. B.S. Panwar</b></p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Nominee of The Govt. of Delhi</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Prof. Asok De</b></p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Teacher’s Representative</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Dr. A. K. Singh</b></p>
 
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-            <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
-<h4 class="governhead">Governing Body</h4>
-<table cellpadding="0" cellspacing="0" class="table" id="governtable">
-<tbody>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Chairman</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Sh. S. P. Singh</b></p>
+                            <p>Professor</p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p><b>Dr. Tripti Sharma</b></p>
 
-        <p>&nbsp;</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Nominee of the Society</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Sh. Kaptan Singh</b></p>
-        </td>
-        <td valign="top" width="144">
-        <p><b>Capt. Chattar Singh Hooda</b></p>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Sh. Virendra Choudhary</b></p>
-        </td>
-        <td valign="top" width="144">
-        <p><b>Sh. Brahm Pal Singh</b></p>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Sh. J.S. Dalal</b></p>
-        </td>
-        <td valign="top" width="144">
-        <p>&nbsp;</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Representative of Industry</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Sh. Raj Singh Gahlot</b></p>
-        </td>
-        <td valign="top" width="144">
-        <p>&nbsp;</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Director General</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Prof. B.S. Panwar</b></p>
-        </td>
-        <td valign="top" width="144">
-        <p>&nbsp;</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Nominee of The Govt. of Delhi</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Prof. Asok De</b></p>
-        </td>
-        <td valign="top" width="144">
-        <p>&nbsp;</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Teacher’s Representative</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Dr. A. K. Singh</b></p>
+                            <p>Associate Professor</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Dr. Puneet Azad</b></p>
 
-        <p>Professor</p>
-        </td>
-        <td valign="top" width="144">
-        <p><b>Dr. Tripti Sharma</b></p>
+                            <p>Associate Professor</p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Deputy Director</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><b>Dr. Poonam Bansal</b></p>
+                        </td>
+                        <td valign="top" width="144">
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
+                            <h4>Member Secretary</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="228">
+                            <p><strong style="color:#000;">Prof. K. P Chaudhary</strong></p>
 
-        <p>Associate Professor</p>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Dr. Puneet Azad</b></p>
+                            <p>Director, MSIT</p>
+                        </td>
+                        <td valign="top" width="228">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 class="governhead">Advisory Board</h3>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="table">
+                <tbody>
+                    <tr height="20">
+                        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. A. Q.&nbsp;</strong></span><span style="color:#000000;"><strong style="color:#000000;">Ansari</strong></span></td>
+                        <td align="center" valign="middle">
+                            <p><span style="color:#000000;">Department of Electrical Engineering</span></p>
 
-        <p>Associate Professor</p>
-        </td>
-        <td valign="top" width="144">
-        <p>&nbsp;</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Deputy Director</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><b>Dr. Poonam Bansal</b></p>
-        </td>
-        <td valign="top" width="144">
-        <p>&nbsp;</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="background-color: rgb(0, 121, 107);" valign="top" width="228">
-        <h4>Member Secretary</h4>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" width="228">
-        <p><strong style="color:#000;">Prof. K. P Chaudhary</strong></p>
+                            <p><span style="color:#000000;">Jamia Millia Islamia, New Delhi</span></p>
+                        </td>
+                    </tr>
+                    <tr height="40">
+                        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. Saroj Kaushik</strong></span></td>
+                        <td align="center" valign="middle">
+                            <p><span style="color:#000000;">Department of Computer Science &amp; Engineering&nbsp;</span></p>
 
-        <p>Director, MSIT</p>
-        </td>
-        <td valign="top" width="228">&nbsp;</td>
-    </tr>
-</tbody>
-</table>
-<h3 class="governhead">Advisory Board</h3>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="table">
-<tbody>
-    <tr height="20">
-        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. A. Q.&nbsp;</strong></span><span style="color:#000000;"><strong style="color:#000000;">Ansari</strong></span></td>
-        <td align="center" valign="middle">
-        <p><span style="color:#000000;">Department of Electrical Engineering</span></p>
+                            <p><span style="color:#000000;">I.I.T. Delhi</span></p>
+                        </td>
+                    </tr>
+                    <tr height="20">
+                        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. S.D. Joshi</strong></span></td>
+                        <td align="center" valign="middle">
+                            <p><span style="color:#000000;">Department of Electrical Engineering</span></p>
 
-        <p><span style="color:#000000;">Jamia Millia Islamia, New Delhi</span></p>
-        </td>
-    </tr>
-    <tr height="40">
-        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. Saroj Kaushik</strong></span></td>
-        <td align="center" valign="middle">
-        <p><span style="color:#000000;">Department of Computer Science &amp; Engineering&nbsp;</span></p>
+                            <p><span style="color:#000000;">I.I.T. Delhi</span></p>
+                        </td>
+                    </tr>
+                    <tr height="40">
+                        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Dr. Rajendra Singh</strong></span></td>
+                        <td align="center" valign="middle">
+                            <p><span style="color:#000000;">Department of Physics</span></p>
 
-        <p><span style="color:#000000;">I.I.T. Delhi</span></p>
-        </td>
-    </tr>
-    <tr height="20">
-        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. S.D. Joshi</strong></span></td>
-        <td align="center" valign="middle">
-        <p><span style="color:#000000;">Department of Electrical Engineering</span></p>
+                            <p><span style="color:#000000;">I.I.T. Delhi</span></p>
+                        </td>
+                    </tr>
+                    <tr height="20">
+                        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Mr. Arun Kudale</strong></span></td>
+                        <td align="center" valign="middle">
+                            <p>
+                                <font color="#000000">Mg. Director, Kudale Instruments Pvt. Ltd.</font>
+                            </p>
 
-        <p><span style="color:#000000;">I.I.T. Delhi</span></p>
-        </td>
-    </tr>
-    <tr height="40">
-        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Dr. Rajendra Singh</strong></span></td>
-        <td align="center" valign="middle">
-        <p><span style="color:#000000;">Department of Physics</span></p>
+                            <p>
+                                <font color="#000000">Pune</font>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. Vikram Kumar</strong></span></td>
+                        <td align="center" valign="middle">
+                            <p><span style="color:#000000;">Department of Physics</span></p>
 
-        <p><span style="color:#000000;">I.I.T. Delhi</span></p>
-        </td>
-    </tr>
-    <tr height="20">
-        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Mr. Arun Kudale</strong></span></td>
-        <td align="center" valign="middle">
-        <p><font color="#000000">Mg. Director, Kudale Instruments Pvt. Ltd.</font></p>
-
-        <p><font color="#000000">Pune</font></p>
-        </td>
-    </tr>
-    <tr>
-        <td align="center" valign="middle"><span style="color:#000000;"><strong style="color:#000000;">Prof. Vikram Kumar</strong></span></td>
-        <td align="center" valign="middle">
-        <p><span style="color:#000000;">Department of Physics</span></p>
-
-        <p><span style="color:#000000;">IIT Delhi</span></p>
-        </td>
-    </tr>
-</tbody>
-</table>
-
-
-</div>
-            {% endblock %}
-            {% block right_nav %}
-                {% include 'right_menu.html' %}
-            {% endblock %}
+                            <p><span style="color:#000000;">IIT Delhi</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 {% endblock %}

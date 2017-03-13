@@ -1,88 +1,75 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block navigation %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            {% block left_nav %}
-                {% include 'left_menu.html' %}
-            {% endblock %}
-            {% block main_body %}
-            <div class="col-md-8 col-sm-12 col-lg-8 col-xs-12 centralcontent">
-<h3>Anti Ragging Committee</h3>
-<table border="1" cellpadding="0" cellspacing="0" class="table">
-    <tbody>
-        <tr>
-            <td><strong>S.No.</strong></td>
-            <td><strong>Name of the member</strong></td>
-            <td><strong>Designation</strong></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>{{director}}</td>
-            <td>Director/Convenor</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Dr. Man Singh</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Ms. Meena Rao</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Sh. Dinesh Sheoran</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Ms. Sapna Singh</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Sh. Sandeep Sheoran</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Sh. Manoj Malik</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>Dr. Rekha Tripathi</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>Sh. Naveen Dahiya</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>Sh. Parveen Kumar</td>
-            <td>Member</td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Ms. Nishtha Jatana</td>
-            <td>Member</td>
-        </tr>
-    </tbody>
-</table>
-</div>
-            {% endblock %}
-            {% block right_nav %}
-                {% include 'right_menu.html' %}
-            {% endblock %}
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-8 col-sm-12 col-lg-8 col-xs-12 centralcontent">
+            <h3>Anti Ragging Committee</h3>
+            <table border="1" cellpadding="0" cellspacing="0" class="table">
+                <tbody>
+                    <tr>
+                        <td><strong>S.No.</strong></td>
+                        <td><strong>Name of the member</strong></td>
+                        <td><strong>Designation</strong></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>{{director}}</td>
+                        <td>Director/Convenor</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Dr. Man Singh</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Ms. Meena Rao</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Sh. Dinesh Sheoran</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ms. Sapna Singh</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Sh. Sandeep Sheoran</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Sh. Manoj Malik</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Dr. Rekha Tripathi</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Sh. Naveen Dahiya</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Sh. Parveen Kumar</td>
+                        <td>Member</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Ms. Nishtha Jatana</td>
+                        <td>Member</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
+</div>
 {% endblock %}
