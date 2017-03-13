@@ -1,3 +1,12 @@
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
 .footer {
     padding-top: 7px !important;
     padding-bottom: 7px !important;
@@ -41,6 +50,7 @@
 	 ************************************/
 	 #demo3 {
 	 	margin: 10px auto;
+    min-height: 15em;
 	 }
 	 #demo3 .als-item {
 	 	margin: 0px 5px;
@@ -63,6 +73,34 @@
 	 #demo3 .als-next {
 	 	right: 20px;
 	 }
+   /*************************************
+   * specific styling for #demo4
+   ************************************/
+   #demo4 {
+    margin: 10px auto;
+    min-height: 15em;
+   }
+   #demo4 .als-item {
+    margin: 0px 5px;
+    padding: 4px 0px;
+    min-height: 120px;
+    min-width: 100px;
+    text-align: left;
+   }
+   #demo4 .als-item img {
+    display: block;
+    margin: 0 auto;
+    vertical-align: middle;
+   }
+   #demo4 .als-prev, #demo4 .als-next {
+    top: 40px;
+   }
+   #demo4 .als-prev {
+    left: 20px;
+   }
+   #demo4 .als-next {
+    right: 20px;
+   }
 
 
      body {
@@ -151,6 +189,8 @@
        padding-top: 2em; }
 
      /*----For main page default.html----*/
+      
+
      .centralcontent {
        background: white;
        padding: 1em;
@@ -159,6 +199,10 @@
 
      .carousel-caption {
        background: rgba(0, 0, 0, 0.7); }
+
+      #centralcarousel .carousel-inner .item img {
+        height: 33vh;
+      }
 
      /*------------------------------------*/
      /*----For admistration page /administration----*/

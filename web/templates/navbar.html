@@ -16,11 +16,11 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="">
             <div class="col-md-1"></div>
-            <ul class="nav navbar-nav col-md-9">
+            <ul class="nav navbar-nav" style="">
                 {% for nav in primary_navbar %}
-                    <li><a href={{ nav.link }}>{{ nav.title }}</a></li>
+                    <li style=""><a href={{ nav.link }} style="">{{ nav.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>

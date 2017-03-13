@@ -35,7 +35,15 @@ $(document).ready(function() {
     //attachEvents();
     console.log("inside als");
     $("#demo3").als({
-    visible_items: 3,
+    visible_items: 1,
+    scrolling_items: 1,
+    orientation: "vertical",
+    circular: "yes",
+    autoscroll: "yes",
+    interval: 2000
+});
+    $("#demo4").als({
+    visible_items: 1,
     scrolling_items: 1,
     orientation: "vertical",
     circular: "yes",
