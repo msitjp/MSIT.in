@@ -1,3 +1,13 @@
+/*----Test CSS------*/
+strong {
+  color: #FF5722;
+}
+
+table tbody tr td strong {
+  color: black !important;
+}
+/*-----------------*/
+
 .navbar .navbar-nav {
     display: inline-block;
     float: none;
@@ -168,7 +178,7 @@
        color: #3E211B; }
 
      .panel-body p {
-       color: #FF5722;
+       color: black;
        font-weight: 700; }
 
      .panel-title a {
@@ -176,7 +186,10 @@
 
      .list-group a {
        color: #00796B; }
-
+      
+      #deskview div p{
+        color: #FF5722;
+      }
 
 
      #rightpanelbody {
