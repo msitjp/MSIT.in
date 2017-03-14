@@ -136,6 +136,7 @@ def cse(request):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
+    context['heading'] = 'Computer Science Engineering'
     print context
     return render(request, 'faculty.html', context=context)
 
@@ -149,6 +150,7 @@ def it(request):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
+    context['heading'] = 'Information technology'
     return render(request, 'faculty.html', context=context)
 
 
@@ -161,6 +163,7 @@ def ece(request):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
+    context['heading'] = 'Electronics and Communication Engineering'
     return render(request, 'faculty.html', context=context)
 
 
@@ -173,6 +176,7 @@ def eee(request):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
+    context['heading'] = 'Electrical and Electronics Engineering'
     return render(request, 'faculty.html', context=context)
 
 
@@ -185,6 +189,7 @@ def ap(request):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
+    context['heading'] = 'Applied Science'
     return render(request, 'faculty.html', context=context)
 
 

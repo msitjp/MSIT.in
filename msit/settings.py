@@ -37,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'web.get_username.RequestMiddleware',
 ]
 
 ROOT_URLCONF = 'msit.urls'
@@ -196,3 +197,6 @@ CKEDITOR_CONFIGS = {
             ]),
     }
 }
+
+
+AUTH_USER_MODEL = 'web.CustomUser'
