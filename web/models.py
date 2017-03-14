@@ -12,6 +12,9 @@ from django.utils.timezone import now
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
+from django.contrib.auth.models import AbstractUser
+from get_username import current_request
+
 # Option fields
 TITLES = (
     ('1', 'Mr.'),
@@ -36,6 +39,8 @@ DEPARTMENT = (
     ('EEE', 'EEE'),
     ('APPLIED SCIENCES', 'Applied Sciences'),
 )
+
+Extended_DEPARTMENT = (('All', 'All'),) + DEPARTMENT
 
 SHIFTS = (
          ('M', 'Morning'),
@@ -435,6 +440,15 @@ class Department(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+    def clean(self):
+        super(Department, self).clean()
+        req = current_request()
+        if str(self.department) == req.user.dept or req.user.dept == 'All':
+            return self
+        else:
+            raise ValidationError(
+            "You don't have access to change this Database")
+
     def __unicode__(self):
         return "%s" % self.department
 
@@ -505,3 +519,11 @@ class Marquee(models.Model):
                 "Please enter either a link to redirect or a file to attach with the Menu item.")
         else:
             return self
+
+
+class CustomUser(AbstractUser):
+    dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10)
+
+    class Meta:
+        verbose_name = 'All User'
+        verbose_name_plural = 'All Users'
