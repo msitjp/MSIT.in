@@ -38,7 +38,7 @@
                     </div>
                     <div class="row">
                         <center>
-                            <p>Affiliated to GGSIPU | ISO 9001:2008 Certified | Approved by AICTE</p>
+                            <p>Affiliated to GGSIPU| NAAC Accredited 'A' Grade | ISO 9001:2008 Certified | Approved by AICTE</p>
                         </center>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
         </div>
         <!-- <div data-spy="affix" data-offset-top="121" style="height: 50px; width:100%; top:0; z-index: 999;"> -->
         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2" style="background:#1d1d1d;">
-            <ul class="nav navbar-nav navbar-right col-md-10">
+            <ul class="nav navbar-nav navbar-right col-md-10" id="blacknavlist">
                 {% for nav in secondary_navbar %}
                 <li><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
                 {% endfor %}
