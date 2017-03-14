@@ -52,12 +52,13 @@ $(document).ready(function() {
     autoscroll: "yes",
     interval: 2000
 });
-});
-
 //vignesh's way of opening external links in new tab
 document.querySelectorAll('a').forEach(e => {
-    if(!(e.href).match(RegExp(window.location.hostname, 'g' )))
+    if(!(e.href).match(RegExp(window.location.hostname, 'g' ))
+        || (e.href).match(RegExp('media', 'g')))
         e.target = '_blank';
 })
+});
+
 
 // Minified Extra JS files
