@@ -410,7 +410,7 @@
          display: none; }
        
       }
-       }
+       
      @media only screen and (max-width: 720px) {
        #deskview {
          display: none; }
@@ -422,6 +422,11 @@
         height: 15em;
       }
     }
+      @media only screen and (max-width: 1500px) and (min-width: 1025px) {
+       #blacknavlist {
+        padding-left: 130px;
+       } 
+      }
 
 		 #bs-example-navbar-collapse-1 > ul > li > a{
 		    font-size:1em;
