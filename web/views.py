@@ -55,6 +55,10 @@ def syllabus(request):
     context['syllabus'] = syllabus
     return render(request, 'syllabus.html', context=context)
 
+def facilities(request):
+    context = getContext()
+    return render(request, 'facilities.html', context=context)
+
 
 def society(request):
     societies = StudentSociety.objects.all() or []

@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^society/?$', society, name="society"),
     url(r'^achievements/?$', achievements, name="achievements"),
     url(r'^events/?$', events, name="events"),
+    url(r'^facilities/?$', facilities, name="facilities"),
     url(r'^cse/?$', cse, name="cse"),
     url(r'^it/?$', it, name="it"),
     url(r'^ece/?$', ece, name="ece"),
