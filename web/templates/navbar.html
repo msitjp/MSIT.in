@@ -17,7 +17,6 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="">
-            <div class="col-md-1"></div>
             <ul class="nav navbar-nav" style="">
                 {% for nav in primary_navbar %}
                     <li><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
