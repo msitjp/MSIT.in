@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
 
 from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
     TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event,\
     PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
-    DepartmentPage, Page, Tab, Notice, Marquee, CustomUser
+    DepartmentPage, Page, Tab, Notice, Marquee, UserDepartment
 
 FIELDS = ('first_name', 'last_name', 'email', 'username', 'password',
             'dept', 'is_active', 'is_staff', 'is_superuser',
@@ -129,21 +131,24 @@ class PageAdmin(admin.ModelAdmin):
     ordering = ('-created_at', '-updated_at')
 
 
-class CustomUserAdmin(admin.ModelAdmin):
-    fields = FIELDS
-    list_display = ['username','dept' ,'is_active', 'is_staff', 'is_superuser']
-    ordering = ('-date_joined', '-last_login',)
+# <<<<<<< HEAD
+# class CustomUserAdmin(admin.ModelAdmin):
+#     fields = FIELDS
+#     list_display = ['username','dept' ,'is_active', 'is_staff', 'is_superuser']
+#     ordering = ('-date_joined', '-last_login',)
 
-    def get_form(self, request, obj=None, **kwargs):
-        if hasattr(obj, 'date_joined'):
-            self.exclude = ("password", )
-            self.fields = tuple(x for x in self.fields if x != "password")
-        else:
-            self.exclude = ()
-            self.fields = FIELDS
-        form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
-        return form
+#     def get_form(self, request, obj=None, **kwargs):
+#         if hasattr(obj, 'date_joined'):
+#             self.exclude = ("password", )
+#             self.fields = tuple(x for x in self.fields if x != "password")
+#         else:
+#             self.exclude = ()
+#             self.fields = FIELDS
+#         form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
+#         return form
 
+# =======
+# >>>>>>> ebc1a07333599e0798d15740fd1dea3d020a3fa2
 
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(LatestNews, LatestNewsAdmin)
@@ -160,4 +165,21 @@ admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(Marquee, MarqueeAdmin)
-admin.site.register(CustomUser, CustomUserAdmin)
+# <<<<<<< HEAD
+# admin.site.register(CustomUser, CustomUserAdmin)
+# =======
+
+# vigzmv
+
+class UserDepartmentInline(admin.StackedInline):
+    model = UserDepartment
+    can_delete = False
+    verbose_name_plural = 'User Departments'
+    verbose_name = 'User'
+
+class UserAdmin(BaseUserAdmin):
+    inlines = (UserDepartmentInline, )
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
+# >>>>>>> ebc1a07333599e0798d15740fd1dea3d020a3fa2

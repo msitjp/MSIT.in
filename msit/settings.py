@@ -198,6 +198,3 @@ CKEDITOR_CONFIGS = {
             ]),
     }
 }
-
-
-AUTH_USER_MODEL = 'web.CustomUser'
