@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'web',
     'ckeditor',
     'ckeditor_uploader',
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [

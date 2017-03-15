@@ -12,8 +12,10 @@ from django.utils.timezone import now
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Permission
+from django.contrib.auth.hashers import make_password
 from get_username import current_request
+from multiselectfield import MultiSelectField
 
 # Option fields
 TITLES = (
@@ -73,6 +75,25 @@ ORDER = (
     ('1', 'Ascending'),
     ('2', 'Descending'),
 )
+
+PERMISSIONS = (
+    ('faculty', 'Faculty'),
+    ('department', 'Department'),
+    ('latest news', 'Latest News'),
+    ('notice', 'Notice & Circular'),
+    ('achievement', 'Achievement'),
+    ('Attendaccnce', 'Attendance'),
+    ('Event', 'Event'),
+    ('Sliding Text', 'Sliding Text'),
+    ('All Other', 'Pages'),
+    ('Menu - Left', 'Menu - Left'),
+    ('Menu - Top', 'Menu - Top'),
+    ('Menu - Secondary', 'Menu - Secondary'),
+    ('Society', 'Society'),
+    ('Syllabus', 'Syllabus'),
+    ('Time Table', 'Time Table'),
+)
+
 #
 
 
@@ -523,6 +544,24 @@ class Marquee(models.Model):
 
 class CustomUser(AbstractUser):
     dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10)
+    permissions = MultiSelectField(choices=PERMISSIONS, blank=True, null=True)
+
+    def clean(self):
+        super(CustomUser, self).clean()
+        if not self.pk:
+            self.password = make_password(self.password)
+        print self.password
+        return self
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super(CustomUser, self).save(*args, **kwargs)
+        for a in self.permissions:
+            for b in Permission.objects.filter(name__icontains=a):
+                self.user_permissions.add(b)
+            if 'All Other' in a:
+                for b in Permission.objects.filter(name__iregex="can [\w]+ tab"):
+                    self.user_permissions.add(b)
 
     class Meta:
         verbose_name = 'All User'

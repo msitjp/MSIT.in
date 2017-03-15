@@ -6,6 +6,10 @@ from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
     PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
     DepartmentPage, Page, Tab, Notice, Marquee, CustomUser
 
+FIELDS = ('first_name', 'last_name', 'email', 'username', 'password',
+            'dept', 'is_active', 'is_staff', 'is_superuser',
+            'permissions', 'groups',)
+
 
 class FacultyAdmin(admin.ModelAdmin):
 
@@ -125,6 +129,22 @@ class PageAdmin(admin.ModelAdmin):
     ordering = ('-created_at', '-updated_at')
 
 
+class CustomUserAdmin(admin.ModelAdmin):
+    fields = FIELDS
+    list_display = ['username','dept' ,'is_active', 'is_staff', 'is_superuser']
+    ordering = ('-date_joined', '-last_login',)
+
+    def get_form(self, request, obj=None, **kwargs):
+        if hasattr(obj, 'date_joined'):
+            self.exclude = ("password", )
+            self.fields = tuple(x for x in self.fields if x != "password")
+        else:
+            self.exclude = ()
+            self.fields = FIELDS
+        form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
+        return form
+
+
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(LatestNews, LatestNewsAdmin)
 admin.site.register(Notice, NoticeAdmin)
@@ -140,4 +160,4 @@ admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(Marquee, MarqueeAdmin)
-admin.site.register(CustomUser)
+admin.site.register(CustomUser, CustomUserAdmin)
