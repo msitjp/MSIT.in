@@ -586,7 +586,7 @@ class Marquee(models.Model):
 
 
 class CustomUser(AbstractUser):
-    dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10)
+    dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10, blank=True, null=True)
     permissions = MultiSelectField(choices=PERMISSIONS, blank=True, null=True)
 
     def clean(self):
@@ -599,6 +599,8 @@ class CustomUser(AbstractUser):
     def save(self, *args, **kwargs):
         self.full_clean()
         super(CustomUser, self).save(*args, **kwargs)
+        if self.permissions is None:
+            return self
         for a in self.permissions:
             for b in Permission.objects.filter(name__icontains=a):
                 self.user_permissions.add(b)
