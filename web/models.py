@@ -186,11 +186,17 @@ class Faculty(models.Model):
     def clean(self):
         super(Faculty, self).clean()
         req = current_request()
-        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
-            return self
-        else:
+        try:
+            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                "You don't have access to change this Database")
+
+        except:
             raise ValidationError(
             "You don't have access to change this Database")
+
 
     class Meta:
         verbose_name = 'Faculty'
@@ -354,11 +360,17 @@ class TimeTable(models.Model):
     def clean(self):
         super(TimeTable, self).clean()
         req = current_request()
-        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
-            return self
-        else:
+        try:
+            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                "You don't have access to change this Database")
+
+        except:
             raise ValidationError(
             "You don't have access to change this Database")
+
 
 class Attendance(models.Model):
     title = models.CharField(max_length=50, help_text='Batch Name')
@@ -381,11 +393,17 @@ class Attendance(models.Model):
     def clean(self):
         super(Attendance, self).clean()
         req = current_request()
-        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
-            return self
-        else:
+        try:
+            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                "You don't have access to change this Database")
+
+        except:
             raise ValidationError(
             "You don't have access to change this Database")
+
 
 class Syllabus(models.Model):
     title = models.CharField(max_length=100, help_text='text to display')
@@ -408,9 +426,14 @@ class Syllabus(models.Model):
     def clean(self):
         super(Faculty, self).clean()
         req = current_request()
-        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
-            return self
-        else:
+        try:
+            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                "You don't have access to change this Database")
+
+        except:
             raise ValidationError(
             "You don't have access to change this Database")
 
@@ -459,7 +482,7 @@ class Event(models.Model):
 
 
 class Department(models.Model):
-    department = models.CharField(max_length=30, help_text='Depaertment Name', choices=DEPARTMENT, default='CSE',
+    department = models.CharField(max_length=30, help_text='Department Name', choices=DEPARTMENT, default='CSE',
                                   unique=True)
     display_1st_faculty = models.BooleanField(verbose_name='Display 1st shift Faculty',
                                               help_text='Check if the list of faculties is to be displayed on the website', default=True)
@@ -479,11 +502,18 @@ class Department(models.Model):
     def clean(self):
         super(Department, self).clean()
         req = current_request()
-        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
-            return self
-        else:
+        try:
+            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                "You don't have access to change this Database")
+
+        except:
             raise ValidationError(
             "You don't have access to change this Database")
+
+
 
     def __unicode__(self):
         return "%s" % self.department
@@ -503,9 +533,14 @@ class DepartmentPage(models.Model):
     def clean(self):
         super(DepartmentPage, self).clean()
         req = current_request()
-        if str(self.department_name) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
-            return self
-        else:
+        try:
+            if str(self.department_name) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                "You don't have access to change this Database")
+
+        except:
             raise ValidationError(
             "You don't have access to change this Database")
 
@@ -567,7 +602,7 @@ class Marquee(models.Model):
 
 
 class UserDepartment(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name = 'User Department')
     department = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=20)
 
     class Meta:
