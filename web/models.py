@@ -15,6 +15,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import AbstractUser
 from get_username import current_request
 
+from django.contrib.auth.models import User
+
 # Option fields
 TITLES = (
     ('1', 'Mr.'),
@@ -184,7 +186,7 @@ class Faculty(models.Model):
     def clean(self):
         super(Faculty, self).clean()
         req = current_request()
-        if str(self.department) == req.user.dept or req.user.dept == 'All':
+        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             return self
         else:
             raise ValidationError(
@@ -352,7 +354,7 @@ class TimeTable(models.Model):
     def clean(self):
         super(TimeTable, self).clean()
         req = current_request()
-        if str(self.department) == req.user.dept or req.user.dept == 'All':
+        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             return self
         else:
             raise ValidationError(
@@ -379,7 +381,7 @@ class Attendance(models.Model):
     def clean(self):
         super(Attendance, self).clean()
         req = current_request()
-        if str(self.department) == req.user.dept or req.user.dept == 'All':
+        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             return self
         else:
             raise ValidationError(
@@ -406,7 +408,7 @@ class Syllabus(models.Model):
     def clean(self):
         super(Faculty, self).clean()
         req = current_request()
-        if str(self.department) == req.user.dept or req.user.dept == 'All':
+        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             return self
         else:
             raise ValidationError(
@@ -477,7 +479,7 @@ class Department(models.Model):
     def clean(self):
         super(Department, self).clean()
         req = current_request()
-        if str(self.department) == req.user.dept or req.user.dept == 'All':
+        if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             return self
         else:
             raise ValidationError(
@@ -501,7 +503,7 @@ class DepartmentPage(models.Model):
     def clean(self):
         super(DepartmentPage, self).clean()
         req = current_request()
-        if str(self.department) == req.user.dept or req.user.dept == 'All':
+        if str(self.department_name) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             return self
         else:
             raise ValidationError(
@@ -564,9 +566,10 @@ class Marquee(models.Model):
             return self
 
 
-class CustomUser(AbstractUser):
-    dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10)
+class UserDepartment(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    department = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=20)
 
     class Meta:
-        verbose_name = 'All User'
-        verbose_name_plural = 'All Users'
+        verbose_name = 'User Department'
+        verbose_name_plural = 'User Departments'

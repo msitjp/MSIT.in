@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
 
 from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
     TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event,\
     PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
-    DepartmentPage, Page, Tab, Notice, Marquee, CustomUser
+    DepartmentPage, Page, Tab, Notice, Marquee, UserDepartment
 
 
 class FacultyAdmin(admin.ModelAdmin):
@@ -125,6 +127,7 @@ class PageAdmin(admin.ModelAdmin):
     ordering = ('-created_at', '-updated_at')
 
 
+
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(LatestNews, LatestNewsAdmin)
 admin.site.register(Notice, NoticeAdmin)
@@ -140,4 +143,17 @@ admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(Marquee, MarqueeAdmin)
-admin.site.register(CustomUser)
+
+# vigzmv
+
+class UserDepartmentInline(admin.StackedInline):
+    model = UserDepartment
+    can_delete = False
+    verbose_name_plural = 'User Departments'
+    verbose_name = 'User'
+
+class UserAdmin(BaseUserAdmin):
+    inlines = (UserDepartmentInline, )
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
