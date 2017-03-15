@@ -17,7 +17,7 @@
                     </li>
                     {% endfor %}
                 </ul>
-                <div class="tab-content">
+                <div class="tab-content" style="padding:1em;">
                     {% for i in tabs %}
                     <div class="tab-pane {% if forloop.counter == 1 %} active {% endif %}admincontent" id="{{i.title|slugify}}" style="padding:1em;">
                         {{i.content|safe}}
