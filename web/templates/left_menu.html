@@ -8,7 +8,7 @@
             <p>{{ main_menu }}</p>
             <ul class="leftpanel">
                 {% for sub_menu in secondary_menu|in_category:main_menu %}
-                <li>• <a href="{{ sub_menu.link }}">{{ sub_menu.name }}</a></li>
+                <li>•&nbsp;<a href="{{ sub_menu.link }}">{{ sub_menu.name }}</a></li>
                 {% endfor %}
             </ul>
             {% endfor %}

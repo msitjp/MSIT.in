@@ -594,7 +594,7 @@ class Tab(models.Model):
 
 class Marquee(models.Model):
     title = models.CharField(verbose_name="Link Title",
-                             max_length=50, help_text='Text to show in the Marquee')
+                             max_length=200, help_text='Text to show in the Marquee')
     link = models.CharField(
         max_length=1000, help_text='Link to redirect to', blank=True, null=True)
     files = models.FileField(upload_to=image_name(

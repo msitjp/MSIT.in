@@ -168,8 +168,8 @@ table tbody tr td strong {
 
      .leftpanel {
        list-style: bullet;
-       padding-left: 0em;
-       white-space: nowrap; }
+       padding-left: 0.6em;
+     }
 
      .leftpanel li a {
        color: #00796B; }
