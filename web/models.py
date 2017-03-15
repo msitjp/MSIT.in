@@ -587,34 +587,34 @@ class Marquee(models.Model):
             return self
 
 
-<<<<<<< HEAD
-class CustomUser(AbstractUser):
-    dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10, blank=True, null=True)
-    permissions = MultiSelectField(choices=PERMISSIONS, blank=True, null=True)
+# <<<<<<< HEAD
+# class CustomUser(AbstractUser):
+#     dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10, blank=True, null=True)
+#     permissions = MultiSelectField(choices=PERMISSIONS, blank=True, null=True)
 
-    def clean(self):
-        super(CustomUser, self).clean()
-        if not self.pk:
-            self.password = make_password(self.password)
-        print self.password
-        return self
+#     def clean(self):
+#         super(CustomUser, self).clean()
+#         if not self.pk:
+#             self.password = make_password(self.password)
+#         print self.password
+#         return self
 
-    def save(self, *args, **kwargs):
-        self.full_clean()
-        super(CustomUser, self).save(*args, **kwargs)
-        if self.permissions is None:
-            return self
-        for a in self.permissions:
-            for b in Permission.objects.filter(name__icontains=a):
-                self.user_permissions.add(b)
-            if 'All Other' in a:
-                for b in Permission.objects.filter(name__iregex="can [\w]+ tab"):
-                    self.user_permissions.add(b)
-=======
+#     def save(self, *args, **kwargs):
+#         self.full_clean()
+#         super(CustomUser, self).save(*args, **kwargs)
+#         if self.permissions is None:
+#             return self
+#         for a in self.permissions:
+#             for b in Permission.objects.filter(name__icontains=a):
+#                 self.user_permissions.add(b)
+#             if 'All Other' in a:
+#                 for b in Permission.objects.filter(name__iregex="can [\w]+ tab"):
+#                     self.user_permissions.add(b)
+# =======
 class UserDepartment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     department = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=20)
->>>>>>> ebc1a07333599e0798d15740fd1dea3d020a3fa2
+# >>>>>>> ebc1a07333599e0798d15740fd1dea3d020a3fa2
 
     class Meta:
         verbose_name = 'User Department'
