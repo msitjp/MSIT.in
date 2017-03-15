@@ -202,6 +202,15 @@ class Faculty(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+    def clean(self):
+        super(Faculty, self).clean()
+        req = current_request()
+        if str(self.department) == req.user.dept or req.user.dept == 'All':
+            return self
+        else:
+            raise ValidationError(
+            "You don't have access to change this Database")
+
     class Meta:
         verbose_name = 'Faculty'
         verbose_name_plural = 'Faculties'
@@ -361,6 +370,14 @@ class TimeTable(models.Model):
         verbose_name = 'Content - Time Table'
         verbose_name_plural = 'Content - Time Tables'
 
+    def clean(self):
+        super(TimeTable, self).clean()
+        req = current_request()
+        if str(self.department) == req.user.dept or req.user.dept == 'All':
+            return self
+        else:
+            raise ValidationError(
+            "You don't have access to change this Database")
 
 class Attendance(models.Model):
     title = models.CharField(max_length=50, help_text='Batch Name')
@@ -380,6 +397,14 @@ class Attendance(models.Model):
         verbose_name = 'Content - Attendance'
         verbose_name_plural = 'Content - Attendance'
 
+    def clean(self):
+        super(Attendance, self).clean()
+        req = current_request()
+        if str(self.department) == req.user.dept or req.user.dept == 'All':
+            return self
+        else:
+            raise ValidationError(
+            "You don't have access to change this Database")
 
 class Syllabus(models.Model):
     title = models.CharField(max_length=100, help_text='text to display')
@@ -398,6 +423,15 @@ class Syllabus(models.Model):
     class Meta:
         verbose_name = 'Content - Syllabus'
         verbose_name_plural = 'Content - Syllabus'
+
+    def clean(self):
+        super(Faculty, self).clean()
+        req = current_request()
+        if str(self.department) == req.user.dept or req.user.dept == 'All':
+            return self
+        else:
+            raise ValidationError(
+            "You don't have access to change this Database")
 
 
 class StudentSociety(models.Model):
@@ -484,6 +518,15 @@ class DepartmentPage(models.Model):
 
     def __unicode__(self):
         return "%s - %s" % (self.department_name, self.title)
+
+    def clean(self):
+        super(DepartmentPage, self).clean()
+        req = current_request()
+        if str(self.department) == req.user.dept or req.user.dept == 'All':
+            return self
+        else:
+            raise ValidationError(
+            "You don't have access to change this Database")
 
 
 class Page(models.Model):
