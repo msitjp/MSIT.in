@@ -1,5 +1,5 @@
 from django import template
-from django.template.defaultfilters import slugify
+from django.template.defaultfilters import slugify as sl
 
 '''
 Made by @htadg motherfuckers
@@ -15,4 +15,4 @@ def in_category(things, category):
 
 @register.filter
 def slugify(id):
-    return slugify(id)
+    return sl(id)
