@@ -132,25 +132,6 @@ class PageAdmin(admin.ModelAdmin):
     ordering = ('-created_at', '-updated_at')
 
 
-# <<<<<<< HEAD
-# class CustomUserAdmin(admin.ModelAdmin):
-#     fields = FIELDS
-#     list_display = ['username','dept' ,'is_active', 'is_staff', 'is_superuser']
-#     ordering = ('-date_joined', '-last_login',)
-
-#     def get_form(self, request, obj=None, **kwargs):
-#         if hasattr(obj, 'date_joined'):
-#             self.exclude = ("password", )
-#             self.fields = tuple(x for x in self.fields if x != "password")
-#         else:
-#             self.exclude = ()
-#             self.fields = FIELDS
-#         form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
-#         return form
-
-# =======
-# >>>>>>> ebc1a07333599e0798d15740fd1dea3d020a3fa2
-
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(LatestNews, LatestNewsAdmin)
 admin.site.register(Notice, NoticeAdmin)
@@ -166,10 +147,6 @@ admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(Marquee, MarqueeAdmin)
-# <<<<<<< HEAD
-# admin.site.register(CustomUser, CustomUserAdmin)
-# =======
-
 # vigzmv
 
 class UserDepartmentInline(admin.StackedInline):
@@ -183,4 +160,3 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-# >>>>>>> ebc1a07333599e0798d15740fd1dea3d020a3fa2

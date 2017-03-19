@@ -208,7 +208,8 @@ class Faculty(models.Model):
         super(Faculty, self).clean()
         req = current_request()
         try:
-            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+            logged_user = req.user.userdepartment
+            if (str(self.department) == logged_user.department and str(self.shift) == logged_user.shift) or logged_user.department == 'All':
                 return self
             else:
                 raise ValidationError(
@@ -382,7 +383,8 @@ class TimeTable(models.Model):
         super(TimeTable, self).clean()
         req = current_request()
         try:
-            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+            logged_user = req.user.userdepartment
+            if (str(self.department) == logged_user.department and str(self.shift) == logged_user.shift) or logged_user.department == 'All':
                 return self
             else:
                 raise ValidationError(
@@ -415,7 +417,9 @@ class Attendance(models.Model):
         super(Attendance, self).clean()
         req = current_request()
         try:
-            if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+            # if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
+            logged_user = req.user.userdepartment
+            if (str(self.department) == logged_user.department and str(self.shift) == logged_user.shift) or logged_user.department == 'All':
                 return self
             else:
                 raise ValidationError(
@@ -622,34 +626,10 @@ class Marquee(models.Model):
             return self
 
 
-# <<<<<<< HEAD
-# class CustomUser(AbstractUser):
-#     dept = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=10, blank=True, null=True)
-#     permissions = MultiSelectField(choices=PERMISSIONS, blank=True, null=True)
-
-#     def clean(self):
-#         super(CustomUser, self).clean()
-#         if not self.pk:
-#             self.password = make_password(self.password)
-#         print self.password
-#         return self
-
-#     def save(self, *args, **kwargs):
-#         self.full_clean()
-#         super(CustomUser, self).save(*args, **kwargs)
-#         if self.permissions is None:
-#             return self
-#         for a in self.permissions:
-#             for b in Permission.objects.filter(name__icontains=a):
-#                 self.user_permissions.add(b)
-#             if 'All Other' in a:
-#                 for b in Permission.objects.filter(name__iregex="can [\w]+ tab"):
-#                     self.user_permissions.add(b)
-# =======
 class UserDepartment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name = 'User Department')
     department = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=20)
-# >>>>>>> ebc1a07333599e0798d15740fd1dea3d020a3fa2
+    shift = models.CharField(verbose_name='Shift', choices=SHIFTS, max_length=10, default='Morning')
 
     class Meta:
         verbose_name = 'User Department'
