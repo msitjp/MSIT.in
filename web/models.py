@@ -629,7 +629,7 @@ class Marquee(models.Model):
 class UserDepartment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name = 'User Department')
     department = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=20)
-    shift = models.CharField(verbose_name='Shift', choices=SHIFTS, max_length=10, default='Morning')
+    shift = models.CharField(verbose_name='Shift', choices=SHIFTS, max_length=10, default='M')
 
     class Meta:
         verbose_name = 'User Department'

@@ -119,6 +119,7 @@ def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
         morning = Faculty.objects.filter(
             category__icontains='teaching', department=department, shift='M').order_by(modifier) or []
         context['morning'] = morning
+        print "ss"
     if department.display_2nd_faculty or b:
         evening = Faculty.objects.filter(
             category__icontains='teaching', department=department, shift='E').order_by(modifier) or []
@@ -133,11 +134,35 @@ def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
         context['elab'] = elab
     return context
 
+def get_modifier_new(sort, order):
 
-def cse(request):
+    sort = int(sort)
+    order = int(order)
+
+    if sort == 1:
+        modifier = 'full_name'
+    elif sort == 2:
+        modifier = 'designation'
+    elif sort == 3:
+        modifier = 'date_of_joining'
+    else:
+        modifier = 'full_name'
+    if order == 2:
+        modifier = '-' + modifier
+    return modifier
+
+def cse(request, sort=-1, order=-1):
     department = Department.objects.get(department='CSE')
     tabs = department.departmentpage_set.all().order_by('order')
-    modifier = get_modifier(department)
+
+    if sort == -1:
+        modifier = get_modifier(department)
+        print "dds"
+    else:
+        modifier = get_modifier_new(sort, order)
+        print "dd"
+
+    print modifier
     context = getContext()
     context = context.copy()
     context.update(get_faculties(department, modifier))

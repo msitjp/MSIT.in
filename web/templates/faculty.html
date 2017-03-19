@@ -41,6 +41,19 @@
                 </div>
                 {% endfor %} {% if settings.display_1st_faculty %}
                 <div class="tab-pane" id="firstshift">
+
+                  Order: <select class="order" id="order1">
+                    <option selected value="1">Name</option>
+                    <option value="2">Designation</option>
+                    <option value="3">Date of joining</option>
+                  </select>
+                  By <select class="by" id="by1">
+                    <option selected value="1">Ascending</option>
+                    <option value="2">Descending</option>
+                  </select>
+
+                  <button class="sorter" type="button" name="button" onclick='sorter(1)'>Sort</button>
+
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
                             <tbody>
@@ -68,6 +81,19 @@
                 </div>
                 {% endif %} {% if settings.display_1st_assistant %}
                 <div class="tab-pane" id="firstshiftlab">
+
+                  Order: <select class="order" id="order2">
+                    <option selected value="1">Name</option>
+                    <option value="2">Designation</option>
+                    <option value="3">Date of joining</option>
+                  </select>
+                  By <select class="by" id="by2">
+                    <option selected value="1">Ascending</option>
+                    <option value="2">Descending</option>
+                  </select>
+
+                  <button class="sorter" type="button" name="button" onclick='sorter(2)'>Sort</button>
+
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
                             <tbody>
@@ -93,6 +119,19 @@
                 </div>
                 {% endif %} {% if settings.display_2nd_faculty %}
                 <div class="tab-pane" id="secondshift">
+
+                  Order: <select class="order" id="order3">
+                    <option selected value="1">Name</option>
+                    <option value="2">Designation</option>
+                    <option value="3">Date of joining</option>
+                  </select>
+                  By <select class="by" id="by3">
+                    <option selected value="1">Ascending</option>
+                    <option value="2">Descending</option>
+                  </select>
+
+                  <button class="sorter" type="button" name="button" onclick='sorter(3)'>Sort</button>
+
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
                             <tbody>
@@ -118,6 +157,19 @@
                 </div>
                 {% endif %} {% if settings.display_2nd_assistant %}
                 <div class="tab-pane" id="secondshiftlab">
+
+                  Order: <select class="order" id="order4">
+                    <option selected value="1">Name</option>
+                    <option value="2">Designation</option>
+                    <option value="3">Date of joining</option>
+                  </select>
+                  By <select class="by" id="by4">
+                    <option selected value="1">Ascending</option>
+                    <option value="2">Descending</option>
+                  </select>
+
+                  <button class="sorter" type="button" name="button" onclick='sorter(4)'>Sort</button>
+
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
                             <tbody>
@@ -147,4 +199,47 @@
         {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
 </div>
+<script>
+
+  /* Hey there!
+
+  Sometimes in life you try to fix something to fix something else which may
+  fix the other fix but the fix you try to fix needs one more fix you so
+  finaly end up with something like the code below.
+
+  help? => vigzmv@outlook.com
+
+  */
+
+  try{
+    var order = window.location.pathname.match(/\d+/)[0];
+    if(order == "") order = '1';
+    $('.order').val(order);
+  } catch(err){}
+
+  try {
+    var by = window.location.pathname.replace(/.*\D/g, '')
+    if(by == "") by = '1';
+    $('.by').val(by);
+  } catch(err){}
+
+  function changeLoc(sort, order){
+    window.location = window.location.protocol + '//' + window.location.host + '/' +
+    window.location.pathname.replace(/^\/([^\/]*).*$/, '$1') + '/' + sort + '/' +
+    order + window.location.hash;
+  }
+
+  function sorter(id){
+    changeLoc($('#order' + id).val(), $('#by' + id).val());
+  }
+
+  $("#tttab > li > a").on("shown.bs.tab", function(e) {
+    window.location.hash = $(e.target).attr("href").substr(1) + 's';
+  });
+
+  var hash = window.location.hash;
+  $('#tttab > li > a[href="' + hash.slice(0, -1) + '"]').tab('show');
+
+</script>
+
 {% endblock %}
