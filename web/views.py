@@ -119,7 +119,6 @@ def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
         morning = Faculty.objects.filter(
             category__icontains='teaching', department=department, shift='M').order_by(modifier) or []
         context['morning'] = morning
-        print "ss"
     if department.display_2nd_faculty or b:
         evening = Faculty.objects.filter(
             category__icontains='teaching', department=department, shift='E').order_by(modifier) or []
@@ -157,12 +156,9 @@ def cse(request, sort=-1, order=-1):
 
     if sort == -1:
         modifier = get_modifier(department)
-        print "dds"
     else:
         modifier = get_modifier_new(sort, order)
-        print "dd"
 
-    print modifier
     context = getContext()
     context = context.copy()
     context.update(get_faculties(department, modifier))
@@ -278,5 +274,4 @@ def custom(request, key):
     tabs = page.tab_set.all().order_by('order')
     context = getContext()
     context['tabs'] = tabs
-    print context
     return render(request, 'general.html', context=context)
