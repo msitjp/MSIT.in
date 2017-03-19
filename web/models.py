@@ -21,12 +21,12 @@ from django.contrib.auth.models import User
 
 # Option fields
 TITLES = (
-    ('1', 'Mr.'),
-    ('2', 'Mrs.'),
-    ('3', 'Ms'),
-    ('4', 'Miss'),
-    ('5', 'Master'),
-    ('6', 'Dr'),
+    ('Mr.', 'Mr.'),
+    ('Mrs.', 'Mrs.'),
+    ('Ms', 'Ms'),
+    ('Miss', 'Miss'),
+    ('Master', 'Master'),
+    ('Dr', 'Dr'),
 )
 
 DESIGNATIONS = (
@@ -179,7 +179,7 @@ class SecondaryNavigationMenu(models.Model):
 
 class Faculty(models.Model):
     title = models.CharField(
-        max_length=1, choices=TITLES, default=1, blank=False)
+        max_length=10, choices=TITLES, default=1, blank=False)
     full_name = models.CharField(
         max_length=200, verbose_name='Full Name', blank=False)
     qualifications = models.CharField(max_length=100, blank=True, null=True)

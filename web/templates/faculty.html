@@ -47,7 +47,7 @@
                                 {% for i in morning %}
                                 <tr>
                                     <td style="padding:1em;">
-                                        <p><strong>{{i.full_name}}</strong></p>
+                                        <p><strong>{{i.title}}&nbsp;{{i.full_name}}</strong></p>
 
                                         <p>{{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 
@@ -74,7 +74,7 @@
                                 {% for i in mlab %}
                                 <tr>
                                     <td style="padding:1em;">
-                                        <p><strong>{{i.full_name}}</strong></p>
+                                        <p><strong>{{i.title}}&nbsp;{{i.full_name}}</strong></p>
 
                                         <p>{{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 
@@ -99,7 +99,7 @@
                                 {% for i in evening %}
                                 <tr>
                                     <td style="padding:1em;">
-                                        <p><strong>{{i.full_name}}</strong></p>
+                                        <p><strong>{{i.title}}&nbsp;{{i.full_name}}</strong></p>
 
                                         <p>{{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 
@@ -124,7 +124,7 @@
                                 {% for i in elab %}
                                 <tr>
                                     <td style="padding:1em;">
-                                        <p><strong>{{i.full_name}}</strong></p>
+                                        <p><strong>{{i.title}}&nbsp;{{i.full_name}}</strong></p>
 
                                         <p>{{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 

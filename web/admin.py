@@ -8,9 +8,9 @@ from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
     PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
     DepartmentPage, Page, Tab, Notice, Marquee, UserDepartment
 
-FIELDS = ('first_name', 'last_name', 'email', 'username', 'password',
-            'dept', 'is_active', 'is_staff', 'is_superuser',
-            'permissions', 'groups',)
+# FIELDS = ('first_name', 'last_name', 'email', 'username', 'password',
+#             'dept', 'is_active', 'is_staff', 'is_superuser',
+#             'permissions', 'groups',)
 
 
 class FacultyAdmin(admin.ModelAdmin):
@@ -24,8 +24,9 @@ class FacultyAdmin(admin.ModelAdmin):
 
     image_tag.short_description = 'Image'
 
-    list_display = ['full_name', 'image_tag', 'category', 'designation',
+    list_display = ['title', 'full_name', 'image_tag', 'category', 'designation',
                     'shift', 'department', 'date_of_joining']
+    list_display_links = ('full_name',)
     list_filter = ('category', 'shift', 'department', 'designation', )
 
     fields = ('title', 'full_name', 'qualifications', 'image_tag', 'profile_pic', 'category',

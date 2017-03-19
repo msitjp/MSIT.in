@@ -1,4 +1,6 @@
 from django.conf import settings
+from django.core import serializers
+from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse, Http404, get_object_or_404
 from .models import *
 
@@ -88,7 +90,7 @@ def events(request):
 # CSE, IT, ECE, EEE, APPLIED SCIENCES
 
 
-def get_modifier(department):
+def get_modifier(department, a=None, b=None):
     '''
         Sorting Modes are ::
         ('1', 'Name wise')
@@ -96,8 +98,10 @@ def get_modifier(department):
         ('3', 'Date-of-joining wise')
     '''
     modifier = ''
-    a = int(department.sorting_order)
-    b = int(department.sorting_order)
+    a = a or department.sort_faculty
+    b = a or department.sorting_order
+    a = int(a)
+    b = int(b)
     if a == 1:
         modifier = 'full_name'
     elif a == 2:
@@ -109,22 +113,21 @@ def get_modifier(department):
     return modifier
 
 
-def get_faculties(department, modifier):
-    print modifier
+def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
     context = {}
-    if department.display_1st_faculty:
+    if department.display_1st_faculty or a:
         morning = Faculty.objects.filter(
             category__icontains='teaching', department=department, shift='M').order_by(modifier) or []
         context['morning'] = morning
-    if department.display_2nd_faculty:
+    if department.display_2nd_faculty or b:
         evening = Faculty.objects.filter(
             category__icontains='teaching', department=department, shift='E').order_by(modifier) or []
         context['evening'] = evening
-    if department.display_1st_assistant:
+    if department.display_1st_assistant or c:
         mlab = Faculty.objects.filter(
             category__icontains='assistant', department=department, shift='M').order_by(modifier) or []
         context['mlab'] = mlab
-    if department.display_2nd_assistant:
+    if department.display_2nd_assistant or d:
         elab = Faculty.objects.filter(
             category__icontains='assistant', department=department, shift='E').order_by(modifier) or []
         context['elab'] = elab
@@ -141,7 +144,6 @@ def cse(request):
     context['settings'] = department
     context['tabs'] = tabs
     context['heading'] = 'Computer Science Engineering'
-    print context
     return render(request, 'faculty.html', context=context)
 
 
@@ -195,6 +197,32 @@ def ap(request):
     context['tabs'] = tabs
     context['heading'] = 'Applied Science'
     return render(request, 'faculty.html', context=context)
+
+
+def faculty_api(request, department, shift, teaching, types, order):
+    if request.method != 'GET' or not request.is_ajax():
+        return HttpResponse(status=400)
+    dep = get_object_or_404(Department, department__icontains=department)
+    modifier = get_modifier(dep, types, order)
+    if teaching=='1' and shift=='M':
+        context = get_faculties(dep, modifier, a=True)
+        index='morning'
+    elif teaching=='0' and shift=='M':
+        context = get_faculties(dep, modifier, b=True)
+        index='mlab'
+    elif teaching=='1' and shift=='E':
+        context = get_faculties(dep, modifier, c=True)
+        index='evening'
+    elif teaching=='0' and shift=='E':
+        context = get_faculties(dep, modifier, d=True)
+        index='elab'
+    else:
+        return HttpResponse(status=400)
+    try:
+        result = serializers.serialize('json', context[index])
+        return HttpResponse(result, content_type='application/json')
+    except Exception as e:
+        return HttpResponse(str(e), status=400)
 
 
 def latestNews(request):
