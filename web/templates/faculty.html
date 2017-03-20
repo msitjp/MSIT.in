@@ -114,7 +114,9 @@
 
                                         <p>{{i.email}}</p>
                                     </td>
+                                    {% if i.profile_pic %}
                                     <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -154,7 +156,9 @@
 
                                         <p>{{i.email}}</p>
                                     </td>
+                                    {% if i.profile_pic %}
                                     <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -193,7 +197,9 @@
 
                                         <p>{{i.email}}</p>
                                     </td>
+                                    {% if i.profile_pic %}
                                     <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
                             </tbody>
