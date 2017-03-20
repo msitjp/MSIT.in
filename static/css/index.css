@@ -262,6 +262,20 @@ table tbody tr td strong {
 
      /*--------------------------------------*/
      /*----For facilities page /facilities-------*/
+     .sorterMenu {
+       padding-top: 1em;
+       margin: 0 auto;
+       text-align: center;
+     }
+
+     .btn-success {
+       background-image: none;
+       background-color: #00886a;  
+     }
+     .btn-success:hover {
+        background-color: #00796B;
+     }
+
      #factab li a {
        color: #00796B; }
 
