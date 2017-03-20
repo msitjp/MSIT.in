@@ -433,11 +433,11 @@ class Attendance(models.Model):
 class Syllabus(models.Model):
     title = models.CharField(max_length=100, help_text='text to display')
     department = models.CharField(
-        max_length=30, help_text='Department Name', choices=DEPARTMENT)
+        max_length=30, help_text='Department Name', choices=DEPARTMENT, blank=True, null=True)
     semester = models.CharField(
         max_length=1, choices=SEMESTERS, blank=True, null=True)
-    syllabus = models.FileField(upload_to=image_name("title", "syllabus"))
-    lecture_plan = models.FileField(upload_to=image_name)
+    syllabus = models.FileField(upload_to=image_name("title", "syllabus"), blank=True, null=True)
+    lecture_plan = models.FileField(upload_to=image_name("title", "lecture_plan"), blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -449,7 +449,7 @@ class Syllabus(models.Model):
         verbose_name_plural = 'Content - Syllabus'
 
     def clean(self):
-        super(Faculty, self).clean()
+        super(Syllabus, self).clean()
         req = current_request()
         try:
             if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
