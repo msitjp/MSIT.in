@@ -152,6 +152,7 @@ admin.site.register(Marquee, MarqueeAdmin)
 class UserDepartmentInline(admin.StackedInline):
     model = UserDepartment
     can_delete = False
+    exclude = ('shift',)
     verbose_name_plural = 'User Departments'
     verbose_name = 'User Departments'
 

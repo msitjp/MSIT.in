@@ -168,10 +168,13 @@ def cse(request, sort=-1, order=-1):
     return render(request, 'faculty.html', context=context)
 
 
-def it(request):
+def it(request, sort=-1, order=-1):
     department = Department.objects.get(department='IT')
     tabs = department.departmentpage_set.all().order_by('order')
-    modifier = get_modifier(department)
+    if sort == -1:
+        modifier = get_modifier(department)
+    else:
+        modifier = get_modifier_new(sort, order)
     context = getContext()
     context = context.copy()
     context.update(get_faculties(department, modifier))
@@ -181,10 +184,13 @@ def it(request):
     return render(request, 'faculty.html', context=context)
 
 
-def ece(request):
+def ece(request, sort=-1, order=-1):
     department = Department.objects.get(department='ECE')
     tabs = department.departmentpage_set.all().order_by('order')
-    modifier = get_modifier(department)
+    if sort == -1:
+        modifier = get_modifier(department)
+    else:
+        modifier = get_modifier_new(sort, order)
     context = getContext()
     context = context.copy()
     context.update(get_faculties(department, modifier))
@@ -194,10 +200,13 @@ def ece(request):
     return render(request, 'faculty.html', context=context)
 
 
-def eee(request):
+def eee(request, sort=-1, order=-1):
     department = Department.objects.get(department='EEE')
     tabs = department.departmentpage_set.all().order_by('order')
-    modifier = get_modifier(department)
+    if sort == -1:
+        modifier = get_modifier(department)
+    else:
+        modifier = get_modifier_new(sort, order)
     context = getContext()
     context = context.copy()
     context.update(get_faculties(department, modifier))
@@ -207,10 +216,13 @@ def eee(request):
     return render(request, 'faculty.html', context=context)
 
 
-def ap(request):
+def ap(request, sort=-1, order=-1):
     department = Department.objects.get(department='APPLIED SCIENCES')
     tabs = department.departmentpage_set.all().order_by('order')
-    modifier = get_modifier(department)
+    if sort == -1:
+        modifier = get_modifier(department)
+    else:
+        modifier = get_modifier_new(sort, order)
     context = getContext()
     context = context.copy()
     context.update(get_faculties(department, modifier))
