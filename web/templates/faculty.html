@@ -42,22 +42,22 @@
                 {% endfor %} {% if settings.display_1st_faculty %}
                 <div class="tab-pane" id="firstshift">
 
-                  
+
                   <div class="form-inline sorterMenu">
-                    Order:
+                    &nbsp;&nbsp;&nbsp;Order by&nbsp;
                     <select class="form-control order" id="order1">
                         <option selected value="1">Name</option>
                         <option value="2">Designation</option>
                         <option value="3">Date of joining</option>
                     </select>
-                  By <select class="form-control by" id="by1">
+                  <select class="form-control by" id="by1">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
-                  </select>
-                  <button class="btn-success btn sorter" type="button" name="button" onclick='sorter(1)'>Sort</button>
+                  </select>&nbsp;&nbsp;
+                  <button class="btn-success btn sorter" type="button" name="button" onclick='sorter(1)'>Apply</button>
                   </div>
 
-                  
+
 
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
@@ -87,20 +87,20 @@
                 {% endif %} {% if settings.display_1st_assistant %}
                 <div class="tab-pane" id="firstshiftlab">
                     <div class="form-inline sorterMenu">
-                  Order:
+                  &nbsp;&nbsp;&nbsp;Order by&nbsp;
                    <select class="form-control" id="order2">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
                     <option value="3">Date of joining</option>
                   </select>
-                  By <select class="form-control by" id="by2">
+                   <select class="form-control by" id="by2">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
-                  </select>
-                  <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(2)'>Sort</button>
+                  </select>&nbsp;&nbsp;
+                  <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(2)'>Apply</button>
                     </div>
 
-                  
+
 
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
@@ -129,16 +129,16 @@
                 <div class="tab-pane" id="secondshift">
 
                     <div class="form-inline sorterMenu">
-                  Order: <select class="form-control order" id="order3">
+                  &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order3">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
                     <option value="3">Date of joining</option>
                   </select>
-                  By <select class="form-control by" id="by3">
+                  <select class="form-control by" id="by3">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
-                  </select>
-                <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(3)'>Sort</button>
+                  </select>&nbsp;&nbsp;
+                <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(3)'>Apply</button>
 
                     </div>
 
@@ -168,17 +168,17 @@
                 {% endif %} {% if settings.display_2nd_assistant %}
                 <div class="tab-pane" id="secondshiftlab">
                     <div class="form-inline sorterMenu">
-                  Order: <select class="form-control order" id="order4">
+                  &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order4">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
                     <option value="3">Date of joining</option>
                   </select>
-                  By <select class="form-control by" id="by4">
+                  <select class="form-control by" id="by4">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
-                  </select>
+                  </select>&nbsp;&nbsp;
 
-                  <button class="sorter btn btn-success" type="button" name="button" onclick='sorter(4)'>Sort</button>
+                  <button class="sorter btn btn-success" type="button" name="button" onclick='sorter(4)'>Apply</button>
                     </div>
 
                     <div style="padding:1em;">
