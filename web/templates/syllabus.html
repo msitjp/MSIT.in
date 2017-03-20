@@ -20,16 +20,20 @@
             <div class="tab-content" style="padding:20px;">
                 <div class="tab-pane active" id="syllabus">
                     {% for i in syllabus %}
-                    <p class="ttcontent">
-                        {{i.title}} - <a href="{{i.syllabus.url}}">Click Here</a>
-                    </p>
+                    {% if i.syllabus %}
+                            <p class="ttcontent">
+                                {{i.title}} - <a href="{{i.syllabus.url}}">Click Here</a>
+                            </p>
+                        {% endif %}
                     {% endfor %}
                 </div>
                 <div class="tab-pane" id="lecture_plan">
                     {% for i in syllabus %}
-                    <p class="ttcontent">
-                        {{i.title}} - <a href="{{i.lecture_plan.url}}">Click Here</a>
-                    </p>
+                        {% if i.lecture_plan %}
+                            <p class="ttcontent">
+                                {{i.title}} - <a href="{{i.lecture_plan.url}}">Click Here</a>
+                            </p>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
