@@ -33,18 +33,30 @@ class FacultyAdmin(admin.ModelAdmin):
               'designation', 'phone_number', 'email', 'shift', 'department',
               'date_of_joining', 'experience', 'description',)
     readonly_fields = ('image_tag',)
+    search_fields = ['full_name']
+
+    def get_queryset(self, request):
+        qs = super(FacultyAdmin, self).get_queryset(request)
+        ud = User.objects.get(username=request.user.username)
+        u = UserDepartment.objects.get(user=ud)
+        if request.user.is_superuser or u.department == 'All':
+            return qs
+        else:
+            return qs.filter(department=u.department)
 
 
 class LatestNewsAdmin(admin.ModelAdmin):
     list_display = ['title', 'new', 'visible', 'created_at', 'updated_at']
     list_filter = ('new', 'visible', )
     list_editable = ('new', 'visible',)
+    search_fields = ['title']
 
 
 class NoticeAdmin(admin.ModelAdmin):
     list_display = ['title', 'new', 'visible', 'created_at', 'updated_at']
     list_filter = ('new', 'visible', )
     list_editable = ('new', 'visible',)
+    search_fields = ['title']
 
 
 class SecondaryMenuInline(admin.TabularInline):
@@ -59,6 +71,7 @@ class PrimaryMenuAdmin(admin.ModelAdmin):
     list_filter = ('order',)
     ordering = ('order',)
     list_editable = ('order',)
+    search_fields = ['name']
 
 
 class PrimaryNavigationMenuAdmin(admin.ModelAdmin):
@@ -66,12 +79,14 @@ class PrimaryNavigationMenuAdmin(admin.ModelAdmin):
     list_filter = ('order',)
     ordering = ('order',)
     list_editable = ('order', 'link', 'files',)
+    search_fields = ['title']
 
 class MarqueeAdmin(admin.ModelAdmin):
     list_display = ['title', 'order', 'link', 'files']
     list_filter = ('order',)
     ordering = ('order',)
     list_editable = ('order', 'link', 'files',)
+    search_fields = ['title']
 
 
 class SecondaryNavigationMenuAdmin(admin.ModelAdmin):
@@ -79,6 +94,7 @@ class SecondaryNavigationMenuAdmin(admin.ModelAdmin):
     list_filter = ('order',)
     ordering = ('order',)
     list_editable = ('order', 'link', 'files',)
+    search_fields = ['title']
 
 
 class AttendanceAdmin(admin.ModelAdmin):
@@ -87,6 +103,17 @@ class AttendanceAdmin(admin.ModelAdmin):
     list_filter = ('shift', 'department', 'semester',)
     ordering = ('semester',)
     list_editable = ('pdf',)
+    search_fields = ['title']
+
+    def get_queryset(self, request):
+        qs = super(AttendanceAdmin, self).get_queryset(request)
+        ud = User.objects.get(username=request.user.username)
+        u = UserDepartment.objects.get(user=ud)
+        if request.user.is_superuser or u.department == 'All':
+            return qs
+        else:
+            return qs.filter(department=u.department)
+
 
 
 class SyllabusAdmin(admin.ModelAdmin):
@@ -95,6 +122,16 @@ class SyllabusAdmin(admin.ModelAdmin):
     list_filter = ('department', 'semester',)
     ordering = ('semester', 'department',)
     list_editable = ('syllabus', 'lecture_plan',)
+    search_fields = ['title']
+
+    def get_queryset(self, request):
+        qs = super(SyllabusAdmin, self).get_queryset(request)
+        ud = User.objects.get(username=request.user.username)
+        u = UserDepartment.objects.get(user=ud)
+        if request.user.is_superuser or u.department == 'All':
+            return qs
+        else:
+            return qs.filter(department=u.department)
 
 
 class TimeTableAdmin(admin.ModelAdmin):
@@ -103,6 +140,16 @@ class TimeTableAdmin(admin.ModelAdmin):
     list_filter = ('shift', 'department', 'semester',)
     ordering = ('semester', 'department', 'shift')
     list_editable = ('pdf',)
+    search_fields = ['title']
+
+    def get_queryset(self, request):
+        qs = super(TimeTableAdmin, self).get_queryset(request)
+        ud = User.objects.get(username=request.user.username)
+        u = UserDepartment.objects.get(user=ud)
+        if request.user.is_superuser or u.department == 'All':
+            return qs
+        else:
+            return qs.filter(department=u.department)
 
 
 class DepartmentPageInline(admin.TabularInline):
@@ -119,6 +166,15 @@ class DepartmentAdmin(admin.ModelAdmin):
     list_editable = ('display_1st_faculty', 'display_2nd_faculty', 'display_1st_assistant',
                      'display_2nd_assistant', 'sort_faculty', 'sorting_order',)
 
+    def get_queryset(self, request):
+        qs = super(DepartmentAdmin, self).get_queryset(request)
+        ud = User.objects.get(username=request.user.username)
+        u = UserDepartment.objects.get(user=ud)
+        if request.user.is_superuser or u.department == 'All':
+            return qs
+        else:
+            return qs.filter(department=u.department)
+
 
 class TabInline(admin.TabularInline):
     model = Tab
@@ -130,6 +186,7 @@ class PageAdmin(admin.ModelAdmin):
     ]
     list_display = ['title', 'link', 'updated_at', 'created_at']
     ordering = ('-created_at', '-updated_at')
+    search_fields = ['title']
 
 
 admin.site.register(Faculty, FacultyAdmin)
