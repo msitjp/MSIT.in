@@ -63,7 +63,7 @@ def facilities(request):
 
 
 def society(request):
-    societies = StudentSociety.objects.all() or []
+    societies = StudentSociety.objects.order_by('order') or []
     context = getContext()
     context['societies'] = societies
     return render(request, 'society.html', context=context)
