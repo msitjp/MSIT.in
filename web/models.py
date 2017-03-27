@@ -466,6 +466,7 @@ class Syllabus(models.Model):
 class StudentSociety(models.Model):
     name = models.CharField(max_length=50, help_text='Society Name')
     description = RichTextUploadingField()
+    order = models.CharField(max_length=20, default='1')
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 

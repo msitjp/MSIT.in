@@ -133,6 +133,13 @@ class SyllabusAdmin(admin.ModelAdmin):
         else:
             return qs.filter(department=u.department)
 
+class SocietyAdmin(admin.ModelAdmin):
+    list_display = ['name', 'order', 'created_at', 'updated_at']
+    list_filter = ('order', )
+    ordering = ('order', )
+    list_editable = ('order', )
+    search_fields = ['name']
+
 
 class TimeTableAdmin(admin.ModelAdmin):
     list_display = ['title', 'shift', 'department',
@@ -196,7 +203,7 @@ admin.site.register(PrimaryMenu, PrimaryMenuAdmin)
 admin.site.register(TimeTable, TimeTableAdmin)
 admin.site.register(Attendance, AttendanceAdmin)
 admin.site.register(Syllabus, SyllabusAdmin)
-admin.site.register(StudentSociety)
+admin.site.register(StudentSociety, SocietyAdmin)
 admin.site.register(Achievement)
 admin.site.register(Event)
 admin.site.register(PrimaryNavigationMenu, PrimaryNavigationMenuAdmin)
