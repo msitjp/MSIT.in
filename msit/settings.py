@@ -13,7 +13,7 @@ SECRET_KEY = 'tvp$q5j-#@@*e4ln788fvuv)x53e999cl5(vxs8lqkgjkt3xy5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not False
 
-ALLOWED_HOSTS = ['35.154.11.189', '139.59.61.186', 'localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['*.msit.in', 'msit.in', '35.154.11.189', '139.59.61.186', 'localhost', '127.0.0.1', '[::1]']
 
 # Application definition
 
