@@ -1,3 +1,5 @@
+from itertools import chain
+
 from django.conf import settings
 from django.core import serializers
 from django.http import JsonResponse
@@ -116,20 +118,24 @@ def get_modifier(department, a=None, b=None):
 def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
     context = {}
     if department.display_1st_faculty or a:
+        hod = Faculty.objects.filter(department=department, shift='M', designation='1HOD').order_by('full_name')
         morning = Faculty.objects.filter(
-            category__icontains='teaching', department=department, shift='M').order_by(modifier) or []
+            category__icontains='teaching', department=department, shift='M').exclude(designation='1HOD').order_by(modifier, 'full_name') or []
+        morning = list(chain(hod, morning))
         context['morning'] = morning
     if department.display_2nd_faculty or b:
+        hod = Faculty.objects.filter(department=department, shift='E', designation='1HOD').order_by('full_name')
         evening = Faculty.objects.filter(
-            category__icontains='teaching', department=department, shift='E').order_by(modifier) or []
+            category__icontains='teaching', department=department, shift='E').exclude(designation='1HOD').order_by(modifier, 'full_name') or []
+        evening = list(chain(hod, evening))
         context['evening'] = evening
     if department.display_1st_assistant or c:
         mlab = Faculty.objects.filter(
-            category__icontains='assistant', department=department, shift='M').order_by(modifier) or []
+            category__icontains='assistant', department=department, shift='M').order_by(modifier, 'full_name') or []
         context['mlab'] = mlab
     if department.display_2nd_assistant or d:
         elab = Faculty.objects.filter(
-            category__icontains='assistant', department=department, shift='E').order_by(modifier) or []
+            category__icontains='assistant', department=department, shift='E').order_by(modifier, 'full_name') or []
         context['elab'] = elab
     return context
 
