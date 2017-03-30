@@ -80,7 +80,7 @@ def achievements(request):
 
 def events(request):
     try:
-        event = Event.objects.all().oreder_by('-date')
+        event = Event.objects.all().order_by('-date')
     except:
         event = Event.objects.all()
     context = getContext()
