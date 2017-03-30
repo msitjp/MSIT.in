@@ -195,6 +195,11 @@ class PageAdmin(admin.ModelAdmin):
     ordering = ('-created_at', '-updated_at')
     search_fields = ['title']
 
+class EventAdmin(admin.ModelAdmin):
+    list_display = ['title', 'date']
+    ordering = ('-date',)
+    search_fields = ['title']
+
 
 admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(LatestNews, LatestNewsAdmin)
@@ -205,7 +210,7 @@ admin.site.register(Attendance, AttendanceAdmin)
 admin.site.register(Syllabus, SyllabusAdmin)
 admin.site.register(StudentSociety, SocietyAdmin)
 admin.site.register(Achievement)
-admin.site.register(Event)
+admin.site.register(Event, EventAdmin)
 admin.site.register(PrimaryNavigationMenu, PrimaryNavigationMenuAdmin)
 admin.site.register(SecondaryNavigationMenu, SecondaryNavigationMenuAdmin)
 admin.site.register(Department, DepartmentAdmin)
