@@ -3,7 +3,8 @@ from itertools import chain
 from django.conf import settings
 from django.core import serializers
 from django.http import JsonResponse
-from django.shortcuts import render, HttpResponse, Http404, get_object_or_404
+from django.shortcuts import render, HttpResponse, Http404, get_object_or_404, HttpResponseRedirect
+from django.urls import reverse
 from .models import *
 
 
@@ -35,8 +36,8 @@ def home(request):
 
 
 def timetable(request):
-    morning = TimeTable.objects.filter(shift='M') or []
-    evening = TimeTable.objects.filter(shift='E') or []
+    morning = TimeTable.objects.filter(shift='M').order_by('semester') or []
+    evening = TimeTable.objects.filter(shift='E').order_by('semester') or []
 
     context = getContext()
     context['morning'] = morning
@@ -45,8 +46,8 @@ def timetable(request):
 
 
 def attendance(request):
-    morning = Attendance.objects.filter(shift='M') or []
-    evening = Attendance.objects.filter(shift='E') or []
+    morning = Attendance.objects.filter(shift='M').order_by('semester') or []
+    evening = Attendance.objects.filter(shift='E').order_by('semester') or []
     context = getContext()
     context['morning'] = morning
     context['evening'] = evening
@@ -54,7 +55,7 @@ def attendance(request):
 
 
 def syllabus(request):
-    syllabus = Syllabus.objects.all() or []
+    syllabus = Syllabus.objects.all().order_by('semester') or []
     context = getContext()
     context['syllabus'] = syllabus
     return render(request, 'syllabus.html', context=context)
@@ -72,7 +73,7 @@ def society(request):
 
 
 def achievements(request):
-    achievements = Achievement.objects.all() or []
+    achievements = Achievement.objects.all().order_by('order') or []
     context = getContext()
     context['achievements'] = achievements
     return render(request, 'achievements.html', context=context)
@@ -293,3 +294,26 @@ def custom(request, key):
     context = getContext()
     context['tabs'] = tabs
     return render(request, 'general.html', context=context)
+
+
+def send_to_notice(request, pk):
+    if not request.user.is_superuser:
+        return HttpResponseRedirect(reverse('latest_news'))
+    try:
+        item = LatestNews.objects.get(pk=pk)
+    except:
+        return HttpResponseRedirect(reverse('latest_news'))
+    notice = Notice()
+    notice.title = item.title
+    notice.link = item.link
+    notice.files = item.files
+    notice.new = item.new
+    notice.visible = item.visible
+    notice.additional_title = item.additional_title
+    notice.additional_link = item.additional_link
+    notice.additional_files = item.additional_files
+    notice.save()
+    notice.created_at = item.created_at
+    notice.save()
+    item.delete()
+    return HttpResponseRedirect(reverse('latest_news'))

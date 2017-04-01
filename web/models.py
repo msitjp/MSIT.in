@@ -481,6 +481,7 @@ class StudentSociety(models.Model):
 
 class Achievement(models.Model):
     title = models.CharField(max_length=50, help_text='Tab Name')
+    order = models.PositiveIntegerField(default=1)
     description = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)

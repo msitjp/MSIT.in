@@ -9,6 +9,7 @@
                 <ul>
                     {% for item in news %}
                     <li>
+                        <button class="btn btn-danger btn-xs" onclick='document.location.href="/send_to_notice/{{item.pk}}";'>Send to Notices</button>
                         {% if item.new %}<img alt="" src="{% static 'img/new.gif' %}" style="width: 28px; height: 11px;" />{% endif %}
                         <a {% if item.link %} href="{{ item.link }}" {% else %} href="{{ item.files.url }}" {% endif %}>{{ item.title }}</a> {% if item.additional_title %}
                         <br />

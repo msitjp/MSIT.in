@@ -141,6 +141,14 @@ class SocietyAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
+class AchievementAdmin(admin.ModelAdmin):
+    list_display = ['title', 'order', 'created_at', 'updated_at']
+    list_filter = ('order', )
+    ordering = ('order', )
+    list_editable = ('order', )
+    search_fields = ['title']
+
+
 class TimeTableAdmin(admin.ModelAdmin):
     list_display = ['title', 'shift', 'department',
                     'semester', 'pdf', 'created_at', 'updated_at']
