@@ -27,6 +27,7 @@ class FacultyAdmin(admin.ModelAdmin):
     list_display = ['title', 'full_name', 'image_tag', 'category', 'designation',
                     'shift', 'department', 'date_of_joining']
     list_display_links = ('full_name',)
+    ordering = ('full_name',)
     list_filter = ('category', 'shift', 'department', 'designation', )
 
     fields = ('title', 'full_name', 'qualifications', 'image_tag', 'profile_pic', 'category',
