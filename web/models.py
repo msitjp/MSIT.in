@@ -32,9 +32,9 @@ TITLES = (
 DESIGNATIONS = (
     ('1HOD', 'HOD'),
     ('2Professor', 'Professor'),
-    ('3Assistant Professor', 'Assistant Professor'),
-    ('4Associate Professor', 'Associate Professor'),
-    ('5Reader', 'Reader'),
+    ('3Associate Professor', 'Associate Professor'),
+    ('4Reader', 'Reader'),
+    ('5Assistant Professor', 'Assistant Professor'),
 )
 
 DEPARTMENT = (
