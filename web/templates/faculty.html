@@ -13,7 +13,7 @@
             </script>
             <ul class="nav nav-tabs" id="tttab" role="tablist">
                 {% for i in tabs %}
-                <li {% if forloop.counter == 1 %}class="active" {% endif %}>
+                <li {% if forloop.counter==1 %}class="active" {% endif %}>
                     <a href="#{{i.title|slugify}}" aria-controls="{{i.title|slugify}}" role="tab" data-toggle="tab">{{i.title}}</a>
                 </li>
                 {% endfor %} {% if settings.display_1st_faculty %}
@@ -43,19 +43,18 @@
                 <div class="tab-pane" id="firstshift">
 
 
-                  <div class="form-inline sorterMenu">
-                    &nbsp;&nbsp;&nbsp;Order by&nbsp;
-                    <select class="form-control order" id="order1">
+                    <div class="form-inline sorterMenu">
+                        &nbsp;&nbsp;&nbsp;Order by&nbsp;
+                        <select class="form-control order" id="order1">
                         <option selected value="1">Name</option>
                         <option value="2">Designation</option>
-                        <option value="3">Date of joining</option>
                     </select>
-                  <select class="form-control by" id="by1">
+                        <select class="form-control by" id="by1">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
                   </select>&nbsp;&nbsp;
-                  <button class="btn-success btn sorter" type="button" name="button" onclick='sorter(1)'>Apply</button>
-                  </div>
+                        <button class="btn-success btn sorter" type="button" name="button" onclick='sorter(1)'>Apply</button>
+                    </div>
 
 
 
@@ -87,17 +86,16 @@
                 {% endif %} {% if settings.display_1st_assistant %}
                 <div class="tab-pane" id="firstshiftlab">
                     <div class="form-inline sorterMenu">
-                  &nbsp;&nbsp;&nbsp;Order by&nbsp;
-                   <select class="form-control" id="order2">
+                        &nbsp;&nbsp;&nbsp;Order by&nbsp;
+                        <select class="form-control" id="order2">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
-                    <option value="3">Date of joining</option>
                   </select>
-                   <select class="form-control by" id="by2">
+                        <select class="form-control by" id="by2">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
                   </select>&nbsp;&nbsp;
-                  <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(2)'>Apply</button>
+                        <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(2)'>Apply</button>
                     </div>
 
 
@@ -131,16 +129,15 @@
                 <div class="tab-pane" id="secondshift">
 
                     <div class="form-inline sorterMenu">
-                  &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order3">
+                        &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order3">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
-                    <option value="3">Date of joining</option>
                   </select>
-                  <select class="form-control by" id="by3">
+                        <select class="form-control by" id="by3">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
                   </select>&nbsp;&nbsp;
-                <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(3)'>Apply</button>
+                        <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(3)'>Apply</button>
 
                     </div>
 
@@ -172,17 +169,17 @@
                 {% endif %} {% if settings.display_2nd_assistant %}
                 <div class="tab-pane" id="secondshiftlab">
                     <div class="form-inline sorterMenu">
-                  &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order4">
+                        &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order4">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
                     <option value="3">Date of joining</option>
                   </select>
-                  <select class="form-control by" id="by4">
+                        <select class="form-control by" id="by4">
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
                   </select>&nbsp;&nbsp;
 
-                  <button class="sorter btn btn-success" type="button" name="button" onclick='sorter(4)'>Apply</button>
+                        <button class="sorter btn btn-success" type="button" name="button" onclick='sorter(4)'>Apply</button>
                     </div>
 
                     <div style="padding:1em;">
@@ -217,42 +214,40 @@
     </div>
 </div>
 <script>
+    /* Hey there!
 
-  /* Hey there!
+      help? => vigzmv@outlook.com
 
-  help? => vigzmv@outlook.com
+      */
 
-  */
+    try {
+        var order = window.location.pathname.match(/\d+/)[0];
+        if (order == "") order = '1';
+        $('.order').val(order);
+    } catch (err) {}
 
-  try{
-    var order = window.location.pathname.match(/\d+/)[0];
-    if(order == "") order = '1';
-    $('.order').val(order);
-  } catch(err){}
+    try {
+        var by = window.location.pathname.replace(/.*\D/g, '')
+        if (by == "") by = '1';
+        $('.by').val(by);
+    } catch (err) {}
 
-  try {
-    var by = window.location.pathname.replace(/.*\D/g, '')
-    if(by == "") by = '1';
-    $('.by').val(by);
-  } catch(err){}
+    function changeLoc(sort, order) {
+        window.location = window.location.protocol + '//' + window.location.host + '/' +
+            window.location.pathname.replace(/^\/([^\/]*).*$/, '$1') + '/' + sort + '/' +
+            order + window.location.hash;
+    }
 
-  function changeLoc(sort, order){
-    window.location = window.location.protocol + '//' + window.location.host + '/' +
-    window.location.pathname.replace(/^\/([^\/]*).*$/, '$1') + '/' + sort + '/' +
-    order + window.location.hash;
-  }
+    function sorter(id) {
+        changeLoc($('#order' + id).val(), $('#by' + id).val());
+    }
 
-  function sorter(id){
-    changeLoc($('#order' + id).val(), $('#by' + id).val());
-  }
+    $("#tttab > li > a").on("shown.bs.tab", function(e) {
+        window.location.hash = $(e.target).attr("href").substr(1) + 's';
+    });
 
-  $("#tttab > li > a").on("shown.bs.tab", function(e) {
-    window.location.hash = $(e.target).attr("href").substr(1) + 's';
-  });
-
-  var hash = window.location.hash;
-  $('#tttab > li > a[href="' + hash.slice(0, -1) + '"]').tab('show');
-
+    var hash = window.location.hash;
+    $('#tttab > li > a[href="' + hash.slice(0, -1) + '"]').tab('show');
 </script>
 
 {% endblock %}
