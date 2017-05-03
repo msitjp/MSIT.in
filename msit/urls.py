@@ -6,7 +6,7 @@ from django.utils.text import ugettext_lazy as _
 
 
 urlpatterns = [
-    url(r'^admin/?', admin.site.urls),
+    url(r'^msit/admin/login/?', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^', include('web.urls')),
 ]
