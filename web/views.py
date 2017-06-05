@@ -3,7 +3,7 @@ from itertools import chain
 from django.conf import settings
 from django.core import serializers
 from django.http import JsonResponse
-from django.shortcuts import render, HttpResponse, Http404, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, Http404, get_object_or_404, HttpResponseRedirect, render_to_response
 from django.urls import reverse
 from .models import *
 
@@ -287,9 +287,12 @@ def custom(request, key):
             Flag = False
             break
     if not Flag:
-        raise Http404
+        return render_to_response('404.html')
     key = '/' + key
-    page = get_object_or_404(Page, link=key)
+    try:
+      page = Page.objects.get(link=key)
+    except:
+      return render_to_response('404.html')
     tabs = page.tab_set.all().order_by('order')
     context = getContext()
     context['tabs'] = tabs
