@@ -27,6 +27,7 @@ TITLES = (
     ('Miss', 'Miss'),
     ('Master', 'Master'),
     ('Dr', 'Dr'),
+    ('Prof', 'Prof'),
 )
 
 DESIGNATIONS = (
