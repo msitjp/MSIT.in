@@ -102,7 +102,7 @@ def get_modifier(department, a=None, b=None):
     '''
     modifier = ''
     a = a or department.sort_faculty
-    b = a or department.sorting_order
+    b = b or department.sorting_order
     a = int(a)
     b = int(b)
     if a == 1:
