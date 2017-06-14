@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['KEY']
 print os.environ['KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not False
+DEBUG = False
 
 ALLOWED_HOSTS = ['www.msit.in', 'dev.msit.in', 'msit.in', '35.154.11.189', '139.59.61.186', 'localhost', '127.0.0.1', '[::1]']
 
@@ -65,23 +65,23 @@ WSGI_APPLICATION = 'msit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
- }
-
 # DATABASES = {
-#       'default': {
-#           'ENGINE': os.environ['DB_ENGINE'],
-#           'NAME': os.environ['DB_NAME'],
-#           'USER': os.environ['DB_USER'],
-#           'PASSWORD': os.environ['DB_PASS'],
-#           'HOST': os.environ['DB_HOST'],
-#           'PORT': os.environ['DB_PORT']
-#       }
-# }
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+#  }
+
+DATABASES = {
+      'default': {
+          'ENGINE': os.environ['DB_ENGINE'],
+          'NAME': os.environ['DB_NAME'],
+          'USER': os.environ['DB_USER'],
+          'PASSWORD': os.environ['DB_PASS'],
+          'HOST': os.environ['DB_HOST'],
+          'PORT': os.environ['DB_PORT']
+      }
+}
 
 
 # Password validation
