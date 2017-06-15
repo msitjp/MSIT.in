@@ -43,7 +43,7 @@
                 <div class="tab-pane" id="firstshift">
 
 
-                  <div class="form-inline sorterMenu">
+                  <!-- <div class="form-inline sorterMenu">
                     &nbsp;&nbsp;&nbsp;Order by&nbsp;
                     <select class="form-control order" id="order1">
                         <option selected value="1">Name</option>
@@ -55,7 +55,7 @@
                     <option value="2">Descending</option>
                   </select>&nbsp;&nbsp;
                   <button class="btn-success btn sorter" type="button" name="button" onclick='sorter(1)'>Apply</button>
-                  </div>
+                  </div> -->
 
 
 
@@ -86,19 +86,19 @@
                 </div>
                 {% endif %} {% if settings.display_1st_assistant %}
                 <div class="tab-pane" id="firstshiftlab">
-                    <div class="form-inline sorterMenu">
+                    <!-- <div class="form-inline sorterMenu">
                   &nbsp;&nbsp;&nbsp;Order by&nbsp;
                    <select class="form-control" id="order2">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
                     <option value="3">Date of Joining</option>
                   </select>
-                   <select class="form-control by" id="by2">
+                   <select class="form-control by" id=>
                     <option selected value="1">Ascending</option>
                     <option value="2">Descending</option>
                   </select>&nbsp;&nbsp;
                   <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(2)'>Apply</button>
-                    </div>
+                    </div> -->
 
 
 
@@ -130,7 +130,7 @@
                 {% endif %} {% if settings.display_2nd_faculty %}
                 <div class="tab-pane" id="secondshift">
 
-                    <div class="form-inline sorterMenu">
+                   <!--  <div class="form-inline sorterMenu">
                   &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order3">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
@@ -142,7 +142,7 @@
                   </select>&nbsp;&nbsp;
                 <button class="btn btn-success sorter" type="button" name="button" onclick='sorter(3)'>Apply</button>
 
-                    </div>
+                    </div> -->
 
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
@@ -171,7 +171,7 @@
                 </div>
                 {% endif %} {% if settings.display_2nd_assistant %}
                 <div class="tab-pane" id="secondshiftlab">
-                    <div class="form-inline sorterMenu">
+                    <!-- <div class="form-inline sorterMenu">
                   &nbsp;&nbsp;&nbsp;Order by&nbsp; <select class="form-control order" id="order4">
                     <option selected value="1">Name</option>
                     <option value="2">Designation</option>
@@ -183,7 +183,7 @@
                   </select>&nbsp;&nbsp;
 
                   <button class="sorter btn btn-success" type="button" name="button" onclick='sorter(4)'>Apply</button>
-                    </div>
+                    </div> -->
 
                     <div style="padding:1em;">
                         <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
@@ -224,34 +224,34 @@
 
   */
 
-  try{
-    var order = window.location.pathname.match(/\d+/)[0];
-    if(order == "") order = '1';
-    $('.order').val(order);
-  } catch(err){}
+  // try{
+  //   var order = window.location.pathname.match(/\d+/)[0];
+  //   if(order == "") order = '1';
+  //   $('.order').val(order);
+  // } catch(err){}
 
-  try {
-    var by = window.location.pathname.replace(/.*\D/g, '')
-    if(by == "") by = '1';
-    $('.by').val(by);
-  } catch(err){}
+  // try {
+  //   var by = window.location.pathname.replace(/.*\D/g, '')
+  //   if(by == "") by = '1';
+  //   $('.by').val(by);
+  // } catch(err){}
 
-  function changeLoc(sort, order){
-    window.location = window.location.protocol + '//' + window.location.host + '/' +
-    window.location.pathname.replace(/^\/([^\/]*).*$/, '$1') + '/' + sort + '/' +
-    order + window.location.hash;
-  }
+  // function changeLoc(sort, order){
+  //   window.location = window.location.protocol + '//' + window.location.host + '/' +
+  //   window.location.pathname.replace(/^\/([^\/]*).*$/, '$1') + '/' + sort + '/' +
+  //   order + window.location.hash;
+  // }
 
-  function sorter(id){
-    changeLoc($('#order' + id).val(), $('#by' + id).val());
-  }
+  // function sorter(id){
+  //   changeLoc($('#order' + id).val(), $('#by' + id).val());
+  // }
 
-  $("#tttab > li > a").on("shown.bs.tab", function(e) {
-    window.location.hash = $(e.target).attr("href").substr(1) + 's';
-  });
+  // $("#tttab > li > a").on("shown.bs.tab", function(e) {
+  //   window.location.hash = $(e.target).attr("href").substr(1) + 's';
+  // });
 
-  var hash = window.location.hash;
-  $('#tttab > li > a[href="' + hash.slice(0, -1) + '"]').tab('show');
+  // var hash = window.location.hash;
+  // $('#tttab > li > a[href="' + hash.slice(0, -1) + '"]').tab('show');
 
 </script>
 
