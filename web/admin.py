@@ -25,12 +25,13 @@ class FacultyAdmin(admin.ModelAdmin):
     image_tag.short_description = 'Image'
 
     list_display = ['title', 'full_name', 'image_tag', 'category', 'designation',
-                    'shift', 'department', 'date_of_joining']
+                    'shift', 'department', 'order', 'date_of_joining']
     list_display_links = ('full_name',)
     ordering = ('full_name',)
     list_filter = ('category', 'shift', 'department', 'designation', )
+    list_editable = ('order', )
 
-    fields = ('title', 'full_name', 'qualifications', 'image_tag', 'profile_pic', 'category',
+    fields = ('title', 'full_name', 'qualifications', 'image_tag', 'profile_pic', 'order', 'category',
               'designation', 'phone_number', 'email', 'shift', 'department',
               'date_of_joining', 'experience', 'description',)
     readonly_fields = ('image_tag',)

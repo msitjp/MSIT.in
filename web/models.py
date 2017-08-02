@@ -73,6 +73,7 @@ SORTING = (
     ('1', 'Name wise'),
     ('2', 'Designation wise'),
     ('3', 'Date-of-joining wise'),
+    ('4', 'Custom Order Specified'),
 )
 
 ORDER = (
@@ -97,8 +98,6 @@ PERMISSIONS = (
     ('Syllabus', 'Syllabus'),
     ('Time Table', 'Time Table'),
 )
-
-#
 
 
 def wrapper(instance, filename, field, folder):
@@ -185,6 +184,7 @@ class Faculty(models.Model):
     full_name = models.CharField(
         max_length=200, verbose_name='Full Name', blank=False)
     qualifications = models.CharField(max_length=100, blank=True, null=True)
+    order = models.PositiveSmallIntegerField(default=1)
     profile_pic = models.ImageField(upload_to=image_name(
         'full_name', 'faculty'), blank=True, null=True)
     category = models.CharField(

@@ -99,6 +99,7 @@ def get_modifier(department, a=None, b=None):
         ('1', 'Name wise')
         ('2', 'Designation wise')
         ('3', 'Date-of-joining wise')
+        ('4', 'Custom Order Specified')
     '''
     modifier = ''
     a = a or department.sort_faculty
@@ -111,6 +112,8 @@ def get_modifier(department, a=None, b=None):
         modifier = 'designation'
     elif a == 3:
         modifier = 'date_of_joining'
+    elif a == 4:
+        modifier = 'order'
     if b == 2:
         modifier = '-' + modifier
     return modifier
