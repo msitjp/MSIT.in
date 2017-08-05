@@ -123,7 +123,7 @@ def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
     context = {}
     seperate_hod = True
     if modifier.endswith('order'):
-        seperate_hod = True
+        seperate_hod = False
     if department.display_1st_faculty or a:
         if seperate_hod:
             hod = Faculty.objects.filter(department=department, shift='M', designation='1HOD').order_by('date_of_joining')
