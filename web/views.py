@@ -121,17 +121,29 @@ def get_modifier(department, a=None, b=None):
 
 def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
     context = {}
+    seperate_hod = True
+    if modifier.endswith('order'):
+        seperate_hod = True
     if department.display_1st_faculty or a:
-        hod = Faculty.objects.filter(department=department, shift='M', designation='1HOD').order_by('date_of_joining')
-        morning = Faculty.objects.filter(
-            category__icontains='teaching', department=department, shift='M').exclude(designation='1HOD').order_by(modifier, 'date_of_joining') or []
-        morning = list(chain(hod, morning))
+        if seperate_hod:
+            hod = Faculty.objects.filter(department=department, shift='M', designation='1HOD').order_by('date_of_joining')
+            morning = Faculty.objects.filter(
+                category__icontains='teaching', department=department, shift='M').exclude(designation='1HOD').order_by(modifier, 'date_of_joining') or []
+            morning = list(chain(hod, morning))
+        else:
+            morning = Faculty.objects.filter(
+                category__icontains='teaching', department=department, shift='M').order_by(modifier, 'date_of_joining') or []
+
         context['morning'] = morning
     if department.display_2nd_faculty or b:
-        hod = Faculty.objects.filter(department=department, shift='E', designation='1HOD').order_by('date_of_joining')
-        evening = Faculty.objects.filter(
-            category__icontains='teaching', department=department, shift='E').exclude(designation='1HOD').order_by(modifier, 'date_of_joining') or []
-        evening = list(chain(hod, evening))
+        if seperate_hod:
+            hod = Faculty.objects.filter(department=department, shift='E', designation='1HOD').order_by('date_of_joining')
+            evening = Faculty.objects.filter(
+                category__icontains='teaching', department=department, shift='E').exclude(designation='1HOD').order_by(modifier, 'date_of_joining') or []
+            evening = list(chain(hod, evening))
+        else:
+            evening = Faculty.objects.filter(
+                category__icontains='teaching', department=department, shift='E').order_by(modifier, 'date_of_joining') or []
         context['evening'] = evening
     if department.display_1st_assistant or c:
         mlab = Faculty.objects.filter(
