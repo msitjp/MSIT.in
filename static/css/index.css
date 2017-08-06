@@ -216,6 +216,9 @@ table tbody tr td strong {
 
       #centralcarousel .carousel-inner .item img {
         height: 24em;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
       }
 
      /*------------------------------------*/
