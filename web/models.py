@@ -9,15 +9,18 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.timezone import now
 
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
-
 from django.contrib.auth.models import AbstractUser, Permission
 from django.contrib.auth.hashers import make_password
 from get_username import current_request
 from multiselectfield import MultiSelectField
 
 from django.contrib.auth.models import User
+
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+
+from fontawesome.fields import IconField
+
 
 # Option fields
 TITLES = (
@@ -638,3 +641,18 @@ class UserDepartment(models.Model):
     class Meta:
         verbose_name = 'User Department'
         verbose_name_plural = 'User Departments'
+
+
+class SocialAccount(models.Model):
+    title = models.CharField(max_length=100)
+    order = models.PositiveSmallIntegerField()
+    visible = models.BooleanField(default=True)
+    icon = IconField()
+    link = models.URLField(blank=True)
+
+    def __unicode__(self):
+        return "%s" % self.title
+
+    class Meta:
+        verbose_name = 'Social Account Links'
+        verbose_name_plural = 'Social Account Links'

@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'multiselectfield',
+    'fontawesome',
 ]
 
 MIDDLEWARE = [

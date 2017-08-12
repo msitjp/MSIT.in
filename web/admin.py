@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
     TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event,\
     PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
-    DepartmentPage, Page, Tab, Notice, Marquee, UserDepartment
+    DepartmentPage, Page, SocialAccount, Tab, Notice, Marquee, UserDepartment
 
 # FIELDS = ('first_name', 'last_name', 'email', 'username', 'password',
 #             'dept', 'is_active', 'is_staff', 'is_superuser',
@@ -151,6 +151,12 @@ class AchievementAdmin(admin.ModelAdmin):
     search_fields = ['title']
 
 
+class SocialAccountAdmin(admin.ModelAdmin):
+    list_display = ['title', 'order', 'visible', 'icon', 'link']
+    ordering = ('order', )
+    list_editable = ('order', 'visible', 'link', 'icon', )
+
+
 class TimeTableAdmin(admin.ModelAdmin):
     list_display = ['title', 'shift', 'department',
                     'semester', 'pdf', 'created_at', 'updated_at']
@@ -218,6 +224,7 @@ admin.site.register(PrimaryMenu, PrimaryMenuAdmin)
 admin.site.register(TimeTable, TimeTableAdmin)
 admin.site.register(Attendance, AttendanceAdmin)
 admin.site.register(Syllabus, SyllabusAdmin)
+admin.site.register(SocialAccount, SocialAccountAdmin)
 admin.site.register(StudentSociety, SocietyAdmin)
 admin.site.register(Achievement, AchievementAdmin)
 admin.site.register(Event, EventAdmin)

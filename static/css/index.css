@@ -1,11 +1,14 @@
 /*----Test CSS------*/
+
 strong {
-  color: #FF5722;
+    color: #FF5722;
 }
 
 table tbody tr td strong {
-  color: black !important;
+    color: black !important;
 }
+
+
 /*-----------------*/
 
 .navbar .navbar-nav {
@@ -22,488 +25,744 @@ table tbody tr td strong {
     padding-bottom: 7px !important;
 }
 
-.footer > div > p {
-	margin-bottom: 0px;
-	font-size: 0.8em;
+.footer>div>p {
+    margin-bottom: 0px;
+    font-size: 0.8em;
 }
 
 .footer-icons a i {
-  font-size: 1.3em;
-  margin: auto 2px;
+    font-size: 1.3em;
+    margin: auto 2px;
+    color: #FF5722;
 }
+
+
 /*Random Styles*/
 
-.jssorb05{position:absolute}.jssorb05 div,.jssorb05 div:hover,.jssorb05 .av{position:absolute;width:16px;height:16px;background:url('img/b05.png') no-repeat;overflow:hidden;cursor:pointer}.jssorb05 div{background-position:-7px -7px}.jssorb05 div:hover,.jssorb05 .av:hover{background-position:-37px -7px}.jssorb05 .av{background-position:-67px -7px}.jssorb05 .dn,.jssorb05 .dn:hover{background-position:-97px -7px}.jssora12l,.jssora12r{display:block;position:absolute;width:30px;height:46px;cursor:pointer;background:url('img/a12.png') no-repeat;overflow:hidden}.jssora12l{background-position:-16px -37px}.jssora12r{background-position:-75px -37px}.jssora12l:hover{background-position:-136px -37px}.jssora12r:hover{background-position:-195px -37px}.jssora12l.jssora12ldn{background-position:-256px -37px}.jssora12r.jssora12rdn{background-position:-315px -37px}
+.jssorb05 {
+    position: absolute
+}
+
+.jssorb05 div,
+.jssorb05 div:hover,
+.jssorb05 .av {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url('img/b05.png') no-repeat;
+    overflow: hidden;
+    cursor: pointer
+}
+
+.jssorb05 div {
+    background-position: -7px -7px
+}
+
+.jssorb05 div:hover,
+.jssorb05 .av:hover {
+    background-position: -37px -7px
+}
+
+.jssorb05 .av {
+    background-position: -67px -7px
+}
+
+.jssorb05 .dn,
+.jssorb05 .dn:hover {
+    background-position: -97px -7px
+}
+
+.jssora12l,
+.jssora12r {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 46px;
+    cursor: pointer;
+    background: url('img/a12.png') no-repeat;
+    overflow: hidden
+}
+
+.jssora12l {
+    background-position: -16px -37px
+}
+
+.jssora12r {
+    background-position: -75px -37px
+}
+
+.jssora12l:hover {
+    background-position: -136px -37px
+}
+
+.jssora12r:hover {
+    background-position: -195px -37px
+}
+
+.jssora12l.jssora12ldn {
+    background-position: -256px -37px
+}
+
+.jssora12r.jssora12rdn {
+    background-position: -315px -37px
+}
+
 
 /*ALS styles*/
 
 .als-container {
-	 	position: relative;
-	 	width: 100%;
-	 	margin: 0px auto;
-	 	z-index: 0;
-	 }
-	 .als-viewport {
-	 	position: relative;
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+    z-index: 0;
+}
+
+.als-viewport {
+    position: relative;
     overflow: hidden !important;
-	 }
-	 .als-wrapper {
-	 	position: relative;
-	 	list-style: none;
-		min-width: 100%;
+}
+
+.als-wrapper {
+    position: relative;
+    list-style: none;
+    min-width: 100%;
     overflow: hidden !important;
-	 }
-	 .als-item {
-	 	position: relative;
-	 	display: block;
-	 	text-align: center;
-	 	cursor: pointer;
-	 	float: left;
-	 }
-	/*************************************
+}
+
+.als-item {
+    position: relative;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+}
+
+
+/*************************************
 	 * specific styling for #demo3
 	 ************************************/
-	 #demo3 {
-	 	margin: 10px auto;
-    min-height: 15em;
-	 }
-	 #demo3 .als-item {
-	 	margin: 0px 5px;
-	 	padding: 4px 0px;
-	 	min-height: 120px;
-    min-width: 100px;
-	 	text-align: left;
-	 }
-	 #demo3 .als-item img {
-	 	display: block;
-	 	margin: 0 auto;
-	 	vertical-align: middle;
-	 }
-	 #demo3 .als-prev, #demo3 .als-next {
-	 	top: 40px;
-	 }
-	 #demo3 .als-prev {
-	 	left: 20px;
-	 }
-	 #demo3 .als-next {
-	 	right: 20px;
-	 }
-   /*************************************
-   * specific styling for #demo4
-   ************************************/
-   #demo4 {
+
+#demo3 {
     margin: 10px auto;
     min-height: 15em;
-   }
-   #demo4 .als-item {
+}
+
+#demo3 .als-item {
     margin: 0px 5px;
     padding: 4px 0px;
     min-height: 120px;
     min-width: 100px;
     text-align: left;
-   }
-   #demo4 .als-item img {
+}
+
+#demo3 .als-item img {
     display: block;
     margin: 0 auto;
     vertical-align: middle;
-   }
-   #demo4 .als-prev, #demo4 .als-next {
+}
+
+#demo3 .als-prev,
+#demo3 .als-next {
     top: 40px;
-   }
-   #demo4 .als-prev {
+}
+
+#demo3 .als-prev {
     left: 20px;
-   }
-   #demo4 .als-next {
+}
+
+#demo3 .als-next {
     right: 20px;
-   }
+}
 
 
-     body {
-       overflow-y: scroll;
-       overflow-x: hidden !important;
-       background: #ececec; }
+/*************************************
+   * specific styling for #demo4
+   ************************************/
 
-     nav {
-       background-color: #00796B; }
+#demo4 {
+    margin: 10px auto;
+    min-height: 15em;
+}
 
-     /*p {
+#demo4 .als-item {
+    margin: 0px 5px;
+    padding: 4px 0px;
+    min-height: 120px;
+    min-width: 100px;
+    text-align: left;
+}
+
+#demo4 .als-item img {
+    display: block;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+#demo4 .als-prev,
+#demo4 .als-next {
+    top: 40px;
+}
+
+#demo4 .als-prev {
+    left: 20px;
+}
+
+#demo4 .als-next {
+    right: 20px;
+}
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+    background: #ececec;
+}
+
+nav {
+    background-color: #00796B;
+}
+
+
+/*p {
        color: black; }*/
 
-     a {
-       color: #00796B; }
-
-     .navbar.navbar-default {
-       min-height: 0;
-       border-radius: 0;
-       color: black;
-       font-size: 1em; }
-       .navbar.navbar-default #uppernav {
-         background: #00796B; }
-         .navbar.navbar-default #uppernav #primarynav {
-           text-align: left;
-           background: #d2d4da; }
-
-     #primaryNavElts > li > a {
-       border-right: 1px solid #000;
-       padding-top: 3px;
-       padding-bottom: 3px;
-       color: black; }
-
-     #primarynavbutton {
-       float: left;
-       left: 1em; }
-
-     #header {
-       background: #00796B; }
-       #header h3 {
-         text-align: center; }
-       #header p {
-         color: white; }
-
-     #logoimage {
-       margin-top: 0.5em;
-       margin-bottom: 0.5em; }
-
-     #secondarynav {
-       background: #1d1d1d; }
-
-     #secondarynav div ul li a {
-       color: white;
-       text-shadow: 0 1px 0 rgba(255, 255, 255, 0); }
-
-     .leftpanel {
-       list-style: bullet;
-       padding-left: 0.6em;
-     }
-
-     .leftpanel li a {
-       color: #00796B; }
-
-     .leftpanel li:hover {
-       background: #ececec;
-       color: #3E211B; }
-
-     .panel-body p {
-       color: black;
-       font-weight: 700; }
-
-     .panel-title a {
-       color: #FF5722; }
-
-     .list-group a {
-       color: #00796B; }
-
-      #deskview div p{
-        color: #FF5722;
-      }
-
-
-     #rightpanelbody {
-       background: white; }
-
-     #rightpanelbody div ul li p {
-       font-size: 1em !important; }
-
-     #morning, #evening {
-       padding-top: 2em; }
-
-     /*----For main page default.html----*/
-
-
-     .centralcontent {
-       background: white;
-       padding: 1em;
-       border-radius: 1em;
-       min-height: 50vh; }
-
-     .carousel-caption {
-       background: rgba(0, 0, 0, 0.7); }
-
-      #centralcarousel .carousel-inner .item img {
-        height: 24em;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-
-     /*------------------------------------*/
-     /*----For admistration page /administration----*/
-     .admincontent h4 strong {
-       color: #FF5722; }
-
-     #mytab li a {
-       color: black; }
-
-     table tbody tr td strong {
-       color: #FF5722; }
-
-     /*-----------------------------------------*/
-     /*---------For about msit page /aboutmsit----------*/
-     .paraHead {
-       color: #FF5722;
-       font-weight: bold; }
-
-     .aboutcontent {
-       text-align: justify; }
-
-     /*-----------------------------------*/
-     /*---For vision and mission page /visionmission---*/
-     .vismisHead {
-       color: #FF5722; }
-
-     .vismitPara {
-       text-align: justify; }
-
-     /*---------------------------------------*/
-     /*------For history page /history-----*/
-     .historyPara {
-       text-align: justify; }
-       .historyPara .historyHighlight {
-         color: #FF5722;
-         font-weight: bold; }
-
-     .historyContent p {
-       color: #FF5722;
-       font-weight: bold; }
-     .historyContent img {
-       text-align: right; }
-
-     /*--------------------------------------*/
-     /*----For facilities page /facilities-------*/
-     .sorterMenu {
-       padding-top: 1em;
-       margin: 0 auto;
-       text-align: center;
-     }
-
-     .btn-success {
-       background-image: none;
-       background-color: #00886a;  
-     }
-     .btn-success:hover {
-        background-color: #00796B;
-     }
-
-     #factab li a {
-       color: #00796B; }
-
-     #laboratories #accordion a {
-       color: black; }
-     #laboratories p {
-       text-align: justify; }
-     #laboratories .labHead {
-       color: #FF5722;
-       font-weight: bold;
-       text-decoration: underline;
-       text-align: center; }
-     #laboratories .labsubHead {
-       color: black;
-       font-weight: bold; }
-     #laboratories .labContent {
-       color: black;
-       font-weight: normal; }
-
-     #csetable tbody td p, #ecetable tbody td p, #ecetable2 tbody td p, #ittable tbody td p, #eeetable tbody td p {
-       color: black;
-       font-weight: normal; }
-
-     #eeetable2 tbody {
-       color: black; }
-       #eeetable2 tbody td {
-         color: black; }
-         #eeetable2 tbody td p {
-           color: black; }
-
-     .notlabhead {
-       color: #FF5722;
-       font-weight: bold; }
-
-     /*--------------------------------------*/
-     /*-------For governing body page /govern--------*/
-     .governhead {
-       color: #FF5722;
-       font-weight: bold;
-       font-style: italic;
-       padding-top: 4em;
-       padding-bottom: 2em; }
-
-     #governtable td h4 {
-       color: white; }
-
-     /*--------------------------------------*/
-     /*---------For from the desk page /fromdesk--------*/
-     .fromcontent {
-       color: black;
-       text-align: justify; }
-
-     .fromhead {
-       margin-bottom: 3em;
-       color: #FF5722;
-       font-weight: bold; }
-
-     .frompara1 {
-       padding-top: 2em; }
-
-     .fromimage {
-       float: right;
-       border-radius: 100%;
-       margin: 1em;
-       max-width: 100%; }
-
-     .fromlist {
-       text-align: justify; }
-
-     .fromdesignation {
-       color: #FF5722;
-       font-weight: bold; }
-
-     /*--------------------------------------*/
-     /*------For timetable, attendance, syllabus page------*/
-     .ttcontent {
-       color: black;
-       font-weight: normal; }
-
-     .syllabuslink {
-       padding: 1.5em 0; }
-       .syllabuslink a {
-         color: #00796B;
-         text-decoration: none; }
-
-     /*------------------------------------*/
-     /*-------For society page-------*/
-     .societyhead {
-       color: #FF5722;
-       font-weight: bolder;
-       font-size: 1.5em;
-       padding-top: 2em; }
-
-     .societycontent {
-       text-align: justify;
-       font-weight: normal;
-       color: black; }
-       .societycontent a {
-         color: #FF5722;
-         font-weight: bold; }
-
-     /*------------------------------------*/
-     /*--For achievements page /achievements---*/
-     #goldmedal img {
-       margin: 0 auto;
-       padding-top: 1em; }
-
-     .achievehead {
-       color: black;
-       padding-top: 1em; }
-
-     .achievehighlight {
-       color: #FF5722;
-       font-weight: bold; }
-
-     .achievename {
-       color: red; }
-
-     /*-------------------------------*/
-     /*---For events and activities /events---*/
-     .eventslist a {
-       color: #00796B;
-       text-decoration: none; }
-
-     .eventshighlight {
-       color: #FF5722;
-       font-weight: bold; }
-
-     /*--------------------------------*/
-     /*---For departments page /department name---*/
-     .descriptioncontent {
-       color: black; }
-
-     .descriptionheading {
-       color: #FF5722;
-       font-weight: bold; }
-
-     #cse img, #cse2 img, #it img, #it2 img, #ece img, #ece2 img, #eee img, #ap img, #ap2 img {
-       border-radius: 100%; }
-
-     /*---------------------------------*/
-     /*---For placements page /placements---*/
-     .placementcontent {
-       color: black;
-       text-align: justify; }
-       .placementcontent strong {
-         color: #FF5722; }
-
-     .placementhead {
-       color: #FF5722;
-       font-weight: bold; }
-
-     #oberoiimg {
-       float: right;
-       border-radius: 100%; }
-
-     /*--------------------------------*/
-     @media only screen and (min-width: 720px) {
-       #mobileview {
-         display: none; }
-
-      }
-
-     @media only screen and (max-width: 720px) {
-       #deskview {
-         display: none; }
-
-        }
-
-      @media only screen and (max-width: 450px) {
-        #centralcarousel .carousel-inner .item img {
-        height: 15em;
-      }
+a {
+    color: #00796B;
+}
+
+.navbar.navbar-default {
+    min-height: 0;
+    border-radius: 0;
+    color: black;
+    font-size: 1em;
+}
+
+.navbar.navbar-default #uppernav {
+    background: #00796B;
+}
+
+.navbar.navbar-default #uppernav #primarynav {
+    text-align: left;
+    background: #d2d4da;
+}
+
+#primaryNavElts>li>a {
+    border-right: 1px solid #000;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: black;
+}
+
+#primarynavbutton {
+    float: left;
+    left: 1em;
+}
+
+#header {
+    background: #00796B;
+}
+
+#header h3 {
+    text-align: center;
+}
+
+#header p {
+    color: white;
+}
+
+#logoimage {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#secondarynav {
+    background: #1d1d1d;
+}
+
+#secondarynav div ul li a {
+    color: white;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
+}
+
+.leftpanel {
+    list-style: bullet;
+    padding-left: 0.6em;
+}
+
+.leftpanel li a {
+    color: #00796B;
+}
+
+.leftpanel li:hover {
+    background: #ececec;
+    color: #3E211B;
+}
+
+.panel-body p {
+    color: black;
+    font-weight: 700;
+}
+
+.panel-title a {
+    color: #FF5722;
+}
+
+.list-group a {
+    color: #00796B;
+}
+
+#deskview div p {
+    color: #FF5722;
+}
+
+#rightpanelbody {
+    background: white;
+}
+
+#rightpanelbody div ul li p {
+    font-size: 1em !important;
+}
+
+#morning,
+#evening {
+    padding-top: 2em;
+}
+
+
+/*----For main page default.html----*/
+
+.centralcontent {
+    background: white;
+    padding: 1em;
+    border-radius: 1em;
+    min-height: 50vh;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#centralcarousel .carousel-inner .item img {
+    height: 24em;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/*------------------------------------*/
+
+
+/*----For admistration page /administration----*/
+
+.admincontent h4 strong {
+    color: #FF5722;
+}
+
+#mytab li a {
+    color: black;
+}
+
+table tbody tr td strong {
+    color: #FF5722;
+}
+
+
+/*-----------------------------------------*/
+
+
+/*---------For about msit page /aboutmsit----------*/
+
+.paraHead {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.aboutcontent {
+    text-align: justify;
+}
+
+
+/*-----------------------------------*/
+
+
+/*---For vision and mission page /visionmission---*/
+
+.vismisHead {
+    color: #FF5722;
+}
+
+.vismitPara {
+    text-align: justify;
+}
+
+
+/*---------------------------------------*/
+
+
+/*------For history page /history-----*/
+
+.historyPara {
+    text-align: justify;
+}
+
+.historyPara .historyHighlight {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.historyContent p {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.historyContent img {
+    text-align: right;
+}
+
+
+/*--------------------------------------*/
+
+
+/*----For facilities page /facilities-------*/
+
+.sorterMenu {
+    padding-top: 1em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn-success {
+    background-image: none;
+    background-color: #00886a;
+}
+
+.btn-success:hover {
+    background-color: #00796B;
+}
+
+#factab li a {
+    color: #00796B;
+}
+
+#laboratories #accordion a {
+    color: black;
+}
+
+#laboratories p {
+    text-align: justify;
+}
+
+#laboratories .labHead {
+    color: #FF5722;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#laboratories .labsubHead {
+    color: black;
+    font-weight: bold;
+}
+
+#laboratories .labContent {
+    color: black;
+    font-weight: normal;
+}
+
+#csetable tbody td p,
+#ecetable tbody td p,
+#ecetable2 tbody td p,
+#ittable tbody td p,
+#eeetable tbody td p {
+    color: black;
+    font-weight: normal;
+}
+
+#eeetable2 tbody {
+    color: black;
+}
+
+#eeetable2 tbody td {
+    color: black;
+}
+
+#eeetable2 tbody td p {
+    color: black;
+}
+
+.notlabhead {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+
+/*--------------------------------------*/
+
+
+/*-------For governing body page /govern--------*/
+
+.governhead {
+    color: #FF5722;
+    font-weight: bold;
+    font-style: italic;
+    padding-top: 4em;
+    padding-bottom: 2em;
+}
+
+#governtable td h4 {
+    color: white;
+}
+
+
+/*--------------------------------------*/
+
+
+/*---------For from the desk page /fromdesk--------*/
+
+.fromcontent {
+    color: black;
+    text-align: justify;
+}
+
+.fromhead {
+    margin-bottom: 3em;
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.frompara1 {
+    padding-top: 2em;
+}
+
+.fromimage {
+    float: right;
+    border-radius: 100%;
+    margin: 1em;
+    max-width: 100%;
+}
+
+.fromlist {
+    text-align: justify;
+}
+
+.fromdesignation {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+
+/*--------------------------------------*/
+
+
+/*------For timetable, attendance, syllabus page------*/
+
+.ttcontent {
+    color: black;
+    font-weight: normal;
+}
+
+.syllabuslink {
+    padding: 1.5em 0;
+}
+
+.syllabuslink a {
+    color: #00796B;
+    text-decoration: none;
+}
+
+
+/*------------------------------------*/
+
+
+/*-------For society page-------*/
+
+.societyhead {
+    color: #FF5722;
+    font-weight: bolder;
+    font-size: 1.5em;
+    padding-top: 2em;
+}
+
+.societycontent {
+    text-align: justify;
+    font-weight: normal;
+    color: black;
+}
+
+.societycontent a {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+
+/*------------------------------------*/
+
+
+/*--For achievements page /achievements---*/
+
+#goldmedal img {
+    margin: 0 auto;
+    padding-top: 1em;
+}
+
+.achievehead {
+    color: black;
+    padding-top: 1em;
+}
+
+.achievehighlight {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.achievename {
+    color: red;
+}
+
+
+/*-------------------------------*/
+
+
+/*---For events and activities /events---*/
+
+.eventslist a {
+    color: #00796B;
+    text-decoration: none;
+}
+
+.eventshighlight {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+
+/*--------------------------------*/
+
+
+/*---For departments page /department name---*/
+
+.descriptioncontent {
+    color: black;
+}
+
+.descriptionheading {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+#cse img,
+#cse2 img,
+#it img,
+#it2 img,
+#ece img,
+#ece2 img,
+#eee img,
+#ap img,
+#ap2 img {
+    border-radius: 100%;
+}
+
+
+/*---------------------------------*/
+
+
+/*---For placements page /placements---*/
+
+.placementcontent {
+    color: black;
+    text-align: justify;
+}
+
+.placementcontent strong {
+    color: #FF5722;
+}
+
+.placementhead {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+#oberoiimg {
+    float: right;
+    border-radius: 100%;
+}
+
+
+/*--------------------------------*/
+
+@media only screen and (min-width: 720px) {
+    #mobileview {
+        display: none;
     }
-      @media only screen and (max-width: 1500px) and (min-width: 1025px) {
-       #blacknavlist {
+}
+
+@media only screen and (max-width: 720px) {
+    #deskview {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #centralcarousel .carousel-inner .item img {
+        height: 15em;
+    }
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 1025px) {
+    #blacknavlist {
         padding-left: 130px;
-       }
-      }
+    }
+}
 
-		 #bs-example-navbar-collapse-1 > ul > li > a{
-		    font-size:1em;
-		    padding-top: 2px;
-		    padding-bottom: 2px;
-		    color: #2D2D2D;
-		    border-right: 1px solid #353535;
-		 }
-		 #bs-example-navbar-collapse-1{
-		     background:#D2D4DA;
-		     color: #000;
-		 }
-		 body > nav > div > div.container > div > div.col-md-10 > div:nth-child(1) > center > h3{
-		     font-size: 2.5em;
-		     font-family: 'Ubuntu', sans-serif;
-		 }
-		 body > nav > div > div.container > div > div.col-md-10 > div:nth-child(2) > center > p{
-		     font-family: 'Rajdhani', sans-serif;
-		 }
-		 #bs-example-navbar-collapse-2 > ul > li > a{
-		     color: #fff;
-		     text-shadow: 0 1px 0 rgba(255,255,255,0);
-		 }
-		 #bs-example-navbar-collapse-2 > ul > li > a:hover{
-		     background: hsla(0, 0%, 0%, 0.48);
-		 }
-		 #deskview > div.panel-body > ul > li{
-		     display: block;
-		 }
-		 .panel{
-		     box-shadow: 0 1px 2px rgb(160, 160, 160);
-		     border: 0px;
-		 }
-		 .panel > .panel-heading{
-		     background: #1d1d1d;
-		     color: white;
-		 }
+#bs-example-navbar-collapse-1>ul>li>a {
+    font-size: 1em;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #2D2D2D;
+    border-right: 1px solid #353535;
+}
 
-		 #unique > p{
-			 display: inline;
-		 }
-		 #viewall:hover{
-			 text-decoration: underline;
-		 }
+#bs-example-navbar-collapse-1 {
+    background: #D2D4DA;
+    color: #000;
+}
+
+body>nav>div>div.container>div>div.col-md-10>div:nth-child(1)>center>h3 {
+    font-size: 2.5em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body>nav>div>div.container>div>div.col-md-10>div:nth-child(2)>center>p {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+#bs-example-navbar-collapse-2>ul>li>a {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
+}
+
+#bs-example-navbar-collapse-2>ul>li>a:hover {
+    background: hsla(0, 0%, 0%, 0.48);
+}
+
+#deskview>div.panel-body>ul>li {
+    display: block;
+}
+
+.panel {
+    box-shadow: 0 1px 2px rgb(160, 160, 160);
+    border: 0px;
+}
+
+.panel>.panel-heading {
+    background: #1d1d1d;
+    color: white;
+}
+
+#unique>p {
+    display: inline;
+}
+
+#viewall:hover {
+    text-decoration: underline;
+}

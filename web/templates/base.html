@@ -1,4 +1,4 @@
-{% load staticfiles %} {% load custom %}
+{% load staticfiles %} {% load custom %}{% load fontawesome %}
 <!DOCTYPE html>
 <html>
 
@@ -16,16 +16,24 @@
     <script type="text/javascript" src="{% static 'js/jquery.als-1.7.min.js' %}"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% fontawesome_stylesheet %}
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" sizes="16x16" type="image/png">
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-100437308-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-100437308-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </head>
 
 <body>
@@ -33,22 +41,22 @@
     <footer class="footer" style="background:#000; padding: 1em; margin-top: 2em;">
         <div class="container">
             <div class="col-md-6 col-lg-6 col-sm-7 col-xs-11 col-xs-offset-1 col-sm-offset-0 footer-info">
-            <span class="text-muted">All Rights Reserved | Maharaja Surajmal Institute of Technology | 2017</span>
+                <span class="text-muted">All Rights Reserved | Maharaja Surajmal Institute of Technology | 2017</span>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-3 col-xs-5 col-xs-offset-1 col-sm-offset-0 footer-icons">
-            <a href="javascript:void(0)"><i class="fa fa-facebook-square" style="color: #FF5722"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-linkedin-square" style="color: #FF5722"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-twitter-square" style="color: #FF5722"></i></a>
+                {% if socials %} {% for social in socials %}
+                    <a class="social_link" href="{{social.link}}" title="{{social.title}}">{{ social.icon.as_html }}</a>
+                {% endfor %} {% endif %}
             </div>
-            <div class="col-md-2 col-lg-2 col-sm-2 col-xs-5 col-xs-offset-1 col-sm-offset-0 footer-team">
-              <a type="button" class="" data-toggle="modal" data-target="#myModal" style="cursor:pointer;">Meet The Team</a>
+            <div class="col-md-2 col-lg-2 col-sm-2 col-xs-5 col-xs-offset-1 col-sm-offset-0 footer-team ">
+                <a type="button" class=" " data-toggle="modal" data-target="#myModal" style="cursor:pointer; ">Meet The Team</a>
             </div>
-            </div>
-        
+        </div>
+
     </footer>
     <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog" style="">
-            <style type="text/css">
+        <div class="modal-dialog" style=" ">
+            <style type="text/css ">
                 a:hover {
                     background: rgba(255, 87, 34, 0);
                     text-decoration: none;
@@ -60,61 +68,62 @@
                     text-decoration: none;
                 }
             </style>
-            <div class="modal-content">
+            <div class="modal-content ">
 
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Meet The Team</h4>
-              </div>
-              <div class="modal-body">
-              <div class="row">
-              	<div class="col-md-6">
-              		<center>
-        				<img src="{% static "img/team/adeel.jpg" %}" height="150" width="150" style="border-radius: 100%;">
-        				<h4>Adeel Hashmi</h4>
-        				<h5>Asst. Professor</h5>
-        			</center>
-              	</div>
-              	<div class="col-md-6">
-              		<center>
-        				<img src="{% static "img/team/naresh.jpg" %}" height="150" width="150" style="border-radius: 100%;">
-        				<h4>Naresh Kumar</h4>
-        				<h5>Associate Professor</h5>
-        			</center>
-              	</div>
-              	<div class="col-md-6">
-              		<center>
-        				<img alt='Super Saiyan God' src="{% static "img/team/hiten.jpg" %}" height="150" width="150" style="border-radius: 100%;">
-        				<h4><a href="http://htadg.github.io/">Hiten Sharma</a></h4>
-        				<h5>CSE</h5>
-        			</center>
-              	</div>
-								<div class="col-md-6">
-										<center>
-												<img alt='The AlgoTwister' src="{% static "img/team/vignesh.jpg" %}" height="150" width="150" style="border-radius: 100%;">
-												<h4><a href="http://www.vigneshm.com">M Vignesh</a></h4>
-												<h5>CSE</h5>
-										</center>
-								</div>
-              	<div class="col-md-6">
-              		<center>
-        				<img alt='The UI/UX Guy' src="{% static "img/team/sahil.jpg" %}" height="150" width="150" style="border-radius: 100%;">
-        				<h4><a href="https://sahilkhurana19.github.io">Sahil Khurana</a></h4>
-        				<h5>CSE</h5>
-        			</center>
-              	</div>
-              	<br><br>
-              	<div class="col-md-12" style="margin-top: 3em;">
-              		<center><p>Special thanks to Tanmay Bhatia, IT for providing the photographs of campus.</p></center>
-              	</div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+                <div class="modal-header ">
+                    <button type="button " class="close " data-dismiss="modal ">&times;</button>
+                    <h4 class="modal-title ">Meet The Team</h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <center>
+                                <img src="{% static " img/team/adeel.jpg " %} " height="150 " width="150 " style="border-radius: 100%; ">
+                                <h4>Adeel Hashmi</h4>
+                                <h5>Asst. Professor</h5>
+                            </center>
+                        </div>
+                        <div class="col-md-6 ">
+                            <center>
+                                <img src="{% static " img/team/naresh.jpg " %} " height="150 " width="150 " style="border-radius: 100%; ">
+                                <h4>Naresh Kumar</h4>
+                                <h5>Associate Professor</h5>
+                            </center>
+                        </div>
+                        <div class="col-md-6 ">
+                            <center>
+                                <img alt='Super Saiyan God' src="{% static " img/team/hiten.jpg " %} " height="150 " width="150 " style="border-radius: 100%; ">
+                                <h4><a href="http://htadg.github.io/ ">Hiten Sharma</a></h4>
+                                <h5>CSE</h5>
+                            </center>
+                        </div>
+                        <!--<div class="col-md-6 ">
+                            <center>
+                                <img alt='The AlgoTwister' src="{% static " img/team/vignesh.jpg " %} " height="150 " width="150 " style="border-radius: 100%; ">
+                                <h4><a href="http://www.vigneshm.com ">M Vignesh</a></h4>
+                                <h5>CSE</h5>
+                            </center>
+                        </div>-->
+                        <div class="col-md-6 ">
+                            <center>
+                                <img alt='The UI/UX Guy' src="{% static " img/team/sahil.jpg " %} " height="150 " width="150 " style="border-radius: 100%; ">
+                                <h4><a href="https://sahilkhurana19.github.io ">Sahil Khurana</a></h4>
+                                <h5>CSE</h5>
+                            </center>
+                        </div>
+                        <br><br>
+                        <div class="col-md-12 " style="margin-top: 3em; ">
+                            <center>
+                                <p>Special thanks to Tanmay Bhatia, IT for providing the photographs of campus.</p>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button " class="btn btn-default " data-dismiss="modal ">Close</button>
+                    </div>
 
+                </div>
             </div>
-        </div>
-        <script src="https://use.fontawesome.com/3606b9a202.js"></script>
 </body>
 
 </html>

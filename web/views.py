@@ -18,6 +18,7 @@ def getContext():
     for menu in primary_menu:
         secondary_menu = SecondaryMenu.objects.all()
     marquee = Marquee.objects.all().order_by('order')
+    socials = SocialAccount.objects.filter(visible=True).order_by('order')
     context = {
         'primary_navbar': primary_navbar,
         'secondary_navbar': secondary_navbar,
@@ -25,8 +26,10 @@ def getContext():
         'secondary_menu': secondary_menu,
         'latest_news': latest_news,
         'notices': notices,
-        'marquee': marquee
+        'marquee': marquee,
+        'socials': socials
     }
+    print socials
     return context
 
 
