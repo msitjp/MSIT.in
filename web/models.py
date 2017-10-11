@@ -104,7 +104,7 @@ PERMISSIONS = (
 
 
 def wrapper(instance, filename, field, folder):
-    fname, extension = filename.split('.')
+    extension = filename.split('.')[-1]
     slug = os.path.join(folder, slugify(getattr(instance, field)))
     return '%s.%s' % (slug, extension)
 
