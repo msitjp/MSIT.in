@@ -28,7 +28,7 @@
             {% else %}
             <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 centralcontent" style="padding: 1em;">
                 {% with tabs|first as a %}
-                    <h4>{{a.title}}</h4>
+                    <h4 style="text-align:center;"><b>{{a.title}}</b></h4>
                     <hr>
                     {{a.content|safe}}
                 {% endwith %}
