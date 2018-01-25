@@ -165,7 +165,7 @@
                                 {% for i in mlab %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
-                                    <td>{{ i.full_name }}</td>
+                                    <td>{{i.title}}&nbsp;{{ i.full_name }}</td>
                                     <td>{{ i.designation|slice:"1:" }}</td>
                                 </tr>
                                 {% endfor %} {% endif %} {% if elab %}
@@ -175,7 +175,7 @@
                                 {% for i in elab %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
-                                    <td>{{ i.full_name }}</td>
+                                    <td>{{i.title}}&nbsp;{{ i.full_name }}</td>
                                     <td>{{ i.designation|slice:"1:" }}</td>
                                 </tr>
                                 {% endfor %} {% endif %}
@@ -196,9 +196,9 @@
 <script>
     /* Hey there!
 
-                                                  help? => vigzmv@outlook.com
+                                                          help? => vigzmv@outlook.com
 
-                                                  */
+                                                          */
 
     // try{
     //   var order = window.location.pathname.match(/\d+/)[0];
