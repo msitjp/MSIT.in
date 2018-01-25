@@ -42,6 +42,8 @@ DESIGNATIONS = (
     ('5Assistant Professor', 'Assistant Professor'),
     ('6Lab. Assistant', 'Lab. Assistant'),
     ('7Tech. Assistant', 'Tech. Assistant'),
+    ('8Programmer', 'Programmer'),
+    ('9Instructor', 'Instructor'),
 )
 
 DEPARTMENT = (
