@@ -148,14 +148,18 @@ def get_faculties(department, modifier, a=False, b=False, c=False, d=False):
             evening = Faculty.objects.filter(
                 category__icontains='teaching', department=department, shift='E').order_by(modifier, 'date_of_joining') or []
         context['evening'] = evening
-    if department.display_1st_assistant or c:
+    if department.display_assistant or c:
         mlab = Faculty.objects.filter(
             category__icontains='assistant', department=department, shift='M').order_by(modifier, 'date_of_joining') or []
         context['mlab'] = mlab
-    if department.display_2nd_assistant or d:
         elab = Faculty.objects.filter(
             category__icontains='assistant', department=department, shift='E').order_by(modifier, 'date_of_joining') or []
         context['elab'] = elab
+
+    # if department.display_2nd_assistant or d:
+    #     elab = Faculty.objects.filter(
+    #         category__icontains='assistant', department=department, shift='E').order_by(modifier, 'date_of_joining') or []
+    #     context['elab'] = elab
     return context
 
 def get_modifier_new(sort, order):

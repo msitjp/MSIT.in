@@ -183,11 +183,11 @@ class DepartmentAdmin(admin.ModelAdmin):
     inlines = [
         DepartmentPageInline
     ]
-    list_display = ['department', 'display_1st_faculty', 'display_2nd_faculty', 'display_1st_assistant',
-                    'display_2nd_assistant', 'sort_faculty', 'sorting_order']
+    list_display = ['department', 'display_1st_faculty', 'display_2nd_faculty', 'display_assistant',
+                    'sort_faculty', 'sorting_order']
     ordering = ('department',)
-    list_editable = ('display_1st_faculty', 'display_2nd_faculty', 'display_1st_assistant',
-                     'display_2nd_assistant', 'sort_faculty', 'sorting_order',)
+    list_editable = ('display_1st_faculty', 'display_2nd_faculty', 'display_assistant',
+                     'sort_faculty', 'sorting_order',)
 
     def get_queryset(self, request):
         qs = super(DepartmentAdmin, self).get_queryset(request)

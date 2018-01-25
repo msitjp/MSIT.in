@@ -26,6 +26,7 @@ from fontawesome.fields import IconField
 TITLES = (
     ('Mr.', 'Mr.'),
     ('Mrs.', 'Mrs.'),
+    ('Sh.', 'Sh.'),
     ('Ms', 'Ms'),
     ('Miss', 'Miss'),
     ('Master', 'Master'),
@@ -39,6 +40,8 @@ DESIGNATIONS = (
     ('3Associate Professor', 'Associate Professor'),
     ('4Reader', 'Reader'),
     ('5Assistant Professor', 'Assistant Professor'),
+    ('6Lab. Assistant', 'Lab. Assistant'),
+    ('7Tech. Assistant', 'Tech. Assistant'),
 )
 
 DEPARTMENT = (
@@ -518,12 +521,12 @@ class Department(models.Model):
                                   unique=True)
     display_1st_faculty = models.BooleanField(verbose_name='Display 1st shift Faculty',
                                               help_text='Check if the list of faculties is to be displayed on the website', default=True)
-    display_1st_assistant = models.BooleanField(verbose_name='Display 1st shift Lab Assistants',
+    display_assistant = models.BooleanField(verbose_name='Display Lab Assistants',
                                                 help_text='Check if the list of Lab Assistants is to be displayed on the website', default=False)
     display_2nd_faculty = models.BooleanField(verbose_name='Display 2nd shift Faculty',
                                               help_text='Check if the list of faculties is to be displayed on the website', default=True)
-    display_2nd_assistant = models.BooleanField(verbose_name='Display 2nd shift Lab Assistants',
-                                                help_text='Check if the list of Lab Assistants is to be displayed on the website', default=False)
+    # display_2nd_assistant = models.BooleanField(verbose_name='Display 2nd shift Lab Assistants',
+    #                                             help_text='Check if the list of Lab Assistants is to be displayed on the website', default=False)
     sort_faculty = models.CharField(verbose_name='Faculty Sorting Criteria', max_length=1,
                                     choices=SORTING, default='1')
     sorting_order = models.CharField(verbose_name='Faculty Sorting Order', max_length=1,
