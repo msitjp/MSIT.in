@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
+        <div class="col-md-8 col-sm-12 col-lg-8 col-xs-12 centralcontent">
+            <script type="text/javascript">
+                $('#tttab a').click(function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            </script>
+            <ul class="nav nav-tabs" id="tttab" role="tablist">
+                <li class="active">
+                    <a href="#syllabus" aria-controls="syllabus" role="tab" data-toggle="tab">Syllabus</a>
+                </li>
+                <li>
+                    <a href="#lecture_plan" aria-controls="lecture_plan" role="tab" data-toggle="tab">Lecture Plan</a>
+                </li>
+            </ul>
+            <div class="tab-content" style="padding:20px;">
+                <div class="tab-pane active" id="syllabus">
+                    {% for i in syllabus %}
+                    {% if i.syllabus %}
+                            <p class="ttcontent">
+                                {{i.title}} - <a href="{{i.syllabus.url}}">Click Here</a>
+                            </p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="tab-pane" id="lecture_plan">
+                    {% for i in syllabus %}
+                        {% if i.lecture_plan %}
+                            <p class="ttcontent">
+                                {{i.title}} - <a href="{{i.lecture_plan.url}}">Click Here</a>
+                            </p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
+    </div>
+</div>
+{% endblock %}
