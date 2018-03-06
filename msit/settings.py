@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'fontawesome',
     'django_admin_listfilter_dropdown',
+    'logentry_admin',
 ]
 
 MIDDLEWARE = [
