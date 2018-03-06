@@ -12,11 +12,14 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.conf.urls import url
 from django.http import HttpResponse
 
+from django_admin_listfilter_dropdown.filters import DropdownFilter
+
 from storage.models import BookRecord
 
 
 @staff_member_required
-def exportBook(request):
+def exportBook(request, queryset=None):
+  print "queryset", queryset
   output = StringIO.StringIO()
 
   book = Workbook(output)
@@ -27,22 +30,24 @@ def exportBook(request):
     'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'International/National', 'Publisher', 'ISBN', 'Page.no', 'Year'
   ]
 
-  records = BookRecord.objects.all().order_by('-year')
+  records = queryset
+  if queryset is None:
+    records = BookRecord.objects.all().order_by('-year')
   total = records.count()
 
   sheet.set_column(0, 0, 20)
-  sheet.set_column(1, 15, 20)
+  sheet.set_column(1, 15, 15)
   sheet.set_row(0, 50)
   global_format = {
     'font_name': 'Times New Roman',
     'align': 'center',
     'valign': 'vcenter',
-    'font_size': '15'
+    'font_size': '12'
   }
   for i in range(1, total+2):
     sheet.set_row(i, 40)
 
-  form = {'font_size': '20', 'underline': True}
+  form = {'font_size': '15', 'underline': True}
   form.update(global_format)
   sheet.merge_range('A1:J1', 'Book Published Record', book.add_format(form))
 
@@ -85,9 +90,18 @@ class BookRecordAdmin(admin.ModelAdmin):
   change_list_template = 'admin/app/Books/change_list.html'
 
   list_display = ['title', 'faculty', 'type', 'publisher', 'isbn', 'year', 'updated_at', 'created_at']
-  list_filter = ('type', 'year', )
+  list_filter = ('type', ('year', DropdownFilter),
+                 ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
   search_fields = ['title', 'faculty', 'publisher', 'isbn']
+
+  actions = ['export_selected']
+
+  def export_selected(self, request, queryset):
+    print queryset
+    return exportBook(request, queryset)
+
+  export_selected.short_descriptioon = 'Export the selected Records'
 
   def get_urls(self):
         urls = super(BookRecordAdmin, self).get_urls()

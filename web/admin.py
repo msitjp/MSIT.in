@@ -3,6 +3,8 @@ from django.utils.html import format_html
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
+from django_admin_listfilter_dropdown.filters import DropdownFilter
+
 from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
     TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event,\
     PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
@@ -44,7 +46,7 @@ class FacultyAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(department=u.department)
+            return qs.filter(department=u.department, shift=u.shift)
 
 
 class LatestNewsAdmin(admin.ModelAdmin):
@@ -114,7 +116,7 @@ class AttendanceAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(department=u.department)
+            return qs.filter(department=u.department, shift=u.shift)
 
 
 
@@ -172,7 +174,7 @@ class TimeTableAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(department=u.department)
+            return qs.filter(department=u.department, shift=u.shift)
 
 
 class DepartmentPageInline(admin.TabularInline):
@@ -238,7 +240,7 @@ admin.site.register(Marquee, MarqueeAdmin)
 class UserDepartmentInline(admin.StackedInline):
     model = UserDepartment
     can_delete = False
-    exclude = ('shift',)
+    # exclude = ('shift',)
     verbose_name_plural = 'User Departments'
     verbose_name = 'User Departments'
 

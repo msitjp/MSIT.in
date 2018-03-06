@@ -219,7 +219,7 @@ class Faculty(models.Model):
         req = current_request()
         try:
             logged_user = req.user.userdepartment
-            if (str(self.department) == logged_user.department) or logged_user.department == 'All':
+            if ((str(self.department) == logged_user.department) and (str(self.shift) == logged_user.shift)) or logged_user.department == 'All':
                 return self
             else:
                 raise ValidationError(
@@ -394,7 +394,7 @@ class TimeTable(models.Model):
         req = current_request()
         try:
             logged_user = req.user.userdepartment
-            if (str(self.department) == logged_user.department) or logged_user.department == 'All':
+            if (((str(self.department) == logged_user.department) and (str(self.shift) == logged_user.shift))) or logged_user.department == 'All':
                 return self
             else:
                 raise ValidationError(
@@ -429,7 +429,7 @@ class Attendance(models.Model):
         try:
             # if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             logged_user = req.user.userdepartment
-            if (str(self.department) == logged_user.department) or logged_user.department == 'All':
+            if (((str(self.department) == logged_user.department) and (str(self.shift) == logged_user.shift))) or logged_user.department == 'All':
                 return self
             else:
                 raise ValidationError(
