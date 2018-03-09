@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'fontawesome',
     'django_admin_listfilter_dropdown',
     'logentry_admin',
-    'django_extensions',
     'rangefilter',
 ]
 
