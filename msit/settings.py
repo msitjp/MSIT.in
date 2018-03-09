@@ -13,7 +13,7 @@ dotenv.read_dotenv(os.path.join(BASE_DIR, '.env'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = not False
 
 ALLOWED_HOSTS = ['www.msit.in', 'dev.msit.in', 'msit.in', '35.154.11.189', '139.59.61.186', 'localhost', '127.0.0.1', '[::1]']
 
@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'fontawesome',
     'django_admin_listfilter_dropdown',
     'logentry_admin',
+    'django_extensions',
+    'rangefilter',
 ]
 
 MIDDLEWARE = [

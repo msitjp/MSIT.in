@@ -27,11 +27,11 @@ TITLES = (
     ('Mr.', 'Mr.'),
     ('Mrs.', 'Mrs.'),
     ('Sh.', 'Sh.'),
-    ('Ms', 'Ms'),
+    ('Ms.', 'Ms.'),
     ('Miss', 'Miss'),
     ('Master', 'Master'),
-    ('Dr', 'Dr'),
-    ('Prof', 'Prof'),
+    ('Dr.', 'Dr.'),
+    ('Prof.', 'Prof.'),
 )
 
 DESIGNATIONS = (

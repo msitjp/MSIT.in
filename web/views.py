@@ -29,7 +29,6 @@ def getContext():
         'marquee': marquee,
         'socials': socials
     }
-    print socials
     return context
 
 

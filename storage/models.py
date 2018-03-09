@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from web.models import Faculty
+from web.get_username import current_request
 
 
 NATION = (
@@ -33,6 +35,21 @@ class BookRecord(models.Model):
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+  def clean(self):
+        super(BookRecord, self).clean()
+        req = current_request()
+        try:
+            logged_user = req.user.userdepartment
+            if ((str(self.faculty.department) == logged_user.department) and (str(self.faculty.shift) == logged_user.shift)) or logged_user.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                    "You don't have rights to change other Department's Data")
+
+        except:
+            raise ValidationError(
+                "You don't have rights to change other Department's Data")
+
   class Meta:
     verbose_name = 'Book Record'
     verbose_name_plural = 'Book Records'
@@ -60,9 +77,57 @@ class ResearchRecord(models.Model):
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+  def clean(self):
+        super(ResearchRecord, self).clean()
+        req = current_request()
+        try:
+            logged_user = req.user.userdepartment
+            if ((str(self.faculty.department) == logged_user.department) and (str(self.faculty.shift) == logged_user.shift)) or logged_user.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                    "You don't have rights to change other Department's Data")
+
+        except:
+            raise ValidationError(
+                "You don't have rights to change other Department's Data")
+
+
   class Meta:
     verbose_name = 'Research Paper & Conference Record'
     verbose_name_plural = 'Research Paper & Conference Records'
+
+  def __unicode__(self):
+    return "%s" % (self.title)
+
+
+class FDPRecord(models.Model):
+  title = models.CharField(verbose_name="Title/Topic", max_length=300)
+  faculty = models.ForeignKey(Faculty)
+  venue = models.CharField(verbose_name="Venue", max_length=500)
+  date = models.DateField()
+  duration = models.CharField(max_length=5, help_text="Number of days", blank=True, null=True)
+  created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+  updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+  def clean(self):
+        super(FDPRecord, self).clean()
+        req = current_request()
+        try:
+            logged_user = req.user.userdepartment
+            if ((str(self.faculty.department) == logged_user.department) and (str(self.faculty.shift) == logged_user.shift)) or logged_user.department == 'All':
+                return self
+            else:
+                raise ValidationError(
+                    "You don't have rights to change other Department's Data")
+
+        except:
+            raise ValidationError(
+                "You don't have rights to change other Department's Data")
+
+  class Meta:
+    verbose_name = 'FDP/Workshop Record'
+    verbose_name_plural = 'FDP/Workshop Records'
 
   def __unicode__(self):
     return "%s" % (self.title)
