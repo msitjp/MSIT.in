@@ -33,7 +33,12 @@ def exportBook(request, queryset=None):
   ]
 
   if queryset is None:
-    records = list(set(e[0] for e in BookRecord.objects.values_list('faculty')))
+    department = request.user.userdepartment.department
+    if department == 'All':
+      records = list(set(e[0] for e in BookRecord.objects.order_by('-faculty__designation').values_list('faculty')))
+    else:
+      records = list(set(e[0] for e in BookRecord.objects.filter(
+          faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
     queryset = BookRecord.objects.all()
   else:
     records = list(set(e[0] for e in queryset.values_list('faculty')))
@@ -137,7 +142,13 @@ def exportResearch(request, queryset=None):
   ]
 
   if queryset is None:
-    records = list(set( e[0] for e in ResearchRecord.objects.values_list('faculty')))
+    department = request.user.userdepartment.department
+    if department == 'All':
+      records = list(set(e[0] for e in ResearchRecord.objects.order_by(
+          '-faculty__designation').values_list('faculty')))
+    else:
+      records = list(set(e[0] for e in ResearchRecord.objects.filter(
+          faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
     queryset = ResearchRecord.objects.all()
   else:
     records = list(set( e[0] for e in queryset.values_list('faculty')))
@@ -233,7 +244,13 @@ def exportFDP(request, queryset=None):
   headers = ['Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Duration', 'Venue']
 
   if queryset is None:
-    records = list(set(e[0] for e in FDPRecord.objects.values_list('faculty')))
+    department = request.user.userdepartment.department
+    if department == 'All':
+      records = list(set(e[0] for e in FDPRecord.objects.order_by(
+          '-faculty__designation').values_list('faculty')))
+    else:
+      records = list(set(e[0] for e in FDPRecord.objects.filter(
+          faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
     queryset = FDPRecord.objects.all()
   else:
     records = list(set(e[0] for e in queryset.values_list('faculty')))
