@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.utils.text import ugettext_lazy as _
 
 
+admin.autodiscover()
+
 urlpatterns = [
     url(r'^msit/admin/login/?', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
