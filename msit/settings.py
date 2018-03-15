@@ -1,6 +1,7 @@
 import os
 
 import dotenv
+import raven
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'django_admin_listfilter_dropdown',
     'logentry_admin',
     'rangefilter',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +134,17 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
+# Sentry Configuration
+RAVEN_CONFIG = {
+    'dsn': 'https://2ee45305962245fda0da436cea6d512b:007e006b11144d3786db0a3e92028b5d@sentry.io/304370',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    # 'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+    'release': raven.fetch_git_sha(BASE_DIR),
+}
+
+# Ckeditor Configurations
 
 CKEDITOR_JQUERY_URL = '/static/js/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = ""
