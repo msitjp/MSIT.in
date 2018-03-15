@@ -133,6 +133,7 @@ def exportResearch(request, queryset=None):
     'Total Count (Journal)',
     'Title/Topic',
     'Journal/Conference',
+    'Indexing',
     'H Index',
     'International/National',
     'ISBN',
@@ -171,7 +172,7 @@ def exportResearch(request, queryset=None):
   form.update(global_format)
   form.update({'font_size': '20', 'underline': True, 'align': 'center'})
   sheet.merge_range(
-      'A1:M1', 'Research Paper & Conferences Record', book.add_format(form))
+      'A1:N1', 'Research Paper & Conferences Record', book.add_format(form))
 
   form = {}
   form.update(global_format)
@@ -211,12 +212,13 @@ def exportResearch(request, queryset=None):
     for i in papers:
       sheet.write(rowspan_count, 5, i.title, book.add_format(form))
       sheet.write(rowspan_count, 6, i.type, book.add_format(form))
-      sheet.write(rowspan_count, 7, i.h_index, book.add_format(form))
-      sheet.write(rowspan_count, 8, i.nation, book.add_format(form))
-      sheet.write(rowspan_count, 9, i.isbn, book.add_format(form))
-      sheet.write(rowspan_count, 10, i.publisher, book.add_format(form))
-      sheet.write(rowspan_count, 11, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 12, i.year, book.add_format(form))
+      sheet.write(rowspan_count, 7, i.indexing, book.add_format(form))
+      sheet.write(rowspan_count, 8, i.h_index, book.add_format(form))
+      sheet.write(rowspan_count, 9, i.nation, book.add_format(form))
+      sheet.write(rowspan_count, 10, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 11, i.publisher, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.pages, book.add_format(form))
+      sheet.write(rowspan_count, 13, i.year, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -346,7 +348,7 @@ class BookRecordAdmin(admin.ModelAdmin):
   list_filter = ('type', ('year', DropdownFilter), ('faculty', RelatedDropdownFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
-  search_fields = ['title', 'faculty', 'publisher', 'isbn']
+  search_fields = ['title', 'faculty__full_name', 'publisher', 'isbn']
 
   actions = ['export_selected']
 
@@ -380,7 +382,7 @@ class ResearchRecordAdmin(admin.ModelAdmin):
   list_filter = ('type', 'nation', ('year', DropdownFilter), ('faculty', RelatedDropdownFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
-  search_fields = ['title', 'faculty', 'publisher', 'isbn']
+  search_fields = ['title', 'faculty__full_name', 'publisher', 'isbn']
 
   actions = ['export_selected']
 
@@ -413,7 +415,7 @@ class FDPRecordAdmin(admin.ModelAdmin):
   list_filter = (('date', DateRangeFilter), ('faculty', RelatedDropdownFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', '-date', )
-  search_fields = ['title', 'faculty', 'venue']
+  search_fields = ['title', 'faculty__full_name', 'venue']
 
   actions = ['export_selected']
 

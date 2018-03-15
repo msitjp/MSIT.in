@@ -18,6 +18,12 @@ PAPER_TYPE = (
   ('Journal', 'Journal'),
 )
 
+INDEXING_TYPE = (
+  ('SCI/SCIE', 'SCI/SCIE'),
+  ('Scopus', 'Scopus'),
+  ('Others', 'Others'),
+)
+
 
 class BookRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300)
@@ -65,6 +71,7 @@ class ResearchRecord(models.Model):
                           max_length=15, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, choices=NATION, default=NATION[0][0])
+  indexing = models.CharField(max_length=10, choices=INDEXING_TYPE, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
   publisher = models.CharField(
