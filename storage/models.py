@@ -91,7 +91,7 @@ class ResearchRecord(models.Model):
   pages = models.CharField(verbose_name="Page No",
                            max_length=10, blank=True, null=True)
 
-  year = models.DateField()
+  year = models.DateField(verbose_name="Month Year", blank=True, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 

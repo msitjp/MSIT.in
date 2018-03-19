@@ -387,10 +387,10 @@ class ResearchRecordAdmin(admin.ModelAdmin):
 
   def get_year(self, obj):
     return obj.year.strftime('%B,%Y')
-  get_year.admin_order_field = 'year'
-  get_year.short_description = 'year'
+  get_year.admin_order_field = 'Month Year'
+  get_year.short_description = 'Month Year'
 
-  form = ResearchRecordForm
+  # form = ResearchRecordForm
 
   list_display = ['title', 'faculty', 'type', 'nation', 'name_of_conference', 'publisher',
                   'volume', 'issue', 'isbn', 'get_year', 'updated_at', 'created_at']
