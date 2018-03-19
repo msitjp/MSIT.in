@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import datetime
+
+from django import forms
 from django.core.exceptions import ValidationError
 from django.db import models
 
 from web.models import Faculty
 from web.get_username import current_request
+
+from .utils.widgets import MonthYearWidget
 
 
 NATION = (
@@ -71,16 +76,22 @@ class ResearchRecord(models.Model):
                           max_length=15, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, choices=NATION, default=NATION[0][0])
+  name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", max_length=300, blank=True, null=True, default="")
   indexing = models.CharField(max_length=10, choices=INDEXING_TYPE, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
   publisher = models.CharField(
       verbose_name="Publisher", max_length=200, blank=True, null=True)
+  volume = models.CharField(
+          verbose_name="Volume", max_length=100, blank=True, null=True, default="")
+  issue = models.CharField(
+          verbose_name="Issue", max_length=100, blank=True, null=True, default="")
   isbn = models.CharField(
       verbose_name="ISBN/ISSN", max_length=50, blank=True, null=True)
   pages = models.CharField(verbose_name="Page No",
                            max_length=10, blank=True, null=True)
-  year = models.CharField(max_length=4)
+
+  year = models.DateField()
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 

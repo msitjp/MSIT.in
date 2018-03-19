@@ -16,7 +16,9 @@ from django.http import HttpResponse
 from rangefilter.filter import DateRangeFilter
 from django_admin_listfilter_dropdown.filters import DropdownFilter, RelatedDropdownFilter
 
-from storage.models import BookRecord, ResearchRecord, FDPRecord, NATION, PAPER_TYPE
+from .forms import ResearchRecordForm
+from .models import BookRecord, ResearchRecord, FDPRecord, NATION, PAPER_TYPE
+
 from web.models import Faculty, UserDepartment
 
 
@@ -133,13 +135,16 @@ def exportResearch(request, queryset=None):
     'Total Count (Journal)',
     'Title/Topic',
     'Journal/Conference',
+    'International/National',
+    'Name of Conference/Journal',
     'Indexing',
     'H Index',
-    'International/National',
-    'ISBN',
     'Publisher',
+    'Volume',
+    'Issue',
+    'ISBN',
     'Page.no',
-    'Year'
+    'Month Year'
   ]
 
   if queryset is None:
@@ -157,7 +162,7 @@ def exportResearch(request, queryset=None):
   total = len(records)
 
   sheet.set_column(0, 0, 10)
-  sheet.set_column(1, 15, 25)
+  sheet.set_column(1, len(headers)-1, 25)
   sheet.set_row(0, 50)
   global_format = {
       'font_name': 'Times New Roman',
@@ -172,7 +177,7 @@ def exportResearch(request, queryset=None):
   form.update(global_format)
   form.update({'font_size': '20', 'underline': True, 'align': 'center'})
   sheet.merge_range(
-      'A1:N1', 'Research Paper & Conferences Record', book.add_format(form))
+      'A1:Q1', 'Research Paper & Conferences Record', book.add_format(form))
 
   form = {}
   form.update(global_format)
@@ -212,13 +217,16 @@ def exportResearch(request, queryset=None):
     for i in papers:
       sheet.write(rowspan_count, 5, i.title, book.add_format(form))
       sheet.write(rowspan_count, 6, i.type, book.add_format(form))
-      sheet.write(rowspan_count, 7, i.indexing, book.add_format(form))
-      sheet.write(rowspan_count, 8, i.h_index, book.add_format(form))
-      sheet.write(rowspan_count, 9, i.nation, book.add_format(form))
-      sheet.write(rowspan_count, 10, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 7, i.nation, book.add_format(form))
+      sheet.write(rowspan_count, 8, i.name_of_conference, book.add_format(form))
+      sheet.write(rowspan_count, 9, i.indexing, book.add_format(form))
+      sheet.write(rowspan_count, 10, i.h_index, book.add_format(form))
       sheet.write(rowspan_count, 11, i.publisher, book.add_format(form))
-      sheet.write(rowspan_count, 12, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 13, i.year, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.volume, book.add_format(form))
+      sheet.write(rowspan_count, 13, i.issue, book.add_format(form))
+      sheet.write(rowspan_count, 14, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 15, i.pages, book.add_format(form))
+      sheet.write(rowspan_count, 16, i.year.strftime('%B,%Y'), book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -377,12 +385,19 @@ class BookRecordAdmin(admin.ModelAdmin):
 class ResearchRecordAdmin(admin.ModelAdmin):
   change_list_template = 'admin/app/Books/change_list_research.html'
 
-  list_display = ['title', 'faculty', 'type', 'nation', 'publisher',
-                  'isbn', 'year', 'updated_at', 'created_at']
-  list_filter = ('type', 'nation', ('year', DropdownFilter), ('faculty', RelatedDropdownFilter),
+  def get_year(self, obj):
+    return obj.year.strftime('%B,%Y')
+  get_year.admin_order_field = 'year'
+  get_year.short_description = 'year'
+
+  form = ResearchRecordForm
+
+  list_display = ['title', 'faculty', 'type', 'nation', 'name_of_conference', 'publisher',
+                  'volume', 'issue', 'isbn', 'get_year', 'updated_at', 'created_at']
+  list_filter = ('type', 'nation', ('year', DateRangeFilter), ('faculty', RelatedDropdownFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
-  search_fields = ['title', 'faculty__full_name', 'publisher', 'isbn']
+  search_fields = ['title', 'faculty__full_name', 'publisher', 'name_of_conference', 'isbn']
 
   actions = ['export_selected']
 
