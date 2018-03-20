@@ -7,18 +7,22 @@ except ImportError:
 
 from xlsxwriter.workbook import Workbook
 
+from django.contrib.admin import SimpleListFilter
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf.urls import url
 from django.http import HttpResponse
+from django.utils.encoding import force_text
+from django.utils.translation import ugettext_lazy as _
 
 from rangefilter.filter import DateRangeFilter
 from django_admin_listfilter_dropdown.filters import DropdownFilter, RelatedDropdownFilter
 
-from .forms import ResearchRecordForm
+from .forms import BookRecordForm, FDPRecordForm, ResearchRecordForm
 from .models import BookRecord, ResearchRecord, FDPRecord, NATION, PAPER_TYPE
 
+from web.get_username import current_request
 from web.models import Faculty, UserDepartment
 
 
@@ -348,13 +352,54 @@ def exportFDP(request, queryset=None):
   return response
 
 
+class FacultyFilter(RelatedDropdownFilter):
+  title = 'Faculty'
+  parameter_name = 'faculty'
+
+  def __init__(self, field, request, params, model, model_admin, field_path):
+    super(FacultyFilter, self).__init__(field, request, params, model, model_admin, field_path)
+    user = request.user.userdepartment
+    self.qs = Faculty.objects.all()
+    if user.department != 'All':
+      self.qs = Faculty.objects.filter(
+          department=user.department, shift=user.shift, category='teaching')
+
+  def choices(self, changelist):
+        yield {
+            'selected': self.lookup_val is None and not self.lookup_val_isnull,
+            'query_string': changelist.get_query_string(
+                {},
+                [self.lookup_kwarg, self.lookup_kwarg_isnull]
+            ),
+            'display': _('All'),
+        }
+        for i in self.qs:
+            yield {
+                'selected': self.lookup_val == force_text(i.pk),
+                'query_string': changelist.get_query_string({
+                    self.lookup_kwarg: i.pk,
+                }, [self.lookup_kwarg_isnull]),
+                'display': str(i),
+            }
+        if self.include_empty_choice:
+            yield {
+                'selected': bool(self.lookup_val_isnull),
+                'query_string': changelist.get_query_string({
+                    self.lookup_kwarg_isnull: 'True',
+                }, [self.lookup_kwarg]),
+                'display': self.empty_value_display,
+            }
+
+
 class BookRecordAdmin(admin.ModelAdmin):
   change_list_template = 'admin/app/Books/change_list_book.html'
 
+  form = BookRecordForm
+
   list_display = ['title', 'faculty', 'type', 'publisher',
                   'isbn', 'year', 'updated_at', 'created_at']
-  list_filter = ('type', ('year', DropdownFilter), ('faculty', RelatedDropdownFilter),
-                 ('faculty__department', DropdownFilter), 'faculty__shift',)
+  list_filter = ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),
+                      ('faculty__department',DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
   search_fields = ['title', 'faculty__full_name', 'publisher', 'isbn']
 
@@ -379,7 +424,14 @@ class BookRecordAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(faculty__department=u.department)
+            return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+
+  def get_list_filter(self, request):
+    if request.user.userdepartment.department == 'All':
+      return ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),
+                      ('faculty__department',DropdownFilter), 'faculty__shift',)
+    else:
+      return ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),)
 
 
 class ResearchRecordAdmin(admin.ModelAdmin):
@@ -390,11 +442,11 @@ class ResearchRecordAdmin(admin.ModelAdmin):
   get_year.admin_order_field = 'Month Year'
   get_year.short_description = 'Month Year'
 
-  # form = ResearchRecordForm
+  form = ResearchRecordForm
 
   list_display = ['title', 'faculty', 'type', 'nation', 'name_of_conference', 'publisher',
                   'volume', 'issue', 'isbn', 'get_year', 'updated_at', 'created_at']
-  list_filter = ('type', 'nation', ('year', DateRangeFilter), ('faculty', RelatedDropdownFilter),
+  list_filter = ('type', 'nation', ('year', DateRangeFilter), ('faculty', FacultyFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
   search_fields = ['title', 'faculty__full_name', 'publisher', 'name_of_conference', 'isbn']
@@ -420,14 +472,23 @@ class ResearchRecordAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(faculty__department=u.department)
+            return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+
+  def get_list_filter(self, request):
+    if request.user.userdepartment.department == 'All':
+      return ('type', 'nation', ('year', DateRangeFilter), ('faculty', FacultyFilter),
+              ('faculty__department', DropdownFilter), 'faculty__shift',)
+    else:
+      return ('type', 'nation', ('year', DateRangeFilter), ('faculty', FacultyFilter),)
 
 
 class FDPRecordAdmin(admin.ModelAdmin):
   change_list_template = 'admin/app/Books/change_list_fdp.html'
 
+  form = FDPRecordForm
+
   list_display = ['title', 'faculty', 'date', 'duration', 'venue', 'updated_at', 'created_at']
-  list_filter = (('date', DateRangeFilter), ('faculty', RelatedDropdownFilter),
+  list_filter = (('date', DateRangeFilter), ('faculty', FacultyFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', '-date', )
   search_fields = ['title', 'faculty__full_name', 'venue']
@@ -453,7 +514,14 @@ class FDPRecordAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(faculty__department=u.department)
+            return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+
+  def get_list_filter(self, request):
+    if request.user.userdepartment.department == 'All':
+      return (('date', DateRangeFilter), ('faculty', FacultyFilter),
+              ('faculty__department', DropdownFilter), 'faculty__shift',)
+    else:
+      return (('date', DateRangeFilter), ('faculty', FacultyFilter),)
 
 admin.site.register(BookRecord, BookRecordAdmin)
 admin.site.register(ResearchRecord, ResearchRecordAdmin)

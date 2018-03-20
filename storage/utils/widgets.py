@@ -35,12 +35,6 @@ class MonthYearWidget(Widget):
             this_year = datetime.date.today().year
             self.years = range(this_year, this_year+10)
 
-    # def build_attrs(self, b_attrs=None, extra_attrs=None, **kwargs):
-    #   if extra_attrs:
-    #     b_attrs.update(extra_attrs)
-    #   b_attrs.update(kwargs)
-    #   return super(MonthYearWidget).build_attrs(**b_attrs)
-
     def render(self, name, value, attrs=None):
         try:
             year_val, month_val = value.year, value.month
