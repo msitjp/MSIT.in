@@ -15,8 +15,10 @@ class BookRecordForm(forms.ModelForm):
     req = current_request()
     try:
       user = req.user.userdepartment
-      if user.department is not 'All':
+      if user.department != 'All':
         self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching')
+      else:
+        self.fields['faculty'].queryset = Faculty.objects.all()
     except:
       pass
 
@@ -31,8 +33,11 @@ class ResearchRecordForm(forms.ModelForm):
     req = current_request()
     try:
       user = req.user.userdepartment
-      if user.department is not 'All':
-        self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching')
+      if user.department != 'All':
+        self.fields['faculty'].queryset = Faculty.objects.filter(
+            department=user.department, shift=user.shift, category='teaching')
+      else:
+        self.fields['faculty'].queryset = Faculty.objects.all()
     except:
       pass
 
@@ -47,9 +52,11 @@ class FDPRecordForm(forms.ModelForm):
     req = current_request()
     try:
       user = req.user.userdepartment
-      if user.department is not 'All':
+      if user.department != 'All':
         self.fields['faculty'].queryset = Faculty.objects.filter(
             department=user.department, shift=user.shift, category='teaching')
+      else:
+        self.fields['faculty'].queryset = Faculty.objects.all()
     except:
       pass
 
