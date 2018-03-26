@@ -16,9 +16,9 @@ class BookRecordForm(forms.ModelForm):
     try:
       user = req.user.userdepartment
       if user.department != 'All':
-        self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching')
+        self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching').order_by('full_name')
       else:
-        self.fields['faculty'].queryset = Faculty.objects.all()
+        self.fields['faculty'].queryset = Faculty.objects.all().order_by('full_name')
     except:
       pass
 
@@ -35,9 +35,9 @@ class ResearchRecordForm(forms.ModelForm):
       user = req.user.userdepartment
       if user.department != 'All':
         self.fields['faculty'].queryset = Faculty.objects.filter(
-            department=user.department, shift=user.shift, category='teaching')
+            department=user.department, shift=user.shift, category='teaching').order_by('full_name')
       else:
-        self.fields['faculty'].queryset = Faculty.objects.all()
+        self.fields['faculty'].queryset = Faculty.objects.all().order_by('full_name')
     except:
       pass
 
@@ -54,9 +54,9 @@ class FDPRecordForm(forms.ModelForm):
       user = req.user.userdepartment
       if user.department != 'All':
         self.fields['faculty'].queryset = Faculty.objects.filter(
-            department=user.department, shift=user.shift, category='teaching')
+            department=user.department, shift=user.shift, category='teaching').order_by('full_name')
       else:
-        self.fields['faculty'].queryset = Faculty.objects.all()
+        self.fields['faculty'].queryset = Faculty.objects.all().order_by('full_name')
     except:
       pass
 
