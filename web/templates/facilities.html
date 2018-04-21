@@ -4,6 +4,10 @@
         .centralcontent .panel-default>.panel-heading {
             background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%) !important;
         }
+
+        .tab-content {
+            text-align: justify;
+        }
     </style>
     <div class="row">
         {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
@@ -26,6 +30,9 @@
                 </li>
                 <li>
                     <a href="#sports" aria-controls="sports" aria-expanded="false" role="tab" data-toggle="tab">Sports</a>
+                </li>
+                <li>
+                    <a href="#medical" aria-controls="medical" aria-expanded="false" role="tab" data-toggle="tab">Medical</a>
                 </li>
             </ul>
             <div class="tab-content" style="padding:10px;">
@@ -1481,6 +1488,17 @@
                     <p>
                         Institute has well maintained play ground for various games such as football,volleyball, cricket, badminton etc. Facilities for indoor games such as carrom, table tennis, chess and chinese checkers are also available. These extra curricular activities
                         help in building up personality and confidence in the students. Bank: The institute has on campus banking facility .
+                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="medical">
+                    <br>
+                    <p class="notlabhead">Medical</p>
+                    <p>
+                        <div><b>Ms. Shilpi, Psychologist</b><br>Mob. - 9560175596</div>
+                        <br>
+                        <div><b>Dr. R.K. Deshwal, Pshysician</b><br>Ph. - 01125528117, 01125552667</div>
+                        <br>
+                        <div><b>Janakpuri Super Speciality Hospital <br>C-2B Janakpuri </b><br>Ph. - 01125552023</div>
                     </p>
                 </div>
             </div>
