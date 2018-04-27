@@ -124,6 +124,8 @@ def exportBook(request, queryset=None):
 
   return response
 
+
+@staff_member_required
 def exportResearch(request, queryset=None):
   output = StringIO.StringIO()
 
@@ -219,6 +221,9 @@ def exportResearch(request, queryset=None):
 
     papers = queryset.filter(faculty=f).order_by('-year')
     for i in papers:
+      temp_time = ''
+      if i.year:
+        temp_time = i.year.strftime('%B,%Y')
       sheet.write(rowspan_count, 5, i.title, book.add_format(form))
       sheet.write(rowspan_count, 6, i.type, book.add_format(form))
       sheet.write(rowspan_count, 7, i.nation, book.add_format(form))
@@ -230,7 +235,7 @@ def exportResearch(request, queryset=None):
       sheet.write(rowspan_count, 13, i.issue, book.add_format(form))
       sheet.write(rowspan_count, 14, i.isbn, book.add_format(form))
       sheet.write(rowspan_count, 15, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 16, i.year.strftime('%B,%Y'), book.add_format(form))
+      sheet.write(rowspan_count, 16, temp_time, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -438,7 +443,10 @@ class ResearchRecordAdmin(admin.ModelAdmin):
   change_list_template = 'admin/app/Books/change_list_research.html'
 
   def get_year(self, obj):
-    return obj.year.strftime('%B,%Y')
+    try:
+      return obj.year.strftime('%B,%Y')
+    except:
+      return ''
   get_year.admin_order_field = 'Month Year'
   get_year.short_description = 'Month Year'
 

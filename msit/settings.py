@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'raven.contrib.django.raven_compat',
 ]
 
-if DEBUG:
-  INSTALLED_APPS += ['django_extensions']
+# if DEBUG:
+#   INSTALLED_APPS += ['django_extensions']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

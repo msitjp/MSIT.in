@@ -1,5 +1,4 @@
-
-function attachEvents(){
+function attachEvents() {
     /*
     $("#rightpanelbody").als({
         visible_items: 4,
@@ -10,7 +9,7 @@ function attachEvents(){
         interval: 2000
     });
     */
-    if(window.innerWidth > 720){
+    if (window.innerWidth > 720) {
         $(window).scroll(function() {
             if ($(window).scrollTop() > 120) {
                 $('body').css({
@@ -25,40 +24,43 @@ function attachEvents(){
                 $('#bs-example-navbar-collapse-2').removeClass('navbar-fixed-top');
             }
         });
-    }else{
+    } else {
         $(window).unbind('scroll');
     }
 }
 
 $(window).resize(attachEvents);
 
+function setCopyright() {
+    document.getElementById('currentYear').innerHTML = new Date().getFullYear();
+}
+
 $(document).ready(function() {
+    setCopyright();
     $(".als-wrapper").css("overflow: hidden");
     attachEvents();
-    console.log("inside als");
     $("#demo3").als({
-    visible_items: 1,
-    scrolling_items: 1,
-    orientation: "vertical",
-    circular: "yes",
-    autoscroll: "yes",
-    interval: 2000
-});
+        visible_items: 1,
+        scrolling_items: 1,
+        orientation: "vertical",
+        circular: "yes",
+        autoscroll: "yes",
+        interval: 2000
+    });
     $("#demo4").als({
-    visible_items: 1,
-    scrolling_items: 1,
-    orientation: "vertical",
-    circular: "yes",
-    autoscroll: "yes",
-    interval: 2000
+        visible_items: 1,
+        scrolling_items: 1,
+        orientation: "vertical",
+        circular: "yes",
+        autoscroll: "yes",
+        interval: 2000
+    });
+    //vignesh's way of opening external links in new tab
+    document.querySelectorAll('a').forEach(e => {
+        if (!(e.href).match(RegExp(window.location.hostname, 'g')) ||
+            (e.href).match(RegExp('media', 'g')))
+            e.target = '_blank';
+    })
 });
-//vignesh's way of opening external links in new tab
-document.querySelectorAll('a').forEach(e => {
-    if(!(e.href).match(RegExp(window.location.hostname, 'g' ))
-        || (e.href).match(RegExp('media', 'g')))
-        e.target = '_blank';
-})
-});
-
 
 // Minified Extra JS files
