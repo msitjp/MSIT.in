@@ -65,7 +65,8 @@
 
                                         <p>{{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 
-                                        <p>{{i.email}} | {% if i.date_of_joining %}DOJ: {{ i.date_of_joining|date:"d/m/Y" }}{% endif %}</p>
+                                        {% if i.date_of_joining %}<p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p>{% endif %}
+                                        <p>{{i.email}}</p>
                                     </td>
                                     {% if i.profile_pic %}
                                     <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
@@ -107,8 +108,8 @@
 
                                         <p>{{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 
-					<p>{{i.email}} | {% if i.date_of_joining %}DOJ: {{ i.date_of_joining|date:"d/m/Y" }}{% endif %}</p>
-                                        
+					{% if i.date_of_joining %}<p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p>{% endif %}
+                                        <p>{{i.email}}</p>
                                     </td>
                                     {% if i.profile_pic %}
                                     <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
