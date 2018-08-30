@@ -58,7 +58,8 @@ $(document).ready(function() {
     //vignesh's way of opening external links in new tab
     document.querySelectorAll('a').forEach(e => {
         if (!(e.href).match(RegExp(window.location.hostname, 'g')) ||
-            (e.href).match(RegExp('media', 'g')))
+            (e.href).match(RegExp('media', 'g')) ||
+            (e.href).match(RegExp('moodle', 'g')))
             e.target = '_blank';
     })
 });

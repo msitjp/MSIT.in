@@ -13,10 +13,10 @@
                 <li class="active">
                     <a href="#syllabus" aria-controls="syllabus" role="tab" data-toggle="tab">Syllabus</a>
                 </li>
-                <li>
+<!--                <li>
                     <a href="#lecture_plan" aria-controls="lecture_plan" role="tab" data-toggle="tab">Lecture Plan</a>
                 </li>
-            </ul>
+-->           </ul>
             <div class="tab-content" style="padding:20px;">
                 <div class="tab-pane active" id="syllabus">
                     {% for i in syllabus %}
@@ -27,7 +27,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="tab-pane" id="lecture_plan">
+<!--                <div class="tab-pane" id="lecture_plan">
                     {% for i in syllabus %}
                         {% if i.lecture_plan %}
                             <p class="ttcontent">
@@ -36,7 +36,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-            </div>
+-->           </div>
         </div>
         {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
