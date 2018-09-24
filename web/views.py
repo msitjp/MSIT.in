@@ -192,7 +192,7 @@ def cse(request, sort=-1, order=-1):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
-    context['heading'] = 'Computer Science Engineering (NBA Accredited)'
+    context['heading'] = 'Computer Science and Engineering (NBA Accredited)'
     return render(request, 'faculty.html', context=context)
 
 
