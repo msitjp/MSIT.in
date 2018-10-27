@@ -224,7 +224,7 @@ def ece(request, sort=-1, order=-1):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
-    context['heading'] = 'Electronics and Communication Engineering'
+    context['heading'] = 'Electronics and Communication Engineering (NBA Accredited)'
     return render(request, 'faculty.html', context=context)
 
 
@@ -240,7 +240,7 @@ def eee(request, sort=-1, order=-1):
     context.update(get_faculties(department, modifier))
     context['settings'] = department
     context['tabs'] = tabs
-    context['heading'] = 'Electrical and Electronics Engineering'
+    context['heading'] = 'Electrical and Electronics Engineering (NBA Accredited)'
     return render(request, 'faculty.html', context=context)
 
 
