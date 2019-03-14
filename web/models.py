@@ -11,7 +11,9 @@ from django.utils.timezone import now
 
 from django.contrib.auth.models import AbstractUser, Permission
 from django.contrib.auth.hashers import make_password
-from get_username import current_request
+from web.get_username import current_request
+# import .get_username
+# from .get_username import *
 from multiselectfield import MultiSelectField
 
 from django.contrib.auth.models import User
