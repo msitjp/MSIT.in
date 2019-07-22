@@ -26,23 +26,23 @@ PAPER_TYPE = (
 INDEXING_TYPE = (
   ('SCI/SCIE', 'SCI/SCIE'),
   ('Scopus', 'Scopus'),
+  ('Google Scholars', 'Google Scholars'),
+  ('Not Applicable', 'Not Applicable'),
   ('Others', 'Others'),
 )
 
 
 class BookRecord(models.Model):
-  title = models.CharField(verbose_name="Title/Topic", max_length=300)
+  title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty)
   count = models.CharField(verbose_name="Total Count",
                            max_length=3, blank=True, null=True)
-  type = models.CharField(verbose_name="International/National", max_length=15, choices=NATION, default=NATION[0][0])
+  type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   publisher = models.CharField(
-      verbose_name="Publisher", max_length=200, blank=True, null=True)
-  isbn = models.CharField(
-      verbose_name="ISBN", max_length=50, blank=True, null=True)
-  pages = models.CharField(verbose_name="Page No",
-                           max_length=10, blank=True, null=True)
-  year = models.CharField(max_length=4)
+      verbose_name="Publisher", max_length=200, blank=False, null=True)
+  isbn = models.CharField(verbose_name="ISBN", max_length=50, blank=False, null=True)
+  pages = models.CharField(verbose_name="Total Pages", max_length=10, blank=False, null=True)
+  year = models.CharField(max_length=4, blank=False)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -70,28 +70,28 @@ class BookRecord(models.Model):
 
 
 class ResearchRecord(models.Model):
-  title = models.CharField(verbose_name="Title/Topic", max_length=300)
+  title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty)
   type = models.CharField(verbose_name="Conference/Journal",
-                          max_length=15, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
+                          max_length=15, blank=False, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
   nation = models.CharField(verbose_name="International/National",
-                          max_length=15, choices=NATION, default=NATION[0][0])
-  name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", max_length=300, blank=True, null=True, default="")
-  indexing = models.CharField(max_length=10, choices=INDEXING_TYPE, default=INDEXING_TYPE[0][0])
+                          max_length=15, blank=False, choices=NATION, default=NATION[0][0])
+  name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, blank=True, null=True, default="")
+  indexing = models.CharField(max_length=10, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
   publisher = models.CharField(
-      verbose_name="Publisher", max_length=200, blank=True, null=True)
+      verbose_name="Publisher", max_length=200, blank=False, null=True)
   volume = models.CharField(
-          verbose_name="Volume", max_length=100, blank=True, null=True, default="")
+          verbose_name="Volume", max_length=100, blank=False, null=True, default="")
   issue = models.CharField(
-          verbose_name="Issue", max_length=100, blank=True, null=True, default="")
+          verbose_name="Issue", max_length=100, blank=False, null=True, default="")
   isbn = models.CharField(
-      verbose_name="ISBN/ISSN", max_length=50, blank=True, null=True)
-  pages = models.CharField(verbose_name="Page No",
-                           max_length=10, blank=True, null=True)
+      verbose_name="ISBN/ISSN", max_length=50, blank=False, null=True, validators=[RegexValidator(r'^[0-9-]*$')])
+  pages = models.IntegerField(verbose_name="Page No",
+                           max_length=10, blank=False, null=True)
 
-  year = models.DateField(verbose_name="Month Year", blank=True, null=True)
+  year = models.DateField(verbose_name="Month Year", blank=False, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -120,11 +120,11 @@ class ResearchRecord(models.Model):
 
 
 class FDPRecord(models.Model):
-  title = models.CharField(verbose_name="Title/Topic", max_length=300)
+  title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty)
-  venue = models.CharField(verbose_name="Venue", max_length=500)
+  venue = models.CharField(verbose_name="Venue", max_length=500, blank=False)
   date = models.DateField()
-  duration = models.CharField(max_length=5, help_text="Number of days", blank=True, null=True)
+  duration = models.CharField(max_length=5, help_text="Number of days", blank=False, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
