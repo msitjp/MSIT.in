@@ -76,7 +76,7 @@ class ResearchRecord(models.Model):
                           max_length=15, blank=False, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
-  name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, blank=True, null=True, default="")
+  name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
   indexing = models.CharField(max_length=10, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
