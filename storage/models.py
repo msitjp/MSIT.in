@@ -88,8 +88,8 @@ class ResearchRecord(models.Model):
           verbose_name="Issue", max_length=100, blank=False, null=True, default="")
   isbn = models.CharField(
       verbose_name="ISBN/ISSN", max_length=50, blank=False, null=True, validators=[RegexValidator(r'^[0-9-]*$')])
-  pages = models.IntegerField(verbose_name="Page No",
-                           max_length=10, blank=False, null=True)
+  pages = models.CharField(verbose_name="Page No",
+                           max_length=10, blank=False, validators=[RegexValidator(r'^[0-9-]*$')], null=True)
 
   year = models.DateField(verbose_name="Month Year", blank=False, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
