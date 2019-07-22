@@ -10,6 +10,7 @@ uploads/
 myprojectenv/
 
 .vscode/
+logs/
 
 # C extensions
 *.so
