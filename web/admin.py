@@ -30,7 +30,7 @@ class FacultyAdmin(admin.ModelAdmin):
                     'shift', 'department', 'order', 'date_of_joining']
     list_display_links = ('full_name',)
     ordering = ('full_name',)
-    list_filter = ('category', 'shift', 'department', 'designation', 'full_name',)
+    list_filter = ('category', 'shift', 'department', 'designation',)
     list_editable = ('order', )
 
     fields = ('title', 'full_name', 'qualifications', 'image_tag', 'profile_pic', 'order', 'category',
@@ -42,14 +42,11 @@ class FacultyAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super(FacultyAdmin, self).get_queryset(request)
         ud = User.objects.get(username=request.user.username)
-        un = request.user.username
-        un = un.replace('-',' ')
-        un = un.title()
         u = UserDepartment.objects.get(user=ud)
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(department=u.department, shift=u.shift, full_name=un)
+            return qs.filter(department=u.department, shift=u.shift)
 
 
 class LatestNewsAdmin(admin.ModelAdmin):
