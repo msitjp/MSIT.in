@@ -49,7 +49,7 @@ class FacultyAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(department=u.department, shift=u.shift, full_name=un)
+            return qs.filter(shift=u.shift, full_name=un)
 
 
 class LatestNewsAdmin(admin.ModelAdmin):
