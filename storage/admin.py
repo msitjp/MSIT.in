@@ -425,7 +425,7 @@ class BookRecordAdmin(admin.ModelAdmin):
   def get_queryset(self, request):
         qs = super(BookRecordAdmin, self).get_queryset(request)
         ud = User.objects.get(username=request.user.username)
-         u = UserDepartment.objects.get(user=ud)
+        u = UserDepartment.objects.get(user=ud)
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
