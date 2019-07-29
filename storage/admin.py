@@ -425,12 +425,11 @@ class BookRecordAdmin(admin.ModelAdmin):
   def get_queryset(self, request):
         qs = super(BookRecordAdmin, self).get_queryset(request)
         ud = User.objects.get(username=request.user.username)
-#       u = UserDepartment.objects.get(user=ud)
-        u = UserDepartment.objects.get(faculty__username=request.user.username)
+         u = UserDepartment.objects.get(user=ud)
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+            return qs.filter(faculty__username=request.user.username)
 
   def get_list_filter(self, request):
     if request.user.userdepartment.department == 'All':
