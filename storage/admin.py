@@ -481,7 +481,8 @@ class ResearchRecordAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+#           return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+            return qs.filter(faculty__full_name=request.user.username.replace('-',' ').title())
 
   def get_list_filter(self, request):
     if request.user.userdepartment.department == 'All':
@@ -523,7 +524,8 @@ class FDPRecordAdmin(admin.ModelAdmin):
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:
-            return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+#            return qs.filter(faculty__department=u.department, faculty__shift=u.shift)
+             return qs.filter(faculty__full_name=request.user.username.replace('-',' ').title())
 
   def get_list_filter(self, request):
     if request.user.userdepartment.department == 'All':
