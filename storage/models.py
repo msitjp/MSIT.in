@@ -39,10 +39,12 @@ class BookRecord(models.Model):
                            max_length=3, blank=True, null=True)
   type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   publisher = models.CharField(
-      verbose_name="Publisher", max_length=200, blank=False, null=True)
-  isbn = models.CharField(verbose_name="ISBN", max_length=50, blank=False, null=True)
-  pages = models.CharField(verbose_name="Total Pages", max_length=10, blank=False, null=True)
-  year = models.CharField(max_length=4, blank=False)
+      verbose_name="Publisher", max_length=200, blank=False, null=True, validators=[RegexValidator('^[a-zA-Z ,-]*$')])
+  address = models.CharField(verbose_name="Address", max_length=200, blank=False, null=True)
+  isbn = models.CharField(verbose_name="ISBN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-xX]*$',code='regex')])
+  pages = models.CharField(verbose_name="Total Pages", max_length=10, blank=False, null=True, validators=[RegexValidator('^[0-9]*$',code='regex')])
+  price = models.CharField(verbose_name="Price", max_length=10, blank=False, null=True, validators=[RegexValidator('^[0-9]*$',code='regex')])
+  year = models.CharField(max_length=4, blank=False, validators=[RegexValidator('^[0-9]*$',code='regex')])
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -77,19 +79,19 @@ class ResearchRecord(models.Model):
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
-  indexing = models.CharField(max_length=10, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
+  indexing = models.CharField(max_length=20, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
   publisher = models.CharField(
-      verbose_name="Publisher", max_length=200, blank=False, null=True)
+      verbose_name="Publisher", max_length=200, blank=False, null=True, validators=[RegexValidator('^[a-zA-Z ,-]*$')])
   volume = models.CharField(
-          verbose_name="Volume", max_length=100, blank=False, null=True, default="")
+          verbose_name="Volume", max_length=100, blank=False, null=True, default="", validators=[RegexValidator('^[a-zA-Z ,-]*$')])
   issue = models.CharField(
-          verbose_name="Issue", max_length=100, blank=False, null=True, default="")
+          verbose_name="Issue", max_length=100, blank=False, null=True, default="", validators=[RegexValidator('^[a-zA-Z ,-]*$')])
   isbn = models.CharField(
-      verbose_name="ISBN/ISSN", max_length=50, blank=False, null=True, validators=[RegexValidator(r'^[0-9-]*$')])
+      verbose_name="ISBN/ISSN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-Xx]*$')])
   pages = models.CharField(verbose_name="Page No",
-                           max_length=10, blank=False, validators=[RegexValidator(r'^[0-9-]*$')], null=True)
+                           max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
 
   year = models.DateField(verbose_name="Month Year", blank=False, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
@@ -122,7 +124,8 @@ class ResearchRecord(models.Model):
 class FDPRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty)
-  venue = models.CharField(verbose_name="Venue", max_length=500, blank=False)
+  venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, validators=[RegexValidator('^[a-z ]*$')])
+  address = models.CharField(verbose_name="Address", max_length=500, blank=False)
   date = models.DateField()
   duration = models.CharField(max_length=5, help_text="Number of days", blank=False, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
