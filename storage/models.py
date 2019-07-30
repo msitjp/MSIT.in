@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from datetime import datetime
 
+
 from django import forms
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -11,7 +12,6 @@ from web.models import Faculty
 from web.get_username import current_request
 from django.core.validators import RegexValidator
 from .utils.widgets import MonthYearWidget
-
 
 NATION = (
   ('International', 'International'),
@@ -88,7 +88,7 @@ class ResearchRecord(models.Model):
   issue = models.CharField(
           verbose_name="Issue", max_length=100, blank=False, null=True, default="")
   isbn = models.CharField(
-      verbose_name="ISBN/ISSN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-Xx]*$')])
+      verbose_name="ISBN/ISSN", max_length=15, blank=False, null=True, validators=[RegexValidator('^[0-9-Xx]*$')])
   pages = models.CharField(verbose_name="Page No",
                            max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
 
@@ -123,9 +123,12 @@ class ResearchRecord(models.Model):
 class FDPRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty)
-  venue = models.CharField(verbose_name="Venue", max_length=500, blank=False)
-  date = models.DateField()
-  duration = models.CharField(max_length=5, help_text="Number of days", blank=False, null=True)
+  venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, validators=[RegexValidator('^[a-z .]*$')])
+  address = models.CharField(verbose_name="Address", max_length=500, blank=False, null=True)
+  date = models.DateField(verbose_name="Date (from)", null=True)
+  date2 = models.DateField(verbose_name="Date (to)", null=True)
+
+  duration = models.CharField(default="", max_length=10)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
