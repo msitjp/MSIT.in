@@ -33,7 +33,7 @@ INDEXING_TYPE = (
 
 class BookRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
-  faculty = models.ForeignKey(Faculty)
+  faculty = models.ForeignKey(Faculty, default=1)
   count = models.CharField(verbose_name="Total Count",
                            max_length=3, blank=True, null=True)
   type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
@@ -72,7 +72,7 @@ class BookRecord(models.Model):
 
 class ResearchRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
-  faculty = models.ForeignKey(Faculty)
+  faculty = models.ForeignKey(Faculty, default=1)
   type = models.CharField(verbose_name="Conference/Journal",
                           max_length=15, blank=False, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
   nation = models.CharField(verbose_name="International/National",
@@ -122,7 +122,7 @@ class ResearchRecord(models.Model):
 
 class FDPRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
-  faculty = models.ForeignKey(Faculty)
+  faculty = models.ForeignKey(Faculty, default=1)
   venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, validators=[RegexValidator('^[a-z .]*$')])
   address = models.CharField(verbose_name="Address", max_length=500, blank=False, null=True)
   date = models.DateField(verbose_name="Date (from)", null=True)
