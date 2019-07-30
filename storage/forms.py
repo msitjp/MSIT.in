@@ -16,7 +16,9 @@ class BookRecordForm(forms.ModelForm):
     try:
       user = req.user.userdepartment
       if user.department != 'All':
-        self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching').order_by('full_name')
+#        self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching').order_by('full_name')
+         self.fields['faculty'].queryset = Faculty.objects.filter(full_name=request.user.username.replace('-',' ').title()).order_by('full_name')
+
       else:
         self.fields['faculty'].queryset = Faculty.objects.all().order_by('full_name')
     except:
@@ -34,8 +36,8 @@ class ResearchRecordForm(forms.ModelForm):
     try:
       user = req.user.userdepartment
       if user.department != 'All':
-        self.fields['faculty'].queryset = Faculty.objects.filter(
-            department=user.department, shift=user.shift, category='teaching').order_by('full_name')
+#        self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching').order_by('full_name')
+         self.fields['faculty'].queryset = Faculty.objects.filter(full_name=request.user.username.replace('-',' ').title()).order_by('full_name')
       else:
         self.fields['faculty'].queryset = Faculty.objects.all().order_by('full_name')
     except:
@@ -53,8 +55,8 @@ class FDPRecordForm(forms.ModelForm):
     try:
       user = req.user.userdepartment
       if user.department != 'All':
-        self.fields['faculty'].queryset = Faculty.objects.filter(
-            department=user.department, shift=user.shift, category='teaching').order_by('full_name')
+#        self.fields['faculty'].queryset = Faculty.objects.filter(department=user.department, shift=user.shift, category='teaching').order_by('full_name')
+         self.fields['faculty'].queryset = Faculty.objects.filter(full_name=request.user.username.replace('-',' ').title()).order_by('full_name')
       else:
         self.fields['faculty'].queryset = Faculty.objects.all().order_by('full_name')
     except:
