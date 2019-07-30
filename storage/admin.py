@@ -33,10 +33,14 @@ def exportBook(request, queryset=None):
   book = Workbook(output)
   sheet = book.add_worksheet()
 
+  if not request.user.is_superuser:
+      queryset = filter(faculty__full_name=request.user.username.replace('-',' ').title());
+
   # File Construction Starts Here
   headers = [
     'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'International/National', 'Publisher', 'ISBN', 'Page.no', 'Year'
   ]
+
 
   if queryset is None:
     department = request.user.userdepartment.department
@@ -131,6 +135,9 @@ def exportResearch(request, queryset=None):
 
   book = Workbook(output)
   sheet = book.add_worksheet()
+
+  if not request.user.is_superuser:
+      queryset = filter(faculty__full_name=request.user.username.replace('-',' ').title());
 
   # File Construction Starts Here
   headers = [
@@ -258,6 +265,9 @@ def exportFDP(request, queryset=None):
 
   book = Workbook(output)
   sheet = book.add_worksheet()
+
+  if not request.user.is_superuser:
+      queryset = filter(faculty__full_name=request.user.username.replace('-',' ').title());
 
   # File Construction Starts Here
   headers = ['Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Duration', 'Venue']
