@@ -78,7 +78,7 @@ class ResearchRecord(models.Model):
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
-  indexing = models.CharField(max_length=10, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
+  indexing = models.CharField(max_length=20, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
   publisher = models.CharField(
@@ -88,9 +88,9 @@ class ResearchRecord(models.Model):
   issue = models.CharField(
           verbose_name="Issue", max_length=100, blank=False, null=True, default="")
   isbn = models.CharField(
-      verbose_name="ISBN/ISSN", max_length=50, blank=False, null=True, validators=[RegexValidator(r'^[0-9-]*$')])
+      verbose_name="ISBN/ISSN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-Xx]*$')])
   pages = models.CharField(verbose_name="Page No",
-                           max_length=10, blank=False, validators=[RegexValidator(r'^[0-9-]*$')], null=True)
+                           max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
 
   year = models.DateField(verbose_name="Month Year", blank=False, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
