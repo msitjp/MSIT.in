@@ -437,7 +437,7 @@ class BookRecordAdmin(admin.ModelAdmin):
       return ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),
                       ('faculty__department',DropdownFilter), 'faculty__shift',)
     else:
-      return ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),)
+      return ('type', ('year', DropdownFilter),)
 
 
 class ResearchRecordAdmin(admin.ModelAdmin):
@@ -489,7 +489,7 @@ class ResearchRecordAdmin(admin.ModelAdmin):
       return ('type', 'nation', ('year', DateRangeFilter), ('faculty', FacultyFilter),
               ('faculty__department', DropdownFilter), 'faculty__shift',)
     else:
-      return ('type', 'nation', ('year', DateRangeFilter), ('faculty', FacultyFilter),)
+      return ('type', 'nation', ('year', DateRangeFilter),)
 
 
 class FDPRecordAdmin(admin.ModelAdmin):
@@ -497,9 +497,11 @@ class FDPRecordAdmin(admin.ModelAdmin):
 
   form = FDPRecordForm
 
-  list_display = ['title', 'faculty', 'date', 'duration', 'venue', 'updated_at', 'created_at']
+  list_display = ['title', 'faculty', 'date', 'date2', 'duration', 'venue', 'updated_at', 'created_at']
+
   list_filter = (('date', DateRangeFilter), ('faculty', FacultyFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
+
   ordering = ('-created_at', '-updated_at', '-date', )
   search_fields = ['title', 'faculty__full_name', 'venue']
 
@@ -532,7 +534,7 @@ class FDPRecordAdmin(admin.ModelAdmin):
       return (('date', DateRangeFilter), ('faculty', FacultyFilter),
               ('faculty__department', DropdownFilter), 'faculty__shift',)
     else:
-      return (('date', DateRangeFilter), ('faculty', FacultyFilter),)
+      return (('date', DateRangeFilter),)
 
 admin.site.register(BookRecord, BookRecordAdmin)
 admin.site.register(ResearchRecord, ResearchRecordAdmin)
