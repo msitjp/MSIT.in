@@ -39,11 +39,9 @@ class BookRecord(models.Model):
   type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   publisher = models.CharField(
       verbose_name="Publisher", max_length=200, blank=False, null=True, validators=[RegexValidator('^[a-zA-Z ,-]*$')])
-  address = models.CharField(verbose_name="Address", max_length=200, null=True)
-  isbn = models.CharField(verbose_name="ISBN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-xX]*$',code='regex')])
-  pages = models.CharField(verbose_name="Total Pages", max_length=10, blank=False, null=True, validators=[RegexValidator('^[0-9]*$',code='regex')])
-  price = models.CharField(verbose_name="Price", max_length=10, null=True)
-  year = models.CharField(max_length=4, blank=False, validators=[RegexValidator('^[0-9]*$',code='regex')])
+  isbn = models.CharField(verbose_name="ISBN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-xX]*$')])
+  pages = models.CharField(verbose_name="Total Pages", max_length=10, blank=False, null=True, validators=[RegexValidator('^[0-9]*$')])
+  year = models.CharField(max_length=4, blank=False, validators=[RegexValidator('^[0-9]*$')])
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
