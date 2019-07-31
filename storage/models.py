@@ -43,7 +43,8 @@ class BookRecord(models.Model):
   isbn = models.CharField(verbose_name="ISBN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-xX]*$')])
   pages = models.CharField(verbose_name="Total Pages", max_length=10, blank=False, null=True, validators=[RegexValidator('^[0-9]*$')])
   price = models.CharField(verbose_name="Price", max_length=10, null=True)
-  year = models.CharField(max_length=4, blank=False, validators=[RegexValidator('^[0-9]*$')])
+# year = models.CharField(max_length=4, blank=False, validators=[RegexValidator('^[0-9]*$')])
+  year = models.DateField(verbose_name="Date", blank=False, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
