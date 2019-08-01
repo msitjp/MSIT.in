@@ -411,8 +411,8 @@ class BookRecordAdmin(admin.ModelAdmin):
 
   form = BookRecordForm
 
-  list_display = ['title', 'faculty', 'type', 'publisher',
-                  'isbn', 'year', 'updated_at', 'created_at']
+  list_display = ['title', 'faculty', 'count', 'type', 'publisher', 'address',
+                  'isbn', 'pages', 'price', 'year', 'updated_at', 'created_at']
   list_filter = ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),
                       ('faculty__department',DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
@@ -463,8 +463,8 @@ class ResearchRecordAdmin(admin.ModelAdmin):
 
   form = ResearchRecordForm
 
-  list_display = ['title', 'faculty', 'type', 'nation', 'name_of_conference', 'publisher',
-                  'volume', 'issue', 'isbn', 'get_year', 'updated_at', 'created_at']
+  list_display = ['title', 'faculty', 'type', 'nation', 'name_of_conference', 'address', 'indexing', 'h_index', 'publisher',
+                  'volume', 'issue', 'isbn', 'pages', 'get_year', 'updated_at', 'created_at']
   list_filter = ('type', 'nation', ('year', DateRangeFilter), ('faculty', FacultyFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
@@ -507,7 +507,7 @@ class FDPRecordAdmin(admin.ModelAdmin):
 
   form = FDPRecordForm
 
-  list_display = ['title', 'faculty', 'date', 'date2', 'duration', 'venue', 'updated_at', 'created_at']
+  list_display = ['title', 'faculty', 'venue', 'address', 'date', 'date2', 'duration', 'updated_at', 'created_at']
 
   list_filter = (('date', DateRangeFilter), ('faculty', FacultyFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
