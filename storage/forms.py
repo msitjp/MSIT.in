@@ -64,3 +64,4 @@ class FDPRecordForm(forms.ModelForm):
   class Meta:
     model = FDPRecord
     fields = ('__all__')
+    exclude = ('duration',)

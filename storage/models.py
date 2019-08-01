@@ -149,6 +149,9 @@ class FDPRecord(models.Model):
   def clean(self):
         super(FDPRecord, self).clean()
         req = current_request()
+
+        self.duration = str(abs((self.date2 - self.date).days)) + ' days'
+
         try:
             logged_user = req.user.userdepartment
             if ((str(self.faculty.department) == logged_user.department) and (str(self.faculty.shift) == logged_user.shift)) or logged_user.department == 'All':
