@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 try:
     import cStringIO as StringIO
 except ImportError:
-    import StringIO
+    import io as StringIO
 
 from xlsxwriter.workbook import Workbook
 
