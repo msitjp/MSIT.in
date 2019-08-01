@@ -79,7 +79,7 @@ class ResearchRecord(models.Model):
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
-  #address = models.CharField(max_length=200, null=True, blank=True)
+  address = models.CharField(max_length=200, null=True, blank=True)
   indexing = models.CharField(max_length=20, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
@@ -108,8 +108,8 @@ class ResearchRecord(models.Model):
         type = self.type
         address = self.address
 
-#        if type=='Conference' and address=='':
-#            raise ValidationError("Address is required for conference")
+        if type=='Conference' and address=='':
+            raise ValidationError("Address is required for conference")
 
         try:
             logged_user = req.user.userdepartment
