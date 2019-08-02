@@ -48,7 +48,7 @@ def exportBook(request, queryset=None):
       records = list(set(e[0] for e in BookRecord.objects.order_by('-faculty__designation').values_list('faculty')))
     else:
 #      records = list(set(e[0] for e in BookRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
-      records = list(set(e[0] for e in BookRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title())).order_by('-faculty__designation').values_list('faculty')))
+      records = list(set(e[0] for e in BookRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title()).order_by('-faculty__designation').values_list('faculty')))
 
     queryset = BookRecord.objects.all()
   else:
@@ -168,7 +168,7 @@ def exportResearch(request, queryset=None):
           '-faculty__designation').values_list('faculty')))
     else:
 #      records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
-      records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title())).order_by('-faculty__designation').values_list('faculty')))
+      records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title()).order_by('-faculty__designation').values_list('faculty')))
 
     queryset = ResearchRecord.objects.all()
   else:
