@@ -153,7 +153,7 @@ class FDPRecord(models.Model):
 
         self.duration = str(abs((self.date2 - self.date).days)) + ' days'
 
-        if abs((self.date2 - date.today()).days)>0:
+        if (self.date2 - date.today()).days>0:
             raise ValidationError("Date (to) cannot be greater than today's date")
 
         if (self.date - self.date2).days>0:
