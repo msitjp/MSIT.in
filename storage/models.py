@@ -152,6 +152,9 @@ class FDPRecord(models.Model):
 
         self.duration = str(abs((self.date2 - self.date).days)) + ' days'
 
+        if abs((self.date2 - datetime.date.today).days):
+            raise ValidationError("Date (to) cannot be greater than today's date")
+
         try:
             logged_user = req.user.userdepartment
             if ((str(self.faculty.department) == logged_user.department) and (str(self.faculty.shift) == logged_user.shift)) or logged_user.department == 'All':

@@ -33,8 +33,8 @@ def exportBook(request, queryset=None):
   book = Workbook(output)
   sheet = book.add_worksheet()
 
-  if not request.user.is_superuser:
-      queryset = BookRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
+#  if not request.user.is_superuser:
+#      queryset = BookRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
 
   # File Construction Starts Here
   headers = [
@@ -136,8 +136,8 @@ def exportResearch(request, queryset=None):
   book = Workbook(output)
   sheet = book.add_worksheet()
 
-  if not request.user.is_superuser:
-      queryset = ResearchRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
+#  if not request.user.is_superuser:
+#      queryset = ResearchRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
 
   # File Construction Starts Here
   headers = [
@@ -266,8 +266,8 @@ def exportFDP(request, queryset=None):
   book = Workbook(output)
   sheet = book.add_worksheet()
 
-  if not request.user.is_superuser:
-      queryset = FDPRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
+#  if not request.user.is_superuser:
+#      queryset = FDPRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
 
   # File Construction Starts Here
   headers = ['Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Duration', 'Venue']
