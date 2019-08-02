@@ -47,8 +47,9 @@ def exportBook(request, queryset=None):
     if department == 'All':
       records = list(set(e[0] for e in BookRecord.objects.order_by('-faculty__designation').values_list('faculty')))
     else:
-      records = list(set(e[0] for e in BookRecord.objects.filter(
-          faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
+#      records = list(set(e[0] for e in BookRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
+      records = list(set(e[0] for e in BookRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title())).order_by('-faculty__designation').values_list('faculty')))
+
     queryset = BookRecord.objects.all()
   else:
     records = list(set(e[0] for e in queryset.values_list('faculty')))
@@ -166,8 +167,9 @@ def exportResearch(request, queryset=None):
       records = list(set(e[0] for e in ResearchRecord.objects.order_by(
           '-faculty__designation').values_list('faculty')))
     else:
-      records = list(set(e[0] for e in ResearchRecord.objects.filter(
-          faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
+#      records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
+      records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title())).order_by('-faculty__designation').values_list('faculty')))
+
     queryset = ResearchRecord.objects.all()
   else:
     records = list(set( e[0] for e in queryset.values_list('faculty')))
@@ -278,8 +280,9 @@ def exportFDP(request, queryset=None):
       records = list(set(e[0] for e in FDPRecord.objects.order_by(
           '-faculty__designation').values_list('faculty')))
     else:
-      records = list(set(e[0] for e in FDPRecord.objects.filter(
-          faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
+      records = list(set(e[0] for e in FDPRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title()).order_by('-faculty__designation').values_list('faculty')))
+#      records = list(set(e[0] for e in FDPRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
+
     queryset = FDPRecord.objects.all()
   else:
     records = list(set(e[0] for e in queryset.values_list('faculty')))
