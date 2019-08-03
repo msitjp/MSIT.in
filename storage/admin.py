@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 try:
     import cStringIO as StringIO
 except ImportError:
-    import io as StringIO
+    import StringIO
 
 from xlsxwriter.workbook import Workbook
 
@@ -347,7 +347,7 @@ def exportFDP(request, queryset=None):
     for i in workshops:
       sheet.write(rowspan_count, 4, i.title, book.add_format(form))
       if i.duration is not None:
-        temp = i.date.strftime('%d %B, %Y') + '(' + i.duration + ' days)'
+        temp = i.date.strftime('%d %B, %Y') + '(' + i.duration + ' )'
       else:
         temp = i.date.strftime('%d %B, %Y')
       sheet.write(rowspan_count, 5, temp, book.add_format(form))
