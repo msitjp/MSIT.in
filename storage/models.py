@@ -109,9 +109,9 @@ class ResearchRecord(models.Model):
         type = self.type
         address = self.address
 
-
-#        if (self.year - date.today()).days>0:
-#            raise ValidationError("Date cannot be greater than today's date")
+        if self.year:
+            if (self.year - date.today()).days>0:
+                 raise ValidationError("Date cannot be greater than today's date")
 
         if type=='Conference' and address=='':
             raise ValidationError("Address is required for conference")
@@ -144,8 +144,8 @@ class FDPRecord(models.Model):
   faculty = models.ForeignKey(Faculty, default=1)
   venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, validators=[RegexValidator('^[a-z .]*$')])
   address = models.CharField(verbose_name="Address", max_length=500, blank=False, null=True)
-  date = models.DateField(verbose_name="Date (from)", null=True)
-  date2 = models.DateField(verbose_name="Date (to)", null=True)
+  date = models.DateField(verbose_name="Date (from)", null=True, blank=False)
+  date2 = models.DateField(verbose_name="Date (to)", null=True, blank=False)
 
   duration = models.CharField(default="", max_length=10)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
@@ -155,13 +155,14 @@ class FDPRecord(models.Model):
         super(FDPRecord, self).clean()
         req = current_request()
 
-        self.duration = str(abs((self.date2 - self.date).days)) + ' days'
+        if self.date and self.date2:
+            self.duration = str(abs((self.date2 - self.date).days)) + ' days'
 
-#        if (self.date2 - date.today()).days>0:
-#            raise ValidationError("Date (to) cannot be greater than today's date")
+            if (self.date2 - date.today()).days>0:
+                raise ValidationError("Date (to) cannot be greater than today's date")
 
-#        if (self.date - self.date2).days>0:
-#            raise ValidationError("Date (from) cannot be greater than Date (to)")
+            if (self.date - self.date2).days>0:
+                raise ValidationError("Date (from) cannot be greater than Date (to)")
 
         try:
             logged_user = req.user.userdepartment
