@@ -157,11 +157,11 @@ class FDPRecord(models.Model):
 
         self.duration = str(abs((self.date2 - self.date).days)) + ' days'
 
-        if (self.date2 - date.today()).days>0:
-            raise ValidationError("Date (to) cannot be greater than today's date")
+#        if (self.date2 - date.today()).days>0:
+#            raise ValidationError("Date (to) cannot be greater than today's date")
 
-        if (self.date - self.date2).days>0:
-            raise ValidationError("Date (from) cannot be greater than Date (to)")
+#        if (self.date - self.date2).days>0:
+#            raise ValidationError("Date (from) cannot be greater than Date (to)")
 
         try:
             logged_user = req.user.userdepartment
