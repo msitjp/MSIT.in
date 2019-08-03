@@ -110,8 +110,8 @@ class ResearchRecord(models.Model):
         address = self.address
 
 
-        if (self.year - date.today()).days>0:
-            raise ValidationError("Date cannot be greater than today's date")
+#        if (self.year - date.today()).days>0:
+$            raise ValidationError("Date cannot be greater than today's date")
 
         if type=='Conference' and address=='':
             raise ValidationError("Address is required for conference")
