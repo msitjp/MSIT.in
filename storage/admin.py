@@ -353,8 +353,11 @@ def exportFDP(request, queryset=None):
 #        temp = i.date.strftime('%d %B, %Y') + '(' + i.duration + ' )'
 #      else:
 #        temp = i.date.strftime('%d %B, %Y')
-      temp1 = i.date.strftime('%d %B, %Y')
-      temp2 = i.date2.strftime('%d %B, %Y')
+      if i.date:
+          temp1 = i.date.strftime('%d %B, %Y')
+
+      if i.date2:
+          temp2 = i.date2.strftime('%d %B, %Y')
 
       sheet.write(rowspan_count, 5, temp1, book.add_format(form))
       sheet.write(rowspan_count, 6, temp2, book.add_format(form))
