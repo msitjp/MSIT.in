@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 try:
     import cStringIO as StringIO
 except ImportError:
-    import StringIO
+    import io as StringIO
 
 from xlsxwriter.workbook import Workbook
 
@@ -38,7 +38,7 @@ def exportBook(request, queryset=None):
 
   # File Construction Starts Here
   headers = [
-    'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'International/National', 'Publisher', 'ISBN', 'Page.no', 'Year'
+    'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Other Authors','International/National', 'Publisher', 'Address', 'ISBN', 'Page.no', 'Year', 'Price'
   ]
 
 
@@ -107,11 +107,14 @@ def exportBook(request, queryset=None):
     books = queryset.filter(faculty=f).order_by('-year')
     for i in books:
       sheet.write(rowspan_count, 4, i.title, book.add_format(form))
-      sheet.write(rowspan_count, 5, i.type, book.add_format(form))
-      sheet.write(rowspan_count, 6, i.publisher, book.add_format(form))
-      sheet.write(rowspan_count, 7, i.isbn, book.add_format(form))
-      sheet.write(rowspan_count, 8, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 9, i.year, book.add_format(form))
+      sheet.write(rowspan_count, 5, i.other, book.add_format(form))
+      sheet.write(rowspan_count, 6, i.type, book.add_format(form))
+      sheet.write(rowspan_count, 7, i.publisher, book.add_format(form))
+      sheet.write(rowspan_count, 8, i.address, book.add_format(form))
+      sheet.write(rowspan_count, 9, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 10, i.pages, book.add_format(form))
+      sheet.write(rowspan_count, 11, i.year, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.price, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -272,7 +275,7 @@ def exportFDP(request, queryset=None):
 #      queryset = FDPRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
 
   # File Construction Starts Here
-  headers = ['Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Duration', 'Venue']
+  headers = ['Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Date (from)', 'Date (to)', 'Duration', 'Venue', 'Address']
 
   if queryset is None:
     department = request.user.userdepartment.department
@@ -346,12 +349,15 @@ def exportFDP(request, queryset=None):
     workshops = queryset.filter(faculty=f).order_by('-date')
     for i in workshops:
       sheet.write(rowspan_count, 4, i.title, book.add_format(form))
-      if i.duration is not None:
-        temp = i.date.strftime('%d %B, %Y') + '(' + i.duration + ' )'
-      else:
-        temp = i.date.strftime('%d %B, %Y')
-      sheet.write(rowspan_count, 5, temp, book.add_format(form))
+#      if i.duration is not None:
+#        temp = i.date.strftime('%d %B, %Y') + '(' + i.duration + ' )'
+#      else:
+#        temp = i.date.strftime('%d %B, %Y')
+      sheet.write(rowspan_count, 5, i.date, book.add_format(form))
+      sheet.write(rowspan_count, 5, i.date2, book.add_format(form))
+      sheet.write(rowspan_count, 5, i.duration, book.add_format(form))
       sheet.write(rowspan_count, 6, i.venue, book.add_format(form))
+      sheet.write(rowspan_count, 6, i.address, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -414,7 +420,7 @@ class BookRecordAdmin(admin.ModelAdmin):
 
   form = BookRecordForm
 
-  list_display = ['title', 'faculty', 'count', 'type', 'publisher', 'address',
+  list_display = ['title', 'faculty', 'other', 'count', 'type', 'publisher', 'address',
                   'isbn', 'pages', 'price', 'year', 'updated_at', 'created_at']
   list_filter = ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),
                       ('faculty__department',DropdownFilter), 'faculty__shift',)

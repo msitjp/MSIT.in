@@ -35,6 +35,7 @@ INDEXING_TYPE = (
 class BookRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty, default=1)
+  other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
   count = models.CharField(verbose_name="Total Count",
                            max_length=3, blank=True, null=True)
   type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
