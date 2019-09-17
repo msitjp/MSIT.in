@@ -354,10 +354,10 @@ def exportFDP(request, queryset=None):
 #      else:
 #        temp = i.date.strftime('%d %B, %Y')
       sheet.write(rowspan_count, 5, i.date, book.add_format(form))
-      sheet.write(rowspan_count, 5, i.date2, book.add_format(form))
-      sheet.write(rowspan_count, 5, i.duration, book.add_format(form))
-      sheet.write(rowspan_count, 6, i.venue, book.add_format(form))
-      sheet.write(rowspan_count, 6, i.address, book.add_format(form))
+      sheet.write(rowspan_count, 6, i.date2, book.add_format(form))
+      sheet.write(rowspan_count, 7, i.duration, book.add_format(form))
+      sheet.write(rowspan_count, 8, i.venue, book.add_format(form))
+      sheet.write(rowspan_count, 9, i.address, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
