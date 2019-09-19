@@ -89,7 +89,7 @@ class ResearchRecord(models.Model):
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
 
   sponsor = models.CharField(verbose_name="Sponsoring Authority",
-                        max_length=15, blank=True, choices=SPONSOR, default=SPONSOR[0][0])
+                        max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
 
   specify = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
   address = models.CharField(max_length=200, null=True, blank=True)
