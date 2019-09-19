@@ -480,7 +480,7 @@ class ResearchRecordAdmin(admin.ModelAdmin):
 
   form = ResearchRecordForm
 
-  list_display = ['title', 'faculty', 'type', 'nation', 'name_of_conference', 'address', 'indexing', 'h_index', 'publisher',
+  list_display = ['title', 'faculty', 'type', 'nation', 'other', 'name_of_conference', 'address', 'sponsor', 'specify', 'indexing', 'h_index', 'publisher',
                   'volume', 'issue', 'isbn', 'pages', 'get_year', 'updated_at', 'created_at']
   list_filter = ('type', 'nation', ('year', DateRangeFilter), ('faculty', FacultyFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)

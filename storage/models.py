@@ -87,12 +87,10 @@ class ResearchRecord(models.Model):
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
-
+  address = models.CharField(max_length=200, null=True, blank=True)
   sponsor = models.CharField(verbose_name="Sponsoring Authority",
                         max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
-
   specify = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
-  address = models.CharField(max_length=200, null=True, blank=True)
   indexing = models.CharField(max_length=20, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
