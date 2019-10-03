@@ -435,7 +435,7 @@ class BookRecordAdmin(admin.ModelAdmin):
   form = BookRecordForm
 
   list_display = ['title', 'faculty', 'other', 'count', 'type', 'publisher', 'address',
-                  'isbn', 'pages', 'price', 'year', 'updated_at', 'created_at']
+                  'isbn', 'issn', 'pages', 'price', 'year', 'updated_at', 'created_at']
   list_filter = ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),
                       ('faculty__department',DropdownFilter), 'faculty__shift',)
   ordering = ('-created_at', '-updated_at', 'title', 'faculty', )
@@ -530,7 +530,7 @@ class FDPRecordAdmin(admin.ModelAdmin):
 
   form = FDPRecordForm
 
-  list_display = ['title', 'faculty', 'venue', 'address', 'date', 'date2', 'duration', 'updated_at', 'created_at']
+  list_display = ['title', 'faculty', 'venue', 'address', 'sponsor', 'specify', 'date', 'date2', 'duration', 'updated_at', 'created_at']
 
   list_filter = (('date', DateRangeFilter), ('faculty', FacultyFilter),
                  ('faculty__department', DropdownFilter), 'faculty__shift',)
