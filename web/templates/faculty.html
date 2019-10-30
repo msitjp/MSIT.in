@@ -67,7 +67,7 @@
 
                                         {% if i.date_of_joining %}<p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p>{% endif %}
                                         <p>{{i.email}}</p>
-                                      <script>document.write(unescape({{i.description}}))</script>
+                                        {{i.description | safe}}
                                     </td>
                                     {% if i.profile_pic %}
                                     <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
@@ -111,7 +111,7 @@
 
 					{% if i.date_of_joining %}<p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p>{% endif %}
                                         <p>{{i.email}}</p>
-                                        <script>document.write(unescape({{i.description}}))</script>
+                                        {{i.description | safe}}
                                     </td>
                                     {% if i.profile_pic %}
                                     <td style="float:right;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px; border-radius: 100%;"></td>
