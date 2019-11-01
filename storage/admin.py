@@ -154,10 +154,15 @@ def exportResearch(request, queryset=None):
     'Title/Topic',
     'Journal/Conference',
     'International/National',
-    'Name of Conference/Journal',
     'Other Authors',
+    'Name of Conference/Journal',
+    'Sponsor',
+    'Amount',
+    'Specify (If other)',
+    'Address',
     'Indexing',
     'H Index',
+    'Specify (If other)',
     'Publisher',
     'Volume',
     'Issue',
@@ -244,16 +249,18 @@ def exportResearch(request, queryset=None):
       sheet.write(rowspan_count, 8, i.other, book.add_format(form))
       sheet.write(rowspan_count, 9, i.name_of_conference, book.add_format(form))
       sheet.write(rowspan_count, 10, i.sponsor, book.add_format(form))
-      sheet.write(rowspan_count, 11, i.specify, book.add_format(form))
-      sheet.write(rowspan_count, 12, i.address, book.add_format(form))
-      sheet.write(rowspan_count, 13, i.indexing, book.add_format(form))
-      sheet.write(rowspan_count, 14, i.h_index, book.add_format(form))
-      sheet.write(rowspan_count, 15, i.publisher, book.add_format(form))
-      sheet.write(rowspan_count, 16, i.volume, book.add_format(form))
-      sheet.write(rowspan_count, 17, i.issue, book.add_format(form))
-      sheet.write(rowspan_count, 18, i.isbn, book.add_format(form))
-      sheet.write(rowspan_count, 19, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 20, temp_time, book.add_format(form))
+      sheet.write(rowspan_count, 11, i.amount, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.specify, book.add_format(form))
+      sheet.write(rowspan_count, 13, i.address, book.add_format(form))
+      sheet.write(rowspan_count, 14, i.indexing, book.add_format(form))
+      sheet.write(rowspan_count, 15, i.specify2, book.add_format(form))
+      sheet.write(rowspan_count, 16, i.h_index, book.add_format(form))
+      sheet.write(rowspan_count, 17, i.publisher, book.add_format(form))
+      sheet.write(rowspan_count, 18, i.volume, book.add_format(form))
+      sheet.write(rowspan_count, 19, i.issue, book.add_format(form))
+      sheet.write(rowspan_count, 20, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 21, i.pages, book.add_format(form))
+      sheet.write(rowspan_count, 22, temp_time, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total

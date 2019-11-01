@@ -25,6 +25,7 @@ PAPER_TYPE = (
 )
 
 SPONSOR = (
+  ('Free', 'Free'),
   ('Self', 'Self'),
   ('Other', 'Other'),
 )
@@ -32,6 +33,7 @@ SPONSOR = (
 INDEXING_TYPE = (
   ('SCI/SCIE', 'SCI/SCIE'),
   ('Scopus', 'Scopus'),
+  ('UGC Listed', 'UGS Listed'),
   ('Google Scholars', 'Google Scholars'),
   ('Not Applicable', 'Not Applicable'),
   ('Others', 'Others'),
@@ -89,10 +91,13 @@ class ResearchRecord(models.Model):
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
   address = models.CharField(max_length=200, null=True, blank=True)
-  sponsor = models.CharField(verbose_name="Sponsoring Authority",
-                        max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
+  sponsor = models.CharField(verbose_name="Sponsoring Authority", max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
+  amount = models.CharField(verbose_name="Amount in INR (If Paid)",
+                          max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
+
   specify = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
   indexing = models.CharField(max_length=20, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
+  specify2 = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
   publisher = models.CharField(
