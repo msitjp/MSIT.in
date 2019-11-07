@@ -35,8 +35,8 @@ INDEXING_TYPE = (
   ('Scopus', 'Scopus'),
   ('UGC Listed', 'UGS Listed'),
   ('Google Scholars', 'Google Scholars'),
-  ('Not Applicable', 'Not Applicable'),
   ('Others', 'Others'),
+  ('Not Applicable', 'Not Applicable'),
 )
 
 class BookRecord(models.Model):
@@ -51,6 +51,9 @@ class BookRecord(models.Model):
   address = models.CharField(verbose_name="Address", max_length=200, null=True)
   isbn = models.CharField(verbose_name="ISBN", max_length=50, blank=False, null=True, validators=[RegexValidator('^[0-9-xX]*$')])
   issn = models.CharField(verbose_name="ISSN", max_length=50, blank=True, null=True, validators=[RegexValidator('^[0-9-xX]*$')])
+  sponsor = models.CharField(verbose_name="Sponsoring Authority", max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
+  amount = models.CharField(verbose_name="Amount in INR (If Paid)", max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
+  specify = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
   pages = models.CharField(verbose_name="Total Pages", max_length=10, blank=False, null=True, validators=[RegexValidator('^[0-9]*$')])
   price = models.CharField(verbose_name="Price", max_length=10, null=True)
 # year = models.CharField(max_length=4, blank=False, validators=[RegexValidator('^[0-9]*$')])
@@ -89,12 +92,11 @@ class ResearchRecord(models.Model):
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
+  student = models.CharField(verbose_name="Paper with students (Y/N)", max_length=1, null=True, blank=True, validators=[RegexValidator('^[yYnN]*$')],)
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
   address = models.CharField(max_length=200, null=True, blank=True)
   sponsor = models.CharField(verbose_name="Sponsoring Authority", max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
-  amount = models.CharField(verbose_name="Amount in INR (If Paid)",
-                          max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
-
+  amount = models.CharField(verbose_name="Amount in INR (If Paid)", max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
   specify = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
   indexing = models.CharField(max_length=20, choices=INDEXING_TYPE, blank=False, default=INDEXING_TYPE[0][0])
   specify2 = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
@@ -161,6 +163,7 @@ class FDPRecord(models.Model):
   venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, validators=[RegexValidator('^[a-z .]*$')])
   address = models.CharField(verbose_name="Address", max_length=500, blank=False, null=True)
   sponsor = models.CharField(verbose_name="Sponsoring Authority", max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
+  amount = models.CharField(verbose_name="Amount in INR (If Paid)", max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
   specify = models.CharField(verbose_name="If other, specify", max_length=200, null=True, blank=True)
   date = models.DateField(verbose_name="Date (from)", null=True, blank=False)
   date2 = models.DateField(verbose_name="Date (to)", null=True, blank=False)

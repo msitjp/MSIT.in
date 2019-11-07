@@ -38,7 +38,7 @@ def exportBook(request, queryset=None):
 
   # File Construction Starts Here
   headers = [
-    'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Other Authors', 'International/National', 'Publisher', 'Address', 'ISBN', 'ISSN', 'Page.no', 'Year', 'Price'
+    'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Other Authors', 'Paper with students', 'International/National', 'Publisher', 'Address', 'ISBN', 'ISSN', 'Sponsor', 'Amount', 'Specify', 'Page.no', 'Year', 'Price'
   ]
 
 
@@ -108,14 +108,18 @@ def exportBook(request, queryset=None):
     for i in books:
       sheet.write(rowspan_count, 4, i.title, book.add_format(form))
       sheet.write(rowspan_count, 5, i.other, book.add_format(form))
-      sheet.write(rowspan_count, 6, i.type, book.add_format(form))
-      sheet.write(rowspan_count, 7, i.publisher, book.add_format(form))
-      sheet.write(rowspan_count, 8, i.address, book.add_format(form))
-      sheet.write(rowspan_count, 9, i.isbn, book.add_format(form))
-      sheet.write(rowspan_count, 10, i.issn, book.add_format(form))
-      sheet.write(rowspan_count, 11, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 12, i.year, book.add_format(form))
-      sheet.write(rowspan_count, 13, i.price, book.add_format(form))
+      sheet.write(rowspan_count, 6, i.student, book.add_format(form))
+      sheet.write(rowspan_count, 7, i.type, book.add_format(form))
+      sheet.write(rowspan_count, 8, i.publisher, book.add_format(form))
+      sheet.write(rowspan_count, 9, i.address, book.add_format(form))
+      sheet.write(rowspan_count, 10, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 11, i.issn, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.sponsor, book.add_format(form))
+      sheet.write(rowspan_count, 13, i.amount, book.add_format(form))
+      sheet.write(rowspan_count, 14, i.specify, book.add_format(form))
+      sheet.write(rowspan_count, 15, i.pages, book.add_format(form))
+      sheet.write(rowspan_count, 16, i.year, book.add_format(form))
+      sheet.write(rowspan_count, 17, i.price, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -288,7 +292,7 @@ def exportFDP(request, queryset=None):
 #      queryset = FDPRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title());
 
   # File Construction Starts Here
-  headers = ['Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Date (from)', 'Date (to)', 'Duration', 'Venue', 'Address', 'Sponsor', 'Specify']
+  headers = ['Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Date (from)', 'Date (to)', 'Duration', 'Venue', 'Address', 'Sponsor', 'Amount', 'Specify']
 
   if queryset is None:
     department = request.user.userdepartment.department
@@ -378,7 +382,8 @@ def exportFDP(request, queryset=None):
       sheet.write(rowspan_count, 8, i.venue, book.add_format(form))
       sheet.write(rowspan_count, 9, i.address, book.add_format(form))
       sheet.write(rowspan_count, 10, i.sponsor, book.add_format(form))
-      sheet.write(rowspan_count, 11, i.specify, book.add_format(form))
+      sheet.write(rowspan_count, 11, i.amount, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.specify, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
