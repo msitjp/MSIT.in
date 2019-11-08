@@ -38,20 +38,21 @@ def exportBook(request, queryset=None):
 
   # File Construction Starts Here
   headers = [
-    'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Other Authors', 'Paper with students', 'International/National', 'Publisher', 'Address', 'ISBN', 'ISSN', 'Sponsor', 'Amount', 'Specify', 'Page.no', 'Year', 'Price'
+    'Sr.no', 'Faculty Name', 'Designation', 'Total Count', 'Title/Topic', 'Other Authors', 'International/National', 'Publisher', 'Address', 'ISBN', 'ISSN', 'Sponsor', 'Amount', 'Specify', 'Page.no', 'Year', 'Price'
   ]
 
 
   if queryset is None:
     department = request.user.userdepartment.department
+    shift = request.user.userdepartment.shift
     if department == 'All':
       records = list(set(e[0] for e in BookRecord.objects.order_by('-faculty__designation').values_list('faculty')))
     else:
 #      records = list(set(e[0] for e in BookRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
-      if not any(c.islower() for c in request.user.username):
-          records = list(set(e[0] for e in BookRecord.objects.filter(faculty__department=request.user.department, faculty__shift=request.user.shift).order_by('-faculty__designation').values_list('faculty')))
-      else:
-          records = list(set(e[0] for e in BookRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title()).order_by('-faculty__designation').values_list('faculty')))
+        if not any(c.islower() for c in request.user.username):
+            records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__department=department, faculty__shift=shift).order_by('-faculty__designation').values_list('faculty')))
+        else:
+            records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title()).order_by('-faculty__designation').values_list('faculty')))
 
     queryset = BookRecord.objects.all()
   else:
@@ -92,37 +93,31 @@ def exportBook(request, queryset=None):
     l = queryset.filter(faculty=f)
     count = l.count()
     if count > 1:
-      sheet.merge_range('A{s}:A{d}'.format(
-          s=rowspan_count + 1, d=rowspan_count + count), counter, book.add_format(form))
-      sheet.merge_range('B{s}:B{d}'.format(
-          s=rowspan_count + 1, d=rowspan_count + count), str(f), book.add_format(form))
-      sheet.merge_range('C{s}:C{d}'.format(s=rowspan_count + 1, d=rowspan_count + count),
-                        f.designation[1:] + ', ' + f.department, book.add_format(form))
-      sheet.merge_range('D{s}:D{d}'.format(
-          s=rowspan_count + 1, d=rowspan_count + count), str(count), book.add_format(form))
+      sheet.merge_range('A{s}:A{d}'.format(s=rowspan_count + 1, d=rowspan_count + count), counter, book.add_format(form))
+      sheet.merge_range('B{s}:B{d}'.format(s=rowspan_count + 1, d=rowspan_count + count), str(f), book.add_format(form))
+      sheet.merge_range('C{s}:C{d}'.format(s=rowspan_count + 1, d=rowspan_count + count), f.designation[1:] + ', ' + f.department, book.add_format(form))
+      sheet.merge_range('D{s}:D{d}'.format(s=rowspan_count + 1, d=rowspan_count + count), str(count), book.add_format(form))
     else:
       sheet.write(rowspan_count, 0, counter, book.add_format(form))
       sheet.write(rowspan_count, 1, str(f), book.add_format(form))
-      sheet.write(rowspan_count, 2, f.designation[
-                  1:] + ', ' + f.department, book.add_format(form))
+      sheet.write(rowspan_count, 2, f.designation[1:] + ', ' + f.department, book.add_format(form))
       sheet.write(rowspan_count, 3, str(count), book.add_format(form))
 
     books = queryset.filter(faculty=f).order_by('-year')
     for i in books:
       sheet.write(rowspan_count, 4, i.title, book.add_format(form))
       sheet.write(rowspan_count, 5, i.other, book.add_format(form))
-      sheet.write(rowspan_count, 6, i.student, book.add_format(form))
-      sheet.write(rowspan_count, 7, i.type, book.add_format(form))
-      sheet.write(rowspan_count, 8, i.publisher, book.add_format(form))
-      sheet.write(rowspan_count, 9, i.address, book.add_format(form))
-      sheet.write(rowspan_count, 10, i.isbn, book.add_format(form))
-      sheet.write(rowspan_count, 11, i.issn, book.add_format(form))
-      sheet.write(rowspan_count, 12, i.sponsor, book.add_format(form))
-      sheet.write(rowspan_count, 13, i.amount, book.add_format(form))
-      sheet.write(rowspan_count, 14, i.specify, book.add_format(form))
-      sheet.write(rowspan_count, 15, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 16, i.year, book.add_format(form))
-      sheet.write(rowspan_count, 17, i.price, book.add_format(form))
+      sheet.write(rowspan_count, 6, i.type, book.add_format(form))
+      sheet.write(rowspan_count, 7, i.publisher, book.add_format(form))
+      sheet.write(rowspan_count, 8, i.address, book.add_format(form))
+      sheet.write(rowspan_count, 9, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 10, i.issn, book.add_format(form))
+      sheet.write(rowspan_count, 11, i.sponsor, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.amount, book.add_format(form))
+      sheet.write(rowspan_count, 13, i.specify, book.add_format(form))
+      sheet.write(rowspan_count, 14, i.pages, book.add_format(form))
+      sheet.write(rowspan_count, 15, i.year, book.add_format(form))
+      sheet.write(rowspan_count, 16, i.price, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -162,6 +157,7 @@ def exportResearch(request, queryset=None):
     'Journal/Conference',
     'International/National',
     'Other Authors',
+    'Paper with students',
     'Name of Conference/Journal',
     'Sponsor',
     'Amount',
@@ -180,13 +176,13 @@ def exportResearch(request, queryset=None):
 
   if queryset is None:
     department = request.user.userdepartment.department
+    shift = request.user.userdepartment.shift
     if department == 'All':
-      records = list(set(e[0] for e in ResearchRecord.objects.order_by(
-          '-faculty__designation').values_list('faculty')))
+      records = list(set(e[0] for e in ResearchRecord.objects.order_by('-faculty__designation').values_list('faculty')))
     else:
 #      records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
       if not any(c.islower() for c in request.user.username):
-          records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__department=request.user.department, faculty__shift=request.user.shift).order_by('-faculty__designation').values_list('faculty')))
+          records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__department=department, faculty__shift=shift).order_by('-faculty__designation').values_list('faculty')))
       else:
           records = list(set(e[0] for e in ResearchRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title()).order_by('-faculty__designation').values_list('faculty')))
 
@@ -258,20 +254,21 @@ def exportResearch(request, queryset=None):
       sheet.write(rowspan_count, 6, i.type, book.add_format(form))
       sheet.write(rowspan_count, 7, i.nation, book.add_format(form))
       sheet.write(rowspan_count, 8, i.other, book.add_format(form))
-      sheet.write(rowspan_count, 9, i.name_of_conference, book.add_format(form))
-      sheet.write(rowspan_count, 10, i.sponsor, book.add_format(form))
-      sheet.write(rowspan_count, 11, i.amount, book.add_format(form))
-      sheet.write(rowspan_count, 12, i.specify, book.add_format(form))
-      sheet.write(rowspan_count, 13, i.address, book.add_format(form))
-      sheet.write(rowspan_count, 14, i.indexing, book.add_format(form))
-      sheet.write(rowspan_count, 15, i.specify2, book.add_format(form))
-      sheet.write(rowspan_count, 16, i.h_index, book.add_format(form))
-      sheet.write(rowspan_count, 17, i.publisher, book.add_format(form))
-      sheet.write(rowspan_count, 18, i.volume, book.add_format(form))
-      sheet.write(rowspan_count, 19, i.issue, book.add_format(form))
-      sheet.write(rowspan_count, 20, i.isbn, book.add_format(form))
-      sheet.write(rowspan_count, 21, i.pages, book.add_format(form))
-      sheet.write(rowspan_count, 22, temp_time, book.add_format(form))
+      sheet.write(rowspan_count, 9, i.student, book.add_format(form))
+      sheet.write(rowspan_count, 10, i.name_of_conference, book.add_format(form))
+      sheet.write(rowspan_count, 11, i.sponsor, book.add_format(form))
+      sheet.write(rowspan_count, 12, i.amount, book.add_format(form))
+      sheet.write(rowspan_count, 13, i.specify, book.add_format(form))
+      sheet.write(rowspan_count, 14, i.address, book.add_format(form))
+      sheet.write(rowspan_count, 15, i.indexing, book.add_format(form))
+      sheet.write(rowspan_count, 16, i.specify2, book.add_format(form))
+      sheet.write(rowspan_count, 17, i.h_index, book.add_format(form))
+      sheet.write(rowspan_count, 18, i.publisher, book.add_format(form))
+      sheet.write(rowspan_count, 19, i.volume, book.add_format(form))
+      sheet.write(rowspan_count, 20, i.issue, book.add_format(form))
+      sheet.write(rowspan_count, 21, i.isbn, book.add_format(form))
+      sheet.write(rowspan_count, 22, i.pages, book.add_format(form))
+      sheet.write(rowspan_count, 23, temp_time, book.add_format(form))
       rowspan_count += 1
 
     # rowspan_count += total
@@ -303,13 +300,13 @@ def exportFDP(request, queryset=None):
 
   if queryset is None:
     department = request.user.userdepartment.department
+    shift = request.user.userdepartment.shift
     if department == 'All':
-      records = list(set(e[0] for e in FDPRecord.objects.order_by(
-          '-faculty__designation').values_list('faculty')))
+      records = list(set(e[0] for e in FDPRecord.objects.order_by('-faculty__designation').values_list('faculty')))
     else:
 #      records = list(set(e[0] for e in FDPRecord.objects.filter(faculty__department=department).order_by('-faculty__designation').values_list('faculty')))
       if not any(c.islower() for c in request.user.username):
-          records = list(set(e[0] for e in FDPRecord.objects.filter(faculty__department=request.user.department, faculty__shift=request.user.shift).order_by('-faculty__designation').values_list('faculty')))
+          records = list(set(e[0] for e in FDPRecord.objects.filter(faculty__department=department, faculty__shift=shift).order_by('-faculty__designation').values_list('faculty')))
       else:
           records = list(set(e[0] for e in FDPRecord.objects.filter(faculty__full_name=request.user.username.replace('-',' ').title()).order_by('-faculty__designation').values_list('faculty')))
 
