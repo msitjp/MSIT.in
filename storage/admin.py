@@ -487,7 +487,7 @@ class BookRecordAdmin(admin.ModelAdmin):
 
   form = BookRecordForm
 
-  list_display = ['title', 'faculty', 'other', 'count', 'type', 'publisher', 'address',
+  list_display = ['title', 'faculty', 'other', 'type', 'publisher', 'address',
                   'isbn', 'issn', 'pages', 'price', 'year', 'updated_at', 'created_at']
   list_filter = ('type', ('year', DropdownFilter), ('faculty', FacultyFilter),
                       ('faculty__department',DropdownFilter), 'faculty__shift',)
