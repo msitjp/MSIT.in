@@ -24,6 +24,17 @@ PAPER_TYPE = (
   ('Journal', 'Journal'),
 )
 
+TYPEBOOK = (
+  ('Book', 'Book'),
+  ('Book Chapter', 'Book Chapter'),
+)
+
+TYPEFDP = (
+  ('FDP', 'FDP'),
+  ('Workshop', 'Workshop'),
+  ('Seminar', 'Seminar'),
+)
+
 SPONSOR = (
   ('Free', 'Free'),
   ('Self', 'Self'),
@@ -33,18 +44,18 @@ SPONSOR = (
 INDEXING_TYPE = (
   ('SCI/SCIE', 'SCI/SCIE'),
   ('Scopus', 'Scopus'),
-  ('UGC Listed', 'UGS Listed'),
+  ('UGC Listed', 'UGC Listed'),
   ('Google Scholars', 'Google Scholars'),
   ('Others', 'Others'),
   ('Not Applicable', 'Not Applicable'),
 )
 
 class BookRecord(models.Model):
+  top = models.CharField(verbose_name="Type", max_length=15, blank=False, choices=TYPEBOOK, default=TYPEBOOK[0][0])
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty, default=1)
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
-  count = models.CharField(verbose_name="Total Count",
-                           max_length=3, blank=True, null=True)
+  #count = models.CharField(verbose_name="Total Count", max_length=3, blank=True, null=True)
   type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   publisher = models.CharField(
       verbose_name="Publisher", max_length=200, blank=False, null=True, validators=[RegexValidator('^[a-zA-Z ,-]*$')])
@@ -89,6 +100,8 @@ class ResearchRecord(models.Model):
   faculty = models.ForeignKey(Faculty, default=1)
   type = models.CharField(verbose_name="Conference/Journal",
                           max_length=15, blank=False, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
+  presented = models.CharField(verbose_name="Presented or not", max_length=200, null=True, blank=False)
+
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
@@ -158,6 +171,7 @@ class ResearchRecord(models.Model):
 
 
 class FDPRecord(models.Model):
+  top = models.CharField(verbose_name="Type", max_length=15, blank=False, choices=TYPEFDP, default=TYPEFDP[0][0])
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty, default=1)
   venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, validators=[RegexValidator('^[a-z .]*$')])
