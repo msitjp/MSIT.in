@@ -105,7 +105,7 @@ class ResearchRecord(models.Model):
   nation = models.CharField(verbose_name="International/National",
                           max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
-  student = models.CharField(verbose_name="Paper with students (Y/N)", max_length=1, null=True, blank=False, validators=[RegexValidator('^[yYnN]*$')],)
+  student = models.CharField(verbose_name="Paper with students (Y/N -  For Conference Only)", max_length=1, null=True, blank=True, validators=[RegexValidator('^[yYnN]*$')],)
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
   address = models.CharField(max_length=200, null=True, blank=True)
   sponsor = models.CharField(verbose_name="Sponsoring Authority", max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
@@ -139,6 +139,7 @@ class ResearchRecord(models.Model):
 
         type = self.type
         address = self.address
+        student = self.student
 
         if self.year:
             if (self.year - date.today()).days>0:
@@ -146,6 +147,9 @@ class ResearchRecord(models.Model):
 
         if type=='Conference' and address=='':
             raise ValidationError("Address is required for conference")
+
+        if type=='Conference' and student=='':
+            raise ValidationError("Paper with students field is required for conference")
 
         try:
             logged_user = req.user.userdepartment
