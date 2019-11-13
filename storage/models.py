@@ -55,7 +55,7 @@ class BookRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty, default=1)
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
-  #count = models.CharField(verbose_name="Total Count", max_length=3, blank=True, null=True)
+#  count = models.CharField(verbose_name="Total Count", max_length=3, blank=True, null=True)
   type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   publisher = models.CharField(
       verbose_name="Publisher", max_length=200, blank=False, null=True, validators=[RegexValidator('^[a-zA-Z ,-]*$')])
@@ -174,7 +174,7 @@ class FDPRecord(models.Model):
   top = models.CharField(verbose_name="Type", max_length=15, blank=False, choices=TYPEFDP, default=TYPEFDP[0][0])
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty, default=1)
-  venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, validators=[RegexValidator('^[a-z .]*$')])
+  venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, null=True)
   address = models.CharField(verbose_name="Address", max_length=500, blank=False, null=True)
   sponsor = models.CharField(verbose_name="Sponsoring Authority", max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
   amount = models.CharField(verbose_name="Amount in INR (If Paid)", max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
