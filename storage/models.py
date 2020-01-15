@@ -146,12 +146,12 @@ class ResearchRecord(models.Model):
         address = self.address
         student = self.student
         presented = self.presented
-        publisher
-        volume
-        issue
-        isbn
-        pages
-        year
+        publisher = self.publisher
+        volume = self.volume
+        issue = self.issue
+        isbn = self.isbn
+        pages = self.pages
+        year = self.year
 
         if self.year:
             if (self.year - date.today()).days>0:
