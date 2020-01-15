@@ -41,6 +41,12 @@ SPONSOR = (
   ('Other', 'Other'),
 )
 
+PRESENTED = (
+  ('Presented', 'Presented'),
+  ('Published', 'Published'),
+  ('Presented & Published', 'Presented & Published'),
+)
+
 INDEXING_TYPE = (
   ('SCI/SCIE', 'SCI/SCIE'),
   ('Scopus', 'Scopus'),
@@ -100,10 +106,9 @@ class ResearchRecord(models.Model):
   faculty = models.ForeignKey(Faculty, default=1)
   type = models.CharField(verbose_name="Conference/Journal",
                           max_length=15, blank=False, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
-  presented = models.CharField(verbose_name="Presented or not", max_length=200, null=True, blank=False)
+  presented = models.CharField(verbose_name="Presented/Published", max_length=25, blank=False, choices=PRESENTED, default=PRESENTED[0][0])
 
-  nation = models.CharField(verbose_name="International/National",
-                          max_length=15, blank=False, choices=NATION, default=NATION[0][0])
+  nation = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
   student = models.CharField(verbose_name="Paper with students (Y/N -  For Conference Only)", max_length=1, null=True, blank=True, validators=[RegexValidator('^[yYnN]*$')],)
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
@@ -116,17 +121,17 @@ class ResearchRecord(models.Model):
   h_index = models.CharField(verbose_name="H Index",
                              max_length=10, blank=True, null=True)
   publisher = models.CharField(
-      verbose_name="Publisher", max_length=200, blank=False, null=True)
+      verbose_name="Publisher", max_length=200, blank=True, null=True)
   volume = models.CharField(
-          verbose_name="Volume", max_length=100, blank=False, null=True, default="")
+          verbose_name="Volume", max_length=100, blank=True, null=True, default="")
   issue = models.CharField(
-          verbose_name="Issue", max_length=100, blank=False, null=True, default="")
+          verbose_name="Issue", max_length=100, blank=True, null=True, default="")
   isbn = models.CharField(
-      verbose_name="ISBN/ISSN", max_length=15, blank=False, null=True, validators=[RegexValidator('^[0-9-Xx]*$')])
+      verbose_name="ISBN/ISSN", max_length=15, blank=True, null=True, validators=[RegexValidator('^[0-9-Xx]*$')])
   pages = models.CharField(verbose_name="Page No",
-                           max_length=10, blank=False, validators=[RegexValidator('^[0-9-]*$')], null=True)
+                           max_length=10, blank=True, validators=[RegexValidator('^[0-9-]*$')], null=True)
 
-  year = models.DateField(verbose_name="Month Year", blank=False, null=True)
+  year = models.DateField(verbose_name="Month Year", blank=True, null=True)
   created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
   updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -140,16 +145,29 @@ class ResearchRecord(models.Model):
         type = self.type
         address = self.address
         student = self.student
+        presented = self.presented
+        publisher
+        volume
+        issue
+        isbn
+        pages
+        year
 
         if self.year:
             if (self.year - date.today()).days>0:
                  raise ValidationError("Date cannot be greater than today's date")
 
-        if type=='Conference' and address=='':
-            raise ValidationError("Address is required for conference")
+        if type=='Conference':
+            if address=='':
+                raise ValidationError("Address is required for conference")
+            if student=='':
+                raise ValidationError("Paper with students field is required for conference")
 
-        if type=='Conference' and student=='':
-            raise ValidationError("Paper with students field is required for conference")
+            if presented!='Presented':
+                if publisher=='' or volume=='' or issue=='' or isbn=='' or pages=='' or year=='':
+                    raise ValidationError("Records are mandatory if published")
+
+
 
         try:
             logged_user = req.user.userdepartment
