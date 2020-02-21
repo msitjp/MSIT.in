@@ -109,6 +109,7 @@ class ResearchRecord(models.Model):
   presented = models.CharField(verbose_name="Presented/Published", max_length=25, blank=False, choices=PRESENTED, default=PRESENTED[0][0])
 
   nation = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
+  pdf = models.FileField(upload_to=image_name('title', 'research'), blank=True, null=True)
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
   student = models.CharField(verbose_name="Paper with students (Y/N -  For Conference Only)", max_length=1, null=True, blank=True, validators=[RegexValidator('^[yYnN]*$')],)
   name_of_conference = models.CharField(verbose_name="Name of Conference/Journal", blank=False, max_length=300, null=True, default="")
