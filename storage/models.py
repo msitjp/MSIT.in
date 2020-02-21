@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from datetime import datetime
 from datetime import date
+from functools import partial
 
 
 from django import forms
@@ -55,6 +56,14 @@ INDEXING_TYPE = (
   ('Others', 'Others'),
   ('Not Applicable', 'Not Applicable'),
 )
+
+def wrapper(instance, filename, field, folder):
+    extension = filename.split('.')[-1]
+    slug = os.path.join(folder, slugify(getattr(instance, field)))
+    return '%s.%s' % (slug, extension)
+
+def image_name(field='title', folder='general'):
+    return partial(wrapper, field=field, folder=folder)
 
 class BookRecord(models.Model):
   top = models.CharField(verbose_name="Type", max_length=15, blank=False, choices=TYPEBOOK, default=TYPEBOOK[0][0])
