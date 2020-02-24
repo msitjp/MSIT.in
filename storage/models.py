@@ -113,7 +113,7 @@ class BookRecord(models.Model):
 class ResearchRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
   faculty = models.ForeignKey(Faculty, default=1)
-  type = models.CharField(verbose_name="Conference/Journal",
+  type = models.CharField(verbose_name="Conference/Journal", 
                           max_length=15, blank=False, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
   presented = models.CharField(verbose_name="Presented/Published", max_length=25, blank=False, choices=PRESENTED, default=PRESENTED[0][0])
 
