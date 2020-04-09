@@ -5,7 +5,7 @@
         <div class="als-container panel-body" id="demo3">
             <div class="als-viewport">
                 <ul class="als-wrapper" style="padding: 0px">
-                    {% for item in latest_news %}
+                    {% for item in latest_news reversed %}
                     <li class="als-item" id="als-item_0_{{forloop.counter|add:'-1'}}">
                         <p>
                             {% if item.new %}<img alt="" src="{% static 'img/new.gif' %}" style="width: 28px; height: 11px;" />{% endif %}
@@ -26,7 +26,7 @@
         <div class="als-container panel-body" id="demo4">
             <div class="als-viewport">
                 <ul class="als-wrapper" style="padding: 0px">
-                    {% for item in notices %}
+                    {% for item in notices reversed %}
                     <li class="als-item" id="als-item_0_{{forloop.counter|add:'-1'}}">
                         <p>
                             {% if item.new %}<img alt="" src="{% static 'img/new.gif' %}" style="width: 28px; height: 11px;" /> {% endif %}<a {% if item.link %} href="{{ item.link }}" {% else %} href="{{ item.files.url }}" {% endif %}>{{ item.title }}</a>                            {% if item.additional_title %}
