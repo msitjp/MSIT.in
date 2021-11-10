@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
-        <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7 centralcontent">
+        <div class="col-md-7 col-sm-12 col-xs-12 col-lg-8 centralcontent">
             <h3>{{ heading }}</h3>
             <hr>
             <script type="text/javascript">
@@ -56,7 +56,7 @@
 
 
                     <div style="padding:1em;">
-                        <table class="table-striped table-responsive firstshift-table" style="width:500px;" id=cse>
+                        <table class="table-striped table-responsive firstshift-table" id=cse>
                             <tbody>
                                 {% for i in morning %}
                                 <tr>
