@@ -104,7 +104,7 @@
                                 <tr>
 
                                     {% if i.profile_pic %}
-                                    <td style="float:center;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px;"></td>
+                                    <td style="float:center; vertical-align: baseline; padding-top: 15px;"><img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px;"></td>
                                     {% endif %}
                                     <td style="padding:1em; width: 100%">
                                         <p style="color: #FF5722; font-weight: bold;">{{i.title}}&nbsp;{{i.full_name}} <br> {{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
