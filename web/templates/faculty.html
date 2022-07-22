@@ -66,7 +66,8 @@
                                     <td style="padding:1em; width: 100%">
                                         <p style="color: #FF5722; font-weight: bold;">{{i.title}}&nbsp;{{i.full_name}} <br> {{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 					    
-<!--                                         {% if i.date_of_joining %}<p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p> -->
+                                        {% if i.date_of_joining %}
+<!-- 					    <p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p> -->
 					    {% endif %}
                                         <p>{{i.email}}</p>
                                         {{i.description | safe}}
@@ -111,7 +112,8 @@
                                         <p style="color: #FF5722; font-weight: bold;">{{i.title}}&nbsp;{{i.full_name}} <br> {{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
 
 
-<!-- 					{% if i.date_of_joining %}<p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p> -->
+					{% if i.date_of_joining %}
+<!-- 					    <p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p> -->
 					    {% endif %}
                                         <p>{{i.email}}</p>
                                         {{i.description | safe}}
