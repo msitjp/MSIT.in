@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <nav class="navbar navbar-default">
-    <div style="background:linear-gradient(#00796B, #00bb7b); color: #fff;">
+    <div style="background:#fff; color: #3F96AA;">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="float:left; left:1em;">
                 <span class="sr-only">Toggle navigation</span>
@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: #EA9320;">
             <ul class="nav navbar-nav" style="">
                 {% for nav in primary_navbar %}
                     <li><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
@@ -37,14 +37,14 @@
                     </div>
                     <div class="row">
                         <center>
-                            <p>Affiliated to GGSIPU| NAAC Accredited 'A' Grade | NBA (CSE,IT,ECE,EEE) | Approved by AICTE | ISO 9001:2015 Certified</p>
+                            <p style="color: #FF5722;">Affiliated to GGSIPU| NAAC Accredited 'A' Grade | NBA (CSE,IT,ECE,EEE) | Approved by AICTE | ISO 9001:2015 Certified</p>
                         </center>
                     </div>
                 </div>
             </div>
         </div>
         <!-- <div data-spy="affix" data-offset-top="121" style="height: 50px; width:100%; top:0; z-index: 999;"> -->
-        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2" style="background:#1d1d1d;">
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2" style="background:#098CC4;">
             <ul class="nav navbar-nav navbar-right col-md-10" id="blacknavlist">
                 {% for nav in secondary_navbar %}
                 <li><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
