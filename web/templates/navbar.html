@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: #EA9320;">
             <ul class="nav navbar-nav" style="">
                 {% for nav in primary_navbar %}
-                    <li><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
+                     <li style="font-weight: 600;"><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -33,7 +33,7 @@
                 <div class="col-md-10">
                     <div class="row">
                         <center>
-                            <h3>Maharaja Surajmal Institute of Technology</h3></center>
+                            <h3 style="font-weight:600 ;">Maharaja Surajmal Institute of Technology</h3></center>
                     </div>
                     <div class="row">
                         <center>
@@ -47,7 +47,7 @@
         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2" style="background:#098CC4;">
             <ul class="nav navbar-nav navbar-right col-md-10" id="blacknavlist">
                 {% for nav in secondary_navbar %}
-                <li><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
+               <li style="font-weight: 600;"><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
