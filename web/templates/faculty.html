@@ -72,7 +72,7 @@
 <!-- 					    <p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p> -->
 					    {% endif %}
                                         <p style="color: darkblue;">{{i.email}}</p>
-                                        <p style="color: darkblue;"> {{i.description | safe}} </p>
+                                        {{i.description | safe}}
                                     </td>
                                 </tr>
                                 {% endfor %}
