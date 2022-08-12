@@ -32,7 +32,7 @@
             </ul>
             <div class="tab-content">
                 {% for i in tabs %}
-                <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.title|slugify}}" style="padding:1em;">
+                <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.title|slugify}}" style="padding:1em; color: darkblue">
                     {{i.content|safe}}
                 </div>
                 {% endfor %} {% if settings.display_1st_faculty %}
