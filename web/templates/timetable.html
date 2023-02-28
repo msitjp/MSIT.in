@@ -11,11 +11,11 @@
             </script>
             <ul class="nav nav-tabs" id="tttab" role="tablist">
                 <li class="active">
-                    <a href="#morning" aria-controls="morning" role="tab" data-toggle="tab">Morning</a>
+                    <h2>Time Table</h2>
                 </li>
-                <li>
+<!--                 <li>
                     <a href="#evening" aria-controls="evening" role="tab" data-toggle="tab">Evening</a>
-                </li>
+                </li> -->
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="morning">
@@ -25,13 +25,13 @@
                     </p>
                     {% endfor %}
                 </div>
-                <div class="tab-pane" id="evening">
+<!--                 <div class="tab-pane" id="evening">
                     {% for i in evening %}
                     <p class="ttcontent">
                         {{i.title}} - <a href="{{i.pdf.url}}">Click Here</a>
                     </p>
                     {% endfor %}
-                </div>
+                </div> -->
             </div>
         </div>
         {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
