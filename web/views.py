@@ -90,6 +90,9 @@ def events(request):
     context['events'] = event
     return render(request, 'events.html', context=context)
 
+def calendar(request):
+    return render(request, 'calendar.html')
+
 #
 # Available Department Choices are ::
 # CSE, IT, ECE, EEE, APPLIED SCIENCES
