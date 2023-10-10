@@ -91,7 +91,8 @@ def events(request):
     return render(request, 'events.html', context=context)
 
 def calendar(request):
-    return render(request, 'calendar.html')
+    context = getContext()
+    return render(request, 'calendar.html',context=context)
 
 #
 # Available Department Choices are ::
