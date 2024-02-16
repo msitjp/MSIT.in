@@ -73,6 +73,12 @@ def society(request):
     context['societies'] = societies
     return render(request, 'society.html', context=context)
 
+def aicte(request):
+    societies = AICTESociety.objects.order_by('order') or []
+    context = getContext()
+    context['aicte_societies'] = societies
+    return render(request, 'aicte.html', context=context)
+
 
 def achievements(request):
     achievements = Achievement.objects.all().order_by('order') or []

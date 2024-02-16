@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^attendance/?$', attendance, name="attendance"),
     url(r'^syllabus/?$', syllabus, name="syllabus"),
     url(r'^society/?$', society, name="society"),
+    url(r'^aicte/?$', aicte, name="aicte"),
     url(r'^achievements/?$', achievements, name="achievements"),
     url(r'^events/?$', events, name="events"),
     url(r'^calendar/?$', calendar, name="calendar"),
