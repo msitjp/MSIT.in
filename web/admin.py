@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django_admin_listfilter_dropdown.filters import DropdownFilter
 
 from .models import Faculty, LatestNews, PrimaryMenu, SecondaryMenu,\
-    TimeTable, Attendance, Syllabus, StudentSociety, Achievement, Event,\
+    TimeTable, Attendance, Syllabus, StudentSociety, AICTESociety, Achievement, Event,\
     PrimaryNavigationMenu, SecondaryNavigationMenu, Department, \
     DepartmentPage, Page, SocialAccount, Tab, Notice, Marquee, UserDepartment
 
@@ -144,6 +144,13 @@ class SocietyAdmin(admin.ModelAdmin):
     list_editable = ('order', )
     search_fields = ['name']
 
+class AICTEAdmin(admin.ModelAdmin):
+    list_display = ['name', 'order', 'created_at', 'updated_at']
+    list_filter = ('order', )
+    ordering = ('order', )
+    list_editable = ('order', )
+    search_fields = ['name']
+
 
 class AchievementAdmin(admin.ModelAdmin):
     list_display = ['title', 'order', 'created_at', 'updated_at']
@@ -228,6 +235,7 @@ admin.site.register(Attendance, AttendanceAdmin)
 admin.site.register(Syllabus, SyllabusAdmin)
 admin.site.register(SocialAccount, SocialAccountAdmin)
 admin.site.register(StudentSociety, SocietyAdmin)
+admin.site.register(AICTEAdmin,AICTESociety)
 admin.site.register(Achievement, AchievementAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(PrimaryNavigationMenu, PrimaryNavigationMenuAdmin)

@@ -105,6 +105,7 @@ PERMISSIONS = (
     ('Menu - Top', 'Menu - Top'),
     ('Menu - Secondary', 'Menu - Secondary'),
     ('Society', 'Society'),
+    ('AICTE', 'AICTE'),
     ('Syllabus', 'Syllabus'),
     ('Time Table', 'Time Table'),
 )
@@ -488,6 +489,21 @@ class StudentSociety(models.Model):
     class Meta:
         verbose_name = 'Page - Society'
         verbose_name_plural = 'Page - Societies'
+
+
+class AICTESociety(models.Model):
+    name = models.CharField(max_length=50, help_text='Society Name')
+    description = RichTextUploadingField()
+    order = models.CharField(max_length=20)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __unicode__(self):
+        return "%s" % (self.name)
+
+    class Meta:
+        verbose_name = 'Page - AICTE Society'
+        verbose_name_plural = 'Page - AICTE Societies'
 
 
 class Achievement(models.Model):
