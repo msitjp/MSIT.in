@@ -160,8 +160,37 @@
 
                         <p>&nbsp;</p>
                     </div> -->
+			<div style="padding:1em;">
+                        <table class="table-striped table-responsive firstshift-table" id=cse>
+                            <tbody>
+                                {% for i in morning %}
+                                <tr>
+                                    
+                                    <td style="float:center; vertical-align: baseline; padding-top: 15px;" >
+					    {% if i.profile_pic %}<img alt="" src="{{i.profile_pic.url}}" style="width: 100px; height: 100px;">{% endif %}
+				    </td>
+                                    
+                                    <td style="padding:1em; width: 100%">
+                                        <p style="color: #FF5722; font-weight: bold;">{{i.title}}&nbsp;{{i.full_name}} <br> {{i.designation|slice:"1:"}} | {{ i.qualifications }}</p>
+					    
+                                        {% if i.date_of_joining %}
+<!-- 					    <p>DOJ: {{ i.date_of_joining|date:"d/m/Y" }}</p> -->
+					    {% endif %}
+                                        <p style="color: darkblue;">{{i.email}}</p>
+					<p style="color: darkblue;">{{i.description | safe}}</p>
+                                        
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
 
-                    <div class="col-md-8 col-sm-12 col-xs-12 col-lg-12 centralcontent" style="padding: 1em;">
+                        <p>&nbsp;</p>
+
+                        <p>&nbsp;</p>
+                    </div>
+
+<!--                     <div class="col-md-8 col-sm-12 col-xs-12 col-lg-12 centralcontent" style="padding: 1em;">
                         <table border="0" cellpadding="0" cellspacing="0" class="table">
                             <tbody>
                                 <tr style="background-color:#00bb7b;">
@@ -172,7 +201,7 @@
                                 {% if mlab %}
 <!--                                 <tr style="background-color:#00bb7b; text-align:center;">
                                     <td colspan="3"><strong>First Shift</strong></td>
-                                </tr> -->
+                                </tr> 
                                 {% for i in mlab %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
@@ -195,7 +224,7 @@
                         </table>
 
                     </div>
-
+ -->
 
                 </div>
                 {% endif %}
