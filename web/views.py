@@ -9,26 +9,17 @@ from .models import *
 
 
 def getContext():
-    primary_navbar = PrimaryNavigationMenu.objects.all().order_by('order')
-    secondary_navbar = SecondaryNavigationMenu.objects.all().order_by('order')
-    primary_menu = PrimaryMenu.objects.all().order_by('order')
-    latest_news = LatestNews.objects.filter(visible=True)
-    notices = Notice.objects.filter(visible=True)
-    secondary_menu = []
-    for menu in primary_menu:
-        secondary_menu = SecondaryMenu.objects.all()
-    marquee = Marquee.objects.all().order_by('order')
-    socials = SocialAccount.objects.filter(visible=True).order_by('order')
-    context = {
-        'primary_navbar': primary_navbar,
-        'secondary_navbar': secondary_navbar,
-        'primary_menu': primary_menu,
-        'secondary_menu': secondary_menu,
-        'latest_news': latest_news,
-        'notices': notices,
-        'marquee': marquee,
-        'socials': socials
-    }
+    context = {}
+    context['primary_menu'] = PrimaryMenu.objects.all().order_by('order')
+    context['secondary_menu'] = SecondaryMenu.objects.all().order_by('order')
+    context['primary_navigation_menu'] = PrimaryNavigationMenu.objects.all().order_by('order')
+    context['secondary_navigation_menu'] = SecondaryNavigationMenu.objects.all().order_by('order')
+    context['latest_news'] = LatestNews.objects.all().order_by('-created_at')
+    context['notices'] = Notice.objects.all().order_by('-created_at')
+    context['marquee'] = Marquee.objects.all().order_by('-created_at')
+    context['social_accounts'] = SocialAccount.objects.all().order_by('order')
+    context['departments'] = Department.objects.all().order_by('department')
+    context['achievement_categories'] = AchievementCategory.objects.all().order_by('order')
     return context
 
 
@@ -64,6 +55,21 @@ def syllabus(request):
 
 def facilities(request):
     context = getContext()
+    
+    # Get all departments
+    departments = Department.objects.all()
+    department_labs = {}
+    
+    # For each department, get their "Labs" tab content
+    for dept in departments:
+        try:
+            lab_tab = dept.departmentpage_set.filter(title__icontains='Lab').first()
+            if lab_tab:
+                department_labs[dept.department] = lab_tab.content
+        except:
+            continue
+    
+    context['department_labs'] = department_labs
     return render(request, 'facilities.html', context=context)
 
 
@@ -81,9 +87,9 @@ def aicte(request):
 
 
 def achievements(request):
-    achievements = Achievement.objects.all().order_by('order') or []
+    categories = AchievementCategory.objects.prefetch_related('achievementtab_set').all().order_by('order')
     context = getContext()
-    context['achievements'] = achievements
+    context['categories'] = categories
     return render(request, 'achievements.html', context=context)
 
 
@@ -351,3 +357,13 @@ def send_to_notice(request, pk):
     notice.save()
     item.delete()
     return HttpResponseRedirect(reverse('latest_news'))
+
+def achievement_category(request, category_id):
+    category = get_object_or_404(AchievementCategory, id=category_id)
+    pages = category.achievementtab_set.all().order_by('order')
+    context = getContext()
+    context.update({
+        'category': category,
+        'pages': pages,
+    })
+    return render(request, 'achievement_category.html', context)

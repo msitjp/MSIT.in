@@ -1,32 +1,36 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block navigation %} {% include 'navbar.html' %} {% endblock %} {% block body %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
 <div class="container">
     <div class="row">
-        {% block left_nav %} {% include 'left_menu.html' %} {% endblock %} {% block main_body %}
-        <div class="col-md-8 col-sm-12 col-lg-8 col-xs-12 centralcontent">
-            <script type="text/javascript">
-                $('#societytab a').click(function(e) {
-                    e.preventDefault()
-                    $(this).tab('show')
-                })
-            </script>
-            <ul class="nav nav-tabs" id="tttab" role="tablist">
-                {% for i in achievements %}
-                <li {% if forloop.counter == 1 %}class="active" {% endif %}>
-                    <a href="#{{i.title|slugify}}" aria-controls="{{i.title|slugify}}" role="tab" data-toggle="tab">{{i.title}}</a>
-                </li>
-                {% endfor %}
-            </ul>
-            <div class="tab-content">
-                {% for i in achievements %}
-                <div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{i.title|slugify}}">
-                    <p>
-                        {{i.description|safe}}
-                    </p>
+        <div class="col-md-12">
+            <h2>Achievements</h2>
+            <hr>
+            {% for category in categories %}
+                <div class="achievement-category">
+                    <h3>{{ category.name }}</h3>
+                    {% for page in category.achievementtab_set.all %}
+                        <div class="achievement-page">
+                            <h4>{{ page.title }}</h4>
+                            <div class="achievement-content">
+                                {{ page.content|safe }}
+                            </div>
+                        </div>
+                        {% if not forloop.last %}
+                            <hr>
+                        {% endif %}
+                    {% empty %}
+                        <p>No achievements have been added to this category yet.</p>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
+                {% if not forloop.last %}
+                    <hr style="border-top: 2px solid #eee;">
+                {% endif %}
+            {% empty %}
+                <p>No achievement categories have been created yet.</p>
+            {% endfor %}
         </div>
-        {% endblock %} {% block right_nav %} {% include 'right_menu.html' %} {% endblock %}
     </div>
 </div>
 {% endblock %}

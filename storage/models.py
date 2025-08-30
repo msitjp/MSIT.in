@@ -70,7 +70,7 @@ def image_name(field='title', folder='general'):
 class BookRecord(models.Model):
   top = models.CharField(verbose_name="Type", max_length=15, blank=False, choices=TYPEBOOK, default=TYPEBOOK[0][0])
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
-  faculty = models.ForeignKey(Faculty, default=1)
+  faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, default=1)
   other = models.CharField(verbose_name="Other Authors", max_length=500, null=True, blank=True)
 #  count = models.CharField(verbose_name="Total Count", max_length=3, blank=True, null=True)
   type = models.CharField(verbose_name="International/National", max_length=15, blank=False, choices=NATION, default=NATION[0][0])
@@ -108,13 +108,13 @@ class BookRecord(models.Model):
     verbose_name = 'Book Record'
     verbose_name_plural = 'Book Records'
 
-  def __unicode__(self):
-    return "%s" % (self.title)
+  def __str__(self):
+    return self.title
 
 
 class ResearchRecord(models.Model):
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
-  faculty = models.ForeignKey(Faculty, default=1)
+  faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, default=1)
   type = models.CharField(verbose_name="Conference/Journal",
                           max_length=15, blank=False, choices=PAPER_TYPE, default=PAPER_TYPE[0][0])
   presented = models.CharField(verbose_name="Presented/Published", max_length=25, blank=False, choices=PRESENTED, default=PRESENTED[0][0])
@@ -200,14 +200,14 @@ class ResearchRecord(models.Model):
     verbose_name = 'Research Paper & Conference Record'
     verbose_name_plural = 'Research Paper & Conference Records'
 
-  def __unicode__(self):
-    return "%s" % (self.title)
+  def __str__(self):
+    return self.title
 
 
 class FDPRecord(models.Model):
   top = models.CharField(verbose_name="Type", max_length=15, blank=False, choices=TYPEFDP, default=TYPEFDP[0][0])
   title = models.CharField(verbose_name="Title/Topic", max_length=300, blank=False)
-  faculty = models.ForeignKey(Faculty, default=1)
+  faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, default=1)
   venue = models.CharField(verbose_name="Venue", max_length=500, blank=False, null=True)
   address = models.CharField(verbose_name="Address", max_length=500, blank=False, null=True)
   sponsor = models.CharField(verbose_name="Sponsoring Authority", max_length=15, blank=True, null=True, choices=SPONSOR, default=SPONSOR[0][0])
@@ -249,5 +249,5 @@ class FDPRecord(models.Model):
     verbose_name = 'FDP/Workshop Record'
     verbose_name_plural = 'FDP/Workshop Records'
 
-  def __unicode__(self):
-    return "%s" % (self.title)
+  def __str__(self):
+    return self.title

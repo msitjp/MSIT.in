@@ -1,5 +1,5 @@
 from django.conf.urls import url
-
+from . import views
 from .views import *
 
 urlpatterns = [
@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^notices/?$', notices, name='notices'),
     url(r'^faculties/(?P<department>[A-Za-z0-9\ ]+)/(?P<shift>[A-Za-z0-9\ ]+)/(?P<teaching>[0,1])/(?P<types>[1,2,3]+)/(?P<order>[0,1]+)/?', faculty_api),
     url(r'^(?P<key>[A-Za-z0-9_\-\(\)\[\]]+)/?$', custom),
-    url(r'^send_to_notice/(?P<pk>[0-9]+)', send_to_notice)
+    url(r'^send_to_notice/(?P<pk>[0-9]+)', send_to_notice),
+    url(r'^achievement/(?P<category_id>\d+)/$', views.achievement_category, name='achievement_category'),
 ]

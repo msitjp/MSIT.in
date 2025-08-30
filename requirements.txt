@@ -1,12 +1,11 @@
 appdirs==1.4.2
-Django==1.10.3
+Django==2.2.28
 django-multiselectfield
-django-ckeditor==5.2.1
+django-ckeditor==6.00
 gunicorn==19.7.0
 olefile==0.44
 packaging==16.8
 Pillow==4.0.0
-psycopg2==2.7
 pyparsing==2.2.0
 six==1.10.0
 django-dotenv==1.4.1
@@ -16,3 +15,4 @@ django-logentry-admin==1.0.3
 django-admin-list-filter-dropdown
 django-admin-rangefilter==0.3.1
 raven==6.6.0
+psycopg2-binary==2.8.6

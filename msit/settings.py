@@ -85,14 +85,14 @@ WSGI_APPLICATION = 'msit.wsgi.application'
 #  }
 
 DATABASES = {
-      'default': {
-          'ENGINE': os.environ['DB_ENGINE'],
-          'NAME': os.environ['DB_NAME'],
-          'USER': os.environ['DB_USER'],
-          'PASSWORD': os.environ['DB_PASS'],
-          'HOST': os.environ['DB_HOST'],
-          'PORT': os.environ['DB_PORT']
-      }
+    'default': {
+        'ENGINE': os.environ['DB_ENGINE'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASS'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT']
+    }
 }
 
 
@@ -120,13 +120,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+# Force PostgreSQL to use UTC:
+import django.db.backends.postgresql.base
+django.db.backends.postgresql.base.DatabaseWrapper.timezone_name = 'UTC'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -149,75 +153,35 @@ RAVEN_CONFIG = {
 
 # Ckeditor Configurations
 
-CKEDITOR_JQUERY_URL = '/static/js/jquery.min.js'
-CKEDITOR_UPLOAD_PATH = ""
-CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        # 'skin': 'moono',
-        'skin': 'moono-lisa',
-        'toolbar_Basic': [
-            ['Source', '-', 'Bold', 'Italic']
+        'skin': 'moono',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Font', 'FontSize'],
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['Image', 'Table', 'HorizontalRule'],
+            ['TableTools', 'Table', '-', 'Table Properties', 'Table Cell Properties'],
+            ['RemoveFormat', 'Source']
         ],
-        'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': [
-                'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': [
-                'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': [
-                'Find', 'Replace', '-', 'SelectAll']},
-            {'name': 'forms',
-             'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-                       'HiddenField']},
-            '/',
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       'Language']},
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert',
-             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
-            '/',
-            {'name': 'styles', 'items': [
-                'Styles', 'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
-            {'name': 'about', 'items': ['About']},
-            '/',  # put this to force next toolbar on new line
-            {'name': 'yourcustomtools', 'items': [
-                # put the name of your editor.ui.addButton here
-                'Preview',
-                'Maximize',
-
-            ]},
-        ],
-        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
-        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        # 'height': 291,
-        # 'width': '100%',
-        # 'filebrowserWindowHeight': 725,
-        # 'filebrowserWindowWidth': 940,
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
-        'tabSpaces': 4,
-        'extraPlugins': ','.join(
-            [
-                # your extra plugins here
-                'div',
-                'autolink',
-                'autoembed',
-                'embedsemantic',
-                'autogrow',
-                # 'devtools',
-                'widget',
-                'lineutils',
-                'clipboard',
-                'dialog',
-                'dialogui',
-                'elementspath'
-            ]),
+        'height': 300,
+        'width': 800,
+        'removePlugins': 'stylesheetparser',
+        'allowedContent': True,
+        'extraPlugins': 'uploadimage,table,tableresize,tabletools,font',
+        'font_names': 'Arial/Arial, Helvetica, sans-serif;Comic Sans MS/Comic Sans MS, cursive;Courier New/Courier New, Courier, monospace;Georgia/Georgia, serif;Times New Roman/Times New Roman, Times, serif;Verdana/Verdana, Geneva, sans-serif',
+        'uploadUrl': '/ckeditor/upload/',
+        'filebrowserUploadUrl': '/ckeditor/upload/',
+        'filebrowserBrowseUrl': '/ckeditor/browse/',
+        'table_defaultBorder': 1,
+        'table_defaultCellPadding': 5,
+        'table_defaultCellSpacing': 0,
+        'table_responsive': True,
     }
 }

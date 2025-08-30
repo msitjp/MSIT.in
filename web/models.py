@@ -132,19 +132,21 @@ class PrimaryNavigationMenu(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.title
 
     def clean(self):
         super(PrimaryNavigationMenu, self).clean()
-        if str(self.link) == "" and str(self.files) == "":
+        # Treat both empty string and None as "no value" for validation purposes
+        has_link = bool(self.link)
+        has_file = bool(self.files)
+        if not has_link and not has_file:
             raise ValidationError(
                 "Navigation menu must have either a link to redirect or a file attached to it")
-        elif str(self.link) != "" and str(self.files) != "":
+        if has_link and has_file:
             raise ValidationError(
                 "Please enter either a link to redirect or a file to attach with the Menu item.")
-        else:
-            return self
+        return self
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -166,19 +168,21 @@ class SecondaryNavigationMenu(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.title
 
     def clean(self):
         super(SecondaryNavigationMenu, self).clean()
-        if str(self.link) == "" and str(self.files) == "":
+        # Treat both empty string and None as "no value" for validation purposes
+        has_link = bool(self.link)
+        has_file = bool(self.files)
+        if not has_link and not has_file:
             raise ValidationError(
                 "Navigation menu must have either a link to redirect or a file attached to it")
-        elif str(self.link) != "" and str(self.files) != "":
+        if has_link and has_file:
             raise ValidationError(
                 "Please enter either a link to redirect or a file to attach with the Menu item.")
-        else:
-            return self
+        return self
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -237,7 +241,7 @@ class Faculty(models.Model):
         verbose_name = 'Faculty'
         verbose_name_plural = 'Faculties'
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s %s" % (self.title, self.full_name)
 
 
@@ -264,24 +268,24 @@ class LatestNews(models.Model):
         verbose_name = 'Right - Latest News'
         verbose_name_plural = 'Right - Latest News'
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.title
 
     def clean(self):
         super(LatestNews, self).clean()
-        if str(self.link) == "" and str(self.files) == "":
+        if not self.link and not self.files:
             raise ValidationError(
                 "Latest News must have either a link to redirect or a file attached to it")
-        elif str(self.link) != "" and str(self.files) != "":
+        elif self.link and self.files:
             raise ValidationError(
                 "Please enter either a link to redirect or a file to attach with the News item.")
         else:
-            if str(self.additional_title) == "":
+            if not self.additional_title:
                 return self
-            if str(self.additional_link) == "" and str(self.additional_files) == "":
+            if not self.additional_link and not self.additional_files:
                 raise ValidationError(
-                    "Addtional Title must have either a link to redirect or a file attached to it")
-            elif str(self.link) != "" and str(self.files) != "":
+                    "Additional Title must have either a link to redirect or a file attached to it")
+            elif self.additional_link and self.additional_files:
                 raise ValidationError(
                     "Please enter either a link to redirect or a file to attach with the Additional Title.")
             else:
@@ -315,24 +319,24 @@ class Notice(models.Model):
         verbose_name = 'Right - Notice'
         verbose_name_plural = 'Right - Notices'
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.title
 
     def clean(self):
         super(Notice, self).clean()
-        if str(self.link) == "" and str(self.files) == "":
+        if not self.link and not self.files:
             raise ValidationError(
                 "A Notice must have either a link to redirect or a file attached to it")
-        elif str(self.link) != "" and str(self.files) != "":
+        elif self.link and self.files:
             raise ValidationError(
                 "Please enter either a link to redirect or a file to attach with the Notice.")
         else:
-            if str(self.additional_title) == "":
+            if not self.additional_title:
                 return self
-            if str(self.additional_link) == "" and str(self.additional_files) == "":
+            if not self.additional_link and not self.additional_files:
                 raise ValidationError(
-                    "Addtional Title must have either a link to redirect or a file attached to it")
-            elif str(self.link) != "" and str(self.files) != "":
+                    "Additional Title must have either a link to redirect or a file attached to it")
+            elif self.additional_link and self.additional_files:
                 raise ValidationError(
                     "Please enter either a link to redirect or a file to attach with the Additional Title.")
             else:
@@ -349,7 +353,7 @@ class PrimaryMenu(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.name
 
     class Meta:
@@ -362,7 +366,6 @@ class SecondaryMenu(models.Model):
     parent = models.ForeignKey(PrimaryMenu, on_delete=models.CASCADE)
     order = models.PositiveSmallIntegerField()
     link = models.CharField(max_length=1000)
-    # content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -370,8 +373,8 @@ class SecondaryMenu(models.Model):
         verbose_name = 'Menu - Secondary'
         verbose_name_plural = 'Menu - Secondary'
 
-    def __unicode__(self):
-        return "%s > %s" % (self.parent, self.name)
+    def __str__(self):
+        return f"{self.parent} > {self.name}"
 
 
 class TimeTable(models.Model):
@@ -385,7 +388,7 @@ class TimeTable(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.title)
 
     class Meta:
@@ -419,7 +422,7 @@ class Attendance(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.title)
 
     class Meta:
@@ -430,7 +433,6 @@ class Attendance(models.Model):
         super(Attendance, self).clean()
         req = current_request()
         try:
-            # if str(self.department) == req.user.userdepartment.department or req.user.userdepartment.department == 'All':
             logged_user = req.user.userdepartment
             if (((str(self.department) == logged_user.department) and (str(self.shift) == logged_user.shift))) or logged_user.department == 'All':
                 return self
@@ -454,7 +456,7 @@ class Syllabus(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.title)
 
     class Meta:
@@ -483,7 +485,7 @@ class StudentSociety(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.name)
 
     class Meta:
@@ -498,7 +500,7 @@ class AICTESociety(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.name)
 
     class Meta:
@@ -506,19 +508,43 @@ class AICTESociety(models.Model):
         verbose_name_plural = 'Page - AICTE Societies'
 
 
-class Achievement(models.Model):
-    title = models.CharField(max_length=50, help_text='Tab Name')
-    order = models.PositiveIntegerField()
-    description = RichTextUploadingField()
+class AchievementCategory(models.Model):
+    name = models.CharField(max_length=100, help_text='Category Name (e.g. Cultural, Sports)')
+    slug = models.SlugField(unique=True, help_text='URL-friendly version of the name', blank=True)
+    order = models.PositiveIntegerField(default=1, help_text='Display order of the category')
+    display_achievements = models.BooleanField(default=True, help_text='Whether to display this category')
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
-        return "%s" % (self.title)
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(AchievementCategory, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'Page - Achievement'
-        verbose_name_plural = 'Page - Achievements'
+        verbose_name = 'Right - Achievement Category'
+        verbose_name_plural = 'Right - Achievement Categories'
+        ordering = ['order']
+
+    def __str__(self):
+        return self.name
+
+
+class AchievementTab(models.Model):
+    category = models.ForeignKey(AchievementCategory, on_delete=models.CASCADE)
+    title = models.CharField(max_length=70)
+    order = models.PositiveIntegerField(default=1, help_text='Display order of the tab')
+    content = RichTextUploadingField(config_name='default')
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    class Meta:
+        verbose_name = 'Achievement Tab'
+        verbose_name_plural = 'Achievement Tabs'
+        ordering = ['category', 'order']
+
+    def __str__(self):
+        return "%s - %s" % (self.category.name, self.title)
 
 
 class Event(models.Model):
@@ -528,7 +554,7 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.title)
 
     class Meta:
@@ -570,20 +596,20 @@ class Department(models.Model):
 
 
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.department
 
 
 class DepartmentPage(models.Model):
-    department_name = models.ForeignKey(Department)
+    department_name = models.ForeignKey(Department, on_delete=models.CASCADE)
     title = models.CharField(max_length=70)
     order = models.PositiveIntegerField()
     content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
-        return "%s - %s" % (self.department_name, self.title)
+    def __str__(self):
+        return f"{self.department_name} - {self.title}"
 
     def clean(self):
         super(DepartmentPage, self).clean()
@@ -606,7 +632,7 @@ class Page(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.title
 
     class Meta:
@@ -622,8 +648,8 @@ class Tab(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
-        return "%s  > %s" % (self.parent.title, self.title)
+    def __str__(self):
+        return f"{self.parent.title} > {self.title}"
 
 
 class Marquee(models.Model):
@@ -641,7 +667,7 @@ class Marquee(models.Model):
         verbose_name = 'Sliding Text'
         verbose_name_plural = 'Sliding Text'
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.title
 
     def clean(self):
@@ -657,13 +683,16 @@ class Marquee(models.Model):
 
 
 class UserDepartment(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name = 'User Department')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='User Department')
     department = models.CharField(verbose_name='Department', choices=Extended_DEPARTMENT, max_length=20)
     shift = models.CharField(verbose_name='Shift', choices=SHIFTS, max_length=10, default='M')
 
     class Meta:
         verbose_name = 'User Department'
         verbose_name_plural = 'User Departments'
+
+    def __str__(self):
+        return f"{self.user.username} - {self.department}"
 
 
 class SocialAccount(models.Model):
@@ -673,7 +702,7 @@ class SocialAccount(models.Model):
     icon = IconField()
     link = models.URLField(blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.title
 
     class Meta:

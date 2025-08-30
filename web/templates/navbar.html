@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 
 <nav class="navbar navbar-default">
     <div style="background:#fff; color: #154391;">
@@ -18,8 +18,8 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: #EA9320;">
             <ul class="nav navbar-nav" style="">
-                {% for nav in primary_navbar %}
-                     <li style="font-weight: 600;"><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
+                {% for nav in primary_navigation_menu %}
+                     <li style="font-weight: 600;"><a {% if nav.link %} href="{{ nav.link }}" {% elif nav.files %} href="{{ nav.files.url }}" {% endif %}>{{ nav.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -38,6 +38,7 @@
                     <div class="row">
                         <center>
                             <p style="color: #FF5722;">Affiliated to GGSIPU | NAAC Accredited 'A' Grade | NBA (CSE, IT, ECE,EEE) | Approved by AICTE | ISO 9001:2015 Certified</p>
+                            <p style="color: #FF5722;">MSIT Reception: 011-65215941<br>Placement Cell: 011-65215944</p>
                         </center>
                     </div>
                 </div>
@@ -45,9 +46,9 @@
         </div>
         <!-- <div data-spy="affix" data-offset-top="121" style="height: 50px; width:100%; top:0; z-index: 999;"> -->
         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2" style="background:#098CC4;">
-            <ul class="nav navbar-nav navbar-right col-md-10" id="blacknavlist">
-                {% for nav in secondary_navbar %}
-               <li style="font-weight: 600;"><a {% if nav.link %} href="{{ nav.link }}" {% else %} href="{{ nav.files.url }}" {% endif %} >{{ nav.title }}</a></li>
+            <ul class="nav navbar-nav" id="blacknavlist">
+                {% for nav in secondary_navigation_menu %}
+               <li style="font-weight: 600;"><a {% if nav.link %} href="{{ nav.link }}" {% elif nav.files %} href="{{ nav.files.url }}" {% endif %}>{{ nav.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -56,7 +57,7 @@
     {% if marquee %}
     <div class="marquee-text" style="">
         <marquee class="col-md-12">
-            {% for text in marquee %} •&nbsp;<a href="{% if text.link %}{{text.link}}{% else %}{{text.files.url}}{% endif %}">{{ text.title }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endfor %}
+            {% for text in marquee %} •&nbsp;<a href="{% if text.link %}{{text.link}}{% elif text.files %}{{text.files.url}}{% endif %}">{{ text.title }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endfor %}
         </marquee>
     </div>
     {% endif %}
@@ -70,5 +71,20 @@
     .marquee-text>marquee {
         padding: 5px;
         font-size: 1.2em;
+    }
+
+    /* Center the secondary navbar list */
+    #blacknavlist{
+        float:none;
+        margin:0 auto;
+        width:85%; /* leave some blue space on both sides */
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        padding-left:0; /* remove bootstrap left padding */
+    }
+    /* Remove default left float for list items inside the blue nav so lines center when wrapped */
+    #blacknavlist > li{
+        float:none;
     }
 </style>
